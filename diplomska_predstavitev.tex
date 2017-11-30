@@ -6,6 +6,9 @@
 \usepackage[T1]{fontenc}
 \usetheme{Warsaw} % izbira nastavitev oblike in barv strani
 \beamertemplatenavigationsymbolsempty
+%definicije izrekov----------
+\newtheorem{izrek}{Izrek}
+\newtheorem{df}{Definicija}
 %Information to be included in the title page:
 \title{Izrek o invarianci odprtih množic}
 \author[Tom Gornik]{Avtor: Tom Gornik\\ \footnotesize Mentor: izred. prof. dr. Jaka Smrekar}
@@ -19,17 +22,30 @@
 
 \begin{frame}
 
-\frametitle{prva}
-\framesubtitle{Podnaslov}
+\frametitle{Zakaj izrek o invarianci odprtih množic?}
+
 % Vsebina prosojnice 1
+\begin{itemize}
+\item Izgleda enostavno
+\item Presenetljivo težko dokazati
+
+\end{itemize}
+
+
 
 \end{frame}
 
 \begin{frame}
 
-\frametitle{druga}
-\framesubtitle{Podnaslov}
-% Vsebina prosojnice 1
+\frametitle{Izrek o invarianco odprtih množic}
+% Vsebina prosojnice 2
+\begin{overprint}
+\onslide<1> \hfill\hyperlinkframestartnext{\beamerskipbutton{Skip Proof}}
+\onslide<2>
+\begin{proof}
+Tukaj pa je dokaz, ki bi ga lahko preskočili \ldots.
+\end{proof}
+\end{overprint}
 
 \end{frame}
 
