@@ -1,0 +1,1117 @@
+\documentclass[mat1]{fmfdelo}
+% \documentclass[fin1]{fmfdelo}
+% \documentclass[isrm1]{fmfdelo}
+% \documentclass[mat2]{fmfdelo}
+% \documentclass[fin2]{fmfdelo}
+% \documentclass[isrm2]{fmfdelo}
+
+% naslednje ukaze ustrezno napolnite
+\avtor{Tom Gornik}
+
+\naslov{Izrek o invarianci odprtih množic}
+\title{Domain invariance theorem}
+
+% navedite ime mentorja s polnim nazivom: doc.~dr.~Ime Priimek,
+% izr.~prof.~dr.~Ime Priimek, prof.~dr.~Ime Priimek
+% uporabite le tisti ukaz/ukaze, ki je/so za vas ustrezni
+\mentor{ izr.~prof.~dr.~Jaka Smrekar}
+% \mentorica{}
+% \somentor{}
+% \somentorica{}
+% \mentorja{}{}
+% \mentorici{}{}
+
+\letnica{2020} % leto diplome
+
+%  V povzetku na kratko opišite vsebinske rezultate dela. Sem ne sodi razlaga organizacije dela --
+%  v katerem poglavju/razdelku je kaj, pač pa le opis vsebine.
+\povzetek{}
+
+%  Prevod slovenskega povzetka v angleščino.
+\abstract{}
+
+% navedite vsaj eno klasifikacijsko oznako --
+% dostopne so na www.ams.org/mathscinet/msc/msc2010.html
+\klasifikacija{}
+\kljucnebesede{} % navedite nekaj ključnih pojmov, ki nastopajo v delu
+\keywords{} % angleški prevod ključnih besed
+
+\zapisiMetaPodatke  % poskrbi za metapodatke in veljaven PDF/A-1b standard
+
+% aktivirajte pakete, ki jih potrebujete
+\usepackage{tikz, verbatim, subcaption}
+\usetikzlibrary{arrows.meta, calc}
+
+% za številske množice uporabite naslednje simbole
+\newcommand{\R}{\mathbb R}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+
+
+% matematične operatorje deklarirajte kot take, da jih bo Latex pravilno stavil
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\diam}{diam}
+
+% vstavite svoje definicije ...
+%  \newcommand{}{}
+\newcommand{\I}{\mathbb I}
+\newcommand{\0}{\underline{0}}
+\newcommand{\Int}{\text{Int}}
+\newcommand{\pA}{\mathcal A}
+\newcommand{\pU}{\mathcal U}
+
+
+\begin{document}
+%####################     1. POGLAVJE: UVOD     ####################
+\section{Uvod}
+Koncept dimenzije prostora se zdi zelo naraven in intuitiven. V svojih zapisih je o dimenzijah govoril že Aristotel. A ko beremo njegova dela, hitro vidimo, da je bila njegova predstava o dimenzijah drugačna od današnje. Aristotel namreč pravi ,,Premica ima magnitudo v eni smeri, ravnina v dveh smereh, geometrijska telesa pa v treh smereh in poleg teh treh magnitud ni nobene več, kajti te tri so vse'' \cite[Str. 1, moj prevod]{geometry4}. Matematiki so dolgo živeli v prepričanju, do so lahko matematični objekti največ tridimenzionalni. Kasneje so se začele pojavljati potrebe po štiridimenzionalnih objektih, saj so bile na primer v mehaniki enačbe veliko lažje, če je eno dimenzijo predstavljal čas. Tako smo počasi prišli do razmišljanja, da imamo večdimenzionalne in celo neskončno dimenzionalne prostore. Problem se pojavi, ko želimo primerjati prostore različnih dimenzij. Intuicija nam pravi, da prostora različnih dimenzij ne moreta biti enaka. V topologiji rečemo, da ne moreta biti homeomorfna. Homeomorfizem je bijektivna zvezna preslikava $f$, katere inverz $f^{-1}$ je tudi zvezen. Če lahko prostor $X$ z neko homeomorfno prelikavo preslikamo v prostor $Y$, pravimo, da sta prostora $X$ in $Y$ homeomorfna. Matematiki so že od nekdaj verjeli, da je dimenzija invarianta, kar pomeni, da imata homeomorfna prostora enako dimenzijo. To trditev je bilo zelo težko dokazati ne samo zato, ker je dokaz zapleten, ampak tudi zato, ker ni bilo dobre definicije dimenzije prostora. Kaj sploh je dimenzija prostora? Velikokrat na dimenzijo gledamo kot na najmanjše število parametrov, ki so potrebni za opis nekega prostora. Ta definicija je mnogim matematikom dolgo časa zadoščala, obstajali pa so tudi ti, ki so vanjo dvomili. Eden prvih, ki je izrazil svoje dvome, je bil nemški matematik Georg Cantor v pismu, ki ga je leta 1873 poslal Richardu Dedekindu, prav tako nemškemu matematiku. Čeprav so mnogi matematiki mislili, da je noro poskusiti vsako točko v ravnini izraziti zgolj z enim parametrom iz premice, je Cantor to poskušal doseči in leta 1878 je dokazal, da obstaja bijektivna preslikava -- imenujmo jo Cantorjeva preslikava -- $c : \R \to \R^n$. To pomeni, da za opis tudi več dimenzionalnih prostorov potrebujemo zgolj en parameter. Kljub presenetljivemu rezultatu, pa obstoj take preslikave ni tako zelo ogrožal intuicije, saj je bila Cantorjeva preslikava močno nezvezna. Kljub temu pa je postalo očitno, da je potrebno poiskati dokaz, kar je neuspešno poskusilo kar nekaj matematikov. Potreba po dokazu se je še bolj pokazala, ko je leta 1890 italianski matematik Giuseppe Peano predstavil krivulje, ki napolnijo cel prostor. To pomeni, da lahko vsako točko v prostoru $\R^n$ zvezno opišemo samo z enim parametrom $t \in (-\infty, \infty)$. Problem take preslikave pa je, da ni surjektivna, tako da še vedno obstaja upanje, da je intuicija dobra. Potrebno jo je samo posodobiti do trditve, da v primeru dveh prostorov $X$ on $Y$, ki sta različnih dimenzij, ne obstaja zvezna bijektivna presllikava $f : X \to Y$. To je prvi dokazal Brouwer leta 1911. Za dokaz pa je uporabil nekatere topološke rezultate, ki jih mnogi ljubiteljski matematiki in tudi študenti dodiplomskega študija matematike ne poznajo. 
+V tem delu bomo predstavili elementeren dokaz tega izreka, ki se izogne težjim topološkim trditvam. V poglavju~\ref{raz:simpleksi} bomo razvili potrebno besedišče in spoznali nekaj matematičnih objektov, ter njihovih lastnosti, ki so ključni pri dokazih v naslednjih poglavjih.  V razdelkih \ref{raz:PM} in \ref{raz:siritev} uporabimo rezultate iz poglavja~\ref{raz:simpleksi} in dokažemo dva ključna gradnika dokaza Brouwerjevega izreka. Na koncu v poglavju~\ref{raz:ioiom} pa lahko najdemo dokaz izreka o invarianci odprtih množic in izreka o invarianci dimenzije. Vrstni red razdelkov je izbran tako, da ohrani nekaj matematične skrivnosti, na koncu pa se vse skupaj sestavi v celoto. Neučakan bralec pa lahko prebere najprej tudi poglavje~\ref{raz:ioiom} in se kasneje polno motiviran, z vedenjem zakaj in kako je snov uporabna, vrne na začetek ter naknadno zapolni vse vrzeli v dokazu.
+
+%####################     2. POGLAVJE: SIMPLEKSI     ####################
+\section{Simpleksi}\label{raz:simpleksi}
+V tem razdelku bomo spoznali simplekse in z njimi povezano Spernerjevo lemo. Na koncu, pa bomo nekatere lastnosti simpleksov posplošili tudi na kocke. Poimenovanje za simpleks izvira iz latinske besede ,,simplex'', ki pomeni preprost oziroma enostaven, saj označuje eno najenostavnejših podmnožic $\R^n$.  Simpleks si lahko predstavljamo, kot posplošitev pojma trikotnik, ki je dvodimenzionalen objekt, na ostale dimenzije. Tako v $0$-dimenzionalnem prostoru simpleks označuje točko, enodimenzijonalen simpleks nam predstavlja daljico, v dveh dimenzijah dobimo že znani trikotnik, v treh dimenzijah pa simpleks imenujemo tudi tetraeder itn. Na sliki~\ref{fig:simplex} so prikazani simpleksi dimenzij $0$, $1$, $2$, in $3$ \cite{simplex}.
+%####################   Simpleksi v različnih dimenzijah    ####################
+\begin{figure}[h!]  
+	\centering
+	\begin{tikzpicture}
+% ####################   0 - simplex    ####################
+		\filldraw[black] (0, 0) circle (2pt) node[black, below]{$0$};
+		\draw (0, -1) node {$0$-simpleks};
+% ####################   1 - simplex    ####################
+		\filldraw[black] (2, 0) circle (2pt) node[black, below]{$0$};		
+		\filldraw[black] (4, 0) circle (2pt) node[black, below]{$1$};
+		\draw (2, 0) -- (4, 0);
+		\draw (3, -1) node {$1$-simpleks};
+% ####################   2 - simplex    ####################
+		\filldraw[black] (6, 0) circle (2pt) node[black, below]{$0$};		
+		\filldraw[black] (8, 0) circle (2pt) node[black, below]{$1$};
+		\filldraw[black] (7, 1.732) circle (2pt) node[black, above]{$2$};
+		\draw (6, 0) -- (8, 0);
+		\draw (6, 0) -- (7, 1.732);
+		\draw (7, 1.732) -- (8, 0);
+		\draw (7, -1) node {$2$-simpleks};
+% ####################   3 - simplex    ####################
+		\filldraw[black] (10, 0) circle (2pt) node[black, below]{$0$};		
+		\filldraw[black] (12, 0) circle (2pt) node[black, below]{$1$};
+		\filldraw[black] (11.2, 0.35) circle (2pt) node[black, above left = -0.4mm]{$2$};
+		\filldraw[black] (11, 1.732) circle (2pt) node[black, above]{$3$};				
+		\draw (10, 0) -- (12, 0);
+		\draw (10, 0) -- (11, 1.732);
+		\draw (11, 1.732) -- (12, 0);
+		\draw[dashed] (10, 0) -- (11.2, 0.35);
+		\draw[dashed] (11.2, 0.35) -- (11, 1.732);
+		\draw[dashed] (11.2, 0.35) -- (12, 0);
+		\draw (11, -1) node {$3$-simpleks};
+	\end{tikzpicture}
+	\caption{Simpleksi v dimenzijah $0$, $1$, $2$ in $3$.}\label{fig:simplex}
+\end{figure}
+Preden podamo natančno definicijo simpleksa, moramo spoznati afino neodvisne množice. Pri tem se bomo držali pravila, da bomo krajevni vektor od koordinatnega izhodišča do neke točke označili z enako oznako kot točko samo, le da bomo nad oznako narisali puščico. Torej krajevni vektor neke točke $x \in \R^n$ bomo označili z $\vec{x}$.
+\begin{definicija}
+Množica točk $x_0, x_1, \dots , x_n \in \R^n$ je \emph{afino neodvisna}, če je množica vektorjev $\vec{x}_1 - \vec{x}_0, \vec{x}_2 - \vec{x}_0, \dots , \vec{x}_n - \vec{x}_0$ linearno neodvisna.
+\end{definicija}
+
+Opazimo lahko, da ima v tej definiciji prva točka iz množice posebno vlogo. Ker ne govorimo o urejenih množicah in vrstni red elementov ni pomemben, se moramo prepričati, da nam definicija res karakterizira afino neodvisne množice in ni odvisna od izbire prve točke. Denimo, da je množica vektorjev $\vec{x}_1 - \vec{x}_0, \vec{x}_2 - \vec{x}_0, \dots , \vec{x}_n - \vec{x}_0$ linearno neodvisna. Potem je enakost $\sum\limits_{i=1}^n \alpha_i (\vec{x}_i - \vec{x}_0) = 0$ izpolnjena natanko tedaj, ko so vsi koeficienti enaki $0$, torej velja $\alpha_i = 0$ za vsak $i \in \{ 1, 2, \dots, n \}$ . Recimo, da smo za prvi element izbrali neko drugo točko, na primer $x_k$. Radi bi videli, da je potem tudi enakost $\sum\limits_{\substack{i=0 \\ i\neq k}}^n \beta_i (\vec{x}_i - \vec{x}_k) = 0$ izpolnjena samo v primeru, ko so vsi koeficienti v vsoti enaki $0$. V to se prepričamo tako, da uporabimo znan matematični trik ter odštejemo in prištejemo isto vrednost. V tem primeru prištejemo in odštejemo $x_0$.
+Računamo:
+\begin{align*} 
+\sum\limits_{\substack{i=0 \\ i \neq k}}^n \beta_i (\vec{x}_i - \vec{x}_k) &=  \sum\limits_{\substack{i=0 \\ i \neq k}}^n \beta_i (\vec{x}_i - \vec{x}_0 + \vec{x}_0 - \vec{x}_k) = \\
+&=\sum\limits_{\substack{i=0 \\ i\neq k}}^n \beta_i (\vec{x}_i - \vec{x}_0) + \sum\limits_{\substack{i=0 \\ i\neq k}}^n \beta_i (\vec{x}_0 - \vec{x}_k) \\
+&= \sum\limits_{i=1}^n \gamma_i (\vec{x}_i - \vec{x}_0),
+\end{align*}
+kjer koeficiente $\gamma_i$ določimo na naslednji način:
+\[  \gamma_i =  \left\{
+\begin{array}{cl}\vspace{3pt}
+	-\sum\limits_{\substack{i=0 \\ i\neq k}}^n \beta_i & i = k,\\
+	\beta_i & i \neq k. \\
+\end{array} 
+\right. \]
+Ker je množica vektorjev $\vec{x}_1 - \vec{x}_0, \vec{x}_2 - \vec{x}_0, \dots , \vec{x}_n - \vec{x}_0$ linearno neodvisna, morajo biti vsi koeficienti $\gamma_i = 0$ za vsak $i \in \{1, 2, \dots, n \}$. Torej so tudi vsi koeficienti $\beta_i = 0$, za vsak $i \in \{0, 1, \dots, k-1, k+1, \dots, n \}$. Pokazali smo linearno neodvisnost množice $\vec{x}_0 - \vec{x}_k, \vec{x}_1 - \vec{x}_k, \dots , \vec{x}_{k-1} - \vec{x}_k, \vec{x}_{k+1} - \vec{x}_k, \dots, \vec{x}_n - \vec{x}_k$, zato je zgornja definicija dobra. 
+
+S pomočjo točk v prostoru lahko definiramo različne množice. Mi si bomo želeli take množice, ki imajo naslednjo lastnost.
+\begin{definicija}
+Poljubna množica $K \in \R^n$ je \emph{konveksna}, če je za vsaki dve točki $x, y \in K$ tudi daljica določena z $x$ in $y$: 
+$\left \{ \lambda \vec{x} + (1 - \lambda) \vec{y}; \lambda \in  [0, 1] \right \}$ 
+cela vsebovana v $K$.
+\end{definicija}
+Konveksnih množic, ki vsebujejo dane točke $x_1, x_2, \dots, x_n$ je veliko. Poglejmo si, kako konstruiramo eno izmed nijih.
+\begin{definicija}
+Za poljubne točke $x_1, x_2, \dots, x_n$ v prostoru $\R^n$ definiramo \emph{konveksno ogrinjačo} teh množic $A = \conv(x_1, x_2, \dots, x_n)$ na naslednji način:
+$$A = \left \{ \sum\limits_{i=0}^n \lambda_i \vec{x}_i; \text{ kjer so } \lambda_i \in [0, \infty) \text{ za vsak } i \in \{0, 1, \dots, n \} \text{ in } \sum\limits_{i=0}^n \lambda_i = 1  \right \}$$
+\end{definicija}
+Konveksno ogrinjačo točk $x_1, x_2, \dots, x_n$ si v dveh dimenzijah si lahko predstavljamo kot množico, ki jo omeji elastika, ko jo napnemo čez vse točke in nato spustimo. Prikaz konveksne ogrinjače si lahko pogledamo na sliki~\ref{fig:konvexhull}. Zakaj smo izbrali ravno to množico pa nam pojasni trditev~\ref{trd:min-conv}.
+
+% ####################   Konveksna množica z elastiko    ####################
+\begin{figure}[h]  
+\centering 
+	\begin{tikzpicture}
+		% elastika
+		\draw plot [smooth cycle, tension = 1] coordinates {(-1, 2.2) (-2.5, 0) (-1.3, -1.8) (1.3, -1.7) (2.3, 0.9)};
+		% puščice, ki označujejo, da se elastika skrči
+		\draw[->] (-2, 1.6) -- (-1.8, 1.4);
+		\draw[->] (-2.25, -1.05) -- (-2, -0.9);
+		\draw[->] (0, -2.1) -- (0, -1.8);
+		\draw[->] (2.5, 0) -- (2.2, 0);
+		\draw[->] (0.9, 1.9) -- (0.75, 1.65);
+		%robne točke, ki jih omejuje elastika
+		\filldraw[black] (-1, 1.7) circle (1pt);
+		\filldraw[black] (-1.3, -0.9) circle (1pt);
+		\filldraw[black] (2, 1) circle (1pt);
+		\filldraw[black] (-2, 0.5) circle (1pt);
+		\filldraw[black] (0.5, -1.5) circle (1pt);
+		%notranje točke, ki jih omejuje elastika
+		\filldraw[black] (-0.7, 0.3) circle (1pt);
+		\filldraw[black] (0.3, 1) circle (1pt);
+		\filldraw[black] (0, -0.2) circle (1pt);
+		\filldraw[black] (0.8, 0.1) circle (1pt);
+		%oblika elastike, ko jo izpustimo
+		\draw (7, 1.7) -- (6, 0.5);
+		\draw (6, 0.5) -- (6.7, -0.9);
+		\draw (6.7, -0.9) -- (8.5, -1.5);
+		\draw (8.5, -1.5) -- (10, 1);
+		\draw (10, 1) -- (7, 1.7);
+		%robne točke, na katerih je napeta elastika
+		\filldraw (7, 1.7) circle (1pt);
+		\filldraw (6.7, -0.9) circle (1pt);
+		\filldraw (10, 1) circle (1pt);
+		\filldraw (6, 0.5) circle (1pt);
+		\filldraw (8.5, -1.5) circle (1pt);
+		%notranje točke.
+		\filldraw[black] (7.3, 0.3) circle (1pt);
+		\filldraw[black] (8.3, 1) circle (1pt);
+		\filldraw[black] (8, -0.2) circle (1pt);
+		\filldraw[black] (8.8, 0.1) circle (1pt);
+		%puščica
+		\draw[->] (3, 1) -- (5.5,1);
+		\draw (4.25, 1.8) node {Izpustimo};
+		\draw (4.25, 1.4) node {elastiko!};
+	\end{tikzpicture}
+	\caption{Slika prikazuje, kako dobimo konveksno ogrinjačo točk s pomočjo elastike. Na levi strani napnemo elastiko, tako da zaobjame vse točke. Na desni strani pa je prikazano, kako izgleda elastika po tem, ko jo izpustimo in nam omeji konveksno ogrinjačo prikazanih točk.} \label{fig:konvexhull}
+\end{figure} 
+
+\begin{trditev}\label{trd:min-conv}
+Množica $A = \conv(x_1, x_2, \dots, x_n)$ je najmanjša konveksna množica, ki vsebuje točke $x_1, x_2, \dots, x_n$.
+\end{trditev}
+\begin{dokaz}
+Najprej bomo pokazali, da je pri nekih danih točkah $x_1, x_2, \dots, x_n$ množica $A = \conv(x_1, x_2, \dots, x_n)$ konveksna, nato pa se bomo prepričali, da je najmanjša med vsemi konveksnimi množicami, ki vsebujejo točke $x_1, x_2, \dots, x_n$. Vzemimo dve točki s krajevnima vektorjema $\vec{x} = \sum\limits_{i=0}^n \lambda_i \vec{x}_i$ in $\vec{y} = \sum\limits_{i=0}^n \mu_i \vec{x}_i$ iz množice $A$. Krajevni vektor poljubne točke $z$ na daljici določeni z $x$ in $y$ lahko zapišemo kot:
+$$\vec{z} = t \vec{x} + (1-t) \vec{y} = t \sum\limits_{i=0}^n \lambda_i \vec{x}_i + (1 - t) \sum\limits_{i=0}^n \mu_i \vec{x}_i = \sum\limits_{i=0}^n (t \lambda_i + (1 - t) \mu_i) \vec{x}_i.$$
+Ker so koeficienti $t \lambda_i + (1 - t) \mu_i \geq 0$ in velja 
+$$\sum\limits_{i=0}^n (t \lambda_i + (1 - t) \mu_i) = t \sum\limits_{i=0}^n \lambda_i + (1 - t) \sum\limits_{i=0}^n \mu_i = 1 + (1 - t) = 1,$$
+je $z \in A$.
+Dokazati moramo še, da je $A$ najmanjša konveksna množica, ki vsebuje $x_1, x_2, \dots, x_n$. Denimo, da odstranimo eno točko $x$ s krajevnim vektorjem $\vec{x} = \sum\limits_{i=0}^n \lambda_i \vec{x}_i$ iz množice $A$. Da bo ta še vedno vsebovala točke $x_1, x_2, \dots, x_n$, to ne sme biti ena izmed njih. Zato sta vsaj dva koeficienta $\lambda_i$ v izražavi točke $x$ neničelna. Brez izgube splošnosti lahko predpostavimo, da je $\lambda_0 \neq 0$. Definirajmo $\lambda =  \sum\limits_{i=1}^n \lambda_i$. Sedaj lahko $x$ izrazimo malo drugače:
+$$\vec{x} = \sum\limits_{i=0}^n \lambda_i \vec{x}_i = \lambda_0 \vec{x}_0 + \sum\limits_{i=1}^n \lambda_i \vec{x}_i = \lambda_0 \vec{x}_0 + \lambda \sum\limits_{i=1}^n \frac{\lambda_i}{\lambda} \vec{x}_i$$
+Torej točka $x$ leži na premici določeni s točkama $x_0$ in $\sum\limits_{i=1}^n \frac{\lambda_i}{\lambda} \vec{x}_i$. Ker so koeficienti $\frac{\lambda_i}{\lambda} \geq 0$ in je $\sum\limits_{i=1}^n \frac{\lambda_i}{\lambda} = 1$, obe točki ležita v množici $A \setminus \{ x \}$. Dobili smo taki točki iz $A \setminus \{ x \}$, pri katerih ne velja, da je celotna daljica, določena z njima, vsebovana v množici $A \setminus \{ x \}$, kar pomeni, da množica $A \setminus \{ x \}$ ni konveksna. Torej je $A$ res najmanjša konveksna množica, ki vsebuje točke $x_1, x_2, \dots, x_n$.
+\end{dokaz}
+Poglejmo si zdaj še definicijo simpleksa.
+\begin{definicija}
+Naj bo $V = \{x_0, x_1, \dots , x_n \} \subset \R^n$ afino neodvisna množica točk v Evklidskem prostoru $\R^n$. Konveksni ogrinjači $S$ točk $x_0, x_1, \dots , x_n$ iz mnižice $V$ pravimo \emph{$n$-dimenzionalni simpleks} ali \emph{$n$-simpleks}. Točke $x_i$, imenujemo \emph{oglišča} simpleksa $S$. Ko želimo poudariti, katera oglišča določajo simpleks, označimo tudi $S = \left < x_0, \dots, x_n \right >$. Za vsako neprazno podmnožico $U = \{ y_0, y_1, \dots, y_r \} \subset V$ lahko definiramo simpleks $L = \langle y_0, y_1, \dots, y_r \rangle$, ki ga imenujemo \emph{lice simpleksa} $S$. Če je lice $L$ $(n-1)$-simpleks, pa ga imenujemo \emph{pravo lice} simpleksa $S$. 
+\end{definicija}
+ Krajevni vektor vsake točke $x \in S = \left < x_0, \dots, x_n \right >$ lahko izrazimo s pomočjo oglišč kot vsoto $\vec{x} = \sum\limits_{i=0}^n \lambda_i \vec{x}_i$, ki zadošča pogoju $\sum\limits_{i=0}^n \lambda_i = 1$, kjer so vsi $\lambda_i$ pozitivna realna števila. Vsoto, ki zadošča zahtevanim pogojem, imenujemo \emph{konveksna kombinacija} točk $x_0, x_1, \dots , x_n$. Števila $\lambda_i$ pa so \emph{baricentrične koordinate} točke $x$, kar zapišemo kot $x = (\lambda_0, \dots, \lambda_n)_b$.
+\begin{trditev}\label{trd:zveznost-baricentra}
+Baricentrične koordinate poljubne točke $x \in \left <x_0, \dots, x_n \right >$ so zvezne funkcije točke $x$ in velja $x = (\lambda_0(x), \dots, \lambda_n(x))_b$.
+\end{trditev}
+\begin{dokaz}
+Najprej bomo pokazali, da so baricentrične koordinate enolično določene s točko $x$, potem pa bomo utemeljili še zvezno odvisnost of točke $x$. Recimo, da $x$ izrazimo na dva načina kot $x = \left (\alpha_0, \dots, \alpha_n \right )_b = \left (\beta_0, \dots, \beta_n \right )_b$. Potem lahko zapišemo 
+$$\sum_{i=0}^n \alpha_i \vec{x}_i = \sum_{i=0}^n \beta_i \vec{x}_i.$$
+Če enačbi odštejemo desno stran, dobimo 
+$$\sum_{i=0}^n \alpha_i \vec{x}_i - \sum_{i=0}^n \beta_i \vec{x}_i = 0,$$
+kar preoblikujemo v enačbo
+$$\sum_{i=0}^n (\alpha_i - \beta_i) \vec{x}_i  = 0.$$
+Uporabimo že znan trik ter odštejemo in prištejemo isto vrednost,
+$$\sum_{i=0}^n (\alpha_i  - \beta_i) \cdot (\vec{x}_i - \vec{x}_0 + \vec{x}_0) = 0.$$
+Enačbo lahko zapišemo z dvema vsotama
+$$\sum_{i=1}^n (\alpha_i  - \beta_i) \cdot (\vec{x}_i -\vec{x}_0) + \sum_{i=0}^n (\alpha_i  - \beta_i) \cdot \vec{x}_0= 0,$$
+kjer pri prvi vsoti parameter $i$ začne teči pri $1$, saj je pri vrednosti $0$ tudi vrednost sumanda  $(\alpha_0 - \beta_0) \cdot (\vec{x}_0 -\vec{x}_0)$ enaka $0$. Druga vsota pa je enaka $0$, saj velja:
+$$\sum_{i=0}^n (\alpha_i  - \beta_i) \cdot \vec{x}_0= \vec{x}_0 \left (\sum_{i=0}^n \alpha_i  - \sum_{i=0}^n \beta_i \right) = \vec{x}_0 (1 - 1)= 0.$$
+Tako pridemo do enačbe 
+$$\sum_{i=1}^n (\alpha_i  - \beta_i) \cdot (\vec{x}_i - \vec{x}_0).$$
+Ker so vektorji $(\vec{x}_i - \vec{x}_0)$ linearno neidvisni za vsak $i \in \{ 1, \dots, n \}$ morajo biti vsi koeficienti $\alpha_i  - \beta_i = 0$, zato velja $\alpha_i  = \beta_i$ za vsak $i \in \{ 1, \dots, n \}$. Sedaj lahko iz enakosti
+$$\sum_{i=0}^n \alpha_i \vec{x}_i = \sum_{i=0}^n \beta_i \vec{x}_i$$
+sklepamo, da sta enaka tudi koeficienta $\alpha_0$ in $\beta_0$.
+Za dokaz zveznosti opazimo, da je množica vektorjev $B = \{ \vec{x}_1 - \vec{x}_0, \vec{x}_2 - \vec{x}_0, \dots, \vec{x}_{n} - \vec{x}_0 \}$ baza prostora $\R^n$. Koordinate poljubnega vectorja $\vec{a} - \vec{x}_0 \in \R^n$ v bazi $B$ so zvezno odvisne od  točke $a$. Recimo, da je $\vec{a} - \vec{x}_0 = \sum\limits_{i=1}^n \alpha_i (\vec{x}_i - \vec{x}_0)$, kjer so za vsak $i = 1, 2, \dots, n$ koeficienti zvezne funkcije točke $a$: $\alpha_i = \alpha_i(a)$. Ker je točka $a$ znotraj simpleksa, so koeficienti $\alpha_i \in [0, 1]$ in velja $\sum\limits_{i=1}^n \leq 1$. Potem lahko vektor $\vec{a}$ zapišemo kot $\vec{a}= \vec{x}_0 + \sum\limits_{i=1}^n \alpha_i (\vec{x}_i - \vec{x}_0)$ Vsoto lahko preoblikujemo:
+$$\vec{a}= \vec{x}_0 +  \sum_{i=1}^n \alpha_i (\vec{x}_i - \vec{x}_0) = \sum_{i=1}^n \alpha_i \vec{x}_i +(1 - \sum_{i=1}^n \alpha_i ) \vec{x}_0 = \sum_{i=0}^n \gamma_i \vec{x}_i,$$
+kjer je
+\[  \gamma_i =  \left\{
+\begin{array}{cl}\vspace{3pt}
+	1 -\sum\limits_{j=1}^n \alpha_j & i = 0,\\
+	\alpha_i & i \neq 0. \\
+\end{array} 
+\right. \]
+Za koeficiente $\gamma_i$ velja, da $0 \leq \gamma_i \leq 1$ in $\sum\limits_{i=0}^n = 1$. To pomeni, da točko $a$ lahko zapišemo s pomočjo baricentričnih koordinat $a = (\gamma_0, \gamma_1, \dots, \gamma_n)_b$. Ker so koeficienti $\alpha_i = \alpha_i(a)$ zvezne funkcije za vsak $i = 1, 2, \dots, n$, so zvezne funkcije tudi koeficienti $\gamma_j = \gamma_j(a)$ za vsak $j = 0, 1, \dots, n$.
+\end{dokaz}
+Pri dokazovanju različnih rezultatov s pomočjo simpleksov si večkrat pomagamo z delitvijo simpleksa na manjše simplekse. Da pa imamo čimveč nadzora pri dokazovanju, definiramo posebno delitev simpleksa, ki jo imenujemo triangulacija.
+
+\begin{definicija}
+\emph{Triangulacija} $T$ $n$-simpleksa $S$ je vsaka množica simpleksov, za katero veljata naslednji lastnosti:
+\begin{enumerate}
+\item Unija vseh simpleksov iz $T$ enaka $S$.
+\item Neprazen presek $L$ dveh simpleksov je lice obeh simpleksov in velja $L \in T$.
+\end{enumerate}
+Ogliščem poljubnega simpleksa $R \in T$ pravimo \emph{vozlišča} triangulacije $T$.
+\end{definicija}
+
+% ####################   Primer in protiprimer triangulacije    ####################
+\begin{figure}[h]  
+\centering 
+% ####################   Primer triangulacije    ####################
+	\begin{subfigure}[b]{0.4\linewidth} 
+		\begin{tikzpicture}[scale=0.9]
+			\filldraw[black] (0, 0) circle (1pt);
+			\filldraw[black] (2, 1.5) circle (1pt);
+			\filldraw[black] (1.7, {1.7*sqrt(3)}) circle (1pt);
+			\filldraw[black] (3.5, {2.5*sqrt(3)}) circle (1pt);
+			\filldraw[black] (3, 2.25) circle (1pt);
+			\filldraw[black] (5, 0) circle (1pt);
+			\filldraw[black] (6, 0) circle (1pt);
+			\filldraw[black] (3, {3*sqrt(3)}) circle (1pt);
+			\filldraw[black] (5, {sqrt(3)}) circle (1pt);
+			\filldraw[black] (0.5, {0.5*sqrt(3)}) circle (1pt);
+			\filldraw[black] (4.3, 1) circle (1pt);
+			\filldraw[black] (1, {1*sqrt(3)}) circle (1pt);
+			\draw (0, 0) -- (6, 0);
+			\draw (0, 0) -- (3, 2.25);
+			\draw (6, 0) -- (3, {3*sqrt(3)});
+			\draw (3, {3*sqrt(3)}) -- (0, 0);
+			\draw (4.3, 1) -- (6, 0);
+			\draw (0, 0) -- (4.3, 1);
+			\draw (4.3, 1) -- (5, {sqrt(3)});
+			\draw (4.3, 1) -- (5, 0);
+			\draw (4.3, 1) -- (3.5, {2.5*sqrt(3)});
+			\draw (4.3, 1) -- (2, 1.5);
+			\draw (4.3, 1) -- (3, 2.25);
+			\draw (1.7, {1.7*sqrt(3)}) -- (3, 2.25);
+			\draw (2, 1.5) -- (0.5, {0.5*sqrt(3)});
+			\draw (2, 1.5) -- (1.7, {1.7*sqrt(3)});
+			\draw (3.5, {2.5*sqrt(3)}) -- (3, 2.25);
+			\draw (3.5, {2.5*sqrt(3)}) -- (1.7, {1.7*sqrt(3)});
+			\draw (2, 1.5) -- (1, {1*sqrt(3)});
+		\end{tikzpicture}%
+		\caption{Delitev je triangulacia} \label{fig:triang}
+	\end{subfigure}
+	\hspace{1cm}
+% ####################   Primer delitve, ki ni triangulacija    ####################
+	\begin{subfigure}[b]{0.4\linewidth}
+		\begin{tikzpicture}[scale=0.9]
+
+			\fill[fill=gray!40] (0, 0) -- (4.3, 1) -- (3, 2.25);
+			\fill[fill=gray!40] (1.7, {1.7*sqrt(3)}) -- (2, 1.5) -- (3, 2.25);
+			\filldraw[black] (0, 0) circle (1pt);
+			\filldraw[black] (2, 1.5) circle (1pt);
+			\filldraw[black] (1.7, {1.7*sqrt(3)}) circle (1pt);
+			\filldraw[black] (3.5, {2.5*sqrt(3)}) circle (1pt);
+			\filldraw[black] (3, 2.25) circle (1pt);
+			\filldraw[black] (5, 0) circle (1pt);
+			\filldraw[black] (6, 0) circle (1pt);
+			\filldraw[black] (3, {3*sqrt(3)}) circle (1pt);
+			\filldraw[black] (5, {sqrt(3)}) circle (1pt);
+			\filldraw[black] (0.5, {0.5*sqrt(3)}) circle (1pt);
+			\filldraw[black] (4.3, 1) circle (1pt);
+			\filldraw[black] (1, {1*sqrt(3)}) circle (1pt);
+			\draw (0, 0) -- (6, 0);
+			\draw (0, 0) -- (3, 2.25);
+			\draw (6, 0) -- (3, {3*sqrt(3)});
+			\draw (3, {3*sqrt(3)}) -- (0, 0);
+			\draw (4.3, 1) -- (6, 0);
+			\draw (0, 0) -- (4.3, 1);
+			\draw (4.3, 1) -- (5, {sqrt(3)});
+			\draw (4.3, 1) -- (5, 0);
+			\draw (4.3, 1) -- (3.5, {2.5*sqrt(3)});
+			\draw (4.3, 1) -- (3, 2.25);
+			\draw (1.7, {1.7*sqrt(3)}) -- (3, 2.25);
+			\draw (2, 1.5) -- (0.5, {0.5*sqrt(3)});
+			\draw (2, 1.5) -- (1.7, {1.7*sqrt(3)});
+			\draw (3.5, {2.5*sqrt(3)}) -- (3, 2.25);
+			\draw (3.5, {2.5*sqrt(3)}) -- (1.7, {1.7*sqrt(3)});
+			\draw (2, 1.5) -- (1, {1*sqrt(3)});
+		\end{tikzpicture}
+		\caption{Delitev ni triangulacija.} \label{fig:nitriang}  
+	\end{subfigure}
+\caption{Slika prikazuje primer triangulacije (levo) in primer delitve, ki ni triangulacija (desno), saj presek osenčenih simpleksov ni lice obeh simpleksov.}
+\end{figure} 
+
+Včasih imamo zaradi lažje predstave raje bolj simetrične triangulacije. Takrat simpleks razdelimo s skladnimi simpleksi.
+
+\begin{definicija}
+Kadar je simpleks $S$ razdeljen s skladnimi simpleksi, govorimo o \emph{baricentrični triangulaciji}. Za vsako naravno število $k \in \N$ lahko definiramo triangulacijo, v kateri je množica vozlišč enaka množici $V_k$ definirani na naslednji način: 
+$$V_k = \left\{\sum\limits_{i=0}^n \frac{\lambda_i}{k} x_i, \text{ kjer je } \sum\limits_{i=0}^n \lambda_i = k \text{ in } \lambda_i \in \N_0 \text{ za vsak } i = 0, 1, \dots, n \right\}.$$
+Taki triangulaciji pravimo \emph{$k$-baricentrična triangulacija} simpleksa.
+\end{definicija}
+
+Pomembna prednost baricentričnih triangulacij je ta, da imamo nadzor nad tem, kako veliki simpleksi nastopajo v triangulaciji. Velikost neke množice $A \in \R^n$ je mogoče defiinrati na več različnih načinov. Da se izognemo zmedi, bomo za velikost množice uporabljali besedo diameter, ki  jo definiramo na naslednji način.
+\begin{definicija}
+\emph{Diameter} neprazne množice $A \subset \R^n$ označimo z $\diam(A)$ in je definiran kot $\diam(A) = \sup \left \{ d(x, y) = \| x - y \|; x, y \in A \right \}$.
+\end{definicija}
+Če imamo podan simpleks $S$ in $k$-baricentrično triangulacijo $T$, je za vsak simpleks $R \in T$ diameter $\diam(R) = \frac{\diam(S)}{k}$. Pomembna posledica te ugotovitve je, da gredo diametri simpleksov v $k$-baricentrični triangulaciji proti $0$, ko gre $k$ proti neskončno.
+
+
+\begin{definicija}
+Naj bo podan $n$-simpleks $S \in \R^n$ s triangulacijo $T$. Označimo množico vozlišč triangulacije $T$ z $V$. Preslikavo $b : V \to \left \{0, 1, \dots, n \right \} $ imenujemo \emph{barvanje triangulacije} $T$. Za vozlišče $v \in V$ številu $b(v)$ pravimo \emph{barva} ali \emph{oznaka} vozlišča $v$.
+\end{definicija}
+Barve navadno označujemo s številkami, saj bi pri velikem številu različnih barv nastala zmeda in bi se nekatere barve težko ločilo med seboj. Kadar pa v triangulaciji nastopa majhno število barv, pa so slike lepše, če jih ponazorimo s pravimi barvami. Če določimo pravila, s kakšnimi barvami lahko pobarvamo določena oglišča, lahko dobimo zanimive lastnosti. Primer takega pravila in njegove lastnosti nam je opazval in opisal Emanuel Sperner, po komer se imenuje eno od pravil, za barvanje triangulacije.
+\begin{definicija}
+Kadar je vsako oglišče simpleksa pobarvano s svojo barvo, vozlišča vsebovana v nekem licu $L$ simpleksa $S$, pa imajo enako oznako kot eno od oglišč, ki to lice določajo, govorimo o \emph{Spernerjevem barvanju}.
+\end{definicija}
+\newcommand*\rows{6}
+\newcommand*\vel{1.8}
+%####################   Spernerjevo barvanje    ####################
+\begin{figure}[h!]    
+	\centering
+	\begin{tikzpicture}
+		\fill[fill=gray!25] ($\vel*(3.5, {0.5*sqrt(3)})$)--($\vel*(3, {sqrt(3)})$)--($\vel*(4, {sqrt(3)})$);
+		\fill[fill=gray!25] ($\vel*(3, {sqrt(3)})$)--($\vel*(2.5, {1.5*sqrt(3)})$)--($\vel*(3.5, {1.5*sqrt(3)})$);
+		\fill[fill=gray!25] ($\vel*(2.5, {2.5*sqrt(3)})$)--($\vel*(2, {2*sqrt(3)})$)--($\vel*(3, {2*sqrt(3)})$);
+		\foreach \k in {0, 1, ...,\rows} {
+			\draw ($\vel*\k*(0.5, {0.5 * sqrt(3)})$) -- ($\vel*(\rows, 0) + \vel*\k*(-0.5, {0.5 * sqrt(3)})$);
+			\draw ($\vel*\k*(1, 0)$) -- ($\vel*(\rows/2,{\rows/2 * sqrt(3)}) + \vel*\k*(0.5, {-0.5 * sqrt(3)})$);
+			\draw ($\vel*\k*(1, 0)$) -- ($(0,0) + \vel *\k*(0.5, {0.5 * sqrt(3)})$);
+		}
+		
+		\filldraw[red] (0, 0) circle (5pt);
+		\filldraw[red] (\vel, 0) circle (5pt);
+		\filldraw[green] (2*\vel, 0) circle (5pt);
+		\filldraw[green] (3*\vel, 0) circle (5pt);
+		\filldraw[red] (4*\vel, 0) circle (5pt);
+		\filldraw[green] (5*\vel, 0) circle (5pt);
+		\filldraw[green] (6*\vel, 0) circle (5pt);
+		
+		\filldraw[blue] ($\vel*(0.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[red] ($\vel*(1.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[red] ($\vel*(2.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(3.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(4.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(5.5, {0.5*sqrt(3)})$) circle (5pt);
+		
+		\filldraw[red] ($\vel*(1, {sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(2, {sqrt(3)})$) circle (5pt);
+		\filldraw[red] ($\vel*(3, {sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(4, {sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(5, {sqrt(3)})$) circle (5pt);
+
+		\filldraw[red] ($\vel*(1.5, {1.5*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(2.5, {1.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(3.5, {1.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(4.5, {1.5*sqrt(3)})$) circle (5pt);
+		
+		\filldraw[red] ($\vel*(2, {2*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(3, {2*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(4, {2*sqrt(3)})$) circle (5pt);
+
+		\filldraw[blue] ($\vel*(2.5, {2.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(3.5, {2.5*sqrt(3)})$) circle (5pt);
+		
+		\filldraw[blue] ($\vel*(3, {3*sqrt(3)})$) circle (5pt);
+		
+		\foreach \k in {0, 1, ...,\rows} {
+			\foreach \j in {0, ...,\k} {
+				\draw ($\vel*(\rows-\k, 0) + \vel*\j*(0.5, {0.5*sqrt(3)})$) circle (5pt);
+			}
+		}
+		
+		\draw ($\vel*(-0.8+\rows/4, {0.3+\rows/4 * sqrt(3)})$) node[rotate=60] {\text{Vozlišča pobarvana zgolj z rdečo in modro.}};
+		\draw ($\vel*(0.8+3*\rows/4, {0.3+\rows/4 * sqrt(3)})$) node[rotate=-60] {Vozlšča pobarvana zgolj z modro in zeleno.};
+		\draw (\vel*\rows/2, -1) node {Vozlišča pobarvana zgolj z rdečo in zeleno.};
+	\end{tikzpicture}
+	\caption{Spernerjevo barvanje s tremi popolno pobarvanimi trikotniki, ki smo jih zaradi preglednosti osenčili. Zaradi lepše predstave, pa smo barve namesto s številčnimi vrednosti ponazorili s pravimi barvami.}
+\end{figure}
+Če simpleks pobarvamo s Spernerjevim barvanjem smo lahko prepričani, da nismo dveh oglišč pobarvali z enako barvo. Naslednji izrek pa izpostavi še eno bolj zanimivo lastnost takega barvanja.
+\begin{lema}[Spernerjeva lema]\label{izr:sperner}
+Vsaka triangulacija $k$-simpleksa s Spernerjevim barvanjem vsebuje liho število popolno pobarvanih $k$-simpleksov.
+\end{lema}
+\begin{proof}
+Naj bo $S$ $k$-simpleks in naj bo $T$ njegova triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $k$ simpleksa $S$. \\
+\underline{Baza indukcije ($k = 0$).}
+Če je $k=0$, lema očitno drži, saj je $0$-simpleks točka. Pri Spernerjevem barvanju točke, pa imamo samo eno možnost in tako dobimo en popolno pobarvan $0$-simpleks.\\
+\underline{Indukcijska predpostavka ($k - 1$).}
+Predpostavimo, da lema drži v dimenziji $(k - 1)$. Torej v vsaki triangulaciji $(k - 1)$-simpleksa s Spernerjevim barvanjem najdemo liho število $(k - 1)$-simpleksov, ki so popolno pobarvani. \\
+\underline{Indukcijski korak ($(k - 1) \Longrightarrow k$).}
+Poskusimo dakazati pravilnost izjave tudi v dimenziji $k$. Vzemimo poljubno triangulacijo $T$ $k$-simpleksa $S$. Naj bodo vozlišča triangulacije $T$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $i$-simpleksov iz $T$ s $S_p^i$, število tistih popolno pobarvanih $i$-simpleksov, ki se nahajajo na robu simpleksa $S$ pa z $R_p^i$. Vsak popolno pobarvan $k$-simpleks iz triangulacije T vsebuje natanko en popolno pobarvan $(k-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $k$-simpleks vsebuje vozlišča pobarvana z vsemi barvami $1, 2, \dots, k-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa ne vsebujejo popolno pobarvanih $(k - 1)$-simpleksov. Iz zgornjega lahko sklepamo, da je $S_p^k \equiv S_p^{k-1} \pmod 2$. Pri štetju popolno pobarvanih $(k - 1)$-simpleksov smo vsakega iz notranjosti $S$ šteli dvakrat, tiste iz roba $S$ pa samo enkrat. Zato velja tudi $S_p^{k-1} \equiv R_p^{k - 1} \pmod 2$. Torej velja $S_p^k \equiv R_p^{k - 1} \pmod 2$. Popolno pobarvane $(k - 1)$-simplekse zaradi Spernerjevega barvanja lahko najdemo zgolj na enem pravem licu $L$ simpleksa $S$. Po indukcijski predpostavki pa $L$ vsebuje liho mnogo popolno pobarvanih $(k - 1)$-simpleksov, kar pomeni, da je $R_p^{k - 1}$ liho število. Torej je tudi  $S_p^k$ lih.
+\end{proof}
+V posebnem izrek~\ref{izr:sperner} pove, da vsaka triangulacija simpleksa $S$ s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan simpleks $R$. Ker sta simpleksa $S$ in $R$ oba popolno pobarvana, si lahko predstavljamo, da se nekatere lastnosti prenesejo iz $S$ na $R$. To lastnost lahko uporabimo, pri dokazovanju nekaterih trditev in tudi za nas bo ta trditev klučnega pomeni pri enem od dokazov. 
+
+Poleg simpleksov, bomo spoznali še ene enostavne množice. To so kocke. Tudi z njimi, si bomo lahko zaradi enostavnosti velikokrat pomagali pri dokazovanju topoloških rezultatov. 
+\begin{definicija}
+Naj bo $a \in \R$ poljubno pozitivno realno število in naj bo interval $\I = \left [ -a, a \right ] $. Potem je $C := \I^n$ \emph{$n$-dimenzionalna kocka} v $\R^n$ oziroma \emph{$n$-kocka}.
+\end{definicija}
+Lastnosti, ki smo jih obravnavali pri simpleksih bomo posplošili na kocke. Nekatere lastnosti izgledajo skoraj enako za simplekse in za kocke, pri nekaterih, pa so potrebni popravki.
+Triangulacijo definiramo enako, kot v primeru simpleksov.
+\begin{definicija}
+\emph{Triangulacija $T$ kocke} $C$ je taka množica simpleksov, za katero veljata naslednji lastnosti:
+\begin{enumerate}
+\item Unija vseh simpleksov iz $T$ enaka $C$.
+\item Neprazen presek $L$ dveh simpleksov je lice obeh simpleksov in velja $L \in T$.
+\end{enumerate}
+\end{definicija}
+Tako kot pri simpleksih, tudi pri kockah lahko barvamo vozlišča triangulacije.
+\begin{definicija}
+Naj bo podana $n$-kocka $C \in \R^n$ s triangulacijo $T$. Označimo množico vseh vozlišč triangulacije $T$ z $V$. \emph{Barvanje triangulacije} $T$ je preslikava $b : V \to \left \{0, 1, \dots, n \right \}$.
+\end{definicija}
+Tudi pri kockah bi si želeli tako pravilo za barvanje triangulacije kocke, da bi vsaka triangulacija kocke vsebovala vsaj en popolno pobarvan simpleks. Ker si želimo popolno pobarvan simpleks, nam ni potrebno vsakega oglišča kocke pobarvati s svojo barvo, saj je za $n$-kocko dovolj že $n+1$ barv.  Pravilo za Spernerjevo barvanje simpleksa lahko posplošimo na $n$-kocko naslednji način.
+Definirajmo naivno pravilo:
+\begin{enumerate}
+\item Na ogliščih so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$,
+\item vsako vozlišče $v$ iz roba kocke $C$ je enako pobarvano kot eno izmed oglišč, ki ležijo na tem licu.
+\end{enumerate}
+S primerom na sliki \ref{fig:ni-pop} pokažimo, da barvanje, ki zadopča naivnemu pravilu nima želene lastnosti.
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+		\foreach \x in {0,2,4,6}
+		{   \foreach \y in {0,2,4,6}
+		    {  \fill (\x,\y) circle (5pt);
+		       \draw (0, \y ) -- (6, \y );
+		       \draw (\x ,0) -- (\x ,6);
+		       \draw ( 0 , \x) -- ( 6 - \x ,6);
+		       \draw ( \x , 0) -- ( 6 ,6 - \x );
+		    }
+		}			
+		\filldraw[blue] (0, 0) circle (5pt);
+		\filldraw[blue] (2, 0) circle (5pt);
+		\filldraw[red] (4, 0) circle (5pt);
+		\filldraw[red] (6, 0) circle (5pt);
+		\filldraw[red] (0, 2) circle (5pt);
+		\filldraw[blue] (2, 2) circle (5pt);
+		\filldraw[red] (4, 2) circle (5pt);
+		\filldraw[green] (6, 2) circle (5pt);
+		\filldraw[blue] (0, 4) circle (5pt);
+		\filldraw[red] (2, 4) circle (5pt);
+		\filldraw[red] (4, 4) circle (5pt);
+		\filldraw[red] (6, 4) circle (5pt);
+		\filldraw[red] (0, 6) circle (5pt);
+		\filldraw[red] (2, 6) circle (5pt);
+		\filldraw[green] (4, 6) circle (5pt);
+		\filldraw[green] (6, 6) circle (5pt);
+		\foreach \x in {0,2,4,6}
+		{   \foreach \y in {0,2,4,6}
+		    {  \draw (\x,\y) circle (5pt);
+		    }
+		}	
+	\end{tikzpicture}
+	\caption{Triangulacija $n$-simpleksa $S$ pobarvana po naivnem pravilu ne vsebuje popolno pobarvanega $n$-simpleksa. Zaradi lepše slike, smo barvo $0$ prikazali z modro, barvo $1$ z rdečo, $3$ pa z zeleno.}\label{fig:ni-pop}
+\end{figure}
+Naivno pravilo lahko dopolnimo, tako da bo vsaka triangulacija $n$-simpleksa pobarvana po tem pravilu vsebovala popolno pobarvan $n$-simpleks. Če pogledamo dokaz izreka \ref{izr:sperner}, vidimo, da je bilo ključno dejstvo, da je bilo na robu liho število popolno pobarvanih simpleksov. Na sliki~\label{fig:ni-pop} pa temu ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Simpleks $S$ na robu vsebuje $4$ poponlo pobarvane $1$-simplekse. Če naivnemu barvanju dodamo pogoj, ki nam za vsako triangulacijo $n$-kocke zagotavlja liho število $(n-1)$-simpleksov na robu dobimo Spernerjevo barvanje za kocke.
+\begin{definicija}\label{def:cubsperner}
+Spernerjevo barvanje triangulacije $n$-kocke $C$ z vozlišči $V$ je preslikava $b : V \to \left \{ 0, 1, \dots, n \right \}$, pri kateri so izpolnjeni trije pogoji.
+\begin{enumerate}
+\item Na ogliščih so uporabljene vse barve iz množice $\{ 0, 1, \dots, n \}$,
+\item kocka $C$ vsebuje liho mnogo popolno pobarvanih pravih lic,
+\item vsako vozlišče $v$ iz roba kocke $C$ je enako pobarvano kot eni izmed oglišč, ki ležijo na tem licu.
+\end{enumerate}
+\end{definicija}
+Definicija Spernerjevega barvanja je precej bolj komplicirana, kot definicija Spernerjevega barvanja za simplekse, saj je definicija \label{def:cubsperner} definirana rekurzivno.
+Pokazali bomo, da vsaka triangulacija $n$-kocke pobarvana s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan $n$-simpleks.
+\begin{lema}[Spernerjeva lema za kocke]\label{izr:kubsperner}
+V vsakem Spernerjevem barvanju triangulacije $k$-kocke je liho mnogo popolno pobarvanih $k$-simpleksov.
+\end{lema}
+\begin{proof}
+Naj bo $C$ $k$-kocka in naj bo $T$ njegena triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo kocke $k$. \\
+\underline{Baza indukcije ($k = 0$).}
+Če je $k=0$, lema očitno drži, saj je $0$-kocka točka. Pri Spernerjevem barvanju točke, pa imamo samo eno možnost in tako dobimo eno popolno pobarvano $0$-kocko.\\
+\underline{Indukcijska predpostavka ($k - 1$).}
+Predpostavimo, da lema drži v dimenziji $(k - 1)$. Torej v vsaki triangulaciji $(k - 1)$-kocke s Spernerjevim barvanjem najdemo liho število $(k - 1)$-simpleksov, ki so popolno pobarvani. \\
+\underline{Indukcijski korak ($(k - 1) \rightarrow k$).}
+Poskusimo dakazati pravilnost izjave tudi v dimenziji $k$. Vzemimo poljubno triangulacijo $T$ $k$-kocke $C$. Naj bodo vozlišča triangulacije $T$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $i$-simpleksov iz $T$ s $C_p^i$, število tistih popolno pobarvanih $i$-simpleksov, ki se nahajajo na robu simpleksa $S$ pa z $R_p^i$. Vsak popolno pobarvan $k$-simpleks vsebuje natanko en popolno pobarvan $(k-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $k$-simpleks vsebuje vozlišča pobarvana z vsemi barvami $0, 1, \dots, k-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa zagotovo ne vsebujejo popolno pobarvanih $(k - 1)$-simpleksov, saj niti ne vsebujejo vseh barv iz množice $\{0, 1, \dots, k-1 \}$. Iz zgornjega lahko sklepamo, da je
+\begin{equation}\label{eq:kongr1}
+S_p^k \equiv S_p^{k-1} \pmod 2.
+\end{equation}
+Pri štetju popolno pobarvanih $(k - 1)$-simpleksov smo vsakega iz notranjosti $C$ šteli dvakrat, tiste iz roba $C$ pa samo enkrat. Torej velja kongruenca 
+\begin{equation}\label{eq:kongr2}
+S_p^{k-1} \equiv R_p^{k - 1} \pmod 2.
+\end{equation}
+Iz enačbe~\ref{eq:kongr1} in enačbe~\ref{eq:kongr2} sledi, da je $S_p^k \equiv R_p^{k - 1} \pmod 2$.
+Ker je kocka pobarvana s Spernerjevim barvanjem ima liho število popolno pobarvanih lic, na njih pa zaradi indukcijske predpostavke najdemo liho število popolno pobarvanih $(k - 1)$-simpleksov. Ker na drugih licih ni popolno pobarvanih $(k - 1)$-simpleksov je število $R_p^{k - 1}$ liho. Zato je tudi $S_p^k$ lih.
+\end{proof}
+%####################     3. POGLAVJE: POINCARÉ--MIRANDOV IZREK     ####################
+\section{Poincar\'e--Mirandov izrek}\label{raz:PM}
+Sedaj se bomo posvetili ničlam preslikav, tj. takim točkam, ki jih neka preslikava $f : \I^n \to \R^n$ slika v nič. Iskali bomo torej odgovor na vprašanje: ,,Kakšni pogoji nam zagotavljajo obstoj take točke $c$, za katero je $f(c) = \0$. V primeru funkcije $f : \I \to \R$ nam odgovor ponudi Bolzanov izrek o srednji vrednosti.
+%Natančneje bomo spoznali zadostne pogoje, pri katerih ima poljubna zvezna preslikava vsaj eno ničlo.
+%%Poincar\'e mirandov izrek je posplošitev intuitivno zelo lahkega izreka o srednji vrednosti, ki pravi naslednje:
+\begin{izrek}[Bolzanov izrek o srednji vrednosti]\label{izr:bolzano}
+Izberimo poljubno pozitivno realno število $a$ in definirajmo interval $\I := [-a, a]$. Za zvezno funkcijo $f : \I \to \R$, za katero velja $f(-a) < 0 < f(a)$, obstaja točka $c \in (-a, a)$, da je $f(c) = 0$.
+\end{izrek}
+Intuitivno nam izrek pove, da ne moremo povezati točke iz spodnje polravnine s točko iz zgornje polravnine, ne da bi pri tem sekali $x$-os. 
+\begin{dokaz}
+Predpostavimo, da ne obstaja tako število $c \in \I$, za katerega je vrednost funkcije $f(c) = 0$. Definiramo množici $A := f^{-1}(- \infty, 0)$ in $B := f^{-1}(0, \infty)$. Množici sta disjunktni, saj sta prasliki disjunktnih množic. Zaradi zveznosti funkcije $f$ sta množici tudi odprti. Hitro lahko vidimo, da sta neprazni, saj je $-a \in A$ in $a \in B$. Unija mnižic $A$ in $B$ je enaka intervalu $\I$, zato množici $A$ in $B$ razdelita interval $I$ na dve disjunktni množici, kar pa je protislovje, saj vemo, da je interval povezana množica. Torej je bila naša predpostavka, da ne obstaja tak $c$, da je $f(c) = 0$ napačna.
+\end{dokaz}
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+% ####################   KOORDINATNI SISTEM    ####################
+		\draw[->] (-4, 0) -- (4, 0);
+		\draw[->] (0, -2.5) -- (0, 3);
+		\draw (-2, -0.1) -- (-2, 0.1);
+		\draw (2, -0.1) -- (2, 0.1);
+		\node at (3.8, -0.3) {$x$};
+		\node at (-0.3, 2.8) {$y$};
+		\node at (-2, 0.3) {$-a$};
+		\node at (2, -0.3) {$a$};
+% ####################   FUNKCIJA    ####################
+		\draw[scale=1,domain=-2:2,smooth,variable=\x,black] plot ({\x},{0.2 * pow(\x, 4) + 0.2 * pow(\x, 3) - 0.6 * pow(\x, 2) -0.2});
+		\draw[dotted] (-2, 0) -- (-2, -1);
+		\draw[dotted] (2, 0) -- (2, 2.2);
+		\filldraw[black] (-2, -1) circle (2pt) node[black, left]{$f(-a)$};
+		\filldraw[black] (2, 2.2) circle (2pt) node[black, right]{$f(a)$};
+	\end{tikzpicture}
+	\caption{Skica Bolzanovega izreka}
+\end{figure}
+
+Zgornji rezultat bi si želeli posplošiti na višje dimenzije. Večdimenzionalni analog funkcijam so preslikave, intervalom pa $n$-kocke. Ostane le še vprašanje, kako bi posplošili pogoje, da bi imela preslikava podobno lastnost kot zgoraj. Razmišljajmo, kako bi posplošili izrek na zvezno preslikavo $f : \I^n \to \R^n$. Najprej lahko preslikavo zapišemo s pomočjo komponentnih funkcij $f = (f_1, f_2, \dots, f_n)$. Da lažje ugotovimo, kakšne pogoje bi izbrali, najšrej bravnavajmo malo poenostavljen primer. Kakšne pogoje bi postavili, če bi bila vsaka koordinatna funkcija $f_i$ odvisna samo od $i$-te koordinate točke $x$, torej $f_i(x_1, x_2, \dots, x_n) = g_i(x_i)$? V tem primeru za vsako funkcijo $g_i$ uporabimo enake zahteve, kot v izreku \ref{izr:bolzano}. Kar pa nam za funkcije $f_i$ porodi naslednji pogoj: 
+$$f_i(x_1, \dots, x_{i-1}, -a, x_{i+1}, \dots, x_n) < 0 < f_i(x_1, \dots, x_{i-1}, a, x_{i+1}, \dots, x_n).$$
+Izrek~\ref{izr:bolzano} nam za vsako funkcijo $g_i : \I \to \R$ zagotavlja obstoj take točke $c_i \in \I$, da je $g_i(c_i) = 0$. To pa pomeni, da je $$f(c_1, \dots, c_n) = (f_1(c_1, \dots, c_n), \dots, f_n(c_1, \dots, c_n)) = g_1(c_1), \dots, g_n(c_n)) = \0.$$
+Izrek \ref{izr:PM} pokaže, da enak pogoj zadošča tudi v primeru poljubne zvezne preslikave $f : \I \to \R^n$.
+
+
+\begin{izrek}[Poincar\'e-Mirandov izrek]\label{izr:PM}
+Naj bo $a$ poljubno pozitivno realno število in naj bo $\I^n := [-a, a]^n$ kocka v $\R^n$. Stranske ploskve ali lica kocke $\I^n$ označimo z $\I_i^- = \{x\in \I^n | x_i = -a\}$ in $\I_i^+ = \{x\in \I^n | x_i = a\}.$
+ Naj bo $f : \I^n  \to \R^n$ taka zvezna preslikava iz kocke v evklidski prostor $\R^n$, da za vsak $i \in \{1, \dots, n\}$ veljata pogoja $f_i(\I_i^-) \subset (- \infty, 0] $ in  $f_i(\I_i^+) \subset [0, \infty) $. Potem obstaja $c \in \I^n$, da je vrednost preslikave $f(c) = \0$.
+\end{izrek}
+Preden začenemo z dokazom Poincar\'e-Mirandovega izreka, si poglejmo, kako izgleda pogoj za preslikavo v dimenzijah $1$, $2$ in $3$.
+$\vec{0} \textbf{ } 0_n$ \underline{0} \textbf{0}
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+% ####################   1 - D    ####################
+		\filldraw[black] (0, 0) circle (2pt) node[black, left]{$I_1^-$};		
+		\filldraw[black] (2, 0) circle (2pt) node[black, right]{$I_1^+$};
+		\draw (0, 0) -- (2, 0);
+% ####################   2 - D    ####################
+		\draw (4, -1) -- (6, -1);
+		\draw (4, -1) -- (4, 1);
+		\draw (6, -1) -- (6, 1);
+		\draw (4, 1) -- (6, 1);
+		\draw (4, 0) node[black, left]{$I_1^-$};
+		\draw (6, 0) node[black, right]{$I_1^+$};
+		\draw (5, -1) node[black, below]{$I_2^-$};
+		\draw (5, 1) node[black, above]{$I_2^+$};
+% ####################   3 - D    ####################
+		\draw (8, -1) -- (10, -1);
+		\draw (10, -1) -- (10, 1);
+		\draw (10, 1) -- (8, 1);
+		\draw (8, 1) -- (8, -1);
+		\draw[dashed] (8.7, -0.3) -- (10.7, -0.3);
+		\draw (10.7, -0.3) -- (10.7, 1.7);
+		\draw (10.7, 1.7) -- (8.7, 1.7);
+		\draw[dashed] (8.7, 1.7) -- (8.7, -0.3);
+		\draw[dashed] (8, -1) -- (8.7, -0.3);
+		\draw (10.7, -0.3) -- (10, -1);
+		\draw (10, 1) -- (10.7, 1.7);
+		\draw (8, 1) -- (8.7, 1.7);
+		\draw (8, 0.3) node[gray!120, right]{$I_1^-$};
+		\draw (10, 0.3) node[black, right]{{\large $I_1^+$\par}};
+		\draw (9.15, -0.35) node[black, above]{{\large $I_2^-$\par}};
+		\draw (9.65, 0.25) node[gray!120, above]{$I_2^+$};
+		\draw (9.4, -1.05) node[gray!120, above]{$I_3^-$};
+		\draw (9.4, 0.9) node[black, above]{{\large $I_3^+$\par}};
+	\end{tikzpicture}
+	\caption{Pogoji Poincar\'e - Mirandovega izreka}
+\end{figure}
+
+
+
+\begin{dokaz}
+Imamo funkcijo $f : \I^n \to  \R^n$, ki zadošča pogojem izreka~\ref{izr:PM}. Za vsako število $i \in \{ 1, \dots, n\}$ definiramo mnočici $H_i\ ^- := f_i^{-1} (-\infty, 0 ]$ in $H_i\ ^+ := f_i^{-1} [0, -\infty)$. Najprej bomo pokazali, da je za dokaz izreka dovolj, če za vsako naravno število $k \in \N$ poiščemo $n$-simpleks $S_k$ iz  $k$-baricentrične triangulacije $T_k$ z lastnostjo 
+\begin{equation}\label{eq:razlika}
+S_k \cap H_i^- \neq \emptyset \neq S_k \cap H_i^+, \text{ za vsak } i \in{1, \dots, n}.
+\end{equation}
+Kasneje bomo pokazali, da taki simpleksi res obstajajo.
+
+Pokažimo torej, da bi obstoj takih simpleksov res zaključil dokaz. Recimo, da imamo za vsak $k \in \N$ simpleks $S_k \in T_k$ z lastnostjo~\eqref{eq:razlika}. V vsakem simpleksu $S_k$ si lahko izberemo točko $x_k$ in tako dobimo neskončno zaporedje $\left ( x_k \right ) _{k = 1}^{\infty}$. Ker zaporedje leži v kompaktnem prostoru $\I^n$, obstaja konvergentno podzaporedje $\left ( x_{k_j} \right ) _{j = 1}^{\infty}$ z limito $c \in \I^n$. Izberimo si neki $i \in \left \{1, 2, \dots, n\right \}$. Zaradi lastnosti ~\eqref{eq:razlika} lahko za vsak $j \in \N$ poiščemo točki $z_j \in S_{k_j} \cap H_i^-$ in $w_j \in S_{k_j} \cap H_i^+$. Ker velja $\lim\limits_{j \to \infty} \diam(S_{k_j}) = 0$ je limita  $\lim\limits_{j \to \infty} z_j = \lim\limits_{j \to \infty} w_j = \lim\limits_{j \to \infty} x_j = c$. Ker je funkcija $f$ zvezna, je tudi zaporedje $f_i(z_j)$ konvergentno z limito $f_i(c)$. Členi tega zaporedja so vsi manjši ali enaki $0$, zato je tudi $f_i(c) \leq 0$. Podobno lahko sklepamo, da je zaporedje $f_i(w_j)$ konvergentno z limito $f_i(c)$. Ker so vsi členi $f_i(w_j)$ nenegativni, je limita $f_i(c) \geq 0$. Razmislek velja za vsak $i \in \left \{1, 2, \dots, n\right \}$, zato velja $f(c) = 0$.
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+		\draw (-3, -3) -- (3, -3);
+		\draw (3, -3) -- (3, 3);
+		\draw (3, 3) -- (-3, 3);
+		\draw (-3, 3) -- (-3, -3);	
+		
+		\draw (-2.2, -2.7) -- (-0.2, -2.7);
+		\draw (-0.2, -2.7) -- (-2.2, -0.7);
+		\draw (-2.2, -2.7) -- (-2.2, -0.7);
+		\filldraw[blue] (-0.6, -2.45) circle (1.5pt);	
+		\filldraw[red] (-2.05, -1) circle (1.5pt);
+		
+		\draw (0.5, -2.2) -- (2, -2.2);
+		\draw (2, -2.2) -- (0.5, -0.7);
+		\draw (0.5, -0.7) -- (0.5, -2.2);			
+		\filldraw[blue] (0.7, -2) circle (1.5pt);	
+		\filldraw[red] (1.6, -2) circle (1.5pt);
+		
+		\draw (1.2, -0.6) -- (2.2, -0.6);
+		\draw (2.2, -0.6) -- (1.2, 0.4);
+		\draw (1.2, 0.4) -- (1.2, -0.6);
+		\filldraw[blue] (1.35, -0.4) circle (1.5pt);	
+		\filldraw[red] (1.6, -0.15) circle (1.5pt);
+		
+		\draw (1.5, 0.5) -- (1.5, 1.1);
+		\draw (1.5, 1.1) -- (0.9, 1.1);
+		\draw (0.9, 1.1) -- (1.5, 0.5);	
+		\filldraw[red] (1.15, 1) circle (1.4pt);	
+		\filldraw[blue] (1.35, 0.8) circle (1.4pt);
+		
+		\draw (0.7, 0.8) -- (0.7, 1.2);
+		\draw (0.7, 1.2) -- (0.3, 1.2);
+		\draw (0.3, 1.2) -- (0.7,0.8);
+		\filldraw[blue] (0.455, 1.14) circle (1.1pt);	
+		\filldraw[red] (0.64, 1) circle (1.1pt);
+		
+		\draw (0.1, 1) -- (0.4, 1);
+		\draw (0.4, 1) -- (0.4, 0.7);
+		\draw (0.4, 0.7) -- (0.1, 1);
+		\filldraw[red] (0.25, 0.95) circle (0.8pt);
+		\filldraw[blue] (0.35, 0.85) circle (0.8pt);
+		
+		
+		\draw (-0.05, 0.8) -- (0.15, 0.8);
+		\draw (0.15, 0.8) -- (0.15, 0.6);
+		\draw (0.15, 0.6) -- (-0.05, 0.8);
+		\filldraw[red] (0.055, 0.755) circle (0.5pt);
+		\filldraw[blue] (0.105, 0.7) circle (0.5pt);	
+		
+		\draw (0, 0.65) -- (0, 0.55);
+		\draw (0, 0.55) -- (0.1, 0.55);
+		\draw (0.1, 0.55) -- (0, 0.65);
+		\filldraw[red] (0.025, 0.6) circle (0.3pt);
+		\filldraw[blue] (0.05, 0.57) circle (0.3pt);	
+		
+		\draw (-0.05, 0.55) -- (-0.05, 0.5);
+		\draw (-0.05, 0.5) -- (0, 0.5);
+		\draw (0, 0.5) -- (-0.05, 0.55);
+		
+		
+		
+		
+	\end{tikzpicture}
+	\caption{konvergenca}
+\end{figure}
+
+Dokazati moramo, da taki simpleksi $S_k$ res obstajajo. V ta namen definirajmo naslednje barvanje triangulacije $n$-kocke $C$:
+$$\varphi : C \to \left \{ 0, 1, \dots, n \right \}$$
+$$\varphi(x) = \max \left \{ j : x \in \bigcap_{i=0}^j F_i^+\right \}$$
+Kjer je $ F_0^+ = \I^n$, $ F_i^+ =  H_i^+ \setminus \I_i^-$.
+Trdimo, da ima pri tem barvanju popolno pabarvan simpleks $S$ lastnost~\eqref{eq:razlika}. Za vsak $i \in \{0, 1, \dots, n-1 \}$ za katerega je $\varphi(x) = i$, lahko sklepamo, da je $x \in H_{i+1}^-$ in za vsak $j \in \{ 1, 2, \dots, n \}$ za katerega je $\varphi(x) = j$ lahko sklepamo, da je $x \in H_i^+$. Torej ima popolno pobarvan simpleks res lastnost~\eqref{eq:razlika}. Dokaz bo zaključen, če pokažemo, da je Poincar\'e-Mirandovo barvanje tudi Spernerjevo barvanje, saj bomo potem lahko v vsaki triangulaciji našli popolno pobarvan simpleks.
+Pokažimo najprej, da so pri barvanju $n$-kocke uporabljene vse oznake iz množice $\{ 0, 1, \dots, n \}$. Dokazovali bomo z indukcijo na $n$.\\
+\underline{Baza indukcije ($n = 0$).}
+Če je $n=0$, imamo eno točko označeno z $0$, kar je popolno pobarvana $0$-kocka.\\
+\underline{Indukcijska predpostavka ($n - 1$).}
+Predpostavimo, da je $(n-1)$-kocka popolno pobarvana. \\
+\underline{Indukcijski korak ($(n - 1) \Longrightarrow n$).}
+Poskusimo dakazati pravilnost izjave tudi v dimenziji $n$. Ker je lice $I_n^-$ enako pobarvano, kot $(n-1)$-kocka in je ogliče $(a, a, \dots, a)$ označeno z $n$, je $n$-kocka označena z vsemi oznakami iz množice $\{ 0, 1, \dots, n \}$. Zaradi lastnosti \underline{lastnost} je edino popolno pobarvano pravo lice $n$-kocke lice $I_n^-$, zato je tudi $n$-kocka popolno pobarvana.
+
+Prepričati se moramo samo še, da so vsa vozlišča na robu kocke pobarvana enako, kot neko oglišče, ki to lice določa. Vemo, da lahko vsako lice $L$ dobimo kot presek pravih lic.
+
+
+
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+% ####################   1 - D    ####################
+		\filldraw[black] (0, 0) circle (2pt) node[black, above]{$0$};		
+		\filldraw[black] (2, 0) circle (2pt) node[black, above]{$1$};
+		\draw (0, 0) -- (2, 0);
+% ####################   2 - D    ####################
+		\draw (4, -1) -- (6, -1);
+		\draw (4, -1) -- (4, 1);
+		\draw (6, -1) -- (6, 1);
+		\draw (4, 1) -- (6, 1);
+		\filldraw[black] (4, -1) circle (2pt) node[black, below left]{$0$};		
+		\filldraw[black] (6, -1) circle (2pt) node[black, below right]{$1$};
+		\filldraw[black] (6, 1) circle (2pt) node[black, above right]{$2$};		
+		\filldraw[black] (4, 1) circle (2pt) node[black, above left]{$0$};
+% ####################   3 - D    ####################
+		\draw (8, -1) -- (10, -1);
+		\draw (10, -1) -- (10, 1);
+		\draw (10, 1) -- (8, 1);
+		\draw (8, 1) -- (8, -1);
+		\draw[dashed] (8.7, -0.3) -- (10.7, -0.3);
+		\draw (10.7, -0.3) -- (10.7, 1.7);
+		\draw (10.7, 1.7) -- (8.7, 1.7);
+		\draw[dashed] (8.7, 1.7) -- (8.7, -0.3);
+		\draw[dashed] (8, -1) -- (8.7, -0.3);
+		\draw (10.7, -0.3) -- (10, -1);
+		\draw (10, 1) -- (10.7, 1.7);
+		\draw (8, 1) -- (8.7, 1.7);
+		\filldraw[black] (8, -1) circle (2pt) node[black, above left]{$0$};		
+		\filldraw[black] (10, -1) circle (2pt) node[black, above left]{$1$};
+		\filldraw[black] (10.7, -0.3) circle (2pt) node[black, above left]{$2$};		
+		\filldraw[black] (8.7, -0.3) circle (2pt) node[black, above left]{$0$};
+		\filldraw[black] (8, 1) circle (2pt) node[black, above left]{$0$};		
+		\filldraw[black] (10, 1) circle (2pt) node[black, above left]{$1$};
+		\filldraw[black] (8.7, 1.7) circle (2pt) node[black, above left]{$0$};		
+		\filldraw[black] (10.7, 1.7) circle (2pt) node[black, above left]{$3$};
+	\end{tikzpicture}
+	\caption{Poincar\'e - Mirandovo barvanje oglišč kocke}
+\end{figure}
+
+
+\end{dokaz}
+
+
+
+%####################     4. POGLAVJE: RAZŠIRITEV FUNKCIJE     ####################
+\section{Razširitev funkcije}\label{raz:siritev}
+Včasih se nam zgodi, da imamo podano funkcijo samo na nekem majhnem območju, želeli pa bi si, da bi bila domena funkcije večja. Poglejmo si poljubno množico $A \in \R^n$ in neko funkcijo $f : A \to \R$. Denimo, da je $U$ taka množica, da je $A \subset U$. Funkciji $F : U \to \R$, za katero je $F(x) = f(x)$ za vsak $x \in A$ pravimo razširitev funkcije $f$ na množico $U$. Če funkcijo razširimo brez kakršne koli omejitve, se informacija o funkciji na prvotni množici popolnoma izgubi. Da to informacijo ohranimo, bomo gledali zgolj zvezne funkcije $f$ in zvezne razširitve $F$. Pri tem se ponudi vprašanje, ali lahko vsako zvezno funkcijo razširimo. S primerom pokažemo, da temu ni tako.
+
+\begin{primer}
+Funkcijo $f : (-1, 0) \cup (0, 1) \to \R$ definiramo s predpisom
+\[  f(x) = \left \{
+\begin{array}{ll}
+	-1 &, x \in (-2, 0)\\
+	1 &, x \in (0, 2). \\
+\end{array} 
+\right. \]
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+% ####################   KOORDINATNI SISTEM    ####################
+		\draw[->] (-4, 0) -- (4, 0);
+		\draw[->] (0, -2) -- (0, 2.5);
+		\draw (-2, -0.1) -- (-2, 0.1);
+		\draw (2, -0.1) -- (2, 0.1);
+		\node at (3.8, -0.3) {$x$};
+		\node at (-0.3, 2.8) {$y$};
+		\node at (-2, 0.3) {$-2$};
+		\node at (2, -0.3) {$2$};
+% ####################   FUNKCIJA    ####################
+		\draw[<->] (0, -1) -- (-2, -1);
+		\draw[<->] (0, 1) -- (2, 1);
+		\draw[dotted] (-2, 0) -- (-2, -1);
+		\draw[dotted] (2, 0) -- (2, 1);
+	\end{tikzpicture}
+	\caption{Skica Bolzanovega izreka}
+\end{figure}
+
+Funkcija $f$ je zvezna na $(-1, 0) \cup (0, 1)$, ne moremo pa je zvezno razširiti na $\R$, saj razširitev v točki $x = 0$ ne bi bila zvezna.
+\end{primer}
+
+Izkaže se, da je za obstoj razširitve dovolj, če je zvezna funkcija definirana na kompaktni množici.
+
+\begin{lema}[Razširitev zvezne funkcije]\label{lem:razsiritev}
+Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo dana zvezna funkcija $f : A \to \R$. Potem obstaja zvezna funkcija $F : \R^n \to \R$, da za vsak $x \in A$, velja $F(x) = f(x)$.
+\end{lema}
+
+\begin{dokaz}
+Včasih je pri dokazu obstoja neke stvari najlažje, če to stvar poiščemo in jo vsem pokažemo. Tako bomo tudi mi napisali predpis funkcije $F$, ki zvezno razširi funkcijo $f$. Seveda bi se lahko pri dokazu oprli na Tietzejev razširitveni izrek, a je to delo zasnovano tako, da se poskuša izogniti uporabi abstraktnejših topoloških izrekov. Denimo torej, da imamo kompaktno množico $K$ in zvezno funkcijo \mbox{$f : A \to \R$}. Brez izgube splošnosti lahko predpostavimi, da je funkcija $f$ pozitivna. Res, vemo, da je zvezna funkcija na kompaktni množici omejena, torej lahko prištejemo dovolj veliko število $C$, da je funkcija $f + C$ pozitivna. Zveznost funkcije $f$ pa je ekvivalentna zveznosti funkcije $f + C$.
+Razširitveno funkcijo \mbox{$F : \R^n \to \R$} lahko definiramo s predpisom:
+\[  F(x) = \left \{
+\begin{array}{ll}
+	\inf \left \{ f(a) + \frac{d(x, a)}{d(x, A)} - 1; a \in A \right \} &, x \in A^c \\
+	f(x) &, x \in K. \\
+\end{array} 
+\right. \]
+Enostavno se je prepričati, da je za vsak $x \in A$, $F(x) = f(x)$. Ugotoviti moramo le še, ali je funkcija $F$ res zvezna na $R^n$.
+Dokazovali bomo v dveh delih. Najprej bomo dokazali zveznost funkcije $F$ na $A^c$, potem pa še na $A$.
+Izberimo neko poljubno majhno pozitivno realno število $\varepsilon > 0$ in $x_0 \in A^c$. Potem obstaja tako pozitivno realno število $r>0$, da je odprta krogla s polmerom $r$ vsebovana v $A^c$, torej $B(x_0, r) \subset A^c$. Na $B(x_0, r)$ ja funkcija $D_a(x) := \frac{d(x, a)}{d(x, A)}$ zvezna za vsak parameter $a$, saj sta funkciji $d(x, a)$ in $d(x, A)$ zvezni in različni od $0$. Torej obstaja realno število $\delta \in (0, r)$, da je $|D_a(x_0) - D_a(x)| < \varepsilon$ za vsak $x \in B(x_0, \delta)$.
+Denimo, da je infimum $F(x_0)$ dosežen pri $a_0$, torej je $F(x_0) = f(a_0) + D_{a_0}(x_0) - 1$. Za vrednosti $F(x)$ lahko naredimo naslednje ocene:
+\begin{equation*} \label{eq1}
+\begin{split}
+F(x) & = F(x) - F(x_0) + F(x_0) = \\
+& = \inf \left \{ f(a) + D_a(x) - 1; a \in A \right \} - F(x_0) + F(x_0) \leq \\
+& \leq (f(a_0) + D_{a_0}(x) - 1) -  (f(a_0) + D_{a_0}(x_0) - 1) + F(x_0) = \\
+& = (D_{a_0}(x) -  D_{a_0}(x_0)) + F(x_0) \leq \\
+& \leq \varepsilon + F(x_0), \\
+& \implies F(x_0) - F(x) \geq -\varepsilon.
+\end{split}
+\end{equation*}
+
+Podobno ocenimo:
+\begin{equation*} \label{eq1}
+\begin{split}
+F(x_0) & = F(x_0) - F(x) + F(x) = \\
+& = F(x_0) - \inf \left \{ f(a) + D_a(x) - 1; a \in A \right \} + F(x) \leq \\
+& \leq (f(a_0) + D_{a_0}(x_0) - 1) -  (f(a_0) + D_{a_0}(x) - 1) + F(x) = \\
+& = (D_{a_0}(x_0) -  D_{a_0}(x)) + F(x) \leq \\
+& \leq \varepsilon + F(x), \\
+& \implies F(x_0) - F(x) \leq \varepsilon.
+\end{split}
+\end{equation*}
+Iz zgornjih ocen ugotovimo, da je $|F(x_0) - F(x)| \leq \varepsilon$, kar zagotavlja zveznost funkcije $F$ na $A^c$.
+
+Da bi preverili zveznost $F$ tudi na množici $A$ izberemo $x_0 \in A$ in $\varepsilon > 0$. Ker je funkcija $f$ zvezna na $A$ obstaja tak $\delta > 0$, da je $|f(x_0) - f(x)| < \varepsilon$ za vsak $x \in A$, za katerega velja $d(x_0, x) < \delta$. Zaradi lažjega ocenjevana naredimo naslednje premisleke. Ker je funkcija $f$ definirana na kompaktni množici obstaja realno število $M$, da je $f(a) \leq M$ za vsak $a \in A$. Določimo tak $\mu >0$, pri katerem je funkcija $D_a(x) \geq M + 1$ za vse $a \in A \setminus B(x_0, \delta)$ in vse $x \in B(x_0, \mu)$. Naj bo $a \in B(x_0, \delta)^c$, potem je
+$D_a(x)|_{B(x_0, \mu)}= \frac{d(x, a)}{d(x, A)} \geq \frac{\delta - \mu}{\mu}$. Torej moramo določiti $\mu > 0$, da bo veljala neenačba $\frac{\delta - \mu}{\mu} > M + 1$. Izračunamo $\mu <\frac{\delta}{M + 2}$.
+
+
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+		\draw[black] plot [smooth cycle, tension = 0.8] coordinates {(-4, 2)  (3.5, 2) (3.8, -0.5) (0.7, -0.7) (0.6, 1.4) (-0.5, 1.2)  (-0.3, -0.7) (-3, -0.8)};
+%		\filldraw[black] (-4, 2) circle (1.5pt);
+%		\filldraw[black] (3.5, 2) circle (1.5pt);
+%		\filldraw[black] (3.8, -0.5) circle (1.5pt);
+%		\filldraw[black] (0.7, -0.7) circle (1.5pt);
+%		\filldraw[black] (0.6, 1.4) circle (1.5pt);
+%		\filldraw[black] (-1, -0.5) circle (1.5pt);
+%		\filldraw[black] (-2.8, -1) circle (1.5pt);
+		\filldraw[black] (0.65, 0.2) circle (1.5pt) node[black,right] {$x_0$};
+		\filldraw[black] (0, 0.3) circle (1.5pt) node[black, right] {$x$};
+		\filldraw[black] (-0.25, 0.2) circle (1.5pt) node[black, left] {$b$};
+		\filldraw[black] (1.2, 1.1) circle (1.5pt) node[black, right] {$c$};
+		\draw[black, style = dashed] (0.65, 0.2) circle (22pt);
+		\draw[black, style = dashed] (0.65, 0.2) circle (50pt);
+		\draw[black, <-] (2.2, 1.2) -- (4.7, 1.55);
+		\draw[black, <-] (1.5, 0.2) -- (4.7, 0.22);
+		\node at (5.5, 1.55){$B(x_0, \delta)$};
+		\node at (5.5, 0.1){$B(x_0, \mu)$};
+	\end{tikzpicture}
+	\caption{Dokazovanje zveznosti.}
+\end{figure}
+
+Sedaj imamo dve možnosti. Če je $x \in A \cap B(x_0, \mu)$, potem je $|f(x_0) - f(x)| < \varepsilon$. Če pa je $x \in A \cap B(x_0, \mu)$ vemo, da obstajata točki $b \in \partial A$, za katero je $d(x, b) = d(x, A)$ in $c \in A $ z lastnostjo $F(x) = f(c) + D_c(x) -1$. Iz izbire števila $\mu$ je jasno, da ležita točki $b, c \in B(x_0, \delta)$. Lahko naredimo podobne ocene, kot prej.
+ \begin{equation*} \label{eq1}
+\begin{split}
+F(x) & = \inf_{a \in A} \{ f(a) + D_a(x) - 1\} \leq f(b) \leq f(x_0) +\varepsilon = F(x_0) +\varepsilon\\
+F(x) & = f(c) + D_c(x) -1 \geq f(c) \geq f(x_0) - \varepsilon =  F(x_0) -\varepsilon \\
+\end{split}
+\end{equation*}
+ Torej velja $| F(x_0) - F(x) | \leq \varepsilon$, kar zaključi dokaz.
+\end{dokaz}
+
+Lemo~\ref{lem:razsiritev} enostavno posplošimo tudi na preslikave, ki slikajo v večrazsežni evklidski prostor.
+
+\begin{posledica}
+Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : A \to \R^n$} zvezna preslikava. Potem obstaja zvezna preslikava $F : \R^n \to \R^n$, da je za vsak $x \in A$, $f(x) = F(x)$.
+\end{posledica}
+
+\begin{dokaz}
+Imamo zvezno preslikavo $f : A \to \R^n$, kjer je $f(x) = (f_1(x), f_2(x), \dots , f_n(x))$ zapis preslikave $f$ po komponentah. Vse komponentne funkcije $f_i : A \to \R$ zadoščajo pogojem leme~\ref{lem:razsiritev}, zato jih lahko razširimo do funkcij $F_i : \R^n \to \R$. Če definiramo preslikavo $F : \R^n \to \R^n$ s predpisom $F(x) = (F_1(x), F_2(x), \dots , F_n(x))$, dobimo zvezno razširitev preslikave $f$.
+\end{dokaz}
+Sedaj znamo razširiti zvezno preslikavo iz kompaktne množice na cel prostor $\R^n$. Včasih pa si poleg spremembe definicijskega območja želimo imeti nekaj vpliva tudi na zalogo vrednosti preslikave. Želeli bi si, da se zaloga vrednosti pri razširitvi čim manj spremeni. Naivno bi lahko želeli, da ta ostane celo enaka, a to ni vedno mogoče, kar pokaže primer ****
+
+\begin{primer}
+Poglejmo si identično preslikavo $f : \partial \I^n \to \I^n \setminus \{ \0 \}$. Po izreku \ref{izr:PM} ne obstaja zvezna razširitev $F : \I^n \to \I^n \setminus \{ \0 \}$, saj mora obstajati $x \in \I^n$, da je $F(x) = \0$. 
+\end{primer}
+
+V posebnih primerih obstaja taka razširitev preslikave, ki se izogne določeni točki. Brez izgube splošnosti bomo pokazali, da obstajajo pogoji, ki nam zagotavljajo zvezno razširitev preslikave, ki noben element definicijskega območja ne slika v $\0$. Preden navedemo pogoje, pa si poglejmo nekaj lastnosti preslikav, ki so ključne pri dokazu.
+
+\begin{trditev}
+Zvezna funkcija definirana na kompaktni množici je enakomerno zvezna.
+\end{trditev}
+\begin{dokaz}
+Predpostavimo, da je $K \in \R^n$ poljubna kompaktna množica in $f : K \to \R^n$ zvezna preslikava. Pokazati želimo, da obstaja tak $\delta > 0$, da za vsak še tako majhen $\varepsilon > 0$ in vsaka $x, y \in K$, za katera je $d(x, y) < \delta$ velja $d(f(x), f(y)) < \varepsilon$. Ker je $f$ zvetna funkcija za vsak $z \in K$ obstaja $\delta_z$, da je $f(B(z, \delta_z)) \subset B(f(z), \frac{\varepsilon}{4})$. Družina množic $\pU = \left \{ B(z, \delta_z); z \in K \right \}$ tvori odprto pokritje prodtora $K$. Zaradi kompaktnosti $K$ lahko izberemo končno poddružino $\pA =  \left \{ (B(x_1, \delta_{x_1}), \dots, B(x_n, \delta_{x_n}) \right \}$, ki je še vedno pokritje množice $K$. Definiramo $\delta = \min_i \delta_{x_i}$. Za poljubni števili $x, y \in K$, ki zadoščata poguju $d(x, y) < \delta$ imamo dve možnosti. Če obstaja $i$, da je $x, y \in B(x_i, \delta)$, potem je $f(x), f(y) \in B(f(x_i), \frac{\varepsilon}{4})$ in je $d(f(x), f(y)) < \frac{\varepsilon}{2}$. V nasprotnem primeru obstajati $i$ in $j$, za keteri je $x \in B(x_i, \delta)$, $y \in B(x_j, \delta)$ in je $B(x_i, \delta) \cap B(x_i, \delta) \neq \emptyset$. V tem primeru je $f(x) \in B(f(x_i), \frac{\varepsilon}{4})$ in $f(y) \in B(f(x_j), \frac{\varepsilon}{4})$, kjer je $B(f(x_i), \frac{\varepsilon}{4}) \cap B(f(x_j), \frac{\varepsilon}{4}) \neq \emptyset$. Zato zagotovo velja $d(f(x), f(y)) < \varepsilon$, torej je funkcija res enakomerno zvezna.
+\end{dokaz}
+
+Mi pa si bomo v nadaljevanju želeli poiskati ravno take funkcije, ki jih lahko razširimo tako, da je pri tem izognemo ničli. 
+\begin{definicija}
+Družini $\mathcal{A}$ podmnožic množice $X$, za katero velja $\bigcup_{A \in \mathcal{A}} = X$ pravimo \emph{pokritje množice} $X$. Če družina $\mathcal{A}$ vsebuje zgolj odprte množice, jo imenujemo \emph{odprto pokritje množice} $X$.
+\end{definicija}
+
+%\begin{lema}[Lebesgueova lema]\label{lem:lebesgue}
+%Za vsako odprto pokritje $\pU$ kompaktnega metričnega prostora $X$ obstaja pozitivno realno število $\lambda$, ki ga imenujemo Lebesgueovo število, tako da je vsaka podmnožica prostora $X$ z diametrom manjšim od $\lambda$ vsebovana v neki množici $U \in \pU$
+%\end{lema}
+
+%\begin{dokaz}
+%Dokazovali bomo s protislovjem. Predpostavimo, da Lebesgueovo število ne obstaja. Potem lahko za vsako naravno število $n \in \N$, izberemo $x_n \in X$, da krogla $B(x_n, \frac{1}{n})$ ne leži v nobeni množci $U \in \pU$tako oprto pokritje $\pU$ množice $X$, da za vsak $\delta >0$  obstaja $x$, da nobena množica $U \in \pU$ ne vsebuje krogle $B(x, \delta)$. Torej za vsak $n \in \N$lahko izberemo $x_n \in X$, da noben $U \in \pU$ ne vsebuje krogle $B(xn, \frac{1}{n})$. Ker je $X$ kompakten obstaja konvergentno podzaporedje $x_{n_k}$, ki konvergira k $y \in X$.
+%\end{dokaz}
+
+%\begin{lema}[Lebesgueova lema]\label{lem:lebesgue}
+%Za vsako odprto pokritje $\pU$ kompaktnega metričnega prostora $X$ obstaja pozitivno realno število $\lambda$, ki ga imenujemo Lebesgueovo število, tako da je vsaka podmnožica prostora $X$ z diametrom manjšim od $\lambda$ vsebovana v neki množici $U \in \pU$
+%\end{lema}
+
+%\begin{dokaz}
+%kajto
+%\end{dokaz}
+
+
+\begin{lema}[Razširitev, ki se izogne ničli]\label{lem:razsiritev-nic}
+Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : X \to \R^n \setminus \left \{ \0 \right \}$}. Potem za vsak $\varepsilon > 0$ in za vsako kompaktno množico s prazno notranjostjo $Y \subset \R^n$ obstaja zvezna preslikava $F : X \cup Y \to \R^n \setminus \{ \0 \}$, da velja: $\| F(x)-f(x) \| < \varepsilon$  za vsak $x \in X$
+\end{lema}
+
+\begin{dokaz}
+Določimo poljubno število $\varepsilon > 0$ in množici $X$ in $Y$, kot v lemi \ref{lem:razsiritev-nic}. Ker je množica $X \cup Y \subset R^n$ omejena, obstaja realno število $a > 0$, da je unija množic $X \cup Y \subset \I^n = \left [ -a, a \right ]^n$. Po lemi \ref{lem:razsiritev} lahko vsako zvezno preslikavo $f : X \to \R^n \setminus \{ \0 \}$ razširimo do zvezne preslikave $g : X \to \R^n$. Izberemo tako realno število $\delta \in (0, \frac{\varepsilon}{2})$, da je $f(X) \cap B( \0, 2\delta) = \emptyset$. Ker je funkcija $g$ zvezna in definirana na kompaktni množici $\I^n$, je enakomerno zvezna. Zato obstaja $\mu$, da za vsako množico $A$ katere diameter $\diam(A) < \mu$, velja $\diam(g(A)) < \varepsilon$. Naj bo $k \in \N$ dovolj veliko naravno število, da za vsak simpleks $S$ iz $k$-baricentrične triangulacije $T_k$ kocke $\I^n$ velja $\diam(S) < \mu$. Če označimo množico vozlišč v triangulaciji $T_k$ z $V$, nam presikava $g|_V : V \to \R^n$ enolično določa zvezno preslikavo $h : \I^n \to \R^n$, ki vsako točko $x \in S = \left < z_1, z_2, \dots, z_n \right > \in T_k$, z baricentričnimi koordinatami $x = (t_1, t_2, \dots, t_n)$ slika v 
+$$h(x) = \sum_{i=0}^n t_i g(z_i).$$
+Zaradi izbire triangulacije $T_k$, je $\diam(g(z_1), g(z_2), \dots, g(z_n)) < \varepsilon$. Funkcijo $h$ smo konstruirali tako, da je za vsak simpleks $S \in T_k$ množica $h(S)$ konveksna ogrinjača točk $g(z_1), g(z_2), \dots, g(z_n)$ in zato velja $\diam(g(S)) = \diam(g(z_1), g(z_2), \dots, g(z_n)) < \varepsilon$ . To pa pomeni, da je diameter množice enak $\diam(h(R)) = \diam(\left \{ g(z_1), g(z_2), \dots, g(z_n) \right \})$, kar pa je zaradi enakomerne zveznosti funkcije $g$ manjše od $\varepsilon$.
+Sedaj opazujmo množico točk $\left \{ g(z_1), g(z_2), \dots, g(z_n) \right \}$. Če je to afino odvisna množica, potem množica $h(R)$ leži v $(n-1)$-dimenzionalne podprostoru prostora $\R^n$ in ima kot tak prazno notranjost. Če pa je množica afino neodvisna, je množica $h(R \cap Y)$ kompaktna množica s prazno notranjostjo kot homeomorfna slika kompaktne množice s prazno notranjostjo.
+Definiramo preslikavo $F : X \cup Y \to \R^n$ s predpisom $F(x)  = h(x) - d$. Opazimo, da je $\| F(x) - f(x) \| \leq \| h(x) - f(x) \| + \| d \| < 2\delta < \varepsilon$, za vsak $x \in X$. Velja tudi $F(x) \neq \0$ za vsak $z \in X \cup Y$, saj bi enakost $F(z) = 0$ implicirala enakost $h(z) = d$, kar pa nasprotuje predpostavki, da je $d \notin h(X \cup Y)$.
+\end{dokaz}
+
+
+%####################     5. POGLAVJE: IZREK O INVARIANCI ODPRTIH MNOŽIC     ####################
+\section{Izrek o invarianci odprtih množic}\label{raz:ioiom}
+V prejšnjih poglavjih smo si pripravili vse potrebno, kar potrebujemo za dokaz izreka o invarianci odprtih množic, zato se bomo brez ovinkarjenja lotili izreka.
+
+
+
+\begin{izrek}[Izrek o invarianci odprtih množic]\label{izr:main-theorem}
+Naj bo $U \subset \R^n$ odprta podmnožica evklidskega prostora $\R^n$ in naj bo $h : U \rightarrow \R^n$ zvezna injektivna preslikava.
+Potem je tudi slika $h(U)$ odprta množica v $\R^n$.
+\end{izrek}
+
+\begin{dokaz}
+Naj bodo izpolnjene predpostavke izreka. Imamo množico U, ki je odprta podmnožica v $\R^n$ in zvezno injektivno preslikavo $h : U \rightarrow \R^n$. Izrek bo dokazan, če pokažemo, da je za vsak element $u$ iz množice $U$ točka $h(u)$ notranja točka za množico $h(U)$. Ker je $\R^n$ homogen prostor, take pa so tudi vse njegove podmnožice, lahko predpostavimo, da je $u = 0_n$ in pokažemo, da je $h(0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n \subset U$. Za dokaz izreka  je dovolj pokazati vsebovanost $b := h(0) \in \Int(h(\I^n))$. Od tu naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$ in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ 0 \}$, tako da bo f zadoščala pogojem izreka \ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku \ref{izrPM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Predpostavimo torej, da je $b \in \partial (\I^n)$. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ houssdorfov prostor, je funkcija $h|_{\I^n} : \I^n \to \R^n$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta > 0$, za katerega je $h^{-1}(B(b, 2 \delta)) \subset \Int(\I^n)$. Ker je $b \in \partial h(\I^n)$ je mogoče poiskati tak $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
+
+% ###############        Slika dokaza PM izreka ############
+\begin{figure}[h!]
+	\centering
+	\begin{tikzpicture}
+% ###############          prva slika          ###############
+		\filldraw[color=gray!18] plot [smooth cycle, tension = 0.9] coordinates {(-5.15, 3.35) (-5.15, 2.8) (-3.95, 2.7) (-4.25, 3.45)};
+		\draw[gray, line width=0.5pt] plot [smooth cycle, tension = 0.9] coordinates {(-5.15, 3.35) (-5.15, 2.8) (-3.95, 2.7) (-4.25, 3.45)};
+		\filldraw[color=gray!18, line width=1pt] plot [smooth cycle, tension = 1.1] coordinates {(-4.25, 2.15) (-4.7, 2.35) (-5.15, 2.25) (-4.7, 2.1)};
+		\draw[gray, line width=0.5pt] plot [smooth cycle, tension = 1.1] coordinates {(-4.25, 2.15) (-4.7, 2.35) (-5.15, 2.25) (-4.7, 2.1)};
+		\draw (-5.9, 1.8) rectangle (-3.3, 4.2);
+		\filldraw[red] (-4.6, 3) circle (1.5pt) node[black, above right=-0.5mm] {$0$};
+		\draw (-4.2, 3.1) ;	
+		 \draw (-3.6, 3.85) node {$I^n$};
+		
+% ###############          druga slika          ###############
+		\begin{scope}
+			\clip plot [smooth cycle, tension = 0.3] coordinates {(2.3, 1.45) (5.2, 1.5) (5.25, 4.65) (4.25, 4.7) (4.2, 2.5) (3.15, 2.5) (3.7, 4.2) (3.5, 4.4) (2.8,3.7)  (2.5, 3.2) (2.3, 2.5)};
+			\clip (3.9, 4) circle (21pt);
+			\fill[color=gray!18] (-2,1.5) rectangle (6,5);
+		\end{scope}
+		\draw plot [smooth cycle, tension = 0.3] coordinates {(2.3, 1.45) (5.2, 1.5) (5.25, 4.65) (4.25, 4.7) (4.2, 2.5) (3.15, 2.5) (3.7, 4.2) (3.5, 4.4) (2.8,3.7)  (2.5, 3.2) (2.3, 2.5)};
+		\filldraw[black] (3.9, 4) circle (2pt) node[black, below right=-0.4mm]{$c$};
+		\filldraw[red] (4.21, 4.2) circle (1.5pt) node[black, right=-0.4mm] {$b$};
+		\draw[black] (3.9, 4) circle (21pt);
+		\draw (4.6, 2) node {$h(I^n)$};
+	
+% ###############          tretja slika          ###############
+		\draw[lightgray, line width=0.5pt] (3.9, -2) circle (21pt);
+		\draw[black, line width=1pt] plot [smooth cycle, tension = 0.3] coordinates {(2.3, -4.55) (5.2, -4.5) (5.25, -1.35) (4.25, -1.3) (4.2, -3.5) (3.15, -3.5) (3.7, -1.8) (3.5, -1.6) (2.8, -2.3)  (2.5, -2.8) (2.3, -3.5)};
+		\filldraw[white] (3.9, -2) circle (20.5pt);
+		\begin{scope}
+			\clip (3.9, -2) circle (21pt);
+			\draw[lightgray, line width=0.5pt] plot [smooth cycle, tension = 0.3] coordinates {(2.3, -4.55) (5.2, -4.5) (5.25, -1.35) (4.25, -1.3) (4.2, -3.5) (3.15, -3.5) (3.7, -1.8) (3.5, -1.6) (2.8, -2.3)  (2.5, -2.8) (2.3, -3.5)};
+		\end{scope}
+		\begin{scope}
+			\clip (3.9, -2) -- (3.4, -1.26) -- (2.5, -1) -- (3.35, -2.7) -- cycle;
+			\draw[black, line width=1pt] (3.9, -2) circle (21pt);
+		\end{scope}
+		\begin{scope}
+			\clip plot [smooth cycle, tension = 0.3] coordinates {(2.3, -4.55) (5.2, -4.5) (5.25, -1.35) (4.25, -1.3) (4.2, -3.5) (3.15, -3.5) (3.7, -1.8) (3.5, -1.6) (2.8, -2.3)  (2.5, -2.8) (2.3, -3.5)};
+			\draw[black, line width=1pt] (3.9, -2) circle (21pt);
+		\end{scope}
+		\filldraw[black] (3.9, -2) circle (2pt) node[black, below right=-0.4mm]{$c$};
+		\draw[black, line width=0.5pt, -Stealth] ($($(3.9, -2)!.5!(4.525, -1.6)$)!5pt!(3.9, -2)$) --  ($($(3.9, -2)!.5!(4.525, -1.6)$)!6pt!(4.525, -1.6)$);
+		\draw[black, line width=0.5pt, -Stealth] ($($(3.9, -2)!.5!((3.9, -2.75)$)!5pt!(3.9, -2)$) --  ($($(3.9, -2)!.5!((3.9, -2.75)$)!6pt!((3.9, -2.75)$);
+		\draw[black, line width=0.5pt, -Stealth] ($($(3.9, -2)!.5!(3.3, -1.6)$)!5pt!(3.9, -2)$) --  ($($(3.9, -2)!.5!(3.3, -1.6)$)!6pt!(3.3, -1.6)$);
+		\filldraw[red] (4.525, -1.6) circle (1.5pt) node[black, right=-0.3mm] {$l(b)$};
+		\draw (3.1, -1.1) node {$Y$};
+		\draw (4.8, -4) node {$X$}; 
+		
+	% ###############          četrta slika          ###############
+		\draw (-5.9, -4.2) rectangle (-3.3, -1.8);
+		\draw[black, line width=1pt] plot [smooth cycle, tension = 1] coordinates {(-4.5, -2.7) (-4.3, -3.1) (-4.7, -3.25) (-5.1, -2.8)};
+		\draw[black, line width=1pt] plot [smooth, tension = 1] coordinates {(-5.2, -3.45) (-4.9, -3.38) (-4.6, -3.55) (-4.25, -3.5)};
+		\filldraw[red] (-4.72, -3.5) circle (1.5pt) node[black, below] {$f(0)$};
+		\filldraw[black] (-4.6, -3) circle (2pt);
+		\draw[black, line width=1pt] plot [smooth cycle, tension = 0.9] coordinates { (-3.1, -1.7) (-4.2, -1.7) (-5.9, -1.6) (-5.75, -2.8) (-5.85, -4) (-4.3, -4.4) (-3.15, -3.7) (-3.1, -2.8)};
+	
+	% ###############          puščice          ###############
+		\draw [black, line width=1.2pt, -Stealth] (-1.7,3) -- (1.2,3);
+		\draw (-0.4, 3.6) node {$h$};
+		\draw [black,  line width=1.2pt, -Stealth] (1.2, -3) -- (-1.7, -3);
+		\draw (0, -2.7) node {$g$};
+		\draw [black,  line width=1.2pt, -Stealth] (-4.6, 1) -- (-4.6, -0.8);
+		\draw (-3.1, 0.2) node {$f  := g \circ l \circ h$};
+		\draw [black,  line width=1.2pt, -Stealth] (3.9, 1) -- (3.9, -0.8);
+		\draw (4.5, 0.2) node {$l$};  
+	\end{tikzpicture}
+	\caption{Skica dokaza izreka \ref{main_theorem}.}
+\end{figure}
+
+Označimo $X := h(\I^n) \setminus B(c, \delta)$ in $Y := \partial B(c, \delta)$. Definiramo zvezno preslikavo $l : h(\I^n) \cup Y \to X \cup Y$ s predpisom:
+\[  l(x) = \left\{
+\begin{array}{ll}
+	c + \frac{x - c}{\| x - c \|} \cdot \delta &, x \in h(\I^n) \cup B(c, \delta) \\
+	x &, x \in X. \\
+\end{array} 
+\right. \]
+S pomočjo leme \ref{lem:razsiritev-nic} lahko preslikavo $h|_X : X \to \R^n \setminus \{ 0 \}$ do zvezne preslikave $g : X \cup Y \to \R^n \setminus \{ 0 \}$, za katero za vsak $x \in X$ velja $\| g(x) - h^{-1}(x) \| < a$.
+Sedaj lahko definiramo preslikavo $f = (f_1, f_2, \dots, f_n) : \I^n \to \R \setminus \{ 0 \}$ kot kompozitum $f := g \circ l \circ h$. Ker ta funkcija slika iz $\I^n$ in ne zavzame ničle, je za protislovje dovolj, če se prepričamo, da funkcija ustreza pogojem izreka \ref{izr:PM}. Vzemimo $t \in \I_i^-$. Velja $l(h(t)) = h(t)$, saj je $h(t) \in X$. Poglejmo normo $\| f(t) - t \| = \| g(l(h(t))) - h{-1}(h(t)) \| = \| g(h(t) - h{-1}(h(t)) \| < a$. Ker je $t_i = - a$ je $| f_i (t) - t_i | = | f_i (t) - ( - a) | \leq | f (t) - t | < a$ torej je $f_i(t) < 0$. Enako lahko sklepamo tudi v primeru, ko je $t_i \in \I_i^+$. Ugotovili smo, da je  $f_i(\I_i^-) < 0$ in $f_i(\I_i^+) > 0$, zato bi po predpostavkah izreka \ref{izr:PM} moral obstajati $x \in \I^n$, ki se z $f$ slika v $0$. To je protislovje, torej je $b \in \Int (h(\I^n)$ in je $h(U)$ odprta podmnožica v $\R^n$.
+\end{dokaz}
+
+
+\begin{izrek}[Izrek o invarianci dimenzije]\label{izr:dim_izr}
+Naj bosta $m$ in $n$ naravni števili, potem sta Evklidska prostora $\R^m$ in $\R^n$ homeomorfna, če in samo če je $m = n$.
+\end{izrek}
+
+\begin{dokaz}
+Denimo, da sta za neki dve naravni števili $m$ in $n$ Evklidska prostora $\R^m$ in $\R^n$ homeomorfna. Torej obstaja zvezna bijektivna preslikava $f : \R^n \to \R^m$ z zveznim inverzom $f^{-1} : \R^m \to \R^n$. Dolazovali bomo s protislovjem. Predpostavimo, da je $m \neq n$, brez izgube splošnosti lahko predpostavimo , da je $m < n$. Označimo z $i$ vložitev, torej preslikavo iz prostora $\R^m$ v $\R^n$, ki je definirana s predpisom $i(x_1, \dots, x_m) = (x_1, \dots, x_m, 0, \dots, 0)$. Tedaj je preslikava $h : \R^n \to \R^n$ definirana kot kompozitum $h := i \circ f$ zvezna injektivna preslikava, zato je po izreku \ref{izr:main-theorem} odprta. Toda slika prostora $\R^n$, ki je odprta podmnožica same sebe, je množica $\left \{ (x_1, x_2, \dots, x_m, 0, \dots, 0) \in \R^n ; \text{ kjer so } x_i \in \R \text{ za vsak } i \in \{1, \dots, m \}  \right \}$, ki pa je zaprta podmnožica prostora $\R^n$. Torej mora biti res $m = n$.
+\end{dokaz}
+
+\section*{Slovar strokovnih izrazov}
+
+\geslo{}{}
+\geslo{}{}
+
+% seznam uporabljene literature
+\begin{thebibliography}{99}
+
+%\bibitem{}
+
+\bibitem{geometry4}
+H.~P. Manning, \emph{Geometry of four dimensions}, The Macmillan company, New York, 1914; dostopno tudi na
+\url{https://archive.org/details/geometryfourdim01manngoog/page/n6/mode/2up}.
+
+\bibitem{Cantor-function}
+J.~W. Dauben,  \emph{The invariance of dimension: Problems in the early development of set theory and topology}, v: Historia mat. \textbf{2} (1975) 273--288.
+
+\bibitem{main-article}
+W.~Kulpa, \emph{Poincar\'e and domain invariance theorem}, Acta universitatis Carolinae. mat. et phy. \textbf{39} (1998) strani 127--139; dostopno tudi na
+\url{http://dml.cz/dmlcz/702050}.
+
+\bibitem{simplex}
+\emph{Simplex}, v: Wikipedia, The Free Encyclopedia, [ogled 21.~4.~2020], dostopno na \url{https://en.wikipedia.org/wiki/Simplex}.
+
+\bibitem{convhull}
+\emph{Convex hull}, v: Wikipedia, The Free Encyclopedia, [ogled 21.~4.~2020], dostopno na \url{https://en.wikipedia.org/wiki/Convex_hull}.
+
+
+
+
+%####################     VZOREC LITERATURE     #################### 
+
+% seznam uporabljene literature
+
+\bibitem{referenca-clanek}
+I.~Priimek, \emph{Naslov članka}, okrajšano ime revije \textbf{letnik revije} (leto izida) strani od--do.
+
+\bibitem{navodilaOMF}
+C.~Velkovrh, \emph{Nekaj navodil avtorjem za pripravo rokopisa}, Obzornik mat.\ fiz.\ \textbf{21} (1974) 62--64.
+
+\bibitem{vec-avtorjev}
+J.~W. Dauben, H.~H. Lehman, \emph{The invariance of dimension: Problems in the early development of set theory and topology}, Historia mat. \ Geom.\ \textbf{45} (1975) 273--288.
+
+
+\bibitem{referenca-knjiga}
+I.~Priimek, \emph{Naslov knjige}, morebitni naslov zbirke  \textbf{zaporedna številka}, založba, kraj, leto izdaje.
+
+\bibitem{glob}
+J.~Globevnik in M.~Brojan, \emph{Analiza I}, Matematični rokopisi \textbf{25}, DMFA -- založništvo, Ljubljana, 2010.
+
+\bibitem{glob-vse}
+J.~Globevnik in M.~Brojan, \emph{Analiza I}, Matematični rokopisi \textbf{25}, DMFA -- založništvo, Ljubljana, 2010; dostopno tudi na
+\url{http://www.fmf.uni-lj.si/~globevnik/skripta.pdf}.
+
+\bibitem{lang}
+S.~Lang, \emph{Fundamentals of differential geometry}, Graduate Texts in Mathematics \textbf{191}, Springer-Verlag, New York, 1999.
+
+\bibitem{referenca-clanek-v-zborniku}
+I.~Priimek, \emph{Naslov članka}, v: naslov zbornika (ur.\ ime urednika), morebitni naslov zbirke  \textbf{zaporedna številka}, založba, kraj, leto izdaje, str.\ od--do.
+
+\bibitem{zbornik}
+S.~Cappell in J.~Shaneson, \emph{An introduction to embeddings, immersions and singularities in codimension two}, v: Algebraic and geometric topology, Part 2 (ur.\ R.~Milgram), Proc.\ Sympos.\ Pure Math.\ \textbf{XXXII}, Amer.\ Math.\ Soc., Providence, 1978, str.\ 129--149.
+
+\bibitem{diploma-magisterij}
+I.~Priimek, \emph{Naslov dela}, diplomsko/magistrsko delo, ime fakultete, ime univerze, leto.
+
+\bibitem{kalisnik}
+J.~Kališnik, \emph{Upodobitev orbiterosti}, diplomsko delo, Fakulteta za matematiko in fiziko, Univerza v Ljubljani, 2004.
+
+\bibitem{referenca-spletni-vir}
+I.~Priimek, \emph{Naslov spletnega vira}, v: ime morebitne zbirke/zbornika, ki vsebuje vir, verzija številka/datum, [ogled datum], dostopno na \url{spletni.naslov}.
+
+\bibitem{glob-splet}
+J.~Globevnik in M.~Brojan, \emph{Analiza 1}, verzija 15.~9.~2010, [ogled 12.~5.~2011], dostopno na \url{http://www.fmf.uni-lj.si/~globevnik/skripta.pdf}.
+
+\bibitem{wiki}
+\emph{Matrix (mathematics)}, v: Wikipedia, The Free Encyclopedia, [ogled 12.~5.~2011], dostopno na \url{http://en.wikipedia.org/wiki/Matrix_(mathematics)}.
+
+\end{thebibliography}
+
+\end{document}
+
