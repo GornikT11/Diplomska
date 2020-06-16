@@ -1,0 +1,224 @@
+\documentclass[t]{beamer} % [t] pomeni poravnavo na vrh slida
+
+% \usepackage{etex} % vključi ta paket, če ti javi napako, da imaš naloženih preveč paketov.
+
+% standardni paketi
+\usepackage[slovene]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+
+
+% paket, ki ga rabimo za risanje
+\usepackage{pgf,tikz,pgfplots}
+\usetikzlibrary{arrows}
+\usepackage{lmodern}                            % to get rid of font warnings
+\renewcommand\textbullet{\ensuremath{\bullet}}  % to get rid of font warnings
+
+% podatki
+\title{Izrek o invarianci odprtih množic}
+\author{Tom Gornik}
+\institute{mentor: prof. dr. Jaka Smrekar}
+
+% tvoj izbran stil predstavitve
+\usetheme{Singapore}
+\usecolortheme{crane}
+\beamertemplatenavigationsymbolsempty
+% \setbeamertemplate{footline}{}            % pri nekaterih temah je potrebno odstraniti
+% \setbeamertemplate{navigation symbols}{}  % nogo, v tem primeru to odkomentiraj
+
+%  ukaz za počrnitev enega slida. Nariše črn pravokotnik višine #1 na dno.
+\newcommand{\fillblack}[1]{
+\begin{tikzpicture}[remember picture, overlay]
+    \node [shift={(0 cm,0cm)}]  at (current page.south west)
+        {%
+        \begin{tikzpicture}[remember picture, overlay] at (current page.south west)
+            \draw [fill=black] (0, 0) -- (0,#1 \paperheight) --
+                              (\paperwidth,#1 \paperheight) -- (\paperwidth,0) -- cycle ;
+        \end{tikzpicture}
+        };
+        \draw (current page.north west) rectangle (current page.south east);
+\end{tikzpicture}
+}
+
+% Projektor, ki sveti na tablo je zoprn, ker zavzema prostor za pisanje.
+% Praktična rešitev je, da se platno spusti samo do table, spodnji del
+% predstavitve pa naredimo popolnoma črn. Tako projektor na tablo ne projecira
+% svetlobe in je pisanje nemoteno s strani predstavitve, ki je cela nad tablo.
+
+% Za to da dobite spodaj zatemnjen slide, je potrebno na konec frame-a dodati
+% ukaz \fillblack{delež}, kjer je delež številka med 0 in 1, ki pove, kakšen
+% delež slida želite imeti zapolnjen s črnim pravokotnikom. Spodaj so 4 slidi,
+% ki imajo začrnjenih: 33%, 50%, 33% in 20%.  Za šolske table v 2.02 in 2.03 je
+% 33% ravno prav, da lahko pišete po celi tabli.
+
+% Črni pravokotnik ne zavzema prostora na slidu -- preprosto nariše se čez
+% spodnjo tretjino (ali kolikor pač želite). To pomeni, da se pokrijve tudi ves
+% tekst spodaj. Za to je na začetku dokumenta tudi nastavljena vertikalna
+% poravnava na ``zgoraj'', z razliko od običajne sredinske (to je tisti [t]).
+% Tako se ves tekst obdrži na vidnem delu slida, dokler je to možno. Tretji
+% slide spodaj demonstrira, kaj se zgodi v primeru preveč besedila.
+
+% Kod demonstrira zadnji slide, je vseeno, kjer napišemo ukaz, toda ponavadi ga
+% napišemo na dnu, da se izognemo morebitnim nevšečnostim ali neželenemu
+% spacingu. Pri nekaterih temah se izriše tudi noga, ki se izriše na koncu
+% slida, torej po tem ko je naš pravokotnik že narisan, kar zna biti moteče.
+% To se na primer zgodi tudi pri standardni temi Warsaw. Rešitev je, da nogo
+% odstranimo (saj bi bila itak prekrita). V preambuli so zakomentirani ukazi,
+% kako to naredimo.
+
+\begin{document}
+
+\begin{frame}
+  \maketitle
+  \fillblack{0.33}
+\end{frame}
+
+
+
+\begin{frame}{Struktura dela}
+\begin{itemize}
+\item Pomožna lema
+\item Poincar\'{e}-Mirandov izrek
+\item Izrek o invarianci odprtih množic
+\end{itemize}
+
+   \fillblack{0.33}
+\end{frame}
+
+\begin{frame}{Izvedba dokaza}
+\begin{figure}[h!]
+\centering
+
+\begin{tikzpicture}
+%    \draw (0, 0) node[inner sep=0] {\includegraphics[scale=0.44]{1.pdf}};
+\draw[color=blue, domain=-0.7:2.3]   plot (\x,{2^(-\x-0.5) * sin(2.9 * \x r)});
+\draw[color=red, domain=-0.7:2.3]   plot (\x,{2^(-\x-0.5) * (-sin(2.9 * \x r))});
+\fill[fill=black] (2, -0.2)--(2, 0.2)--(2.4, 0);
+\draw (4, 0.25) node {Izrek o invarianci};
+\draw (4, -0.25) node {odprtih množic};
+\draw (-3, 1) node {Pomožna lema};
+\draw (-3, -1) node {Poincar\'{e}-Mirandov izrek};
+\end{tikzpicture}
+\end{figure}
+
+   \fillblack{0.33}
+\end{frame}
+
+\begin{frame}
+\frametitle{Poincar\'{e}-Mirandov izrek}
+% Vsebina prosojnice 1
+\begin{block}{Definicija:}
+Naj bo število $a>0$.
+Za hiperkocko $\mathbb{I}^n = [-a, a]^n$ definiramo:
+\begin{itemize}
+\item $\mathbb{I}_i ^- =\{(x_1, x_2, \dots, x_n) \in \mathbb{I}^n | x_i = -a\}$ in
+\item $\mathbb{I}_i ^+ =\{(x_1, x_2, \dots, x_n) \in \mathbb{I}^n | x_i = a\}$
+\end{itemize}
+\end{block}
+   \fillblack{0.33}
+\end{frame}
+
+\begin{frame}
+\frametitle{Poincar\'{e}-Mirandov izrek}
+\begin{block}{Poincar\'{e}-Mirandov izrek:}
+Naj bo $f = (f_1, f_2, \dots, f_n) : \mathbb{I}^n \rightarrow \mathbb{R}^n$ taka zvezna preslikava, da je 
+\begin{itemize}
+\item $f_i (\mathbb{I}_i ^-) \subset (-\infty, 0]$ in
+\item $f_i (\mathbb{I}_i ^+) \subset [0, \infty)$, za vsak $i \in (1, \dots, n)$.
+\end{itemize}
+Potem obstaja točka $x\in \mathbb{I}^n$, da je $f(x) = 0$.
+\end{block}
+   \fillblack{0.33}
+\end{frame}
+
+\begin{frame}
+\frametitle{Poincar\'{e}  Mirandov izrek v dveh dimenzijah}
+% Vsebina prosojnice 1
+
+\begin{center}
+\definecolor{qqqqff}{rgb}{0.,0.,1.}
+\definecolor{qqffqq}{rgb}{0.,1.,0.}
+\definecolor{ffqqqq}{rgb}{1.,0.,0.}
+\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=3cm,y=2.8cm]
+\draw[->,color=black] (-1.2989699661422938,0.) -- (1.3004294446621418,0.);
+\foreach \x in {-1.,1.}
+\draw[shift={(\x,0)},color=black] (0pt,2pt) -- (0pt,-2pt) node[anchor=north west] {\footnotesize $\x$};
+\draw[->,color=black] (0.,-1.1997342918318246) -- (0.,1.2003342741882355);
+\foreach \y in {-1.,1.}
+\draw[shift={(0,\y)},color=black] (2pt,0pt) -- (-2pt,0pt) node[anchor=south east] {\footnotesize $\y$};
+\draw[color=black] (0pt,-10pt) node[right] {\footnotesize $0$};
+\clip(-1.2989699661422938,-1.1997342918318246) rectangle (1.3004294446621418,1.2003342741882355);
+\fill[line width=0.pt,color=ffqqqq,fill=ffqqqq,fill opacity=0.05000000074505806] (-1.,-1.) -- (1.,-1.) -- (1.,1.) -- (-1.,1.) -- cycle;
+\draw [line width=1.2pt,color=ffqqqq] (-1.,1.)-- (1.,1.);
+\draw [line width=1.2pt,color=ffqqqq] (-1.,-1.)-- (1.,-1.);
+\draw [line width=1.2pt,color=qqffqq] (-1.,-1.)-- (-1.,1.);
+\draw [line width=1.2pt,color=qqffqq] (1.,-1.)-- (1.,1.);
+\draw [line width=1.6pt,color=ffqqqq] (-1.,0.7378784755666599)-- (0.16559573064227023,0.45675274843267155);
+\draw [line width=1.6pt,color=ffqqqq] (0.16559573064227023,0.45675274843267155)-- (0.41504531950764095,-0.461855261357262);
+\draw [line width=1.6pt,color=ffqqqq] (0.41504531950764095,-0.461855261357262)-- (1.,-0.8);
+\draw [line width=1.6pt,color=qqffqq] (-0.5352388285509141,1.)-- (-0.3887366890585536,0.10435571019429186);
+\draw [line width=1.6pt,color=qqffqq] (-0.3887366890585536,0.10435571019429186)-- (0.403166767656909,-0.6835882292375908);
+\draw [line width=1.6pt,color=qqffqq] (0.403166767656909,-0.6835882292375908)-- (0.529871320731383,-1.);
+\draw [line width=2.pt,color=qqqqff] (-0.4715136823191907,0.6104148134815943) circle (0.1cm);
+\draw (-1,1.2) node[anchor=north west] {\textbf{$f=(f_1, f_2)$}};
+\draw (-1.25,0.2) node[anchor=north west] {\textbf{$f_1<0$}};
+\draw (0.75,0.2) node[anchor=north west] {\textbf{$f_1>0$}};
+\draw (0.07480588827248567,1.2) node[anchor=north west] {\textbf{$f_2>0$}};
+\draw (0.069418531980663,-1.) node[anchor=north west] {\textbf{$f_2<0$}};
+\draw (0.2,0.4) node[anchor=north west] {\textbf{$f_1 = 0$}};
+\draw (-0.5716768667462341,-0.1) node[anchor=north west] {\textbf{$f_2 = 0$}};
+\begin{scriptsize}
+\draw [fill=black] (-1.,1.) circle (1.5pt);
+\draw [fill=black] (1.,1.) circle (1.5pt);
+\draw [fill=black] (-1.,-1.) circle (1.5pt);
+\draw [fill=black] (1.,-1.) circle (1.5pt);
+\draw [fill=qqqqff] (-0.4715136823191907,0.6104148134815943) circle (1.5pt);
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pomožna lema}
+\begin{block}{Lema:}
+Naj bo $X$ kompaktna podmnožica evklidskega prostora $\mathbb{R}^n$ in $f : X \rightarrow \mathbb{R}^n \setminus \{0\} $ zvezna preslikava. Potem za vsak $\varepsilon > 0$ in za vsako kompaktno množico s prazno notranjostjo $Y \subset \mathbb{R}^n$ obstaja zvezna preslikava $g : X \cup Y \rightarrow \mathbb{R}^n \setminus \{0\}$, da velja: $||g(x)-f(x)|| < \varepsilon$  za vsak $x \in X$
+\end{block}
+\fillblack{0.33}
+\end{frame}
+
+\begin{frame}
+\frametitle{Izrek o invarianco odprtih množic}
+\begin{block}{Izrek o invarianco odprtih množic}
+Naj bo $U$ odprta množica v evklidskem prostoru $\mathbb{R}^n$ in naj bo $h : U \rightarrow \mathbb{R}^n$ zvezna injekcija. Potem je tudi slika $h(U)$ odprta množica v $\mathbb{R}^n$
+\end{block}
+\fillblack{0.33}
+\end{frame}
+
+\begin{frame}
+\frametitle{Pomožna lema}
+\begin{block}{Lema:}
+Naj bo $X$ kompaktna podmnožica evklidskega prostora $\mathbb{R}^n$ in $f : X \rightarrow \mathbb{R}^n \setminus \{0\} $ zvezna preslikava. Potem za vsak $\varepsilon > 0$ in za vsako kompaktno množico s prazno notranjostjo $Y \subset \mathbb{R}^n$ obstaja zvezna preslikava $g : X \cup Y \rightarrow \mathbb{R}^n \setminus \{0\}$, da velja: $||g(x)-f(x)|| < \varepsilon$  za vsak $x \in X$
+\end{block}
+\fillblack{0.33}
+\end{frame}
+
+\begin{frame}
+\frametitle{Poincar\'{e}-Mirandov izrek}
+\begin{block}{Poincar\'{e}-Mirandov izrek:}
+Naj bo $f = (f_1, f_2, \dots, f_n) : \mathbb{I}^n \rightarrow \mathbb{R}^n$ taka zvezna preslikava, da je 
+\begin{itemize}
+\item $f_i (\mathbb{I}_i ^-) \subset (-\infty, 0]$ in
+\item $f_i (\mathbb{I}_i ^+) \subset [0, \infty)$, za vsak $i \in (1, \dots, n)$.
+\end{itemize}
+Potem obstaja točka $z\in \mathbb{I}^n$, da je $f(z) = 0$.
+\end{block}
+   \fillblack{0.33}
+\end{frame}
+
+\end{document}
