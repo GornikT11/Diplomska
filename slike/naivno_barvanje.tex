@@ -1,0 +1,41 @@
+\documentclass{standalone}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+  
+\usepackage{tikz, verbatim}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta, calc, positioning, automata}
+
+\begin{document}
+
+	\begin{tikzpicture}[scale=0.5]
+		\draw (0, 0) -- (8, 0) -- (8, 8) -- (0, 8) -- (0, 0);
+		\draw (4, 0) -- (4, 8);
+		\draw (0, 4) -- (8, 4);
+		\draw (0, 0) -- (8, 8);
+		\draw (0, 8) -- (8, 0);
+
+		\filldraw[blue] (0, 0) circle (8pt);
+		\filldraw[red] (4, 0) circle (8pt);
+		\filldraw[red] (8, 0) circle (8pt);
+		\filldraw[blue] (0, 4) circle (8pt);
+		\filldraw[red] (4, 4) circle (8pt);
+		\filldraw[green] (8, 4) circle (8pt);
+		\filldraw[red] (0, 8) circle (8pt);
+		\filldraw[green] (4, 8) circle (8pt);
+		\filldraw[green] (8, 8) circle (8pt);
+		
+		\draw (0, 0) circle (8pt);
+		\draw (4, 0) circle (8pt);
+		\draw (8, 0) circle (8pt);
+		\draw (0, 4) circle (8pt);
+		\draw (4, 4) circle (8pt);
+		\draw (8, 4) circle (8pt);
+		\draw (0, 8) circle (8pt);
+		\draw (4, 8) circle (8pt);
+		\draw (8, 8) circle (8pt);
+	\end{tikzpicture}
+	
+\end{document}

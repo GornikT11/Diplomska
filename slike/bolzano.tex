@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+  
+\usepackage{tikz, verbatim}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta, calc, positioning, automata}
+
+\begin{document}
+
+	\begin{tikzpicture}
+% ####################   KOORDINATNI SISTEM    ####################
+		\draw[->] (-4, 0) -- (4, 0);
+		\draw[->] (0, -2.5) -- (0, 3);
+		\draw (-2, -0.1) -- (-2, 0.1);
+		\draw (2, -0.1) -- (2, 0.1);
+		\node at (3.8, -0.3) {$x$};
+		\node at (-0.3, 2.8) {$y$};
+		\node at (-2, 0.3) {$-a$};
+		\node at (2, -0.3) {$a$};
+% ####################   FUNKCIJA    ####################
+		\draw[scale=1,domain=-2:2,smooth,variable=\x,black] plot ({\x},{0.2 * pow(\x, 4) + 0.2 * pow(\x, 3) - 0.6 * pow(\x, 2) -0.2});
+		\draw[dotted] (-2, 0) -- (-2, -1);
+		\draw[dotted] (2, 0) -- (2, 2.2);
+		\filldraw[black] (-2, -1) circle (2pt) node[black, left]{$f(-a)$};
+		\filldraw[black] (2, 2.2) circle (2pt) node[black, right]{$f(a)$};
+		\filldraw[red] (1.43, 0) circle (2pt) node[black, above left]{$c$};
+	\end{tikzpicture}
+	
+\end{document}

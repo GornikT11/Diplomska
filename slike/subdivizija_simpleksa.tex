@@ -1,8 +1,8 @@
 \documentclass[margin=1cm,varwidth]{standalone}
-  \usepackage{amsfonts,amsmath,amssymb}
-  \usepackage[slovene]{babel}
-  \usepackage[utf8]{inputenc}
-  \usepackage[T1]{fontenc}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
   
 \usepackage{tikz, verbatim, subcaption}
 \usepackage{pgfplots}
@@ -14,32 +14,35 @@
 \draw ($ 0.5*#1 + 0.5*#2 $) -- #3;
 }
 
+\captionsetup[subfigure]{labelformat=simple}
+\renewcommand{\thesubfigure}{(\Alph{subfigure})}
+
 
 \begin{document}
 
-\begin{figure}[h]  
-\centering 
+\begin{figure}
+	\centering
 % ####################   Simpleks S    ####################
-	\begin{subfigure}{0.4\linewidth} 
-		\centering 
+	\begin{subfigure}[t]{0.5\linewidth}
+		\centering
 		\begin{tikzpicture}[scale=0.4]
 			\draw (0, 0) -- (8, 0) -- ($(4, {4*sqrt(3)})$) -- (0, 0);
 		\end{tikzpicture}%
-		\caption{Simpleks $S$.} \label{fig:triang}
+		\caption{Simpleks $S$.} \label{fig:simple}
 	\end{subfigure}
 	\vspace{0.5cm}
 % ####################   Prva subdivizija    ####################
-	\begin{subfigure}{0.4\linewidth} 
-	\centering 
+	\begin{subfigure}[t]{0.4\linewidth} 
 		\begin{tikzpicture}[scale=0.4]
 			\draw (0, 0) -- (8, 0) -- ($(4, {4*sqrt(3)})$) -- (0, 0);
 			\subdiv{(0, 0)}{(8, 0)}{($(4, {4*sqrt(3)})$)}
 		\end{tikzpicture}%
 		\caption{Prva subdivizija.} \label{fig:triang}
 	\end{subfigure}
+	\quad
 % ####################   Druga subdivizija    ####################
-	\begin{subfigure}[b]{0.4\linewidth}
-	\centering 
+	\begin{subfigure}{0.5\linewidth}
+		\centering
 		\begin{tikzpicture}[scale=0.4]
 			\draw (0, 0) -- (8, 0) -- ($(4, {4*sqrt(3)})$) -- (0, 0);
 			\subdiv{(0, 0)}{(8, 0)}{($(4, {4*sqrt(3)})$)}
@@ -56,8 +59,7 @@
 		\caption{Druga subdivizija.} \label{fig:nitriang}  
 	\end{subfigure}
 	% ####################   Tretja subdivizija    ####################
-	\begin{subfigure}[b]{0.4\linewidth}
-	\centering 
+	\begin{subfigure}{0.5\linewidth}
 		\begin{tikzpicture}[scale=0.4]
 			\draw (0, 0) -- (8, 0) -- ($(4, {4*sqrt(3)})$) -- (0, 0);
 			\subdiv{(0, 0)}{(8, 0)}{($(4, {4*sqrt(3)})$)}

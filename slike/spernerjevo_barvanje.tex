@@ -1,0 +1,80 @@
+\documentclass{standalone}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+  
+\usepackage{tikz, verbatim}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta, calc, positioning, automata}
+
+\begin{document}
+
+\newcommand*\rows{6}
+\newcommand*\vel{1.8}
+%####################   Spernerjevo barvanje    ####################
+	\begin{tikzpicture}
+		\fill[fill=gray!25] ($\vel*(3.5, {0.5*sqrt(3)})$)--($\vel*(3, {sqrt(3)})$)--($\vel*(4, {sqrt(3)})$);
+		\fill[fill=gray!25] ($\vel*(3, {sqrt(3)})$)--($\vel*(2.5, {1.5*sqrt(3)})$)--($\vel*(3.5, {1.5*sqrt(3)})$);
+		\fill[fill=gray!25] ($\vel*(2.5, {2.5*sqrt(3)})$)--($\vel*(2, {2*sqrt(3)})$)--($\vel*(3, {2*sqrt(3)})$);
+		\foreach \k in {0, 1, ...,\rows} {
+			\draw ($\vel*\k*(0.5, {0.5 * sqrt(3)})$) -- ($\vel*(\rows, 0) + \vel*\k*(-0.5, {0.5 * sqrt(3)})$);
+			\draw ($\vel*\k*(1, 0)$) -- ($\vel*(\rows/2,{\rows/2 * sqrt(3)}) + \vel*\k*(0.5, {-0.5 * sqrt(3)})$);
+			\draw ($\vel*\k*(1, 0)$) -- ($(0,0) + \vel *\k*(0.5, {0.5 * sqrt(3)})$);
+		}
+% ####################   prva vrsta    ####################
+		\filldraw[red] (0, 0) circle (5pt);
+		\filldraw[red] (\vel, 0) circle (5pt);
+		\filldraw[green] (2*\vel, 0) circle (5pt);
+		\filldraw[green] (3*\vel, 0) circle (5pt);
+		\filldraw[red] (4*\vel, 0) circle (5pt);
+		\filldraw[green] (5*\vel, 0) circle (5pt);
+		\filldraw[green] (6*\vel, 0) circle (5pt);
+% ####################   druga vrsta    ####################	
+		\filldraw[blue] ($\vel*(0.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[red] ($\vel*(1.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[red] ($\vel*(2.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(3.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(4.5, {0.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(5.5, {0.5*sqrt(3)})$) circle (5pt);
+% ####################   tretja vrsta    ####################
+		\filldraw[red] ($\vel*(1, {sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(2, {sqrt(3)})$) circle (5pt);
+		\filldraw[red] ($\vel*(3, {sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(4, {sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(5, {sqrt(3)})$) circle (5pt);
+% ####################   četrta vrsta    ####################
+		\filldraw[red] ($\vel*(1.5, {1.5*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(2.5, {1.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(3.5, {1.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(4.5, {1.5*sqrt(3)})$) circle (5pt);
+% ####################   peta vrsta    ####################
+		\filldraw[red] ($\vel*(2, {2*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(3, {2*sqrt(3)})$) circle (5pt);
+		\filldraw[green] ($\vel*(4, {2*sqrt(3)})$) circle (5pt);
+% ####################   šesta vrsta    ####################
+		\filldraw[blue] ($\vel*(2.5, {2.5*sqrt(3)})$) circle (5pt);
+		\filldraw[blue] ($\vel*(3.5, {2.5*sqrt(3)})$) circle (5pt);
+% ####################   sedma vrsta    ####################
+		\filldraw[blue] ($\vel*(3, {3*sqrt(3)})$) circle (5pt);
+% ####################   obrobe za lepši izgled    ####################
+		\foreach \k in {0, 1, ...,\rows} {
+			\foreach \j in {0, ...,\k} {
+				\draw ($\vel*(\rows-\k, 0) + \vel*\j*(0.5, {0.5*sqrt(3)})$) circle (5pt);
+			}
+		}
+% ####################   Poti    ####################
+%\draw [dashed] plot [smooth, tension=1] coordinates { ($\vel*(2.5, {2.1818*sqrt(3)})$) ($\vel*(2.5, {1.833*sqrt(3)})$) ($\vel*(2, {1.66*sqrt(3)})$) ($\vel*(2, {1.33*sqrt(3)})$) ($\vel*(1.5, {1.1818*sqrt(3)})$) ($\vel*(1.5, {0.833*sqrt(3)})$) ($\vel*(2, {0.66*sqrt(3)})$) ($\vel*(2.5, {0.833*sqrt(3)})$) ($\vel*(2.5, {1.1818*sqrt(3)})$) ($\vel*(3, {1.33*sqrt(3)})$)};
+
+%\draw [dashed] plot [smooth, tension=1] coordinates {($\vel*(1.5, {-0.1*sqrt(3)})$) ($\vel*(1.5, {0.1818*sqrt(3)})$) ($\vel*(2, {0.33*sqrt(3)})$) ($\vel*(2.5, {0.1818*sqrt(3)})$) ($\vel*(3, {0.33*sqrt(3)})$) ($\vel*(3, {0.66*sqrt(3)})$) ($\vel*(3.5, {0.833*sqrt(3)})$)};
+
+%\draw [dashed] plot [smooth, tension=1] coordinates {($\vel*(3.5, {-0.1*sqrt(3)})$) ($\vel*(3.5, {0.1818*sqrt(3)})$) ($\vel*(4, {0.33*sqrt(3)})$) ($\vel*(4.5, {0.1818*sqrt(3)})$) ($\vel*(4.5, {-0.1*sqrt(3)})$)};
+
+% ####################   napis za pravilo barvanja    ####################	
+		\draw ($\vel*(-0.8+\rows/4, {0.3+\rows/4 * sqrt(3)})$) node[rotate=60] {\text{Oglišča pobarvana zgolj z rdečo in modro.}};
+		\draw ($\vel*(0.8+3*\rows/4, {0.3+\rows/4 * sqrt(3)})$) node[rotate=-60] {Oglšča pobarvana zgolj z modro in zeleno.};
+		\draw (\vel*\rows/2, -1) node {Oglišča pobarvana zgolj z rdečo in zeleno.};
+		
+	\end{tikzpicture}
+	
+\end{document}

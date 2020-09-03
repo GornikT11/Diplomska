@@ -1,0 +1,45 @@
+\documentclass{standalone}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage[slovene]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+  
+\usepackage{tikz, verbatim}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta, calc, positioning, automata}
+
+\begin{document}
+
+		\begin{tikzpicture}[scale=0.9]
+			\filldraw[black] (0, 0) circle (1pt);
+			\filldraw[black] (2, 1.5) circle (1pt);
+			\filldraw[black] (1.7, {1.7*sqrt(3)}) circle (1pt);
+			\filldraw[black] (3.5, {2.5*sqrt(3)}) circle (1pt);
+			\filldraw[black] (3, 2.25) circle (1pt);
+			\filldraw[black] (5, 0) circle (1pt);
+			\filldraw[black] (6, 0) circle (1pt);
+			\filldraw[black] (3, {3*sqrt(3)}) circle (1pt);
+			\filldraw[black] (5, {sqrt(3)}) circle (1pt);
+			\filldraw[black] (0.5, {0.5*sqrt(3)}) circle (1pt);
+			\filldraw[black] (4.3, 1) circle (1pt);
+			\filldraw[black] (1, {1*sqrt(3)}) circle (1pt);
+			\draw (0, 0) -- (6, 0);
+			\draw (0, 0) -- (3, 2.25);
+			\draw (6, 0) -- (3, {3*sqrt(3)});
+			\draw (3, {3*sqrt(3)}) -- (0, 0);
+			\draw (4.3, 1) -- (6, 0);
+			\draw (0, 0) -- (4.3, 1);
+			\draw (4.3, 1) -- (5, {sqrt(3)});
+			\draw (4.3, 1) -- (5, 0);
+			\draw (4.3, 1) -- (3.5, {2.5*sqrt(3)});
+			\draw (4.3, 1) -- (2, 1.5);
+			\draw (4.3, 1) -- (3, 2.25);
+			\draw (1.7, {1.7*sqrt(3)}) -- (3, 2.25);
+			\draw (2, 1.5) -- (0.5, {0.5*sqrt(3)});
+			\draw (2, 1.5) -- (1.7, {1.7*sqrt(3)});
+			\draw (3.5, {2.5*sqrt(3)}) -- (3, 2.25);
+			\draw (3.5, {2.5*sqrt(3)}) -- (1.7, {1.7*sqrt(3)});
+			\draw (2, 1.5) -- (1, {1*sqrt(3)});
+		\end{tikzpicture}%
+	
+\end{document}
