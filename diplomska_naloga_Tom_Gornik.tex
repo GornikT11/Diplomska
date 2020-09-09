@@ -182,8 +182,8 @@ Zaradi krajšega zapisa označimo množico, ki jo dobimo kot presek vseh konveks
 \end{dokaz}
 Iskanje konveksne množice kot presek vseh konveksnih množic je zamudno. Prav tako je težko preveriti, ali je neka točka vsebovana v konveksni ogrinjači množice $A$. Spodnja trditev nam eksplicitno pove, katere točke so vsebovane v konveksni ogrinjači množice točk $A = \{x_0, x_1, \dots, x_n\}$.
 \begin{trditev}[\protect{\cite{convexhull}}]
-Za poljubne točke $x_0, x_1, \dots, x_n$ v prostoru $\R^n$ je konveksna ogrinjača $\conv(\{x_0, x_1, \dots, x_n\})$ enaka množici
-$$C = \left \{ \sum\limits_{i=0}^n \lambda_i \vec{x}_i; \text{ kjer so } \lambda_i \in [0, 1] \text{ za vsak } i \in \{0, 1, \dots, n \} \text{ in } \sum\limits_{i=0}^n \lambda_i = 1  \right \}.$$
+Za poljubne točke $x_0, x_1, \dots, x_n$ v prostoru $\R^n$ je konveksna ogrinjača $\conv(\{x_0, x_1, \dots, x_n\})$ enaka množici točk $C$, katerih krajevni vektorji pripadajo množici
+$$\left \{ \sum\limits_{i=0}^n \lambda_i \vec{x}_i; \text{ kjer so } \lambda_i \in [0, 1] \text{ za vsak } i \in \{0, 1, \dots, n \} \text{ in } \sum\limits_{i=0}^n \lambda_i = 1  \right \}.$$
 \end{trditev}
 \begin{dokaz}
 Vsaka konveksna množica, ki vsebuje množico točk $A = \{ x_0, x_1, \dots, x_n \}$, vsebuje tudi množico $C$. Torej je množica $C$ vsebovana v preseku vseh konveksnih množic, ki vsebujejo množico $A$. Ker pa je množica $C$ konveksna, vsebuje presek vseh konveksnih množic, ki vsebujejo množico $A$. Zato je množica $C$ enaka konveksni ogrinjači množice $A$.
@@ -192,7 +192,7 @@ Krajevni vektor vsake točke $x \in A = \conv (\{x_0, \dots, x_n\})$ lahko izraz
 
 Simpleks definiramo kot poseben primer konveksne ogrinjače.
 \begin{definicija}[\protect{\cite{convexhull}}]
-Naj bo $V = \{x_0, x_1, \dots , x_n \} \subset \R^n$ afino neodvisna množica točk v evklidskem prostoru $\R^n$. Konveksni ogrinjači $S$ točk $x_0, x_1, \dots , x_n$ iz množice $V$ pravimo \emph{$n$-dimenzionalni simpleks} ali \emph{$n$-simpleks}. Točke $x_i$ imenujemo \emph{oglišča} simpleksa $S$. Ko želimo poudariti, katera oglišča določajo simpleks, lahko zapišemo tudi $S = \left < x_0, \dots, x_n \right >$. Za vsako neprazno podmnožico $U = \{ y_0, y_1, \dots, y_r \} \subset V$ lahko definiramo simpleks $L = \langle y_0, y_1, \dots, y_r \rangle$, ki ga imenujemo \emph{lice simpleksa} $S$. Če je lice $L$ $(n-1)$-simpleks, ga imenujemo \emph{glavno lice} simpleksa $S$. Unijo vseh glavnih lic simpleksa $S$ imenujemo \emph{rob} simpleksa $S$.
+Naj bo $V = \{x_0, x_1, \dots , x_n \} \subset \R^n$ afino neodvisna množica točk v evklidskem prostoru $\R^n$. Konveksni ogrinjači $S$ točk $x_0, x_1, \dots , x_n$ iz množice $V$ pravimo \emph{$n$-dimenzionalni simpleks} ali \emph{$n$-simpleks}. Točke $x_i$ imenujemo \emph{oglišča} simpleksa $S$. Ko želimo poudariti, katera oglišča določajo simpleks, lahko zapišemo tudi $S = \left < x_0, \dots, x_n \right >$. Za vsako neprazno podmnožico $U = \{ y_0, y_1, \dots, y_r \} \subset V$ lahko definiramo simpleks $L = \langle y_0, y_1, \dots, y_r \rangle$, ki ga imenujemo \emph{lice simpleksa} $S$. Če je lice $L$ $(n-1)$-simpleks, ga imenujemo \emph{glavno lice} simpleksa $S$. Unijo vseh glavnih lic simpleksa $S$ imenujemo \emph{rob} simpleksa $S$. Množico točk simpleksa $S$, ki ne ležijo na robu simpleksa imenujemo \emph{notranjost} simpleksa $S$.
 \end{definicija}
 
 Krajevni vektor vsake točke $x \in S = \left < x_0, \dots, x_n \right >$ lahko izrazimo s pomočjo oglišč kot vsoto:
@@ -235,7 +235,7 @@ in iz dejstva, da je koeficient $\alpha_i$ enak koeficientu $\beta_i$ za vsak $i
 
 Pri dokazovanju različnih rezultatov s pomočjo simpleksov si večkrat pomagamo z delitvijo simpleksa na manjše simplekse. Da imamo čim več nadzora pri dokazovanju, si pomagamo s pojmom simplicialnega kompleksa.
 \begin{definicija}
-Množica simpleksov $\pK$ v evklidskem prostoru $R^n$ je \emph{simplicialni kompleks}, če zadošča naslednjim pogojem:
+Končna množica simpleksov $\pK$ v evklidskem prostoru $R^n$ je \emph{simplicialni kompleks}, če zadošča naslednjim pogojem:
 \begin{enumerate}
 \item Vsako lice $L$ simpleksa $S \in \pK$ je tudi vsebovano v $\pK$.
 \item Neprazen presek dveh simpleksov iz $\pK$ je lice obeh simpleksov.
@@ -266,82 +266,63 @@ Simplicialni kompleks $\pT$ je \emph{triangulacija} simpleksa $S$, če je $|\pT|
 \caption{Slika prikazuje primer triangulacije (levo) in primer delitve, ki ni triangulacija (desno), saj presek osenčenih simpleksov ni lice obeh simpleksov.}
 \end{figure} 
 % ##################################################################
-Pri poljubnih delitvah simpleksa $S$ nimamo nadzora nad tem, kako veliki simpleksi nastopajo v delitvi. Želeli bi si poiskati take delitve, ki vsebujejo zgolj simplekse, ki so manjši od vnaprej predpisane vrednosti $\varepsilon > 0$. Take delitve lahko poiščemo s pomočjo pojma baricentra:
-\begin{definicija}
-Če je $S = \langle v_0, v_1, \dots, v_n \rangle$ simpleks, je \emph{baricenter} simpleksa $S$ točka $b_S$ z baricentričnimi koordinatami $\left( \frac{1}{n+1}, \frac{1}{n+1}, \dots, \frac{1}{n+1} \right )_b$.
-\end{definicija}
-S pomočjo baricentra lahko definiramo delitev simpleksa $S$, pri kateri imamo nadzor nad velikostjo delilnih simpleksov. Za mero, kako velik je simpleks, imamo več možnosti. Za mero bomo izbrali diameter, ki ga definiramo na naslednji način.
+Pri poljubnih delitvah simpleksa $S$ nimamo nadzora nad tem, kako veliki simpleksi nastopajo v delitvi. Želeli bi si poiskati take delitve, ki vsebujejo zgolj simplekse, ki so manjši od vnaprej predpisane vrednosti $\varepsilon > 0$.
+
+Najprej pa si poglejmo, kako lahko celoten prostor $\R^n$ razdelimo s simpleksi. Izberimo poljubni naravni števili $n$ in $k$, ter pozitivno realno število $a$. Za vsako naravno število $i<n$ definiramo bazne vektorje $\vec{e}_i := (0, \dots, 0, \frac{a}{k}, 0, \dots, 0)$, pri katerih je edina neničelna koordinata na $i$-tem mestu enaka $\frac{a}{k}$. Definirajmo množico $Z_k := \left\{ j \cdot \frac{a}{k}; j \in \Z \right\}$. Označimo z $Z_k^n$ kartezijski produkt $n$ kopij množice $Z_k$. Naj bo $P(n)$ množica permutaciji množice $\{0, 1, \dots, n \}$.
+Množica, ki vsebuje vse simplekse $S = \langle x_0, x_1, \dots, x_n \rangle$, ki zadoščajo pogojema:
+\begin{itemize}
+\item Množica točk $\{ x_0, x_1, \dots, x_n \}$ je podmnožica množice $Z_k^n$ in
+\item obstajata taki permutaciji $\sigma, \pi \in P(n)$, da je 
+\begin{equation*}
+x_{\sigma(1)} = x_{\sigma(0)} + \vec{e}_{\pi(0)}, x_{\sigma(2)} = x_{\sigma(1)} + \vec{e}_{\pi(1)}, \dots, x_{\sigma(n)} = x_{\sigma(n-1)} + \vec{e}_{\pi(n-1)},
+\end{equation*}
+\end{itemize}
+se imenuje \emph{$k$-ta mrežna delitev} prostora $\R^n$. Označimo jo z $M_{\frac{a}{k}}^n$.
+Da se izognemo pisanju permutacije $\sigma$, pri zapisu simpleksa $S$ uporabimo oglate oklepaje, torej $S = [ z_0, z_1, \dots, z_n]$, kjer je $z_i = x_{\sigma(i)}$ za vsak $i = 0, 1, \dots, n$. Z oglatimi oklepaji torej ponazorimo, da je vrstni red oglišč pomemben.
+\begin{trditev}
+Naj bo $S = [ z_0, z_1, \dots, z_n]$ simpleks iz $k$-te mrežne delitve prostora $\R^n$. Potem za vsako oglišče $z_i$ simpleksa $S$ obstaja natanko en tak simpleks $T = S[i]$ iz $k$-te mrežne delitve, da je 
+$$S \cap T = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle.$$
+\end{trditev}
+\begin{dokaz}
+Vemo, da obstaja taka permutacija $\pi \in P(n)$, da za oglišča simpleksa $S = [ z_0, z_1, \dots, z_n]$ veljajo naslednje enakosti:
+\begin{equation}\label{eq:orientiran-simpleks}
+z_1 = z_0 + \vec{e}_{\pi(0)}, z_2 = z_1 + \vec{e}_{\pi(1)}, \dots, z_n = z_{n-1} + \vec{e}_{\pi(n-1)}.
+\end{equation}
+Naj bo $i$-ti sosed $S[i]$ simpleksa $S$ definiran na nasledni način:
+\begin{enumerate}
+\item Če je $0 < i < n$,  je $S[i] = [ z_0, \dots, z_{i-1}, w_i, z_{i+1}, \dots, z_n ]$, kjer je $w_i = z_{i-1} + (z_{i+1} - z_i) = z_{i-1} + v_{\pi(i)}$.
+\item Če je $i = 0$, je $S[i] = [ z_1, \dots, z_n, w_0 ]$, kjer je $w_0 = z_n + (z_1 - z_0) = z_{i-1} + v_{\pi(0)}$.
+\item Če je $i = n$, je $S[i] = [ w_n, z_0, \dots, z_{n-1} ]$, kjer je $w_n = z_0 + (z_{n+1} - z_n) = z_{i-1} + v_{\pi(n)}$.
+\end{enumerate}
+Prepričajmo se, da je definicija $i$-tega soseda dobra. Očitno je , da je
+$$S \cap S[i] = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle.$$
+Pokazati moramo, da je simpleks $S[i]$ vsebovan v $k$-ti mrežni delitvi prostora $\R^n$. Hitro lahko vidimo, da je za vsak $i = 0, 1, \dots, n$ $x_i$ vsebovan v množici $Z_k^n$. Poiščimo permutacijo, s pomočjo katere lahko oglišča simpleksa $S[i]$ zapišemo kot v enačbi \eqref{eq:orientiran-simpleks}. 
+ Definirajmo transpozicijo $\tau(i) \in P(n)$:
+\begin{enumerate}
+\item Če je $0 < i < n$, transpozicija $\tau$ med seboj zamenja $i$-ti in $(i+1)$-i element.
+\item Če je $i \in \{ 0, n \}$,  transpozicija $\tau$ med seboj zamenja prvi in zadnji element.
+\end{enumerate}
+Iskana permutacija je potem $\rho = \tau \circ \pi$.
+\end{dokaz}
+Naj bo $a>0$ realno število in $n$-simpleks $S = [x_0, x_1, \dots, x_n]$, kjer ima za vsak $i = 0, 1, dots, n$ oglišče $x_i$ edino neničelno koordinato na $i$-tem mestu enako $a$. Poglejmo si triangulacijo simpleksa $S$, ki vsebuje vse take $n$-simplekse iz mrežne triangulacije prostora $\R^n$, ki so vsebovani v simpleksu $S$. Naj bo $R = [y_0, y_1, \dots, y_n]$ poljuben $n$-simpleks v prostoru $\R^n$. Definirajmo homeomorfno preslikavo $h : S \to R$ s predpisom
+$$h \left( \sum_{i=0}^n t_i x_i \right) = \sum_{i=0}^n t_i y_i,$$
+kjer za vsak $i=0, 1, \dots, n$ realna števila $t_i$, zadoščajo pogojem $t_i \geq 0$ in $\sum_{i=0}^n t_i = 1$.
+S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Radi bi videli, da se v $k$-ti mrežni delitvi s povečevanjem števila $k$ delilni simpleksi zmanjšujejo.
+Za mero, kako velik je simpleks, imamo več možnosti. Izbrali bomo diameter, ki ga definiramo na naslednji način.
 \begin{definicija}
 Največjo razdaljo med dvema točkama simpleksa $S$ imenujemo \emph{diameter} simpleksa $S$. Torej,
 $$\diam(S) = \max \{ \dist(x, y); x, y \in S\}.$$
 \end{definicija}
-Poglejmo si eno od možnih delitev simpleksa $S$.
-\begin{definicija}
-\emph{Baricentrično delitev ali subdivizijo} $n$-simpleksa $S$ definiramo induktivno na dimenzijo simpleksa in jo označimo s $\sd(S)$. Baricentrična delitev $0$-simpleksa $S_0$ je množica, ki vsebuje samo simpleks $S_0$. Torej, $\sd(S_0) = \left \{ S_0 \right \}$. Za vsak $i = 0, 1, \dots, n$ lahko glavna lica $n$-simpleksa $S = \langle v_0, v_1, \dots, v_n \rangle$ označimo z $L_i = \langle v_0, v_1, \dots, v_{i-1}, v_{i+1}, \dots v_n \rangle$. Zapišimo unijo baricentričnih delitev vseh glavnih lic simpleksa $S$ na naslednji način:
-$$Z = \bigcup_{i = 0}^n \sd(L_i).$$
-Baricentrična delitev $n$-simpleksa $S$ vsebuje simplekse $R = \langle b_s , t_0, t_1, \dots, v_{n-1} \rangle$, kjer je $b_S$ baricenter simpleksa $S$, točke $t_0, t_1, \dots, t_{n-1}$ pa so oglišča nekega simpleksa $T$ iz množice $Z$. Opisano baricentrično delitev imenujemo tudi prva baricentrična delitev. Če vsak simpleks $P \in \sd(S)$ razdelimo z baricentrično delitvijo, dobimo drugo baricentrično delitev, ki jo zapišemo z $\sd^2(S)$. Postopek lahko nadaljujemo poljubno dolgo in tako za vsako naravno število $k \in \N$ konstruiramo $k$-to baricentrično delitev $\sd^k(S)$.
-\end{definicija}
-Prepričajmo se, da imamo pri baricentrični delitvi res nadzor nad tem, kako veliki simpleksi nastopajo v delitvi.
-
-% ####################   Primer subdivizije    ####################
-\begin{figure}[h]  
-\centering 
-% ####################   Simpleks S    ####################
-	\begin{subfigure}{0.4\linewidth} 
-	\centering 
-		\import{slike/}{simpleksS.tex}%
-		\caption{Simpleks $S$.}
-	\end{subfigure}
-	\vspace{0.5cm}
-% ####################   Prva subdivizija    ####################
-	\begin{subfigure}{0.4\linewidth} 
-	\centering 
-		\import{slike/}{subdivS.tex}%
-		\caption{Prva subdivizija.}
-	\end{subfigure}
-% ####################   Druga subdivizija    ####################
-	\begin{subfigure}[b]{0.4\linewidth}
-	\centering 
-		\import{slike/}{druga_subdivS.tex}%
-		\caption{Druga subdivizija.} 
-	\end{subfigure}
-	% ####################   Tretja subdivizija    ####################
-	\begin{subfigure}[b]{0.4\linewidth}
-	\centering 
-		\import{slike/}{tretja_subdivS.tex}%
-		\caption{Tretja subdivizija.}  
-	\end{subfigure}
-\caption{Slika prikazuje primer prve, druge in tretje subdivizije.}
-\end{figure} 
-%##############################################################
-\begin{trditev}\cite{hatcher}
-Pri baricentrični delitvi $\sd(S)$ $n$-simpleksa $S$ za vsak simpleks $R \in \sd(S)$ velja neenakost: 
-$$\diam(R) \leq \frac{n}{n+1} \diam(S).$$
-\end{trditev}
-
-\begin{dokaz}
-Najprej pokažimo, da je za neki simpleks $S = \langle v_0, v_1, \dots v_n \rangle$ diameter simpleksa enak dolžini najdaljše stranice simpleksa $S$. Poglejmo si dve točki $x, y \in S$. Razdaljo med njima izračunamo na naslednji način:
+Pokažimo, da je za neki simpleks $S = \langle v_0, v_1, \dots v_n \rangle$ diameter simpleksa enak dolžini najdaljše stranice simpleksa $S$. Poglejmo si dve točki $x, y \in S$. Razdaljo med njima izračunamo na naslednji način:
 $$\dist(x, y) = \| \vec{x} - \vec{y} \|.$$
 Krajevni vektor točke $y$ lahko zapišemo s pomočjo oglišč simpleksa:
 $$\| \vec{x} - \sum_{i=0}^n t_i \vec{v_i} \|,$$
 kar lahko preoblikujemo in ocenimo:
 $$\| \sum_{i=0}^n t_i (\vec{x} - \vec{v}_i)\| \leq \sum_{i=0}^n t_i \| (\vec{x} - \vec{v}_i) \| \leq \sum_{i=0}^n t_i \max_{i=0, \dots, n}(\| (\vec{x} - \vec{v}_i) \|) = \max_{i=0, \dots, n}(\| (\vec{x} - \vec{v}_i) \|).$$
 Ugotovili smo, da je razdalja največja, ko je $y$ oglišče simpleksa $S$. Zaradi simetričnosti razdalje mora biti za maksimizacijo razdalje tudi $x$ oglišče simpleksa.
-Sedaj lahko pokažemo, da za vsak simpleks $R \in \sd(S)$ velja neenakost $\diam(R) \leq \frac{n}{n + 1} \diam(S)$.
-Trditev bomo dokazovali z indukcijo na dimenzijo $n$ $n$-simpleksa $S$. Za $n = 0$ trditev očitno velja. Predpostavimo, da velja tudi za $(n-1)$-simpleks. Poglejmo si poljuben $n$-simpleks $T = \langle t_0, t_1, \dots, t_n \rangle \in \sd(S)$. Diameter simpleksa $T$ je enak dolžini njegove najdaljše stranice, zato si poglejmo razdaljo med poljubnima ogliščema $t_i$ in $t_j$ simpleksa $T$. Če sta obe oglišči različni od baricentra $b_S$ simpleksa $S$, ležita v nekem licu $L$ simpleksa $S$. Natančneje, ležita v nekem simpleksu iz baricentrične delitve lica $L$. Po indukcijski predpostavki je
-$$\dist(t_i, t_j) \leq \frac{n}{n + 1} \diam(L) \leq \frac{n}{n + 1} \diam(S).$$
-Kako pa je v primeru, ko je ena točka enaka baricentru? Brez izgube splošnosti predpostavimo, da je $t_i = b_S$. Razdalja med $b_S$ in $t_j$ je po premisleku zgoraj največja, ko je $t_j$ oglišče simpleksa $S$. Denimo, da je $t_j = v_k$. Označimo z $b_k$ baricenter lica $L_k = \langle v_0, \dots, v_{k-1}, v_{k+1}, \dots, v_n \rangle$, ki ima vse koordinate enake $\frac{1}{n}$, razen na $k$-tem mestu je baricentrična koordinata enaka $0$. Ocenimo sedaj razdaljo $\dist(b_S, v_k)$:
-$$\dist(b_S, v_i) = \|\vec{b}_S - \vec{v}_k \|.$$
-Krajevni vektor baricentra $b_S$ zapišimo s pomočjo točke $b_k$ kot $\vec{b}_S = \frac{1}{n+1} \vec{v}_k + \frac{n}{n+1} \vec{b}_k$ in računamo:
-\begin{align*}
-\|\vec{b}_S - \vec{v}_k \| &= \| \frac{1}{n+1} \vec{v}_k + \frac{n}{n+1} \vec{b}_k - \vec{v}_k \| \\
-&= \| -\frac{n}{n+1} \vec{v}_k + \frac{n}{n+1} \vec{b}_k\| \\
-&= \| \frac{n}{n+1} (\vec{b}_k - \vec{v}_k)\| \\
-&= \frac{n}{n+1} \|(\vec{b}_k - \vec{v}_k)\| \\
-& \leq \frac{n}{n+1} \diam(S).
-\end{align*}
-Ugotovili smo, da je razdalja med poljubnima ogliščema simpleksa $R \in \sd(S)$ manjša ali enaka kot $\frac{n}{n+1} \diam(S)$, iz česar sklepamo, da je $\diam(R) \leq \frac{n}{n+1} \diam(S)$ 
-\end{dokaz}
+Ker so dolžine vseh stranic vsakega simpleksa $R$ iz $k$-te mrežne delitve simpleksa $S$ za faktor $k$ manjše od stranic simpleksa $S$, velja $\diam(R) = \frac{1}{k} \cdot S$.
+
+
 Pri obravnavi triangulacij simpleksov lahko počnemo veliko stvari. Ena taka, ki bi se jo lahko spomnil celo otrok v vrtcu, je, da bi simplekse iz triangulacije pobarvali. Tako lahko dobimo zanimive slike. Mi bomo obravnavali lastnosti, ki jih opazimo pri barvanju oglišč določene triangulacije.
 \begin{definicija}[\protect{\cite[str.\ 9, definicija 1]{Ahlbach}}]
 Naj bo podan $n$-simpleks $S \in \R^n$ s triangulacijo $\pT$. Označimo množico oglišč triangulacije $\pT$ z $V$. Poljubno preslikavo $b : V \to \left \{0, 1, \dots, n \right \} $ imenujemo \emph{barvanje triangulacije} $\pT$. Za oglišče $v \in V$ pravimo številu $b(v)$ \emph{barva} ali \emph{oznaka} oglišča $v$.
@@ -377,6 +358,9 @@ Pri štetju popolno pobarvanih $(k - 1)$-simpleksov smo vsakega iz notranjosti s
 $$r \equiv \sum\limits_{R \in \pT} \alpha(R) \pmod 2.$$ 
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ lih.
 \end{proof}
+\begin{opomba}
+Ko v dokazu govorimo o popolno pobarvanih simpleksih, se nam lahko porodi vprašanje, kako bi pri pravih barvah vedeli, kateri $(k-1)$-simpleks je popolno pobarvan. V tem primeru, bi morali barve nekako urediti in bi rekli, da je popolno pobarvan $(k-1)$-simpleks tisti, ki ima oglišča pobarvana z vsemi barvami od prve pa do vključno $k$-te barve.
+\end{opomba}
 V posebnem izrek~\ref{izr:sperner} pove, da vsaka triangulacija simpleksa $S$ s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan simpleks $R$. Ker sta simpleksa $S$ in $R$ oba popolno pobarvana, si lahko predstavljamo, da se nekatere lastnosti prenesejo iz $S$ na $R$. To dejstvo lahko uporabimo pri dokazovanju nekaterih trditev in tudi za nas bo odigrala pomembno vlogo pri dokazu izreka~\ref{izr:PM}. 
 
 Poleg simpleksov obravnavamo tudi kocke. Z njimi si bomo pomagali pri dokazovanju nekaterih topoloških rezultatov. 

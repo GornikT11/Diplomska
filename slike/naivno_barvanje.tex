@@ -10,32 +10,37 @@
 
 \begin{document}
 
-	\begin{tikzpicture}[scale=0.5]
-		\draw (0, 0) -- (8, 0) -- (8, 8) -- (0, 8) -- (0, 0);
-		\draw (4, 0) -- (4, 8);
-		\draw (0, 4) -- (8, 4);
-		\draw (0, 0) -- (8, 8);
-		\draw (0, 8) -- (8, 0);
-
-		\filldraw[blue] (0, 0) circle (8pt);
-		\filldraw[red] (4, 0) circle (8pt);
-		\filldraw[red] (8, 0) circle (8pt);
-		\filldraw[blue] (0, 4) circle (8pt);
-		\filldraw[red] (4, 4) circle (8pt);
-		\filldraw[green] (8, 4) circle (8pt);
-		\filldraw[red] (0, 8) circle (8pt);
-		\filldraw[green] (4, 8) circle (8pt);
-		\filldraw[green] (8, 8) circle (8pt);
-		
-		\draw (0, 0) circle (8pt);
-		\draw (4, 0) circle (8pt);
-		\draw (8, 0) circle (8pt);
-		\draw (0, 4) circle (8pt);
-		\draw (4, 4) circle (8pt);
-		\draw (8, 4) circle (8pt);
-		\draw (0, 8) circle (8pt);
-		\draw (4, 8) circle (8pt);
-		\draw (8, 8) circle (8pt);
+\begin{tikzpicture}
+		\foreach \x in {0,2,4,6}
+		{   \foreach \y in {0,2,4,6}
+		    {  \fill (\x,\y) circle (5pt);
+		       \draw (0, \y ) -- (6, \y );
+		       \draw (\x ,0) -- (\x ,6);
+		       \draw ( 0 , \x) -- ( 6 - \x ,6);
+		       \draw ( \x , 0) -- ( 6 ,6 - \x );
+		    }
+		}			
+		\filldraw[blue] (0, 0) circle (5pt);
+		\filldraw[blue] (2, 0) circle (5pt);
+		\filldraw[red] (4, 0) circle (5pt);
+		\filldraw[red] (6, 0) circle (5pt);
+		\filldraw[red] (0, 2) circle (5pt);
+		\filldraw[blue] (2, 2) circle (5pt);
+		\filldraw[red] (4, 2) circle (5pt);
+		\filldraw[green] (6, 2) circle (5pt);
+		\filldraw[blue] (0, 4) circle (5pt);
+		\filldraw[red] (2, 4) circle (5pt);
+		\filldraw[red] (4, 4) circle (5pt);
+		\filldraw[red] (6, 4) circle (5pt);
+		\filldraw[red] (0, 6) circle (5pt);
+		\filldraw[red] (2, 6) circle (5pt);
+		\filldraw[green] (4, 6) circle (5pt);
+		\filldraw[green] (6, 6) circle (5pt);
+		\foreach \x in {0,2,4,6}
+		{   \foreach \y in {0,2,4,6}
+		    {  \draw (\x,\y) circle (5pt);
+		    }
+		}	
 	\end{tikzpicture}
 	
 \end{document}
