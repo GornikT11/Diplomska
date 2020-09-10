@@ -272,7 +272,7 @@ Najprej pa si poglejmo, kako lahko celoten prostor $\R^n$ razdelimo s simpleksi.
 Množica, ki vsebuje vse simplekse $S = \langle x_0, x_1, \dots, x_n \rangle$, ki zadoščajo pogojema:
 \begin{itemize}
 \item Množica točk $\{ x_0, x_1, \dots, x_n \}$ je podmnožica množice $Z_k^n$ in
-\item obstajata taki permutaciji $\sigma, \pi \in P(n)$, da je 
+\item obstajata taki permutaciji $\sigma \in P(n)$ in $\pi \in P(n-1)$, da je 
 \begin{equation*}
 x_{\sigma(1)} = x_{\sigma(0)} + \vec{e}_{\pi(0)}, x_{\sigma(2)} = x_{\sigma(1)} + \vec{e}_{\pi(1)}, \dots, x_{\sigma(n)} = x_{\sigma(n-1)} + \vec{e}_{\pi(n-1)},
 \end{equation*}
@@ -297,17 +297,18 @@ Naj bo $i$-ti sosed $S[i]$ simpleksa $S$ definiran na nasledni način:
 Prepričajmo se, da je definicija $i$-tega soseda dobra. Očitno je , da je
 $$S \cap S[i] = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle.$$
 Pokazati moramo, da je simpleks $S[i]$ vsebovan v $k$-ti mrežni delitvi prostora $\R^n$. Hitro lahko vidimo, da je za vsak $i = 0, 1, \dots, n$ $x_i$ vsebovan v množici $Z_k^n$. Poiščimo permutacijo, s pomočjo katere lahko oglišča simpleksa $S[i]$ zapišemo kot v enačbi \eqref{eq:orientiran-simpleks}. 
- Definirajmo transpozicijo $\tau(i) \in P(n)$:
+ Definirajmo permutacijo $\tau(i) \in P(n)$:
 \begin{enumerate}
-\item Če je $0 < i < n$, transpozicija $\tau$ med seboj zamenja $i$-ti in $(i+1)$-i element.
-\item Če je $i \in \{ 0, n \}$,  transpozicija $\tau$ med seboj zamenja prvi in zadnji element.
+\item Če je $0 < i < n$, je permutacija $\tau$ transpozicija, ki med seboj zamenja $i$-ti in $(i+1)$-i element, ostale pa pusti pri miru.
+\item Če je $i = 0$, permutacija $\tau$ je cikel, ki vse elemente premakne za eno mesto nazaj, prvi element pa postavi na konec.
+\item Če je $i = 0$, permutacija $\tau$ je cikel, ki vse elemente premakne za eno mesto naprej, zadnji element pa postavi na začetek.
 \end{enumerate}
 Iskana permutacija je potem $\rho = \tau \circ \pi$.
 \end{dokaz}
-Naj bo $a>0$ realno število in $n$-simpleks $S = [x_0, x_1, \dots, x_n]$, kjer ima za vsak $i = 0, 1, dots, n$ oglišče $x_i$ edino neničelno koordinato na $i$-tem mestu enako $a$. Poglejmo si triangulacijo simpleksa $S$, ki vsebuje vse take $n$-simplekse iz mrežne triangulacije prostora $\R^n$, ki so vsebovani v simpleksu $S$. Naj bo $R = [y_0, y_1, \dots, y_n]$ poljuben $n$-simpleks v prostoru $\R^n$. Definirajmo homeomorfno preslikavo $h : S \to R$ s predpisom
+Naj bo $a>0$ realno število in $n$-simpleks $S = [x_0, x_1, \dots, x_n]$, kjer ima za vsak $i = 0, 1, \dots, n$ oglišče $x_i$ edino neničelno koordinato na $i$-tem mestu enako $a$. Triangulacija sompleksa $S$ je simplicialni kompleks, ki vsebuje vse take $n$-simplekse iz mrežne triangulacije $M_\frac{a}{k}^n$ prostora $\R^n$, ki so vsebovani v simpleksu $S$. Naj bo $R = [y_0, y_1, \dots, y_n]$ poljuben $n$-simpleks v prostoru $\R^n$. Definirajmo homeomorfno preslikavo $h : S \to R$ s predpisom
 $$h \left( \sum_{i=0}^n t_i x_i \right) = \sum_{i=0}^n t_i y_i,$$
 kjer za vsak $i=0, 1, \dots, n$ realna števila $t_i$, zadoščajo pogojem $t_i \geq 0$ in $\sum_{i=0}^n t_i = 1$.
-S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Radi bi videli, da se v $k$-ti mrežni delitvi s povečevanjem števila $k$ delilni simpleksi zmanjšujejo.
+S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Ker število $a$ ne vpliva na mrežno delitev simpleksa $R$ jo označimo kar $M_k^n$. Radi bi videli, da se v $k$-ti mrežni delitvi s povečevanjem števila $k$ delilni simpleksi zmanjšujejo.
 Za mero, kako velik je simpleks, imamo več možnosti. Izbrali bomo diameter, ki ga definiramo na naslednji način.
 \begin{definicija}
 Največjo razdaljo med dvema točkama simpleksa $S$ imenujemo \emph{diameter} simpleksa $S$. Torej,
@@ -320,7 +321,7 @@ $$\| \vec{x} - \sum_{i=0}^n t_i \vec{v_i} \|,$$
 kar lahko preoblikujemo in ocenimo:
 $$\| \sum_{i=0}^n t_i (\vec{x} - \vec{v}_i)\| \leq \sum_{i=0}^n t_i \| (\vec{x} - \vec{v}_i) \| \leq \sum_{i=0}^n t_i \max_{i=0, \dots, n}(\| (\vec{x} - \vec{v}_i) \|) = \max_{i=0, \dots, n}(\| (\vec{x} - \vec{v}_i) \|).$$
 Ugotovili smo, da je razdalja največja, ko je $y$ oglišče simpleksa $S$. Zaradi simetričnosti razdalje mora biti za maksimizacijo razdalje tudi $x$ oglišče simpleksa.
-Ker so dolžine vseh stranic vsakega simpleksa $R$ iz $k$-te mrežne delitve simpleksa $S$ za faktor $k$ manjše od stranic simpleksa $S$, velja $\diam(R) = \frac{1}{k} \cdot S$.
+Ker so dolžine vseh stranic vsakega simpleksa $R$ iz $k$-te mrežne delitve simpleksa $S$ za faktor $k$ manjše od stranic simpleksa $S$, velja $\diam(R) = \frac{1}{k} \cdot \diam(S)$.
 
 
 Pri obravnavi triangulacij simpleksov lahko počnemo veliko stvari. Ena taka, ki bi se jo lahko spomnil celo otrok v vrtcu, je, da bi simplekse iz triangulacije pobarvali. Tako lahko dobimo zanimive slike. Mi bomo obravnavali lastnosti, ki jih opazimo pri barvanju oglišč določene triangulacije.
@@ -339,29 +340,29 @@ Pravimo, da je barvanje triangulacije $\pT$ $n$-simpleksa $S$ \emph{Spernerjevo}
 \end{figure}
 Za $n$-simpleks, ki ima oglišča pobarvana z vsemi barvami iz množice $\{ 0, 1, \dots, n \}$, pravimo, da je \emph{popolno pobarvan}. Naslednji izrek izpostavi eno zanimivo lastnost takega barvanja.
 \begin{lema}[Spernerjeva lema~\protect{\cite[str.\ 10, izrek 4]{Ahlbach}}]\label{izr:sperner}
-Vsaka triangulacija $k$-simpleksa s Spernerjevim barvanjem vsebuje liho število popolno pobarvanih $k$-simpleksov.
+Vsaka mrežna delitev $n$-simpleksa s Spernerjevim barvanjem vsebuje liho število popolno pobarvanih $n$-simpleksov.
 \end{lema}
 \begin{proof}
-Naj bo $S$ $k$-simpleks in naj bo $\pT$ njegova triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $k$ simpleksa $S$.
+Naj bo $S$ $n$-simpleks in naj bo $M_k^n$ $k$-ta mrežna delitev. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ simpleksa $S$.
 
-Baza indukcije ($k = 0$).
+Baza indukcije ($n = 0$).
 V tem primeru lema očitno drži, saj je $0$-simpleks točka. Pri Spernerjevem barvanju točke imamo samo eno možnost in tako dobimo en popolno pobarvan $0$-simpleks.
 
-Indukcijska predpostavka ($k - 1$).
-Predpostavimo, da lema drži v dimenziji $(k - 1)$. Torej v vsaki triangulaciji $(k - 1)$-simpleksa s Spernerjevim barvanjem najdemo liho število $(k - 1)$-simpleksov, ki so popolno pobarvani.
+Indukcijska predpostavka ($n - 1$).
+Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki mrežni delitvi $(n - 1)$-simpleksa s Spernerjevim barvanjem najdemo liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
 
-Indukcijski korak ($(k - 1) \Longrightarrow k$).
-Poskusimo dokazati pravilnost izjave tudi v dimenziji $k$. Izberimo poljubno triangulacijo $\pT$ $k$-simpleksa $S$. Naj bodo oglišča triangulacije $\pT$ pobarvana s Spernerjevim barvanjem. Po indukcijski predpostavki vemo, da je število $r$ popolno pobarvanih $(k-1)$-simpleksov na robu simpleksa $S$ liho. Označimo število vseh popolno pobarvanih $k$-simpleksov iz $\pT$ s $p$. Pokazali bomo, da velja $p \equiv r \pmod 2$.
-Definirajmo funkcijo $\alpha$, ki za vsak $k$-simpleks pove, koliko popolno pobarvanih $(k-1)$ simpleksov vsebuje. Za vsak $k$-simpleks $R$ iz triangulacije $\pT$ lahko preštejemo, koliko popolno pobarvanih $(k-1)$-simpleksov vsebuje. Vsak popolno pobarvan $k$-simpleks iz triangulacije $\pT$ simpleksa $S$ vsebuje natanko en popolno pobarvan $(k-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $k$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, k-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana $(k-1)$-simpleksa. Ostali $k$-simpleksi ne vsebujejo nobenega popolno pobarvanega $(k - 1)$-simpleksa. Iz zgornjega lahko sklepamo, da je 
-$$p \equiv \sum\limits_{R \in \pT} \alpha(R) \pmod 2.$$
-Pri štetju popolno pobarvanih $(k - 1)$-simpleksov smo vsakega iz notranjosti simpleksa $S$ šteli dvakrat, tiste iz roba $S$ pa samo enkrat. Zato velja tudi 
-$$r \equiv \sum\limits_{R \in \pT} \alpha(R) \pmod 2.$$ 
+Indukcijski korak ($(n - 1) \Longrightarrow n$).
+Poskusimo dokazati pravilnost izjave tudi v dimenziji $n$. Izberimo $k$-to mrežno delitev $M_k^n$ $n$-simpleksa $S$. Naj bodo oglišča delitve $M_k^n$ pobarvana s Spernerjevim barvanjem. Po indukcijski predpostavki vemo, da je število $r$ popolno pobarvanih $(n-1)$-simpleksov na robu simpleksa $S$ liho. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $M_k^n$ s $p$. Pokazali bomo, da velja $p \equiv r \pmod 2$.
+Definirajmo funkcijo $\alpha$, ki za vsak $n$-simpleks pove, koliko popolno pobarvanih $(n-1)$ simpleksov vsebuje. Za vsak $n$-simpleks $R$ iz delitve $M_k^n$ lahko preštejemo, koliko popolno pobarvanih $(n-1)$-simpleksov vsebuje. Vsak popolno pobarvan $n$-simpleks iz triangulacije $M_k^n$ simpleksa $S$ vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana $(n-1)$-simpleksa. Ostali $n$-simpleksi ne vsebujejo nobenega popolno pobarvanega $(n - 1)$-simpleksa. Iz zgornjega lahko sklepamo, da je 
+$$p \equiv \sum\limits_{R \in M_k^n} \alpha(R) \pmod 2.$$
+Pri štetju popolno pobarvanih $(n - 1)$-simpleksov smo vsakega iz notranjosti simpleksa $S$ šteli dvakrat, tiste iz roba $S$ pa samo enkrat. Zato velja tudi 
+$$r \equiv \sum\limits_{R \in M_k^n} \alpha(R) \pmod 2.$$ 
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ lih.
 \end{proof}
 \begin{opomba}
-Ko v dokazu govorimo o popolno pobarvanih simpleksih, se nam lahko porodi vprašanje, kako bi pri pravih barvah vedeli, kateri $(k-1)$-simpleks je popolno pobarvan. V tem primeru, bi morali barve nekako urediti in bi rekli, da je popolno pobarvan $(k-1)$-simpleks tisti, ki ima oglišča pobarvana z vsemi barvami od prve pa do vključno $k$-te barve.
+Ko v dokazu govorimo o popolno pobarvanih simpleksih, se nam lahko porodi vprašanje, kako bi pri pravih barvah vedeli, kateri $(n-1)$-simpleks je popolno pobarvan. V tem primeru, bi morali barve nekako urediti in bi rekli, da je popolno pobarvan $(n-1)$-simpleks tisti, ki ima oglišča pobarvana z vsemi barvami od prve pa do vključno $n$-te barve.
 \end{opomba}
-V posebnem izrek~\ref{izr:sperner} pove, da vsaka triangulacija simpleksa $S$ s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan simpleks $R$. Ker sta simpleksa $S$ in $R$ oba popolno pobarvana, si lahko predstavljamo, da se nekatere lastnosti prenesejo iz $S$ na $R$. To dejstvo lahko uporabimo pri dokazovanju nekaterih trditev in tudi za nas bo odigrala pomembno vlogo pri dokazu izreka~\ref{izr:PM}. 
+V posebnem izrek~\ref{izr:sperner} pove, da vsaka mrežna delitev simpleksa $S$ s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan simpleks $R$. Ker sta simpleksa $S$ in $R$ oba popolno pobarvana, si lahko predstavljamo, da se nekatere lastnosti prenesejo iz $S$ na $R$. To dejstvo lahko uporabimo pri dokazovanju nekaterih trditev in tudi za nas bo odigrala pomembno vlogo pri dokazu izreka~\ref{izr:PM}. 
 
 Poleg simpleksov obravnavamo tudi kocke. Z njimi si bomo pomagali pri dokazovanju nekaterih topoloških rezultatov. 
 \begin{definicija}
@@ -373,46 +374,11 @@ Kocka $C = [-a, a]^n$ je omejena z \emph{lici}. Za vsako naravno število $i < n
 $C_i^- = \{x_0, \dots, x_{i - 1}, -a, x_{i - 1}, \dots, x_n\}$ in  $C_i^+ = \{x_0, \dots, x_{i - 1}, a, x_{i - 1}, \dots, x_n\}$. Rob  kocke je unija vseh lic.
 \end{definicija}
 Lastnosti, ki smo jih obravnavali pri simpleksih, bomo posplošili na kocke. Nekatere lastnosti izgledajo skoraj enako za simplekse in za kocke, a, kot bomo videli, moramo biti pri posploševanju previdni, saj lahko pride do sprememb ravno tam, kjer jih ne pričakujemo.
-Baricentrično delitev simpleksa smo definirali na tak način, da velja tudi za kocke. Le baricenter kocke definiramo posebej.
+Definicija mrežne delitve za kocke je še enostavnejša, kot v primeru simpleksov.
 \begin{definicija}
-Za poljubno pozitivno realno število $a$ in naravno število $n$ imenujemo točko $(0, \dots, 0) \in \R^n$ baricenter kocke $C = \left [ -a, a \right ]^n$.
+Za poljubno pozitivno realno število $a$ in naravni števili $n$ in $k$ naj bo $M_{\frac{a}{k}}^n$  $k$-ta mrežma delitev prostora $\R^n$. Mrežna delitev kocke $C = [-a, a]^n$ je tak simplicialni kompleks, ki vsebuje vse $n$ simplekse, ki so vsebovani v delitvi $M_{\frac{a}{k}}^n$ in v kocki $C$. Ker iz kocke razberemo, katero število $a$ nastopa v mrežni delitvi, označimo $k$-to mrežno delitev kocke z oznako $M_k^n$.
 \end{definicija}
-Baricentrična subdivizija kocke je definirana enako kot v primeru simpleksov.
-\begin{definicija}
-\emph{Baricentrično delitev ali subdivizijo} $n$-kocke $C$ definiramo induktivno na dimenzijo kocke in jo označimo s $\sd(C)$. Ker je $0$-kocka $C_0$ samo točka, je baricentrična delitev množica, ki vsebuje samo to točko. Torej, $\sd(C_0) = \left \{ C_0 \right \}$. Naj bo $Z$ množica, ki vsebuje vse simplekse iz baricentričnih delitev vseh lic kocke $C$.
-Baricentrična delitev $n$-kocke $C$ vsebuje simplekse $R = \langle b_s , t_0, t_1, \dots, v_{n-1} \rangle$, kjer je $b$ baricenter kocke $C$, točke $t_0, t_1, \dots, t_{n-1}$ pa so oglišča nekega simpleksa $T$ iz množice $Z$. Opisano baricentrično delitev imenujemo tudi prva baricentrična delitev. Če vsak simpleks $P \in \sd(S)$ razdelimo z baricentrično delitvijo, dobimo drugo baricentrično delitev, ki jo zapišemo s $\sd^2(C)$. Postopek lahko nadaljujemo poljubno dolgo in tako za vsako naravno število $k \in \N$ konstruiramo $k$-to baricentrično delitev $\sd^k(C)$.
-\end{definicija}
-% ####################   Primer subdivizije    ####################
-\begin{figure}[h]  
-\centering 
-% ####################   Simpleks S    ####################
-	\begin{subfigure}{0.4\linewidth} 
-		\centering 
-		\import{slike/}{kockaC}
-		\caption{Kocka $C$.}
-	\end{subfigure}
-	\vspace{0.5cm}
-% ####################   Prva subdivizija    ####################
-	\begin{subfigure}{0.4\linewidth} 
-	\centering 
-		\import{slike/}{subdivC}
-		\caption{Prva subdivizija.}
-	\end{subfigure}
-% ####################   Druga subdivizija    ####################
-	\begin{subfigure}[b]{0.4\linewidth}
-	\centering 
-		\import{slike/}{druga_subdivC}
-		\caption{Druga subdivizija.}
-	\end{subfigure}
-	% ####################   Tretja subdivizija    ####################
-	\begin{subfigure}[b]{0.4\linewidth}
-	\centering 
-		\import{slike/}{tretja_subdivC}
-		\caption{Tretja subdivizija.}
-	\end{subfigure}
-\caption{Slika prikazuje primer prve, druge in tretje subdivizije kocke $C$.}
-\end{figure} 
-%########################################################
+
 Tako kot pri simpleksih lahko tudi pri kockah barvamo oglišča triangulacije.
 \begin{definicija}
 Naj bo podana $n$-kocka $C \in \R^n$ s triangulacijo $\pT$. Označimo množico vseh oglišč triangulacije $\pT$ z $V$. \emph{Barvanje triangulacije} $\pT$ je preslikava $b : V \to \left \{0, 1, \dots, n \right \}$.
@@ -469,13 +435,13 @@ Naj bo $a$ poljubno pozitivno realno število in naj bo $\I^n := [-a, a]^n$ kock
 \end{figure}
 %##########################################################
 \begin{dokaz}
-Naj zvezna preslikava $f : \I^n \to  \R^n$ zadošča pogoju~\eqref{pog:PM}. Za vsako število $i \in \{ 1, \dots, n\}$ definiramo množici $H_i\ ^- := f_i^{-1} (-\infty, 0]$ in $H_i\ ^+ := f_i^{-1} [0, -\infty)$. Najprej bomo pokazali, da je za dokaz izreka dovolj, če za vsako naravno število $k \in \N$ poiščemo $n$-simpleks $S_k$ iz $k$-te baricentrične delitve $\sd^k(S)$ z lastnostjo 
+Naj zvezna preslikava $f : \I^n \to  \R^n$ zadošča pogoju~\eqref{pog:PM}. Za vsako število $i \in \{ 1, \dots, n\}$ definiramo množici $H_i\ ^- := f_i^{-1} (-\infty, 0]$ in $H_i\ ^+ := f_i^{-1} [0, -\infty)$. Najprej bomo pokazali, da je za dokaz izreka dovolj, če za vsako naravno število $k \in \N$ poiščemo $n$-simpleks $S_k$ iz $k$-te mrežne delitve kocke $M_k^n$ z lastnostjo 
 \begin{equation}\label{eq:nonempty}
 S_k \cap H_i^- \neq \emptyset \neq S_k \cap H_i^+, \text{ za vsak } i \in \{ 1, \dots, n \}.
 \end{equation}
 Kasneje bomo pokazali, da taki simpleksi res obstajajo.
 
-Pokažimo torej, da obstoj takih simpleksov res zaključi dokaz. Recimo, da je za vsak $k \in \N$ $n$-simpleks $S_k \in \sd^k(S)$ z lastnostjo~\eqref{eq:nonempty}. V vsakem simpleksu $S_k$ si lahko izberemo točko $x_k$ in tako dobimo neskončno zaporedje $\left ( x_k \right ) _{k = 1}^{\infty}$. Ker zaporedje leži v kompaktnem prostoru $\I^n$, obstaja konvergentno podzaporedje $\left ( x_{k_j} \right ) _{j = 1}^{\infty}$ z limito $c \in \I^n$. Izberimo si neki $i \in \left \{1, 2, \dots, n\right \}$. Zaradi lastnosti ~\eqref{eq:nonempty} lahko za vsak $j \in \N$ poiščemo točki $z_j \in S_{k_j} \cap H_i^-$ in $w_j \in S_{k_j} \cap H_i^+$. Ker velja $\lim\limits_{j \to \infty} \diam(S_{k_j}) = 0$, je limita  $\lim\limits_{j \to \infty} z_j = \lim\limits_{j \to \infty} w_j = \lim\limits_{j \to \infty} x_{k_j} = c$ (slika~\ref{fig:istalimita}). Funkcija $f$ je zvezna, zato je tudi zaporedje $f_i(z_j)$ konvergentno z limito $f_i(c)$. Členi tega zaporedja so vsi manjši ali enaki nič, saj leži zaporedje v množici $H_i^-$, zato je tudi $f_i(c) \leq 0$. Podobno lahko sklepamo, da je zaporedje $f_i(w_j)$ konvergentno z limito $f_i(c)$. Ker so vsi členi $f_i(w_j)$ nenegativni, je tudi limita $f_i(c) \geq 0$. Ugotovili smo, da je $0 \leq f_i(c) \leq 0$, torej je $f_i(c) = 0$. Razmislek velja za vsak $i \in \left \{1, 2, \dots, n\right \}$, zato velja $f(c) = \0$.
+Pokažimo torej, da obstoj takih simpleksov res zaključi dokaz. Recimo, da je za vsak $k \in \N$ $n$-simpleks $S_k \in M_k^n$ z lastnostjo~\eqref{eq:nonempty}. V vsakem simpleksu $S_k$ si lahko izberemo točko $x_k$ in tako dobimo neskončno zaporedje $\left ( x_k \right ) _{k = 1}^{\infty}$. Ker zaporedje leži v kompaktnem prostoru $\I^n$, obstaja konvergentno podzaporedje $\left ( x_{k_j} \right ) _{j = 1}^{\infty}$ z limito $c \in \I^n$. Izberimo si neki $i \in \left \{1, 2, \dots, n\right \}$. Zaradi lastnosti ~\eqref{eq:nonempty} lahko za vsak $j \in \N$ poiščemo točki $z_j \in S_{k_j} \cap H_i^-$ in $w_j \in S_{k_j} \cap H_i^+$. Ker velja $\lim\limits_{j \to \infty} \diam(S_{k_j}) = 0$, je limita  $\lim\limits_{j \to \infty} z_j = \lim\limits_{j \to \infty} w_j = \lim\limits_{j \to \infty} x_{k_j} = c$ (slika~\ref{fig:istalimita}). Funkcija $f$ je zvezna, zato je tudi zaporedje $f_i(z_j)$ konvergentno z limito $f_i(c)$. Členi tega zaporedja so vsi manjši ali enaki nič, saj leži zaporedje v množici $H_i^-$, zato je tudi $f_i(c) \leq 0$. Podobno lahko sklepamo, da je zaporedje $f_i(w_j)$ konvergentno z limito $f_i(c)$. Ker so vsi členi $f_i(w_j)$ nenegativni, je tudi limita $f_i(c) \geq 0$. Ugotovili smo, da je $0 \leq f_i(c) \leq 0$, torej je $f_i(c) = 0$. Razmislek velja za vsak $i \in \left \{1, 2, \dots, n\right \}$, zato velja $f(c) = \0$.
 %####################     Konvergenca točk v simpleksih     #####################
 \begin{figure}[h!]
 	\centering
@@ -483,7 +449,7 @@ Pokažimo torej, da obstoj takih simpleksov res zaključi dokaz. Recimo, da je z
 	\caption{Na sliki modre točke predstavljajo točke iz množice $H_i^+$, rdeče pa točke iz množice $H_i^-$. Ko se simpleksi zmanjšujejo, sta točki vedno bližje, zato imata zaporedji teh točk isto limito.}\label{fig:istalimita}
 \end{figure}
 %###############################################################
-Dokazati moramo še, da taki simpleksi $S_k$ res obstajajo. Tudi to bomo dokazovali v dveh delih. Najprej bomo definirali barvanje triangulacije kocke, nato pa bomo v prvem delu pokazali, da imajo popolno pobarvani simpleksi lastnost~\eqref{eq:nonempty}. Kasneje bomo pokazali, da da vsaka triangulacija $\sd^k(S)$, ki ima vozlišča pobarvana z barvanjem $\varphi$ vsebuje vsaj en popolno pobarvan simpleks $S$.
+Dokazati moramo še, da taki simpleksi $S_k$ res obstajajo. Tudi to bomo dokazovali v dveh delih. Najprej bomo definirali barvanje triangulacije kocke, nato pa bomo v prvem delu pokazali, da imajo popolno pobarvani simpleksi lastnost~\eqref{eq:nonempty}. Kasneje bomo pokazali, da vsaka triangulacija $M_k^n$, ki ima vozlišča pobarvana z barvanjem $\varphi$ vsebuje vsaj en popolno pobarvan simpleks $S$.
 Omenjeno barvanje $\varphi$ triangulacije $n$-kocke $\I^n$ z množico oglišč $V$ definiramo na naslednji način:
 $$\varphi : V \to \left \{ 0, 1, \dots, n \right \}$$
 $$\varphi(x) = \max \left \{ j : x \in \bigcap_{i=0}^j F_i^+\right \}$$
@@ -502,10 +468,10 @@ Predpostavimo, da vsaka triangulacija $\pT_k$ kocke $\I^{n-1}$, kjer vozlišča 
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$).
 Prepričajmo se, da poljubna triangulacija $\pT_k$ $n$-kocke $\I^n$ vsebuje liho mnogo popolno pobarvanih $n$-simpleksov. Lice simpleksa, ki leži na robu koncke $\I^n$ je lahko popolno pobarvano samo v primeru, ko leži na licu $\I_n^-$. Po indukcijski predpostavki je število $r$ takih lic liho. 
-Definirajmo funkcijo $\alpha$, ki za vsak $k$-simpleks pove, koliko popolno pobarvanih $(k-1)$ simpleksov vsebuje. Za vsak $k$-simpleks $R$ iz triangulacije $\sd^k(S)$ lahko preštejemo, koliko popolno pobarvanih $(k-1)$-simpleksov vsebuje. Vsak popolno pobarvan $k$-simpleks iz triangulacije $\sd^k(S)$ kocke $\I^n$ vsebuje natanko en popolno pobarvan $(k-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $k$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, k-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi ne vsebujejo popolno pobarvanih $(k - 1)$-simpleksov. Iz zgornjega lahko sklepamo, da je 
-$$p \equiv \sum\limits_{R \in \sd^k(S)} \alpha(R) \pmod 2.$$
+Definirajmo funkcijo $\alpha$, ki za vsak $k$-simpleks pove, koliko popolno pobarvanih $(k-1)$ simpleksov vsebuje. Za vsak $k$-simpleks $R$ iz triangulacije $M_k^n$ lahko preštejemo, koliko popolno pobarvanih $(k-1)$-simpleksov vsebuje. Vsak popolno pobarvan $k$-simpleks iz triangulacije $M_k^n$ kocke $\I^n$ vsebuje natanko en popolno pobarvan $(k-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $k$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, k-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi ne vsebujejo popolno pobarvanih $(k - 1)$-simpleksov. Iz zgornjega lahko sklepamo, da je 
+$$p \equiv \sum\limits_{R \in M_k^n} \alpha(R) \pmod 2.$$
 Pri štetju popolno pobarvanih $(k - 1)$-simpleksov smo vsakega iz notranjosti simpleksa $S$ šteli dvakrat, tiste iz roba $S$ pa samo enkrat. Zato velja tudi 
-$$r \equiv \sum\limits_{R \in \sd^k(S)} \alpha(R) \pmod 2.$$ 
+$$r \equiv \sum\limits_{R \in M_k^n} \alpha(R) \pmod 2.$$ 
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ lih.
 \end{dokaz}
 
@@ -710,7 +676,7 @@ Sedaj znamo razširiti zvezno preslikavo iz kompaktne množice na cel prostor $\
 Poglejmo si identično preslikavo $f : \partial \I^n \to \I^n \setminus \{ \0 \}$. Po izreku \ref{izr:PM} ne obstaja zvezna razširitev $F : \I^n \to \I^n \setminus \{ \0 \}$, saj mora obstajati $x \in \I^n$, da je $F(x) = \0$. 
 \end{primer}
 
-V posebnih primerih obstaja taka razširitev preslikave, ki se izogne določeni točki. Brez izgube splošnosti bomo pokazali, da obstajajo pogoji, ki nam zagotavljajo zvezno razširitev preslikave, ki noben element definicijskega območja ne slika v $\0$. Preden navedemo pogoje, pa si poglejmo nekaj lastnosti preslikav, ki so ključne pri dokazu.
+V posebnih primerih obstaja taka razširitev preslikave, ki se izogne določeni točki. Brez izgube splošnosti bomo pokazali, da obstajajo pogoji, ki nam zagotavljajo zvezno razširitev preslikave, ki noben element definicijskega območja ne slika v $\0$. Preden navedemo pogoje, pa si poglejmo pomembno lastnost preslikav, ki je ključna pri dokazu.
 
 \begin{trditev}[\protect{\cite{zvjeenakzv}}]\label{trd:zvjeenakzv}
 Zvezna funkcija, definirana na kompaktni množici, je enakomerno zvezna.
@@ -739,7 +705,7 @@ Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f 
 \end{lema}
 
 \begin{dokaz}
-Določimo poljubno število $\varepsilon > 0$ in množici $X$ in $Y$, kot v lemi \ref{lem:razsiritev-nic}. Ker je množica $X \cup Y \subset R^n$ omejena, obstaja realno število $a > 0$, da je unija množic $X \cup Y$ vsebovana v kocki $\I^n = \left [ -a, a \right ]^n$. Po lemi \ref{lem:razsiritev} lahko vsako zvezno preslikavo $f : X \to \R^n \setminus \{ \0 \}$ razširimo do zvezne preslikave $g : \I^n \to \R^n$. Izberemo tako realno število $\delta \in (0, \frac{\varepsilon}{2})$, da je $f(X) \cap B( \0, 2\delta) = \emptyset$. Ker je funkcija $g$ zvezna in definirana na kompaktni množici $\I^n$, je po trditvi~\ref{trd:zvjeenakzv} enakomerno zvezna. Zato obstaja realno število $\mu$, da za vsako množico $A$, katere diameter $\diam(A)$ je manjši od $\mu$, velja $\diam(g(A)) < \delta$. Naj bo $k \in \N$ dovolj veliko naravno število, da za vsak simpleks $S$ iz $k$-te baricentrične delitve $\pT_k = \sd^k(\I^n)$ kocke $\I^n$ velja $\diam(S) < \mu$. Če označimo množico oglišč v delitvi $\pT_k$ z $V$, nam preslikava $g|_V : V \to \R^n$ enolično določa zvezno preslikavo $h : \I^n \to \R^n$, ki vsako točko $x \in S = \left < z_0, z_1, \dots, z_n \right > \in \pT_k$ z baricentričnimi koordinatami $x = (t_0, t_1, \dots, t_n)_b$ slika v 
+Določimo poljubno število $\varepsilon > 0$ in množici $X$ in $Y$, kot v lemi \ref{lem:razsiritev-nic}. Ker je množica $X \cup Y \subset R^n$ omejena, obstaja realno število $a > 0$, da je unija množic $X \cup Y$ vsebovana v kocki $\I^n = \left [ -a, a \right ]^n$. Po lemi \ref{lem:razsiritev} lahko vsako zvezno preslikavo $f : X \to \R^n \setminus \{ \0 \}$ razširimo do zvezne preslikave $g : \I^n \to \R^n$. Izberemo tako realno število $\delta \in (0, \frac{\varepsilon}{2})$, da je $f(X) \cap B( \0, 2\delta) = \emptyset$. Ker je funkcija $g$ zvezna in definirana na kompaktni množici $\I^n$, je po trditvi~\ref{trd:zvjeenakzv} enakomerno zvezna. Zato obstaja realno število $\mu$, da za vsako množico $A$, katere diameter $\diam(A)$ je manjši od $\mu$, velja $\diam(g(A)) < \delta$. Naj bo $k \in \N$ dovolj veliko naravno število, da za vsak simpleks $S$ iz $k$-te mrežne delitve $\pT_k = M_k^n$ kocke $\I^n$ velja $\diam(S) < \mu$. Če označimo množico oglišč v delitvi $\pT_k$ z $V$, nam preslikava $g|_V : V \to \R^n$ enolično določa zvezno preslikavo $h : \I^n \to \R^n$, ki vsako točko $x \in S = \left < z_0, z_1, \dots, z_n \right > \in \pT_k$ z baricentričnimi koordinatami $x = (t_0, t_1, \dots, t_n)_b$ slika v 
 $$h(x) = \sum_{i=0}^n t_i g(z_i).$$
 Zaradi izbire triangulacije $\pT_k$ je za vsak simpleks $S = \langle  z_1, z_2, \dots, z_n \rangle \in \pT_k$ diameter $\diam(S)$ manjši od $\mu$, torej zaradi enakomerne zveznosti funkcije $g$ velja $\diam (g(S)) < \delta$. Torej obstaja krogla $B$ s premerom $\delta$, ki vsebuje množico $g(S)$. Funkcijo $h$ smo konstruirali tako, da je množica $h(S)$ konveksna ogrinjača točk $g(z_0), g(z_1), \dots, g(z_n)$. Ker je krogla $B$ konveksna množica, ki vsebuje točke $g(z_0), g(z_1), \dots, g(z_n)$, vsebuje tudi njihovo konveksno ogrinjačo $h(S)$. Sklep sledi iz dejstva, da je konveksna ogrinjača danih točk najmanjša konveksna množica, ki vsebuje dane točke. Iz tega ugotovimo, da je $\| g(x) - h(x) \| < \delta$ za vsak $x \in \I^n$. Ker je funkcija $g$ razširitev funkcije $f$, sklepamo, da velja $\| f(x) - h(x) \| < \delta$ za vsak $x \in X$.
 
