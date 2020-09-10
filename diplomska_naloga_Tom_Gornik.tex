@@ -283,6 +283,13 @@ Da se izognemo pisanju permutacije $\sigma$, pri zapisu simpleksa $S$ uporabimo 
 Naj bo $S = [ z_0, z_1, \dots, z_n]$ simpleks iz $k$-te mrežne delitve prostora $\R^n$. Potem za vsako oglišče $z_i$ simpleksa $S$ obstaja natanko en tak simpleks $T = S[i]$ iz $k$-te mrežne delitve, da je 
 $$S \cap T = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle.$$
 \end{trditev}
+%####################    Slika definicije soseda ####################
+\begin{figure}[h!]    
+	\centering
+		\import{slike/}{sosed}
+	\caption{Sliko je potrebno še malo popraviti :D}
+\end{figure}
+%#######################################################
 \begin{dokaz}
 Vemo, da obstaja taka permutacija $\pi \in P(n)$, da za oglišča simpleksa $S = [ z_0, z_1, \dots, z_n]$ veljajo naslednje enakosti:
 \begin{equation}\label{eq:orientiran-simpleks}
@@ -311,7 +318,7 @@ Druga možnost je, da je pot na licu za dva koraka krajša od poti $P$. V Tem pr
 Naj bo $a>0$ realno število in $n$-simpleks $S = [x_0, x_1, \dots, x_n]$, kjer ima za vsak $i = 0, 1, \dots, n$ oglišče $x_i$ edino neničelno koordinato na $i$-tem mestu enako $a$. Triangulacija sompleksa $S$ je simplicialni kompleks, ki vsebuje vse take $n$-simplekse iz mrežne triangulacije $M_\frac{a}{k}^n$ prostora $\R^n$, ki so vsebovani v simpleksu $S$. Naj bo $R = [y_0, y_1, \dots, y_n]$ poljuben $n$-simpleks v prostoru $\R^n$. Definirajmo homeomorfno preslikavo $h : S \to R$ s predpisom
 $$h \left( \sum_{i=0}^n t_i x_i \right) = \sum_{i=0}^n t_i y_i,$$
 kjer za vsak $i=0, 1, \dots, n$ realna števila $t_i$, zadoščajo pogojem $t_i \geq 0$ in $\sum_{i=0}^n t_i = 1$.
-S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Ker število $a$ ne vpliva na mrežno delitev simpleksa $R$ jo označimo kar $M_k^n$. Radi bi videli, da se v $k$-ti mrežni delitvi s povečevanjem števila $k$ delilni simpleksi zmanjšujejo.
+S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Za oznako $k$-te mrežne delitve $n$-simpleksa bomo uporabljaja kar $M_k^n$, saj število na na to delitev nima vpliva. Radi bi videli, da se s povečevanjem števila $k$ simpleksi v $k$-ti mrežni zmanjšujejo.
 Za mero, kako velik je simpleks, imamo več možnosti. Izbrali bomo diameter, ki ga definiramo na naslednji način.
 \begin{definicija}
 Največjo razdaljo med dvema točkama simpleksa $S$ imenujemo \emph{diameter} simpleksa $S$. Torej,
@@ -339,8 +346,9 @@ Pravimo, da je barvanje triangulacije $\pT$ $n$-simpleksa $S$ \emph{Spernerjevo}
 \begin{figure}[h!]    
 	\centering
 		\import{slike/}{spernerjevo_barvanje}
-	\caption{Vidimo Spernerjevo barvanje s tremi popolno pobarvanimi trikotniki, ki smo jih zaradi preglednosti osenčili. Zaradi lepše predstave smo barve namesto s številčnimi vrednosti ponazorili s pravimi barvami \protect{\cite[str.\ 4, slika 1.4]{Schaefer2014}}.}
+	\caption{Vidimo Spernerjevo barvanje šeste mrežne delitve simpleksa $S$ s tremi popolno pobarvanimi trikotniki, ki smo jih zaradi preglednosti osenčili. Zaradi lepše predstave smo barve namesto s številčnimi vrednosti ponazorili s pravimi barvami \protect{\cite[str.\ 4, slika 1.4]{Schaefer2014}}.}
 \end{figure}
+%########################################################
 Za $n$-simpleks, ki ima oglišča pobarvana z vsemi barvami iz množice $\{ 0, 1, \dots, n \}$, pravimo, da je \emph{popolno pobarvan}. Naslednji izrek izpostavi eno zanimivo lastnost takega barvanja.
 \begin{lema}[Spernerjeva lema~\protect{\cite[str.\ 10, izrek 4]{Ahlbach}}]\label{izr:sperner}
 Vsaka mrežna delitev $n$-simpleksa s Spernerjevim barvanjem vsebuje liho število popolno pobarvanih $n$-simpleksov.
