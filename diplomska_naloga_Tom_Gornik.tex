@@ -318,9 +318,9 @@ z_1 = z_0 + \vec{e}_{\pi(1)}, z_2 = z_1 + \vec{e}_{\pi(2)}, \dots, z_n = z_{n-1}
 \end{equation}
 Naj bo $i$-ti sosed $S[i]$ simpleksa $S$ definiran na nasledni način:
 \begin{enumerate}
-\item Če je $0 < i < n$,  je $S[i] = [ z_0, \dots, z_{i-1}, w_i, z_{i+1}, \dots, z_n ]$, kjer je $w_i = z_{i-1} + (z_{i+1} - z_i) = z_{i-1} + \vec{e}_{\pi(i)}$.
-\item Če je $i = 0$, je $S[i] = [ z_1, \dots, z_n, w_0 ]$, kjer je $w_0 = z_n + (z_1 - z_0) = z_{n} + \vec{e}_{\pi(1)}$.
-\item Če je $i = n$, je $S[i] = [ w_n, z_0, \dots, z_{n-1} ]$, kjer je $w_n = z_0 + (z_{n-1} - z_n) = z_{0} - \vec{e}_{\pi(n)}$.
+\item Če je $0 < i < n$,  je $S[i] = \langle z_0, \dots, z_{i-1}, w_i, z_{i+1}, \dots, z_n \rangle$, kjer je $w_i = z_{i-1} + (z_{i+1} - z_i) = z_{i-1} + \vec{e}_{\pi(i)}$.
+\item Če je $i = 0$, je $S[i] = \langle z_1, \dots, z_n, w_0 \rangle$, kjer je $w_0 = z_n + (z_1 - z_0) = z_{n} + \vec{e}_{\pi(1)}$.
+\item Če je $i = n$, je $S[i] = \langle w_n, z_0, \dots, z_{n-1} \rangle$, kjer je $w_n = z_0 + (z_{n-1} - z_n) = z_{0} - \vec{e}_{\pi(n)}$.
 \end{enumerate}
 %####################    Slika definicije soseda ####################
 \begin{figure}[h!]    
@@ -348,11 +348,11 @@ $$S \cap S[i] = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle.$$
 
 \end{dokaz}
 %pot $P$ po točkah $z_0, z_1, \dots, z_n$. S potjo $P$ mislimo na točke $z_0, z_1, \dots, z_n$ in na $1$-dimenzionalna lica simpleksa $S$, ki jih povezujejo. Vsako $1$-dimenzionalno lice iz poti bomo imenovali korak. Koraki so narejeni v smeri vektorjev $\vec{e}_i$ za $i = 1, \dots, n$. Če pogledamo pot samo na licu $L = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle$ imamo dve možnosti.Pot na licu $L$ je lahko za en korak krajša od poti $P$. V tem primeru lahko pot s korakom podaljšamo na začetku ali na koncu. V enem primeru dobimo simpleks $S$, v drugem pa soseda $S[i]$. To dokaže trditev v primeru, ko je $i \in \{0, n\}$. Druga možnost je, da je pot na licu za dva koraka krajša od poti $P$. V Tem primeru imamo dve povezani poti. Povežemo ju lahko na istem mestu, kjer ju poveže pot $P$. V nasprotnem primeru dobimo cikel sestavljen iz baznih vektorjev, kar pa ni mogoče. Torej lahko pot povežemo na dva načina, saj imamo dva različno usmerjena koraka, ki ju lahko uporabimo v dveh različnih vrstnih redih. V enem primeru dobimo simpleks $S$, v drugem pa njegovega soseda $S[i]$. Torej je sosed res enolično določen.
-S pomočjo delitve prostora $R^n$ lahko poiščemo triangulacijo simpleksov.
-Naj bo $a>0$ realno število. Naj bodo točke $x_i := (0, \dots, 0, a, 0, \dots, 0)$ take točke evklidskega prostora $\R^n$, ki imajo edino neničelno koordinato na $i$-tem mestu enako a. Označimo z $x_0$ točko evklidskega prostora $\R^n$, ki ima vse koordinate enake nič. Konveksna ogrinjača točk $x_0, x_1, \dots, x_n$ je $n$-simpleks $S = [x_0, x_1, \dots, x_n]$. Triangulacija simpleksa $S$ je simplicialni kompleks, ki vsebuje vse take simplekse iz mrežne triangulacije $M_\frac{a}{k}^n$ prostora $\R^n$, ki so vsebovani v simpleksu $S$. Naj bo $R = [y_0, y_1, \dots, y_n]$ poljuben $n$-simpleks v prostoru $\R^n$. Definirajmo homeomorfno preslikavo $h : S \to R$ s predpisom
+S pomočjo delitve prostora $R^n$ lahko poiščemo triangulacijo simpleksov. Poiščimo triangulacijo simpleksa $S \in M^n_{\frac{a}{1}}$.
+Naj bodo točke $x_i := (0, \dots, 0, a, 0, \dots, 0)$ take točke evklidskega prostora $\R^n$, ki imajo edino neničelno koordinato na $i$-tem mestu enako a. Označimo z $x_0$ točko evklidskega prostora $\R^n$, ki ima vse koordinate enake nič. Konveksna ogrinjača točk $x_0, x_1, \dots, x_n$ je $n$-simpleks $S = \langle x_0, x_1, \dots, x_n \rangle$. Potem je $k$-ta triangulacija simpleksa $S$ simplicialni kompleks, ki vsebuje vse take simplekse iz mrežne triangulacije $M_\frac{a}{k}^n$ prostora $\R^n$, ki so vsebovani v simpleksu $S$. Naj bo $R = <y_0, y_1, \dots, y_n>$ poljuben $n$-simpleks v prostoru $\R^n$. Definirajmo homeomorfno preslikavo $h : S \to R$ s predpisom
 $$h \left( \sum_{i=0}^n t_i x_i \right) = \sum_{i=0}^n t_i y_i,$$
 kjer za vsak $i=0, 1, \dots, n$ realna števila $t_i$, zadoščajo pogojem $t_i \geq 0$ in $\sum_{i=0}^n t_i = 1$.
-S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Za oznako $k$-te mrežne delitve $n$-simpleksa bomo uporabljaja kar $M_k^n$, saj število $a$ na to delitev nima vpliva. Radi bi videli, da se s povečevanjem števila $k$ simpleksi v $k$-ti mrežni zmanjšujejo.
+S preslikavo $h$ smo prenesli triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Za oznako $k$-te mrežne delitve $n$-simpleksa bomo uporabljaja kar $M_k^n$, saj število $a$ na to delitev nima vpliva. Radi bi videli, da se s povečevanjem števila $k$ simpleksi v $k$-ti mrežni zmanjšujejo.
 
 Pokažimo, da je za neki simpleks $S = \langle v_0, v_1, \dots v_n \rangle$ diameter simpleksa enak dolžini najdaljše stranice simpleksa $S$. Poglejmo si dve točki $x, y \in S$. Razdaljo med njima izračunamo na naslednji način:
 $$\dist(x, y) = \| \vec{x} - \vec{y} \|.$$
@@ -362,6 +362,7 @@ kar lahko preoblikujemo in ocenimo:
 $$\| \sum_{i=0}^n t_i (\vec{x} - \vec{v}_i)\| \leq \sum_{i=0}^n t_i \| (\vec{x} - \vec{v}_i) \| \leq \sum_{i=0}^n t_i \max_{i=0, \dots, n}(\| (\vec{x} - \vec{v}_i) \|) = \max_{i=0, \dots, n}(\| (\vec{x} - \vec{v}_i) \|).$$
 Ugotovili smo, da je razdalja največja, ko je $y$ oglišče simpleksa $S$. Zaradi simetričnosti razdalje mora biti za maksimizacijo razdalje tudi $x$ oglišče simpleksa.
 Ker so dolžine stranic simpleksa $R$ iz $k$-te mrežne delitve simpleksa $S$ za faktor $k$ manjše od stranic simpleksa $S$, velja $\diam(R) = \frac{1}{k} \cdot \diam(S)$.
+
 Pri obravnavi triangulacij simpleksov lahko počnemo veliko stvari. Ena taka, ki bi se jo lahko spomnil celo otrok v vrtcu, je, da bi simplekse iz triangulacije pobarvali. Tako lahko dobimo zanimive slike. Mi bomo obravnavali lastnosti, ki jih opazimo pri barvanju oglišč določene triangulacije.
 \begin{definicija}[\protect{\cite[str.\ 9, definicija 1]{Ahlbach}}]
 Naj bo podan $n$-simpleks $S \in \R^n$ s triangulacijo $\pT$. Označimo množico oglišč triangulacije $\pT$ z $V$. Preslikavo $b : V \to \left \{0, 1, \dots, n \right \} $ imenujemo \emph{barvanje triangulacije} $\pT$. Za oglišče $v \in V$ pravimo številu $b(v)$ \emph{barva} ali \emph{oznaka} oglišča $v$.
@@ -610,7 +611,7 @@ Izkaže se, da si pri dokazovanju nekaterih matematičnih trditev lažje pomagam
 \begin{dokaz}[Dokaz izreka \ref{izr:fixedpoint}]
 Naj bo $C = [-1, 1]^n$ kocka v evklidskem prostoru $~R^n$ in naj bo $f : C \to C$ poljubna zvezna preslikava iz kocke nazaj vase. Definiramo funkcijo $g : C \to \R^n$ s predpisom $g(x) = x - f(x)$. Funkcija $g$ je zvezna in zadošča pogojem izreka~\ref{izr:PM}. Res, za vsak $x \in \I_i^-$ velja, da je $x_i = -1$ in $f_i(x) \geq -1$, zato je 
 $$g_i(x) = x_i - f_i(x) \leq -1 - (-1) =0.$$
-Podobno lahko razmislimo, da je za vsak $x \in \I_i^+$ vrednost funkcije $g_i \geq 0$. Zato obstaja taka točka $c \in C$, da je $g(c) = 0$, kar pomeni, da je $f(c) = c$.
+Podobno lahko razmislimo, da je za vsak $x \in \I_i^+$ vrednost funkcije $g_i \geq 0$. Zato po izreku~\ref{izr:PM} obstaja taka točka $c \in C$, da je $g(c) = 0$, kar pomeni, da je $f(c) = c$.
 \end{dokaz}
 Enostavnost dokaza izreka~\ref{izr:fixedpoint} pokaže, kako močno orodje za dokazovanje topoloških trditev je izrek~\ref{izr:PM}.
 
@@ -637,20 +638,10 @@ Funkcijo $f : (-2, 0) \cup (0, 2) \to \R$ definiramo s predpisom
 Funkcija $f$ je zvezna na $(-2, 0) \cup (0, 2)$, ne moremo pa je zvezno razširiti na $\R$, saj razširitev v točki $x = 0$ ne bi bila zvezna.
 \end{primer}
 
-Izkaže se, da je za obstoj razširitve dovolj, če je zvezna funkcija definirana na kompaktni množici.
-Preden navedemo pogoje, ki nam zagotavljajo obstoj razširitve funkcije, si poglejmo pomembno lastnost zveznih preslikav.
-
-\begin{trditev}[\protect{\cite{zvjeenakzv}}]\label{trd:zvjeenakzv}
-Zvezna funkcija, definirana na kompaktni množici, je enakomerno zvezna.
-\end{trditev}
-\begin{dokaz}
-Predpostavimo, da je $K \in \R^n$ kompaktna množica in $f : K \to \R^n$ zvezna preslikava. Pokazati želimo, da za vsako še tako majhno število $\varepsilon > 0$ obstaja tako realno število $\delta > 0$, da za vsaki točki $x, y \in K$, za kateri je $d(x, y) < \delta$, velja $d(f(x), f(y)) < \varepsilon$. Ker je $f$ zvezna funkcija za vsako točko $z \in K$ obstaja tako pozitivno realno število $\delta_z$, da je $f(B(z, \delta_z)) \subset B(f(z), \frac{\varepsilon}{4})$. Družina množic $\pU = \left \{ B(z, \delta_z); z \in K \right \}$ tvori odprto pokritje prostora $K$. Zaradi kompaktnosti $K$ lahko izberemo končno poddružino $\pA =  \left \{ (B(x_1, \delta_{x_1}), \dots, B(x_n, \delta_{x_n}) \right \}$, ki je še vedno pokritje množice $K$. Definiramo število $\delta = \min_i \delta_{x_i}$. Za poljubni števili $x, y \in K$, ki sta med seboj oddaljeni manj kot $\delta$, imamo dve možnosti. Če obstaja taka krogla $B(x_i, \delta)$, da je $x, y \in B(x_i, \delta)$, potem sta $f(x), f(y) \in B(f(x_i), \frac{\varepsilon}{4})$ in je $d(f(x), f(y)) < \frac{\varepsilon}{2}$. V nasprotnem primeru obstajata krogli  $B(x_i, \delta)$ in $B(x_j, \delta)$ z nepraznim presekom, za kateri velja $x \in B(x_i, \delta)$ in $y \in B(x_j, \delta)$. V tem primeru je $f(x) \in B(f(x_i), \frac{\varepsilon}{4})$ in $f(y) \in B(f(x_j), \frac{\varepsilon}{4})$, kjer je $B(f(x_i), \frac{\varepsilon}{4}) \cap B(f(x_j), \frac{\varepsilon}{4}) \neq \emptyset$. Zato zagotovo velja $d(f(x), f(y)) < \varepsilon$, torej je funkcija res enakomerno zvezna.
-\end{dokaz}
-
-Poglejmo si, kdaj lahko funkcijo $f : A \subset \R^n  \to \R$ razširimo do funkcije $F: \R^n \to \R$.
+Izkaže se, da je za obstoj razširitve zvezne funkcije $f : A \subset \R^n  \to \R$ dovolj, če je množica $A$ kompaktna.
 
 \begin{lema}[Razširitev zvezne funkcije]\label{lem:razsiritev}
-Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo dana zvezna funkcija $f : A \to \R$. Potem obstaja zvezna funkcija $F : \R^n \to \R$, da za vsak $x \in A$, velja $F(x) = f(x)$.
+Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo dana zvezna funkcija $f : A \to \R$. Potem obstaja taka zvezna funkcija $F : \R^n \to \R$, da za vsak $x \in A$, velja $F(x) = f(x)$.
 \end{lema}
 
 \begin{dokaz}
@@ -676,18 +667,18 @@ D_a(x_0) - D_a(x) & = \frac{d(x_0, a)}{d(x_0, A)} - \frac{d(x, a)}{d(x, A)} \\
 & = \frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)}
 \end{split}
 \end{equation*}
-Ker želimo, da je $\frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)} \leq \varepsilon$, lahko izračunamo $\delta \leq \frac{\varepsilon d(x_0, A)}{d(x_0)(1+ \varepsilon) + d(x_0, a)}$.
+Ker želimo, da je $\frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)} \leq \varepsilon$, lahko izračunamo $\delta \leq \frac{\varepsilon (d(x_0, A))^2}{d(x_0, a) + d(x_0, A)(1+ \varepsilon)}$.
 Ocenimo navzdol:
 \begin{equation*}
 \begin{split}
 D_a(x_0) - D_a(x) & = \frac{d(x_0, a)}{d(x_0, A)} - \frac{d(x, a)}{d(x, A)} \\
 & =  \frac{d(x_0, a)d(x, A) - d(x, a)d(x_0, A)}{d(x_0, A) d(x, A)} \\
-& \geq \frac{d(x_0, a)(d(x_0, A) - \delta) - (d(x_0, a) + \delta)d(x_0, A)}{d(x_0, A) (d(x_0, A) + delta)} \\
+& \geq \frac{d(x_0, a)(d(x_0, A) - \delta) - (d(x_0, a) + \delta)d(x_0, A)}{d(x_0, A) (d(x_0, A) + \delta)} \\
 & = \frac{-\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) + \delta)}
 \end{split}
 \end{equation*}
-Ker želimo, da je $\frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)} \geq -\varepsilon$, dobimo neenačbo $\delta \leq \frac{\varepsilon d(x_0, A)}{d(x_0)(1- \varepsilon) - d(x_0, a)}$.
-Opazimo, da je ocena navzgor strožja. Ker je funkcija $\delta(a) = \frac{\varepsilon d(x_0, A)}{d(x_0)(1+ \varepsilon) + d(x_0, a)}$ definirana na kompaktni množici, doseže svoj minimum. Ker je funkcija $\delta(a)$ na množisi $A$ strogo pozitivna, je tudi minimum večji od $0$. Zato obstaja pozitivno realno število $\delta$, ki je manjše od $\delta(a)$ za vsako število $a \in A$.
+Ker želimo, da je $\frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)} \geq -\varepsilon$, dobimo neenačbo $\delta \leq \frac{\varepsilon (d(x_0, A))^2}{d(x_0, a) + d(x_0, A)(1- \varepsilon)}$.
+Opazimo, da je ocena navzgor strožja. Ker je funkcija $\delta(a) = \frac{\varepsilon d(x_0, A)}{d(x_0)(1+ \varepsilon) + d(x_0, a)}$ definirana na kompaktni množici, doseže svoj minimum. Ker je funkcija $\delta(a)$ na množici $A$ strogo pozitivna, je tudi minimum večji od $0$. Zato obstaja pozitivno realno število $\delta$, ki je manjše od $\delta(a)$ za vsako število $a \in A$.
 
 %Na $B(x_0, r)$ je funkcija $D_a(x) := \frac{d(x, a)}{d(x, A)}$ zvezna za vsak parameter $a$, saj sta funkciji $d(x, a)$ in $d(x, A)$ zvezni in različni od $0$. Torej obstaja realno število $\delta_a \in (0, r)$, da je $|D_a(x_0) - D_a(x)| < \varepsilon$ za vsak $x \in B(x_0, \delta_a)$. Ker je množica $A$ kompaktna, obstaja število $\delta > 0$, ki je za vsako točko $a \in A$ manjše od števila $\delta_a$. Za poljubno točko $x$ iz krogle $B(x_0, \delta)$ bi radi videli, da je $|F(x_0) - F(x)| \leq \varepsilon$.
 
