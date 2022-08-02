@@ -365,7 +365,7 @@ kjer za vsak $i=0, 1, \dots, n$ realna števila $t_i$ zadoščajo pogojem $t_i \
 S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Za oznako $k$-te mrežne delitve $n$-simpleksa bomo uporabljali kar $M_k^n$, saj število $a$ na to delitev nima vpliva. 
 
 Radi bi videli, da se s povečevanjem števila $k$ simpleksi v $k$-ti mrežni zmanjšujejo.
-Pokažimo, da je diameter simpleksa $S = \langle v_0, v_1, \dots v_n \rangle$ enak dolžini najdaljše stranice. Poglejmo si dve točki $x, y \in S$ in izračunajmo razdaljo med njima:
+Pokažimo, da je diameter simpleksa $S = \langle v_0, v_1, \dots v_n \rangle$ enak dolžini najdaljše stranice. Izračunao dolžino med točkaa $x, y \in S$:
 $$\dist(x, y) = \| \vec{x} - \vec{y} \|.$$
 Krajevni vektor točke $y$ lahko zapišemo s pomočjo oglišč simpleksa:
 $$\| \vec{x} - \sum_{i=0}^n t_i \vec{v}_i \|,$$
@@ -423,9 +423,9 @@ R\text{ je } n\text{-simplex}
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ liho število.
 \end{proof}
 \begin{opomba}
-Ko v dokazu govorimo o popolno pobarvanih simpleksih, se nam lahko porodi vprašanje, kako bi pri pravih barvah vedeli, kateri $(n-1)$-simpleks je popolno pobarvan. V tem primeru, bi morali iz množice barv z $n+1$ elementi izbrati množico barv z $n$ elementi. Tedaj je simpleks popolno pobarvan natanko tedaj, k ima oglišča pobarvana z vsemi barvami iz izbrane množice.
+Ko v dokazu govorimo o popolno pobarvanih simpleksih, se nam lahko porodi vprašanje, kako bi pri pravih barvah vedeli, kateri $(n-1)$-simpleks je popolno pobarvan. V tem primeru, bi morali iz množice barv z $n+1$ elementi izbrati množico barv z $n$ elementi. Tedaj je simpleks popolno pobarvan natanko tedaj, ko ima oglišča pobarvana z vsemi barvami iz izbrane množice.
 \end{opomba}
-Posledica izreka~\ref{izr:sperner} je, da vsaka mrežna delitev simpleksa $S$ s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan simpleks $R$. Ker sta simpleksa $S$ in $R$ oba popolno pobarvana, si lahko predstavljamo, da se nekatere lastnosti prenesejo iz $S$ na $R$. To dejstvo lahko uporabimo pri dokazovanju nekaterih trditev in tudi za nas bo odigrala pomembno vlogo pri dokazu izreka~\ref{izr:PM}. 
+Posledica izreka~\ref{izr:sperner} je, da vsaka mrežna delitev simpleksa $S$ s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan simpleks $R$. Ker sta simpleksa $S$ in $R$ oba popolno pobarvana, si lahko predstavljamo, da se nekatere lastnosti prenesejo iz $S$ na $R$. To dejstvo lahko uporabimo pri dokazovanju nekaterih trditev in tudi za nas bo odigralo pomembno vlogo pri dokazu izreka~\ref{izr:PM}. 
 
 Poleg simpleksov obravnavamo tudi kocke. Z njimi si bomo pomagali pri dokazovanju nekaterih topoloških rezultatov. 
 \begin{definicija}
@@ -527,7 +527,7 @@ Baza indukcije ($n = 0$):
 Triangulacija $0$-kocke $\I^n$ vsebuje zgolj točko $\0$, ki je z barvanjem $\varphi$ pobarvana z barvo $0$ in tako predstavlja popolno pobarvan simpleks.
 
 Indukcijska predpostavka ($n - 1$):
-Barvanje $\varphi$ pobarva triangulacije $n$-dimenzionalne kocke. V primeru $(n-1)$-dimenzionalne kocke lahko barvanje $\varphi$ razumemo tako, da poljubno triangulacijo $\pT_k$ kocke $\I^{n-1}$ pobarvamo z barvanjem $\varphi$ tako, da je vsako oglišče $(x_1, x_1, \dots, x_{n-1})\in\I^{n-1}$ enako pobarvano kot oglišče $(x_1, x_1, \dots, x_{n-1}, -a)\in \I^n$. Predpostavimo, da vsaka triangulacija $\pT_k$ kocke $\I^{n-1}$, kjer oglišča pobarvamo s preslikavo $\varphi$, vsebuje liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
+Barvanje $\varphi$ pobarva poljubne triangulacije $n$-dimenzionalne kocke. V primeru $(n-1)$-dimenzionalne kocke lahko barvanje $\varphi$ razumemo tako, da poljubno triangulacijo $\pT_k$ kocke $\I^{n-1}$ pobarvamo z barvanjem $\varphi$ tako, da je vsako oglišče $(x_1, x_2, \dots, x_{n-1})\in\I^{n-1}$ enako pobarvano kot oglišče $(x_1, x_2, \dots, x_{n-1}, -a)\in \I^n$. Predpostavimo, da vsaka triangulacija $\pT_k$ kocke $\I^{n-1}$, kjer oglišča pobarvamo s preslikavo $\varphi$, vsebuje liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
 Prepričajmo se, da poljubna triangulacija $\pT_k$ $n$-kocke $\I^n$ vsebuje liho mnogo popolno pobarvanih $n$-simpleksov. Iz definicije barvanja $\varphi$ lahko ugotovimo dve lastnosti. Če oglišče $x$ leži na licu $\I_i^-$, potem je $\varphi(x) < i$, če pa $x$ leži na licu $\I_i^+$, potem je $\varphi(x) \neq i -1$. Iz teh dveh lastnosti sklepamo, da je lice simpleksa, ki leži na robu kocke $\I^n$, lahko popolno pobarvano samo v primeru, ko leži na licu $\I_n^-$. Po indukcijski predpostavki je število $r$ takih lic liho. 
