@@ -531,7 +531,7 @@ Barvanje $\varphi$ pobarva poljubne triangulacije $n$-dimenzionalne kocke. V pri
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
 Prepričajmo se, da poljubna triangulacija $\pT_k$ $n$-kocke $\I^n$ vsebuje liho mnogo popolno pobarvanih $n$-simpleksov. Iz definicije barvanja $\varphi$ lahko ugotovimo dve lastnosti. Če oglišče $x$ leži na licu $\I_i^-$, potem je $\varphi(x) < i$, če pa $x$ leži na licu $\I_i^+$, potem je $\varphi(x) \neq i -1$. Iz teh dveh lastnosti sklepamo, da je lice simpleksa, ki leži na robu kocke $\I^n$, lahko popolno pobarvano samo v primeru, ko leži na licu $\I_n^-$. Po indukcijski predpostavki je število $r$ takih lic liho. 
-Definirajmo funkcijo $\alpha$, ki za vsak $n$-simpleks pove, koliko popolno pobarvanih $(n-1)$ simpleksov vsebuje. Za vsak $n$-simpleks $R$ iz triangulacije $M_k^n$ lahko preštejemo, koliko popolno pobarvanih $(n-1)$-simpleksov vsebuje. Vsak popolno pobarvan $n$-simpleks iz triangulacije $M_k^n$ kocke $\I^n$ vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov. Iz zgornjega lahko sklepamo, da je 
+Definirajmo funkcijo $\alpha$, ki za vsak $n$-simpleks pove, koliko popolno pobarvanih $(n-1)$ simpleksov vsebuje. Vsak popolno pobarvan $n$-simpleks iz triangulacije $M_k^n$ kocke $\I^n$ vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov. Iz zgornjega lahko sklepamo, da je 
 $$p \equiv 
 \sum\limits_{\substack{
 R \in M_k^n
@@ -550,7 +550,7 @@ R\text{ je } n\text{-simplex}
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ lih.
 \end{dokaz}
 
-Zgornji dokaz zelo spominja na dokaz Spernerjeve leme, a tu obravnavamo kocke. Dobimo idejo, da bi Spernerjevo lemo posplošili na kocke. Želimo poiskati tako pravilo za barvanje triangulacije kocke, da bo vsaka triangulacija kocke vsebovala vsaj en popolno pobarvan simpleks. Ker si želimo popolno pobarvan simpleks, nam ni potrebno vsakega oglišča kocke pobarvati s svojo barvo, saj je za $n$-kocko dovolj že $n+1$ barv.  Pravilo za Spernerjevo barvanje simpleksa lahko posplošimo na $n$-kocko na naslednji način.
+Zgornji dokaz zelo spominja na dokaz Spernerjeve leme, a tu obravnavamo kocke. Dobimo idejo, da bi Spernerjevo lemo posplošili na kocke. Želimo poiskati tako pravilo za barvanje triangulacije kocke, da bo vsaka triangulacija kocke vsebovala vsaj en popolno pobarvan simpleks. Ker si želimo popolno pobarvan simpleks, nam ni potrebno vsakega oglišča kocke pobarvati s svojo barvo, saj je za $n$-kocko dovolj že $n+1$ barv. Podobno kot pri simpleksih bomo rekli, da je $n$-kocka popolno pobarvana, ča na ogliščih nastopajo vse barve iz množice {0, 1, \dots, n}.  Pravilo za Spernerjevo barvanje simpleksa lahko posplošimo na $n$-kocko na naslednji način.
 Definirajmo naivno pravilo za barvanje triangulacije $\pT$ kocke $C=\I^n$:
 \begin{enumerate}
 \item Na ogliščih kocke $C$ so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$,
@@ -565,7 +565,9 @@ S primerom na sliki \ref{fig:ni-pop} pokažimo, da barvanje, ki zadošča naivne
 \end{figure}
 %##############################################################################
 Naivno pravilo lahko dopolnimo tako, da bo vsaka triangulacija $n$-simpleksa, pobarvana po tem pravilu, vsebovala popolno pobarvan $n$-simpleks. Če pogledamo dokaz izreka \ref{izr:sperner}, vidimo, da je ključno dejstvo, da je na robu liho število popolno pobarvanih simpleksov. Na sliki~\label{fig:ni-pop} pa temu ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Simpleks $S$ na robu vsebuje $2$ popolno pobarvana $1$-simpleksa. Če naivnemu barvanju dodamo pogoj, ki nam za vsako triangulacijo $n$-kocke zagotavlja liho število popolno pobarvanih $(n-1)$-simpleksov na robu, dobimo Spernerjevo barvanje za kocke.
-\begin{definicija}\label{def:cubsperner}
+
+\textbf{PRVA VERZIJA}
+\begin{definicija}\label{def:aloalo}
 Naj bo podana triangulacija $\pT$ kocke $C$. Z $V$ označimo množico oglišč triangulacije $\pT$. Spernerjevo barvanje triangulacije $n$-kocke $C$ je preslikava $b : V \to \left \{ 0, 1, \dots, n \right \}$, pri kateri so izpolnjeni trije pogoji:
 \begin{enumerate}
 \item Na ogliščih kocke $C$ so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$, \label{sperner1}
@@ -576,20 +578,23 @@ Naj bo podana triangulacija $\pT$ kocke $C$. Z $V$ označimo množico oglišč t
 Točka \eqref{sperner2} predstavlja enak robni pogoj kot pri definiciji spernerjeve leme za simplekse.
 Definicija Spernerjevega barvanja za kocke je precej bolj komplicirana kot definicija Spernerjevega barvanja za simplekse, saj je definicija \label{def:cubsperner} definirana rekurzivno. Pri pogoju \eqref{sperner3} namreč vidimo, da za Spernerjevo barvanje kocke $C$ potrebujemo Spernerjevo barvanje njegovih lic.
 Pokazali bomo, da vsaka triangulacija $n$-kocke, pobarvana s Spernerjevim barvanjem, vsebuje vsaj en popolno pobarvan $n$-simpleks.
-\begin{lema}[Spernerjeva lema za kocke]\label{izr:kubsperner}
-V vsakem Spernerjevem barvanju triangulacije $n$-kocke je liho mnogo popolno pobarvanih $n$-simpleksov.
-\end{lema}
-\begin{proof}
-Naj bo $C$ $n$-kocka in naj bo $\pT$ njegova triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ simpleksa $S$.
 
-Baza indukcije ($n = 0$):
-Če je $n = 0$, lema očitno drži, saj je $0$-kocka točka. Pri Spernerjevem barvanju točke imamo samo eno možnost in tako dobimo eno popolno pobarvano $0$-kocko, ki je tudi popolno pobarvan simpleks.
+\begin{lema}[Spernerjeva lema za kocke]\label{izr:kubsperner}
+Naj bo triangulacija $\mathcal{T}$ $n$-kocke $C$ pobarvana s Spernerjevim barvanjem. Število popolno pobarvanih $n$-simpleksov v triangulaciji $\mathcal{T}$ označimo s $p$, število glavnih lic pobarvanih s Spernerjevim barvanjem pa z $l$. Potem velja $p \equiv r \pmod 2$.
+\end{lema}
+%dokaz
+\begin{proof}
+Naj bo $C$ $n$-kocka in naj bo $\pT$ njegova triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ kocke $C$.
+
+Baza indukcije ( n = 0 ): Če je n = 0 , lema očitno drži, saj je 0-kocka točka. Pri
+Spernerjevem barvanju točke imamo samo eno možnost in tako dobimo eno popolno
+pobarvan 0-kocko, ki je tudi popolno pobarvan simpleks. Točka nič je tudi edino glavno lice 0-kocke.
 
 Indukcijska predpostavka ($n - 1$):
-Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki triangulaciji $(n - 1)$-kocke s Spernerjevim barvanjem najdemo liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
+Predpostavimo, da lema drži v dimenziji $(n - 1)$. Število popolno pobarvanih $(n-1)$-simpleksov v triangulaciji $(n-1)$-kocke je enako številu glavnih lic pobarvanih s Spernerjevim barvanjem modulo 2.
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
-Pravilnost izjave želimo dokazati tudi v dimenziji $n$. Za poljubno triangulacijo $\pT$ $n$-kocke $C$ naj bodo oglišča triangulacije $\pT$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $\pT$ s $p$, število popolno pobarvanih $(n-1)$-simpleksov, ki ležijo na robu kocke $C$ pa z $r$. Definirajmo funkcijo $\alpha$, ki vsakemu $n$-simpleksu priredi število popolno pobarvanih $(n-1)$-simpleksov, ki so vsebovani v $R$. Vsak popolno pobarvan $n$-simpleks vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, 1, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa zagotovo ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov, saj niti ne vsebujejo vseh barv iz množice $\{0, 1, \dots, n-1 \}$. Iz zgornjega lahko sklepamo, da je
+Pravilnost izjave želimo dokazati tudi v dimenziji $n$. Za poljubno triangulacijo $\pT$ $n$-kocke $C$ naj bodo oglišča triangulacije $\pT$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $\pT$ s $p$, število popolno pobarvanih $(n-1)$-simpleksov, ki ležijo na robu kocke $C$ pa z $r$. Definirajmo funkcijo $\alpha$, ki vsakemu $n$-simpleksu priredi število popolno pobarvanih $(n-1)$-simpleksov, ki so vsebovani na robu tega simpleksa. Vsak popolno pobarvan $n$-simpleks vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, 1, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa zagotovo ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov, saj niti ne vsebujejo vseh barv iz množice $\{0, 1, \dots, n-1 \}$. Iz zgornjega lahko sklepamo, da je
 \begin{equation}\label{eq:kongr1}
 p \equiv 
 \sum\limits_{\substack{
@@ -610,8 +615,56 @@ R\text{ je } n\text{-simplex}
   \alpha(R) \pmod 2.
 \end{equation}
 Iz enačbe~\eqref{eq:kongr1} in enačbe~\eqref{eq:kongr2} sledi, da je $p \equiv r \pmod 2$.
-Ker je kocka pobarvana s Spernerjevim barvanjem, ima liho število popolno pobarvanih lic, ki zaradi indukcijske predpostavke vsebujejo liho število popolno pobarvanih $(n - 1)$-simpleksov. Ker na drugih licih ni popolno pobarvanih $(n - 1)$-simpleksov, je število $r$ liho. Zato je tudi $p$ liho število.
+Na glavnih licih, ki so pobarvana s Spernerjevim barvanjem, po indukcijski predpostavki leži liho število $(n-1)$-simpleksov. Vsa glavna lica izpolnjujejo pogoj~\ref{sperner2} v definiciji~\ref{def:aloalo}. Če glavno lice $L$ ni pobarvano s spernerjevim barvanjem ne izponjuje pogoja~\ref{sperner1} ali~\ref{sperner3}. Glavno lice $L$, ki ne izpolnjuje pogoja~\ref{sperner1} ne vsebuje nobenega popolno pobarvaneg $(n-1)$-simpleksa, saj na ogliščih ne nastopajo barve, ki bi omogočile popolno pobarvan $(n-1)$-simpleks. Če pa glavno lice $L$ ne ustreza pogoju~\ref{sperner3}, potem lice $L$ vsebuje sodo mnogo glavnih lic pobarvanih s Spernerjevim barvanjem in zato po indukcijski predpostavki sodo mnnogo popolno pobarvanih $(n-1)$-simpleksov. Ugotovili smo, da je $r \equiv l \pmod 2$, kar pomeni, da je tudi $p \equiv l \pmod 2$.
 \end{proof}
+\newpage
+\textbf{DRUGA VERZIJA}
+\begin{definicija}\label{def:alo}
+Naj bo podana triangulacija $\pT$ kocke $C$. Z $V$ označimo množico oglišč triangulacije $\pT$. Spernerjevo barvanje triangulacije $n$-kocke $C$ je preslikava $b : V \to \left \{ 0, 1, \dots, n \right \}$, pri kateri so izpolnjeni trije pogoji:
+\begin{enumerate}
+\item Na ogliščih kocke $C$ so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$, \label{spernerena}
+\item vsako oglišče triangulacije $\pT$ z lica $L$ je enako pobarvano kot eno izmed oglišč lica $L$,\label{spernerdva}
+\item kocka $C$ vsebuje natanko eno glavno lice pobarvano s Spernerjevim barvanjem.\label{spernertri}
+\end{enumerate}
+\end{definicija}
+
+\begin{lema}[Spernerjeva lema za kocke]\label{izr:kubsperner}
+V vsakem Spernerjevem barvanju triangulacije $n$-kocke je liho mnogo popolno pobarvanih $n$-simpleksov.
+\end{lema}
+\begin{proof}
+Naj bo $C$ $n$-kocka in naj bo $\pT$ njegova triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ kocke $C$.
+
+Baza indukcije ($n = 1$):
+Če je $n = 0$, lema očitno drži, saj je $0$-kocka točka. Pri Spernerjevem barvanju točke imamo samo eno možnost in tako dobimo eno popolno pobarvano $0$-kocko, ki je tudi popolno pobarvan simpleks.
+
+Indukcijska predpostavka ($n - 1$):
+Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki triangulaciji $(n - 1)$-kocke s Spernerjevim barvanjem najdemo liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
+
+Indukcijski korak ($(n - 1) \Longrightarrow n$):
+Pravilnost izjave želimo dokazati tudi v dimenziji $n$. Za poljubno triangulacijo $\pT$ $n$-kocke $C$ naj bodo oglišča triangulacije $\pT$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $\pT$ s $p$, število popolno pobarvanih $(n-1)$-simpleksov, ki ležijo na robu kocke $C$ pa z $r$. Definirajmo funkcijo $\alpha$, ki vsakemu $n$-simpleksu $R$ priredi število popolno pobarvanih $(n-1)$-simpleksov, ki so vsebovani v $R$. Vsak popolno pobarvan $n$-simpleks vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, 1, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa zagotovo ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov, saj niti ne vsebujejo vseh barv iz množice $\{0, 1, \dots, n-1 \}$. Iz zgornjega lahko sklepamo, da je
+\begin{equation}\label{eq:kongr11}
+p \equiv 
+\sum\limits_{\substack{
+R \in \pT
+ \\ 
+R\text{ je } n\text{-simplex}
+ }}
+  \alpha(R) \pmod 2.
+\end{equation}
+Pri štetju popolno pobarvanih $(n - 1)$-simpleksov smo vsakega iz notranjosti $C$ šteli dvakrat, tiste z roba $C$ pa samo enkrat. Torej velja kongruenca:
+\begin{equation}\label{eq:kongr12}
+r \equiv 
+\sum\limits_{\substack{
+R \in \pT
+ \\ 
+R\text{ je } n\text{-simplex}
+ }}
+  \alpha(R) \pmod 2.
+\end{equation}
+Iz enačbe~\eqref{eq:kongr1} in enačbe~\eqref{eq:kongr2} sledi, da je $p \equiv r \pmod 2$.
+Ker je kocka pobarvana s Spernerjevim barvanjem, ima eno popolno pobarvano glavno lice, ki zaradi indukcijske predpostavke vsebujejo liho število popolno pobarvanih $(n - 1)$-simpleksov. Ker na drugih licih ni popolno pobarvanih $(n - 1)$-simpleksov, je število $r$ liho. Zato je tudi $p$ liho število.
+\end{proof}
+\newpage
 
 Sedaj pokažimo, da je barvanje $\varphi$ Spernerjevo barvanje za kocke.
 \begin{dokaz}
