@@ -70,6 +70,7 @@
 
 % matematične operatorje deklarirajte kot take, da jih bo Latex pravilno stavil
 \DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\aff}{aff}
 \DeclareMathOperator{\diam}{diam}
 \DeclareMathOperator{\Int}{Int}
 \DeclareMathOperator{\sd}{sd}
@@ -283,7 +284,7 @@ $$\diam(S) = \max \{ \dist(x, y); x, y \in S\}.$$
 \end{definicija}
 
 Simpleks $S$ je kompaktna množica. Zvezna funkcija definirana na kompaktni mnižici zavzame maksimum, zato je diameter simpleksa $S$ dobro definiran.
-Sedaj, ko imamo mero za velikost simpleksa, si poglejmo, kako lahko celoten prostor $\R^n$ razdelimo na enako velikime simplekse. Izberimo naravno število $k$ in pozitivno realno število $a$. Definiramo bazo $\pB$ prostora $\R^n$ z baznimi vektorji $\vec{e}_i := (0, \dots, 0, \frac{a}{k}, 0, \dots, 0)$, pri katerih je edina neničelna koordinata na $i$-tem mestu enaka $\frac{a}{k}$. Definiramo množico $Z_k := \left\{ j \cdot \frac{a}{k}; j \in \Z \right\}$ in označimo z $Z_k^n$ kartezični produkt $n$ kopij množice $Z_k$. Naj bo $P(n)$ množica permutaciji množice $\{1, \dots, n \}$.
+Sedaj, ko imamo mero za velikost simpleksa, si poglejmo, kako lahko celoten prostor $\R^n$ razdelimo na enako velike simplekse. Izberimo naravno število $k$ in pozitivno realno število $a$. Definiramo bazo $\pB$ prostora $\R^n$ z baznimi vektorji $\vec{e}_i := (0, \dots, 0, \frac{a}{k}, 0, \dots, 0)$, pri katerih je edina neničelna koordinata na $i$-tem mestu enaka $\frac{a}{k}$. Definiramo množico $Z_k := \left\{ j \cdot \frac{a}{k}; j \in \Z \right\}$ in označimo z $Z_k^n$ kartezični produkt $n$ kopij množice $Z_k$. Naj bo $P(n)$ množica permutacij množice $\{1, \dots, n \}$.
 Množica, ki vsebuje vse simplekse $S = \langle z_0, z_1, \dots, z_n \rangle$, ki zadoščajo pogojema:
 \begin{itemize}
 \item Množica točk $\{ z_0, z_1, \dots, z_n \}$ je podmnožica množice $Z_k^n$ in
@@ -365,7 +366,7 @@ kjer za vsak $i=0, 1, \dots, n$ realna števila $t_i$ zadoščajo pogojem $t_i \
 S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Za oznako $k$-te mrežne delitve $n$-simpleksa bomo uporabljali kar $M_k^n$, saj število $a$ na to delitev nima vpliva. 
 
 Radi bi videli, da se s povečevanjem števila $k$ simpleksi v $k$-ti mrežni zmanjšujejo.
-Pokažimo, da je diameter simpleksa $S = \langle v_0, v_1, \dots v_n \rangle$ enak dolžini najdaljše stranice. Izračunao dolžino med točkaa $x, y \in S$:
+Pokažimo, da je diameter simpleksa $S = \langle v_0, v_1, \dots v_n \rangle$ enak dolžini najdaljše stranice. Izračunamo razdaljo med točkama $x, y \in S$:
 $$\dist(x, y) = \| \vec{x} - \vec{y} \|.$$
 Krajevni vektor točke $y$ lahko zapišemo s pomočjo oglišč simpleksa:
 $$\| \vec{x} - \sum_{i=0}^n t_i \vec{v}_i \|,$$
@@ -376,7 +377,7 @@ Ker so dolžine stranic simpleksa $R$ iz $k$-te mrežne delitve simpleksa $S$ za
 
 Pri obravnavi triangulacij simpleksov lahko počnemo veliko stvari. Ena taka, ki bi se jo lahko spomnil celo otrok v vrtcu, je, da bi simplekse iz triangulacije pobarvali. Tako lahko dobimo zanimive slike. Mi bomo obravnavali lastnosti, ki jih opazimo pri barvanju oglišč določene triangulacije.
 \begin{definicija}[\protect{\cite[str.\ 9, definicija 1]{Ahlbach}}]
-Naj bo podan $n$-simpleks $S \in \R^n$ s triangulacijo $\pT$. Označimo množico oglišč triangulacije $\pT$ z $V$. Preslikavo $b : V \to \left \{0, 1, \dots, n \right \} $ imenujemo \emph{barvanje triangulacije} $\pT$. Za oglišče $v \in V$ pravimo številu $b(v)$ \emph{barva} ali \emph{oznaka} oglišča $v$.
+Naj bo podan $n$-simpleks $S \in \R^n$ s triangulacijo $\pT$. Označimo množico oglišč triangulacije $\pT$ z $V$. Preslikavo $b : V \to \left \{0, 1, \dots, n \right \} $ imenujemo \emph{barvanje triangulacije} $\pT$. Za oglišče $v \in V$ pravimo številu $b(v)$ \emph{barva} oglišča $v$.
 \end{definicija}
 Barve navadno označujemo s številkami, saj bi pri velikem številu različnih barv nastala zmeda in bi se nekatere barve težko ločilo med seboj. Kadar v triangulaciji nastopa majhno število barv, so slike lepše, če jih ponazorimo s pravimi barvami. Če določimo pravila, s katerimi barvami lahko pobarvamo določena oglišča, lahko dobimo zanimive lastnosti. Primer takega pravila in njegove lastnosti je opazoval in opisal Emanuel Sperner, po katerem se imenuje eno od pravil za barvanje triangulacije simpleksa.
 \begin{definicija}[~\protect{\cite[str.\ 9, definicija 2]{Ahlbach}}]
@@ -409,7 +410,7 @@ $$p \equiv
 \sum\limits_{\substack{
 R \in M_k^n
  \\ 
-R\text{ je } n\text{-simplex}
+R\text{ je } n\text{-simpleks}
  }} 
  \alpha(R) \pmod 2.$$
 Pri štetju popolno pobarvanih $(n - 1)$-simpleksov smo vsakega iz notranjosti simpleksa $S$ šteli dvakrat, tiste z roba $S$ pa samo enkrat. Zato velja tudi 
@@ -417,13 +418,13 @@ $$r \equiv
 \sum\limits_{\substack{
 R \in M_k^n
  \\ 
-R\text{ je } n\text{-simplex}
+R\text{ je } n\text{-simpleks}
  }}
   \alpha(R) \pmod 2.$$ 
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ liho število.
 \end{proof}
 \begin{opomba}
-Ko v dokazu govorimo o popolno pobarvanih simpleksih, se nam lahko porodi vprašanje, kako bi pri pravih barvah vedeli, kateri $(n-1)$-simpleks je popolno pobarvan. V tem primeru, bi morali iz množice barv z $n+1$ elementi izbrati množico barv z $n$ elementi. Tedaj je simpleks popolno pobarvan natanko tedaj, ko ima oglišča pobarvana z vsemi barvami iz izbrane množice.
+Ko v dokazu govorimo o popolno pobarvanih simpleksih, se nam lahko porodi vprašanje, kako bi pri pravih barvah vedeli, kateri $(n-1)$-simpleks je popolno pobarvan. V tem primeru bi morali iz množice barv z $n+1$ elementi izbrati množico barv z $n$ elementi. Tedaj je simpleks popolno pobarvan natanko tedaj, ko ima oglišča pobarvana z vsemi barvami iz izbrane množice.
 \end{opomba}
 Posledica izreka~\ref{izr:sperner} je, da vsaka mrežna delitev simpleksa $S$ s Spernerjevim barvanjem vsebuje vsaj en popolno pobarvan simpleks $R$. Ker sta simpleksa $S$ in $R$ oba popolno pobarvana, si lahko predstavljamo, da se nekatere lastnosti prenesejo iz $S$ na $R$. To dejstvo lahko uporabimo pri dokazovanju nekaterih trditev in tudi za nas bo odigralo pomembno vlogo pri dokazu izreka~\ref{izr:PM}. 
 
@@ -450,7 +451,7 @@ V naslednjem poglavju bomo spoznali Poincar\'e-Mirandov izrek in definirali barv
 %
 %####################     3. POGLAVJE: POINCARÉ-MIRANDOV IZREK     ####################
 \section{Poincar\'e-Mirandov izrek}\label{raz:PM}
-Sedaj se bomo posvetili ničlam preslikav, tj. takim točkam, ki jih neka preslikava $f : \I^n \to \R^n$ slika v nič. Iskali bomo torej odgovor na vprašanje: Kakšni pogoji nam zagotavljajo obstoj take točke $c$, za katero je $f(c) = (0, 0, \dots, 0)$? Zaradi krajšega zapisa bomo točko $(0, 0, \cdots, 0) \in \R^n$, ko ne bo dvomov o dimenziji, označevali z oznako $\0$. V primeru funkcije $f : \I \to \R$ nam odgovor na vprašanje ponudi Bolzanov izrek o srednji vrednosti.
+Sedaj se bomo posvetili ničlam preslikav, tj. takim točkam, ki jih neka preslikava $f : \I^n \to \R^n$ slika v nič. Iskali bomo torej odgovor na vprašanje: Kakšni pogoji nam zagotavljajo obstoj take točke $c$, za katero je $f(c) = (0, 0, \dots, 0)$? Zaradi krajšega zapisa bomo točko $(0, 0, \cdots, 0) \in \R^n$, ko ne bo dvomov o dimenziji, označevali z oznako $\0$. V primeru funkcije $f : \I \to \R$ odgovor na vprašanje ponudi Bolzanov izrek o srednji vrednosti.
 \begin{izrek}[Bolzanov izrek o srednji vrednosti]\label{izr:bolzano}
 Izberimo poljubno pozitivno realno število $a$ in definirajmo interval $\I := [-a, a]$. Za zvezno funkcijo $f : \I \to \R$, za katero velja $f(-a) \leq 0 \leq f(a)$, obstaja točka $c \in [-a, a]$, da je $f(c) = 0$.
 \end{izrek}
@@ -516,7 +517,7 @@ Dokazati moramo še, da taki simpleksi $S_k$ res obstajajo. Tudi to bomo dokazov
 Omenjeno barvanje $\varphi$ triangulacije $n$-kocke $\I^n$ z množico oglišč $V$ definiramo na naslednji način:
 $$\varphi : V \to \left \{ 0, 1, \dots, n \right \},$$
 $$\varphi(x) = \max \left \{ j : x \in \bigcap_{i=0}^j F_i^+\right \}.$$
-Tu je $ F_0^+ = \I^n$, $ F_i^+ =  H_i^+ \setminus \I_i^-$.
+Tu je $ F_0^+ = \I^n$, $ F_i^+ =  H_i^+ \setminus \I_i^-$ za $1 \leq i \leq n$.
 
 Trdimo, da ima pri tem barvanju popolno pobarvan simpleks $S$ lastnost~\eqref{eq:nonempty}. 
 Za vsak $i \in \{1, 2 \dots, n \}$ in za vsaki taki točki $x$ in $y$ iz $\I^n$, za kateri je $\varphi(x) = i - 1$ in $\varphi(y) = i$, lahko sklepamo, da je $x \in H_{i}^-$ in $y \in H_i^+$. Res, denimo, da $x \notin H_{i}^-$. Potem $x \in F_i^+ = H_{i}^+ \setminus \I_i^-$, kar pa pomeni, da je $\varphi(x) \geq i$. To je protislovje, torej res velja $x \in H_{i}^-$. Podobno lahko sklepamo, da če $y \notin H_i^+$, potem tudi $y \notin F_i^+$, kar pomeni, da je $\varphi(y) < i$. Spet protislovje s tem, da je $\varphi(y) = i$, torej je tudi $y \in H_i^+$.
@@ -536,7 +537,7 @@ $$p \equiv
 \sum\limits_{\substack{
 R \in M_k^n
  \\ 
-R\text{ je } n\text{-simplex}
+R\text{ je } n\text{-simpleks}
  }}
   \alpha(R) \pmod 2.$$
 Pri štetju popolno pobarvanih $(n - 1)$-simpleksov smo vsakega iz notranjosti simpleksa $S$ šteli dvakrat, tiste z roba $S$ pa samo enkrat. Zato velja tudi 
@@ -544,7 +545,7 @@ $$r \equiv
 \sum\limits_{\substack{
 R \in M_k^n
  \\ 
-R\text{ je } n\text{-simplex}
+R\text{ je } n\text{-simpleks}
  }}
   \alpha(R) \pmod 2.$$ 
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ lih.
@@ -564,134 +565,87 @@ S primerom na sliki \ref{fig:ni-pop} pokažimo, da barvanje, ki zadošča naivne
 	\caption{Triangulacija $n$-kocke $C$, pobarvana po naivnem pravilu, ne vsebuje popolno pobarvanega $n$-simpleksa. Zaradi lepše slike smo barvo $0$ prikazali z modro, barvo $1$ z rdečo, $2$ pa z zeleno.}\label{fig:ni-pop}
 \end{figure}
 %##############################################################################
-Naivno pravilo lahko dopolnimo tako, da bo vsaka triangulacija $n$-simpleksa, pobarvana po tem pravilu, vsebovala popolno pobarvan $n$-simpleks. Če pogledamo dokaz izreka \ref{izr:sperner}, vidimo, da je ključno dejstvo, da je na robu liho število popolno pobarvanih simpleksov. Na sliki~\label{fig:ni-pop} pa temu ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Simpleks $S$ na robu vsebuje $2$ popolno pobarvana $1$-simpleksa. Če naivnemu barvanju dodamo pogoj, ki nam za vsako triangulacijo $n$-kocke zagotavlja liho število popolno pobarvanih $(n-1)$-simpleksov na robu, dobimo Spernerjevo barvanje za kocke.
+Naivno pravilo lahko dopolnimo tako, da bo vsaka triangulacija $n$-simpleksa, pobarvana po tem pravilu, vsebovala popolno pobarvan $n$-simpleks. Če pogledamo dokaz izreka \ref{izr:sperner}, vidimo, da je ključno dejstvo, da je število vseh popolno pobarvanih 
+$(n-1)$-simpleksov na robu liho. Na sliki~\label{fig:ni-pop} pa ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Simpleks $S$ na robu vsebuje $2$ popolno pobarvana $1$-simpleksa. Če naivnemu barvanju dodamo pogoj, ki nam za vsako triangulacijo $n$-kocke zagotavlja liho število popolno pobarvanih $(n-1)$-simpleksov na robu, dobimo Spernerjevo barvanje za kocke.
 
-\textbf{PRVA VERZIJA}
-\begin{definicija}\label{def:aloalo}
-Naj bo podana triangulacija $\pT$ kocke $C$. Z $V$ označimo množico oglišč triangulacije $\pT$. Spernerjevo barvanje triangulacije $n$-kocke $C$ je preslikava $b : V \to \left \{ 0, 1, \dots, n \right \}$, pri kateri so izpolnjeni trije pogoji:
+
+\begin{definicija}\label{def:alo}
+Naj bo podana triangulacija $\pT$ $n$-kocke $C$. Z $V$ označimo množico oglišč triangulacije $\pT$. Spernerjevo barvanje triangulacije $\pT$ je tako barvanje, pri katerem so izpolnjeni trije pogoji:
 \begin{enumerate}
 \item Na ogliščih kocke $C$ so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$, \label{sperner1}
-\item vsako oglišče triangulacije $\pT$ z lica $L$ je enako pobarvano kot eno izmed oglišč lica $L$,\label{sperner2}
-\item kocka $C$ vsebuje liho mnogo glavnih lic, ki so pobarvana s Spernerjevim barvanjem.\label{sperner3}
+\item Za vsako (ne nujno glavno) lice $L$ kocke $C$ je vsako oglišče triangulacije $\pT$, ki leži na licu $L$, pobarvano enako, kot eno izmed oglišč lica $L$.\label{sperner2}
+\item kocka $C$ vsebuje natanko eno glavno lice, pobarvano z vsemi barvami iz množice $\{0, 1, \dots, n-1\}$ in barvanje inducirane triangulacije na tem licu je Spernerjevo.\label{sperner3}
 \end{enumerate}
+Spernerjevo barvanje triangulacije $1$-kocke pobarva eno oglišče kocke z barvo 0, drugo oglišče kocke pa z barvo 1. Vsa ostala oglišča triangulacije kocke so pobarvana z barvo 0 ali 1.
 \end{definicija}
-Točka \eqref{sperner2} predstavlja enak robni pogoj kot pri definiciji spernerjeve leme za simplekse.
-Definicija Spernerjevega barvanja za kocke je precej bolj komplicirana kot definicija Spernerjevega barvanja za simplekse, saj je definicija \label{def:cubsperner} definirana rekurzivno. Pri pogoju \eqref{sperner3} namreč vidimo, da za Spernerjevo barvanje kocke $C$ potrebujemo Spernerjevo barvanje njegovih lic.
+
+Točka \eqref{sperner2} predstavlja enak robni pogoj kot pri definiciji Spernerjeve leme za simplekse.
+Definicija Spernerjevega barvanja za kocke je bolj komplicirana kot definicija Spernerjevega barvanja za simplekse, saj je definicija \label{def:cubsperner} rekurzivna. Pri pogoju \eqref{sperner3} namreč vidimo, da Spernerjevo barvanje kocke $C$ med drugim pomeni Spernerjevo barvanje natanko enega glavnega lica.
 Pokazali bomo, da vsaka triangulacija $n$-kocke, pobarvana s Spernerjevim barvanjem, vsebuje vsaj en popolno pobarvan $n$-simpleks.
-
-\begin{lema}[Spernerjeva lema za kocke]\label{izr:kubsperner}
-Naj bo triangulacija $\mathcal{T}$ $n$-kocke $C$ pobarvana s Spernerjevim barvanjem. Število popolno pobarvanih $n$-simpleksov v triangulaciji $\mathcal{T}$ označimo s $p$, število glavnih lic pobarvanih s Spernerjevim barvanjem pa z $l$. Potem velja $p \equiv r \pmod 2$.
-\end{lema}
-%dokaz
-\begin{proof}
-Naj bo $C$ $n$-kocka in naj bo $\pT$ njegova triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ kocke $C$.
-
-Baza indukcije ( n = 0 ): Če je n = 0 , lema očitno drži, saj je 0-kocka točka. Pri
-Spernerjevem barvanju točke imamo samo eno možnost in tako dobimo eno popolno
-pobarvan 0-kocko, ki je tudi popolno pobarvan simpleks. Točka nič je tudi edino glavno lice 0-kocke.
-
-Indukcijska predpostavka ($n - 1$):
-Predpostavimo, da lema drži v dimenziji $(n - 1)$. Število popolno pobarvanih $(n-1)$-simpleksov v triangulaciji $(n-1)$-kocke je enako številu glavnih lic pobarvanih s Spernerjevim barvanjem modulo 2.
-
-Indukcijski korak ($(n - 1) \Longrightarrow n$):
-Pravilnost izjave želimo dokazati tudi v dimenziji $n$. Za poljubno triangulacijo $\pT$ $n$-kocke $C$ naj bodo oglišča triangulacije $\pT$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $\pT$ s $p$, število popolno pobarvanih $(n-1)$-simpleksov, ki ležijo na robu kocke $C$ pa z $r$. Definirajmo funkcijo $\alpha$, ki vsakemu $n$-simpleksu priredi število popolno pobarvanih $(n-1)$-simpleksov, ki so vsebovani na robu tega simpleksa. Vsak popolno pobarvan $n$-simpleks vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, 1, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa zagotovo ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov, saj niti ne vsebujejo vseh barv iz množice $\{0, 1, \dots, n-1 \}$. Iz zgornjega lahko sklepamo, da je
-\begin{equation}\label{eq:kongr1}
-p \equiv 
-\sum\limits_{\substack{
-R \in \pT
- \\ 
-R\text{ je } n\text{-simplex}
- }}
-  \alpha(R) \pmod 2.
-\end{equation}
-Pri štetju popolno pobarvanih $(n - 1)$-simpleksov smo vsakega iz notranjosti $C$ šteli dvakrat, tiste z roba $C$ pa samo enkrat. Torej velja kongruenca:
-\begin{equation}\label{eq:kongr2}
-r \equiv 
-\sum\limits_{\substack{
-R \in \pT
- \\ 
-R\text{ je } n\text{-simplex}
- }}
-  \alpha(R) \pmod 2.
-\end{equation}
-Iz enačbe~\eqref{eq:kongr1} in enačbe~\eqref{eq:kongr2} sledi, da je $p \equiv r \pmod 2$.
-Na glavnih licih, ki so pobarvana s Spernerjevim barvanjem, po indukcijski predpostavki leži liho število $(n-1)$-simpleksov. Vsa glavna lica izpolnjujejo pogoj~\ref{sperner2} v definiciji~\ref{def:aloalo}. Če glavno lice $L$ ni pobarvano s spernerjevim barvanjem ne izponjuje pogoja~\ref{sperner1} ali~\ref{sperner3}. Glavno lice $L$, ki ne izpolnjuje pogoja~\ref{sperner1} ne vsebuje nobenega popolno pobarvaneg $(n-1)$-simpleksa, saj na ogliščih ne nastopajo barve, ki bi omogočile popolno pobarvan $(n-1)$-simpleks. Če pa glavno lice $L$ ne ustreza pogoju~\ref{sperner3}, potem lice $L$ vsebuje sodo mnogo glavnih lic pobarvanih s Spernerjevim barvanjem in zato po indukcijski predpostavki sodo mnnogo popolno pobarvanih $(n-1)$-simpleksov. Ugotovili smo, da je $r \equiv l \pmod 2$, kar pomeni, da je tudi $p \equiv l \pmod 2$.
-\end{proof}
-\newpage
-\textbf{DRUGA VERZIJA}
-\begin{definicija}\label{def:alo}
-Naj bo podana triangulacija $\pT$ kocke $C$. Z $V$ označimo množico oglišč triangulacije $\pT$. Spernerjevo barvanje triangulacije $n$-kocke $C$ je preslikava $b : V \to \left \{ 0, 1, \dots, n \right \}$, pri kateri so izpolnjeni trije pogoji:
-\begin{enumerate}
-\item Na ogliščih kocke $C$ so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$, \label{spernerena}
-\item vsako oglišče triangulacije $\pT$ z lica $L$ je enako pobarvano kot eno izmed oglišč lica $L$,\label{spernerdva}
-\item kocka $C$ vsebuje natanko eno glavno lice pobarvano s Spernerjevim barvanjem.\label{spernertri}
-\end{enumerate}
-\end{definicija}
 
 \begin{lema}[Spernerjeva lema za kocke]\label{izr:kubsperner}
 V vsakem Spernerjevem barvanju triangulacije $n$-kocke je liho mnogo popolno pobarvanih $n$-simpleksov.
 \end{lema}
 \begin{proof}
-Naj bo $C$ $n$-kocka in naj bo $\pT$ njegova triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ kocke $C$.
+Naj bo $C$ $n$-kocka in naj bo $\pT$ njena triangulacija. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ kocke $C$.
 
 Baza indukcije ($n = 1$):
-Če je $n = 0$, lema očitno drži, saj je $0$-kocka točka. Pri Spernerjevem barvanju točke imamo samo eno možnost in tako dobimo eno popolno pobarvano $0$-kocko, ki je tudi popolno pobarvan simpleks.
+Če je $n = 1$, lema drži po definiciji.
 
 Indukcijska predpostavka ($n - 1$):
-Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki triangulaciji $(n - 1)$-kocke s Spernerjevim barvanjem najdemo liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
+Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki triangulaciji $(n - 1)$-kocke s Spernerjevim barvanjem obstaja liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
-Pravilnost izjave želimo dokazati tudi v dimenziji $n$. Za poljubno triangulacijo $\pT$ $n$-kocke $C$ naj bodo oglišča triangulacije $\pT$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $\pT$ s $p$, število popolno pobarvanih $(n-1)$-simpleksov, ki ležijo na robu kocke $C$ pa z $r$. Definirajmo funkcijo $\alpha$, ki vsakemu $n$-simpleksu $R$ priredi število popolno pobarvanih $(n-1)$-simpleksov, ki so vsebovani v $R$. Vsak popolno pobarvan $n$-simpleks vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, 1, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa zagotovo ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov, saj niti ne vsebujejo vseh barv iz množice $\{0, 1, \dots, n-1 \}$. Iz zgornjega lahko sklepamo, da je
-\begin{equation}\label{eq:kongr11}
+Pravilnost izjave želimo dokazati tudi v dimenziji $n$. Za poljubno triangulacijo $\pT$ $n$-kocke $C$ naj bodo oglišča triangulacije $\pT$ pobarvana s Spernerjevim barvanjem. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $\pT$ s $p$, število popolno pobarvanih $(n-1)$-simpleksov, ki ležijo na robu kocke $C$ pa z $r$. Definirajmo funkcijo $\alpha$, ki vsakemu $n$-simpleksu $R$ priredi število popolno pobarvanih $(n-1)$-simpleksov, ki so vsebovani v robu simpleksa $R$. Vsak popolno pobarvan $n$-simpleks vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali pa nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, 1, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana simpleksa. Ostali simpleksi pa zagotovo ne vsebujejo popolno pobarvanih $(n - 1)$-simpleksov, saj niti ne vsebujejo vseh barv iz množice $\{0, 1, \dots, n-1 \}$. Iz zgornjega lahko sklepamo, da je
+\begin{equation}\label{eq:kongr1}
 p \equiv 
 \sum\limits_{\substack{
 R \in \pT
  \\ 
-R\text{ je } n\text{-simplex}
+R\text{ je } n\text{-simpleks}
  }}
   \alpha(R) \pmod 2.
 \end{equation}
-Pri štetju popolno pobarvanih $(n - 1)$-simpleksov smo vsakega iz notranjosti $C$ šteli dvakrat, tiste z roba $C$ pa samo enkrat. Torej velja kongruenca:
-\begin{equation}\label{eq:kongr12}
+V zgornji vsoti števil popolno pobarvanih $(n - 1)$-simpleksov vsak iz notranjosti $C$ nastopa dvakrat, vsak z roba $C$ pa enkrat. Torej velja kongruenca:
+\begin{equation}\label{eq:kongr2}
 r \equiv 
 \sum\limits_{\substack{
 R \in \pT
  \\ 
-R\text{ je } n\text{-simplex}
+R\text{ je } n\text{-simpleks}
  }}
   \alpha(R) \pmod 2.
 \end{equation}
 Iz enačbe~\eqref{eq:kongr1} in enačbe~\eqref{eq:kongr2} sledi, da je $p \equiv r \pmod 2$.
-Ker je kocka pobarvana s Spernerjevim barvanjem, ima eno popolno pobarvano glavno lice, ki zaradi indukcijske predpostavke vsebujejo liho število popolno pobarvanih $(n - 1)$-simpleksov. Ker na drugih licih ni popolno pobarvanih $(n - 1)$-simpleksov, je število $r$ liho. Zato je tudi $p$ liho število.
+Ker je kocka pobarvana s Spernerjevim barvanjem, vsebuje samo eno glavno lice, na katerem nastopajo vse barve iz množice $\{0, 1, \dots, n-1\}$ in za katerega je barvanje zoženo na to lice tudi Spernerjevo. Zaradi indukcijske predpostavke na tem licu nastopa liho mnogo popolno pobarvanih $(n - 1)$-simpleksov. Ker na drugih licih ni popolno pobarvanih $(n - 1)$-simpleksov, je število $r$ liho. Zato je tudi $p$ liho število.
 \end{proof}
-\newpage
 
-Sedaj pokažimo, da je barvanje $\varphi$ Spernerjevo barvanje za kocke.
+Sedaj pokažimo, da je barvanje $\varphi$, ki smo ga definirali v dokazu izreka~\ref{izr:PM}, Spernerjevo barvanje za kocke.
 \begin{dokaz}
-Pokažimo najprej, da je $n$-kocka $\I^n$ pri barvanju z barvanjem $\varphi$ pobarvana popolno. Pokazati moramo, da smo pri barvanju njenih oglišč uporabili vse barve iz množice $\{ 0, 1, \dots, n \}$ in da vsebuje liho število popolno pobarvanih glavnih lic. Za boljšo predstavo dokaza si lahko na sliki \ref{fig:PMcolor} pogledamo, kako izgleda barvanje oglišč v dimenzijah $0$, $1$, $2$ in $3$.
+Pokažimo najprej, da je $n$-kocka $\I^n$ pri barvanju z barvanjem $\varphi$ pobarvana popolno in da smo pribarvanju oglišč triangulacije kocke samo eno lice pobarvali tako, da je barvanje zoženo na to lice Spernerjevo. Za boljšo predstavo dokaza si lahko na sliki \ref{fig:PMcolor} pogledamo, kako izgleda barvanje oglišč v dimenzijah $0$, $1$, $2$ in $3$.
 %####################     Poincarejevo barvanje     ####################
 \begin{figure}[h!]
 	\centering
 	\import{slike/}{poincarejevo_barvanje.tex}
-	\caption{Skrajno levo je ena točka ($0$-kocka), ki je z barvanjem $\varphi$ pobarvana z $0$. Malo bolj proti desni lahko vidimo, kako barvanje $\varphi$ označi oglišča $1$-kocke, naslednja je z $\varphi$ pobarvana $2$-kocka, skrajno desno pa je pobarvana $3$-kocka.}\label{fig:PMcolor}
+	\caption{Skrajno levo je ena točka ($0$-kocka), ki je z barvanjem $\varphi$ pobarvana z $0$. Malo bolj proti desni lahko vidimo, kako barvanje $\varphi$ pobarva oglišča $1$-kocke, naslednja je z $\varphi$ pobarvana $2$-kocka, skrajno desno pa je pobarvana $3$-kocka.}\label{fig:PMcolor}
 \end{figure}
 %#########################################################
 Dokazovali bomo z indukcijo na $n$.
 
 Baza indukcije ($n = 0$):
-Če je $n=0$, opazujemo eno točko, označeno z $0$, kar je popolno pobarvana $0$-kocka.
+Če je $n=0$, opazujemo eno točko, pobarvano z $0$, kar je popolno pobarvana $0$-kocka.
 
 Indukcijska predpostavka ($n - 1$):
 Predpostavimo, da je $(n - 1)$-kocka popolno pobarvana.
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
-Dokažimo pravilnost izjave tudi v dimenziji $n$. Lice $I_n^-$ je enako pobarvano kot $(n-1)$-kocka, saj za njuni oglišči veljata enake vsebovanosti v množicah $F_i^+$. Po indukcijski predpostavki je lice $I_n^-$ popolno pobarvano, zato vsebuje vse barve iz množice $\{ 0, 1, \dots, n-1\}$. Oglišče $(a, a, \dots, a) \in \R^n$ je označeno z barvo $n$, saj je vsebovano v vseh množicah $F_i^+$ za $i = 1, 2, \dots, n$. To pomeni, da je $n$-kocka označena z vsemi oznakami iz množice $\{ 0, 1, \dots, n \}$. Prepričati se moramo le še, da ima liho število popolno pobarvanih glavnih lic. 
-Trdimo, da je lice $\I_n^-$ edino popolno pobarvano lice kocke $\I^n$. Poglejmo najprej, če je lahko katero od lic $\I_i^+$ popolno pobarvano. Za vsak $x \in \I_i^+$ velja, da je $\varphi (x) \neq i-1$, zato lice $\I_i^+$ ne more vsebovati oglišč z vsemi barvami $\{ 0, 1, \dots, n - 1 \}$. Poskusimo poiskati popolno pobarvano lice med lici $\I_i^-$. Za vsako točko $x \in \I_i^-$ velja $\varphi (x) < i$. Če želimo, da lice $\I_i^-$ vsebuje vse barve iz množice $\{ 0, 1, \dots, n - 1 \}$, mora biti $i = n$. Torej je lice $\I_n^-$ res edino popolno pobarvano glavno lice kocke $\I^n$.
+Dokažimo pravilnost izjave tudi v dimenziji $n$. Lice $I_n^-$ je enako pobarvano kot $(n-1)$-kocka, saj za njuna oglišča veljajo enake vsebovanosti v množicah $F_i^+$. Po indukcijski predpostavki je lice $I_n^-$ popolno pobarvano, zato vsebuje vse barve iz množice $\{ 0, 1, \dots, n-1\}$. Oglišče $(a, a, \dots, a) \in \R^n$ je pobarvano z barvo $n$, saj je vsebovano v vseh množicah $F_i^+$ za $i = 1, 2, \dots, n$. To pomeni, da je $n$-kocka pobarvana z vsemi barvami iz množice $\{ 0, 1, \dots, n \}$. Prepričati se moramo le še, da je samo eno glavno lice pobarvano s Spernerjevim barvanjem. 
+Trdimo, da je lice $\I_n^-$ edino popolno pobarvano lice kocke $\I^n$. Poglejmo najprej, če je lahko katero od lic $\I_i^+$ popolno pobarvano. Za vsak $x \in \I_i^+$ velja, da je $\varphi (x) \neq i-1$, zato lice $\I_i^+$ ne more vsebovati oglišč z vsemi barvami $\{ 0, 1, \dots, n - 1 \}$. Poskusimo poiskati popolno pobarvano lice med lici $\I_i^-$. Za vsako točko $x \in \I_i^-$ velja $\varphi (x) < i$. Če želimo, da lice $\I_i^-$ vsebuje vse barve iz množice $\{ 0, 1, \dots, n - 1 \}$, mora biti $i = n$. Torej je lice $\I_n^-$ res edino popolno pobarvano glavno lice kocke $\I^n$. Ker je lice $\I_n^-$  enako pobarvano kot kocka $\I_{n-1}$, je barvanje zoženo na to lice Spernerjevo. 
 
-Prepričati se moramo samo še, da so vsa oglišča z nekega lica kocke $\I^n$ pobarvana enako kot neko oglišče, ki to lice določa. Vemo, da lahko vsako lice $L$ dobimo kot presek pravih lic. Zaradi lažjega zapisa definiramo znak $\star$, za katerega je $\I_i^{\star} = \I^n$ za vsak $i = 1, 2, \dots, n$. S pomočjo nove oznake lahko vsako lice $L$ kocke $\I^n$ zapišemo kot 
+Prepričati se moramo samo še, da so vsa oglišča z nekega lica kocke $\I^n$ pobarvana enako kot neko oglišče, ki to lice določa. Vemo, da lahko vsako lice $L$ dobimo kot presek glavnih lic. Zaradi lažjega zapisa definiramo znak $\star$, za katerega je $\I_i^{\star} = \I^n$ za vsak $i = 1, 2, \dots, n$. S pomočjo nove oznake lahko vsako lice $L$ kocke $\I^n$ zapišemo kot 
 $$L = \I_1^{\varepsilon_1} \cap \I_2^{\varepsilon_2} \cap \cdots \cap \I_n^{\varepsilon_n},$$
-kjer je $\varepsilon_i \in \{ \star, -, + \}$ za vsak $i = 1, 2, \dots, n$. Naj bo $x \in L$ in naj bo $\varphi (x) = l$ za neki $l \in \{ 0, 1, \dots, n \}$. Vemo, da je $\varepsilon_j \neq -$ za $j \leq l$ in $\varepsilon_{l+1} \neq +$. Poglejmo si oglišče 
-$$y = \I_1^{\rho_1} \cap \I_2^{\rho_2} \cap \cdots \cap \I_n^{\rho_n},$$
+kjer je $\varepsilon_i \in \{ \star, -, + \}$ za vsak $i = 1, 2, \dots, n$. Naj bo $x \in L$ in naj bo $\varphi (x) = l$ za neki $l \in \{ 0, 1, \dots, n \}$. Vemo, da je $\varepsilon_j \neq -$ za $j \leq l$ in $\varepsilon_{l+1} \neq +$. Poglejmo si oglišče $y$, ki ustreza preseku 
+$$\I_1^{\rho_1} \cap \I_2^{\rho_2} \cap \cdots \cap \I_n^{\rho_n},$$
 kjer je
 \[  \rho_i =  \left\{
 \begin{array}{cl}\vspace{3pt}
@@ -704,21 +658,21 @@ Lahko se prepričamo, da je $y \in L$ in $\varphi (y) = l$, kar pomeni, da smo n
 \end{dokaz}
 Leta 1940 je K. Miranda dokazal, da je izrek~\ref{izr:PM} ekvivalenten znanemu Brouwerjevemu izreku o negibni točki, ki pravi naslednje:
 \begin{izrek}[Brouwerjev izrek o negibni točki \protect{\cite{Kulpa}}]\label{izr:fixedpoint}
-Denimo, da je dana kocka $C = [-1, 1]^n$ in zvezna preslikava $f : C \to C$, potem obstaja točka $c \in C$, da je $f(c) = c$.
+Naj bo $C = [-1, 1]^n$. Če je $f : C \to C$ poljubna zvezna preslikava, potem obstaja taka točka $c \in C$, da je $f(c) = c$.
 \end{izrek}
 Izkaže se, da si pri dokazovanju nekaterih matematičnih trditev lažje pomagamo z izrekom~\ref{izr:PM} kot z izrekom~\ref{izr:fixedpoint}. Poglejmo si, kako s pomočjo izreka~\ref{izr:PM} dokažemo izrek o negibni točki. 
 
 \begin{dokaz}[Dokaz izreka \ref{izr:fixedpoint}]
-Naj bo $C = [-1, 1]^n$ kocka v evklidskem prostoru $~R^n$ in naj bo $f : C \to C$ poljubna zvezna preslikava iz kocke nazaj vase. Definiramo funkcijo $g : C \to \R^n$ s predpisom $g(x) = x - f(x)$. Funkcija $g$ je zvezna in zadošča pogojem izreka~\ref{izr:PM}. Res, za vsak $x \in \I_i^-$ velja, da je $x_i = -1$ in $f_i(x) \geq -1$, zato je 
+Definiramo funkcijo $g : C \to \R^n$ s predpisom $g(x) = x - f(x)$. Funkcija $g$ je zvezna in zadošča pogojem izreka~\ref{izr:PM}. Res, za vsak $x \in \I_i^-$ velja, da je $x_i = -1$ in $f_i(x) \geq -1$, zato je 
 $$g_i(x) = x_i - f_i(x) \leq -1 - (-1) =0.$$
-Podobno lahko razmislimo, da je za vsak $x \in \I_i^+$ vrednost funkcije $g_i \geq 0$. Zato po izreku~\ref{izr:PM} obstaja taka točka $c \in C$, da je $g(c) = 0$, kar pomeni, da je $f(c) = c$.
+Podobno za vsak $x \in \I_i^+$ velja $g_i(x) \geq 0$. Zato po izreku~\ref{izr:PM} obstaja taka točka $c \in C$, da je $g(c) = 0$, kar pomeni, da je $f(c) = c$.
 \end{dokaz}
 Enostavnost dokaza izreka~\ref{izr:fixedpoint} pokaže, kako močno orodje za dokazovanje topoloških trditev je izrek~\ref{izr:PM}.
 
 
 %####################     4. POGLAVJE: RAZŠIRITEV FUNKCIJE     ####################
 \section{Razširitev funkcije}\label{raz:siritev}
-Včasih se nam zgodi, da je podana funkcija definirana samo na nekem majhnem območju, želeli pa bi si, da bi bila domena funkcije večja. Poglejmo si poljubno množico $A \in \R^n$ in neko funkcijo $f : A \to \R$. Denimo, da je $U$ taka množica, da je $A \subset U$. Funkciji $F : U \to \R$, za katero je $F(x) = f(x)$ za vsak $x \in A$, pravimo \emph{razširitev funkcije} $f$ na množico $U$. Če funkcijo $f : A \to \R^n$ razširimo brez omejitev, se informacija o funkciji $f$ na množici $A$ popolnoma izgubi. Da se ohrani vsaj del informacije, bomo gledali zgolj zvezne funkcije $f$ in zvezne razširitve $F$. Pri tem se ponudi vprašanje, ali lahko vsako zvezno funkcijo razširimo. S primerom pokažemo, da temu ni tako.
+Včasih se nam zgodi, da je podana funkcija definirana samo na nekem majhnem območju, želeli pa bi si, da bi bila domena funkcije večja. Poglejmo si poljubno množico $A \in \R^n$ in neko funkcijo $f : A \to \R$. Denimo, da je $U$ taka množica, da je $A \subset U$. Funkciji $F : U \to \R$, za katero je $F(x) = f(x)$ za vsak $x \in A$, pravimo \emph{razširitev funkcije} $f$ na množico $U$. Zanimale nas bodo zgolj zvezne funkcije $f$ in zvezne razširitve $F$. Pri tem se ponudi vprašanje, ali lahko vsako zvezno funkcijo razširimo. S primerom pokažemo, da temu ni tako.
 
 \begin{primer}
 Funkcijo $f : (-2, 0) \cup (0, 2) \to \R$ definiramo s predpisom
@@ -738,10 +692,19 @@ Funkcijo $f : (-2, 0) \cup (0, 2) \to \R$ definiramo s predpisom
 Funkcija $f$ je zvezna na $(-2, 0) \cup (0, 2)$, ne moremo pa je zvezno razširiti na $\R$, saj razširitev v točki $x = 0$ ne bi bila zvezna.
 \end{primer}
 
-Izkaže se, da je za obstoj razširitve zvezne funkcije $f : A \subset \R^n  \to \R$ dovolj, če je množica $A$ kompaktna.
+Izkaže se, da je za obstoj razširitve zvezne funkcije $f : A \subset \R^n  \to \R$ dovolj, če je množica $A$ kompaktna. Preden dokažemo to trditev, si poglejmo pomembno lastnost zveznih funkcij, ki je ključna pri dokazu.
+
+\begin{trditev}[\protect{\cite{zvjeenakzv}}]\label{trd:zvjeenakzv}
+Zvezna funkcija, definirana na kompaktnem metričnem prostoru, je enakomerno zvezna.
+\end{trditev}
+\begin{dokaz}
+Predpostavimo, da je $K$ kompakten metrični prostor in $f : K \to \R^n$ zvezna preslikava. Pokazati želimo, da za vsako (še tako majhno) število $\varepsilon > 0$ obstaja tako realno število $\delta > 0$, da za vsaki točki $x, y \in K$, za kateri je $d(x, y) < \delta$, velja $d(f(x), f(y)) < \varepsilon$. Ker je $f$ zvezna funkcija, za vsako točko $z \in K$ obstaja tako pozitivno realno število $\delta_z$, da je $f(B(z, \delta_z)) \subset B(f(z), \frac{\varepsilon}{2})$. Družina množic $\pU = \left \{ B(z, \frac{\delta_z}{2}); z \in K \right \}$ tvori odprto pokritje prostora $K$.  Zaradi kompaktnosti $K$ lahko izberemo končno poddružino $\pA =  \left \{ (B(x_1, \frac{\delta_{x_1}}{2}), \dots, B(x_n, \frac{\delta_{x_n}}{2}) \right \}$, ki je še vedno pokritje prostora $K$. Definiramo število $\delta := \min_i \frac{\delta_{x_i}}{2}$. Za poljubni točki $x, y \in K$, ki sta med seboj oddaljeni manj kot $\delta$, obstaja krogla $B(x_i, \frac{\delta_{x_i}}{2})$, ki vsebuje točko $x$. Ocenimo razdaljo med točko $x_i$ in točko $y$:
+$$d(x_i, y) \leq d(x_i, x) + d(x, y) < \frac{\delta_{x_i}}{2} +\delta \leq \frac{\delta_{x_i}}{2} + \frac{\delta_{x_i}}{2} = \delta_{x_i}.$$
+Točki $x$ in $y$ ležita v krogli $B(x_i, \delta_{x_i})$. Ker slika te krogle leži znotraj krogle $B(f(x_i), \frac{\varepsilon}{2})$ je razdalja med točkama $f(x)$ in $f(y)$ manjša od $\varepsilon$, torej je funkcija $f$ res enakomerno zvezna.
+\end{dokaz}
 
 \begin{lema}[Razširitev zvezne funkcije]\label{lem:razsiritev}
-Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo dana zvezna funkcija $f : A \to \R$. Potem obstaja taka zvezna funkcija $F : \R^n \to \R$, da za vsak $x \in A$, velja $F(x) = f(x)$.
+Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo dana zvezna funkcija $f : A \to \R$. Potem obstaja taka zvezna funkcija $F : \R^n \to \R$, da za vsak $x \in A$ velja $F(x) = f(x)$.
 \end{lema}
 
 \begin{dokaz}
@@ -753,61 +716,21 @@ Razširitveno funkcijo \mbox{$F : \R^n \to \R$} lahko definiramo s predpisom \pr
 	f(x) &, x \in A. \\
 \end{array} 
 \right. \]
-Iz predpisa funkcije je jasno, da je za vsak $x \in A$, $F(x) = f(x)$. Ugotoviti moramo le še, ali je funkcija $F$ res zvezna na $R^n$.
-Dokazovali bomo v dveh delih. Najprej bomo dokazali zveznost funkcije $F$ na $A^c$, potem pa še na $A$.
-%Ker je $F(x) = \inf \left \{ f(a) + \frac{d(x, a)}{d(x, A)} - 1; a \in A \right \}$ za vsak $x \in A^c$ in je funkcija $g : X \times A \to \R$ s predpisom $g(x) = f(a) + \frac{d(x, a)}{d(x, A)} - 1$ zvezna na $A^c$ je za
-Dokažimo, da je funkcija $F$ zvezna v točki $x_0 \in A^c$. Izberimo poljubno majhno pozitivno realno število $\varepsilon \in (0, 1)$. Potem obstaja tako pozitivno realno število $r>0$, da je zaprta krogla s polmerom $r$ vsebovana v $A^c$, torej $B(x_0, r) \subset A^c$. Definiramo funkcijo $D_a(x) := \frac{d(x, a)}{d(x, A)}$. Prepričajmo se, da obstaja tako pozitivno realno število $\delta$, da je 
-$|D_a(x_0) - D_a(x)| < \varepsilon$ za vsak $x \in B(x_0, \delta)$ in vsak $a \in A$.
-Ocenimo navzgor:
-\begin{equation*}
-\begin{split}
-D_a(x_0) - D_a(x) & = \frac{d(x_0, a)}{d(x_0, A)} - \frac{d(x, a)}{d(x, A)} \\
-& =  \frac{d(x_0, a)d(x, A) - d(x, a)d(x_0, A)}{d(x_0, A) d(x, A)} \\
-& \leq \frac{d(x_0, a)(d(x_0, A) + \delta) - (d(x_0, a) - \delta)d(x_0, A)}{d(x_0, A) (d(x_0, A) - delta)} \\
-& = \frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)}
-\end{split}
-\end{equation*}
-Ker želimo, da je $\frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)} \leq \varepsilon$, lahko izračunamo $\delta \leq \frac{\varepsilon (d(x_0, A))^2}{d(x_0, a) + d(x_0, A)(1+ \varepsilon)}$.
-Ocenimo navzdol:
-\begin{equation*}
-\begin{split}
-D_a(x_0) - D_a(x) & = \frac{d(x_0, a)}{d(x_0, A)} - \frac{d(x, a)}{d(x, A)} \\
-& =  \frac{d(x_0, a)d(x, A) - d(x, a)d(x_0, A)}{d(x_0, A) d(x, A)} \\
-& \geq \frac{d(x_0, a)(d(x_0, A) - \delta) - (d(x_0, a) + \delta)d(x_0, A)}{d(x_0, A) (d(x_0, A) + \delta)} \\
-& = \frac{-\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) + \delta)}
-\end{split}
-\end{equation*}
-Ker želimo, da je $\frac{\delta (d(x_0, a) + d(x_0, A))}{d(x_0, A) (d(x_0, A) - \delta)} \geq -\varepsilon$, dobimo neenačbo $\delta \leq \frac{\varepsilon (d(x_0, A))^2}{d(x_0, a) + d(x_0, A)(1- \varepsilon)}$.
-Opazimo, da je ocena navzgor strožja. Ker je funkcija $\delta(a) = \frac{\varepsilon d(x_0, A)}{d(x_0)(1+ \varepsilon) + d(x_0, a)}$ definirana na kompaktni množici, doseže svoj minimum. Ker je funkcija $\delta(a)$ na množici $A$ strogo pozitivna, je tudi minimum večji od $0$. Zato obstaja pozitivno realno število $\delta$, ki je manjše od $\delta(a)$ za vsako število $a \in A$.
+Iz predpisa funkcije je jasno, da za vsak $x \in A$ velja $F(x) = f(x)$. Dokazati moramo le še, da je funkcija $F$ res zvezna na $\R^n$.
+Funkcijo $F|_{A^c}$ bomo zapisali kot kompozitum dveh zveznih funkcij in na ta način dokazali njeno zveznost. Obstaja tako pozitivno realno število $r>0$, da je zaprta krogla okrog $x_0$ s polmerom $r$ vsebovana v $A^c$, torej $\overline{B}(x_0, r) \subset A^c$. Funkcija $g: A^c \times A \to \R$, definirana s predpisom $g(x, a) = f(a) + \frac{d(x, a)}{d(x, A)}$, je zvezna. Trdimo, da je tudi funkcija $\hat{g} : A^c \to C(A, \R)$ s predpisom $\hat{g}(x) = g_x$ zvezna, kjer prostor $C(A, \R)$ opremimo z metriko enakomerne konvergence. Izberimo poljubno majhno pozitivno realno število $\varepsilon \in (0, 1)$. Ker je funkcija $g$ enakomerno zvezna na množici $\overline{B}(x_0, r) \times A$, obstaja tako število $\delta >0$, da za vsak par točk $(x, a), (y, b) \in \overline{B}(x_0, r) \times A$ velja implikacija:
+$$d((x, a), (y, b)) < \delta \Rightarrow d(g(x, a), g(y, b))< \varepsilon.$$
+Ker iz $d(x, y) < \delta$ sledi $d((x, a), (y, a)) < \delta$ za vsak $a$, sledi tudi $d(g_x, g_y) = d(\hat{g}(x), \hat{g}(y)) < \varepsilon.$ 
 
-%Na $B(x_0, r)$ je funkcija $D_a(x) := \frac{d(x, a)}{d(x, A)}$ zvezna za vsak parameter $a$, saj sta funkciji $d(x, a)$ in $d(x, A)$ zvezni in različni od $0$. Torej obstaja realno število $\delta_a \in (0, r)$, da je $|D_a(x_0) - D_a(x)| < \varepsilon$ za vsak $x \in B(x_0, \delta_a)$. Ker je množica $A$ kompaktna, obstaja število $\delta > 0$, ki je za vsako točko $a \in A$ manjše od števila $\delta_a$. Za poljubno točko $x$ iz krogle $B(x_0, \delta)$ bi radi videli, da je $|F(x_0) - F(x)| \leq \varepsilon$.
+Prepričajmo se, da je tudi funkcija $m: C(A, \R) \to \R$ s predpisom $m(f) = \min_{a \in A} f(a)$ zvezna. Naj bo $g \in C(A, \R)$ in naj bo $\varepsilon > 0$. Radi bi videli, da obstaja tako pozitivno število $\delta$, da za vse funkcije $h$, za katere je $d(g, h)<\delta$ velja: $|m(g) - m(h)| < \varepsilon$. Če je $d(g, h)<\delta$, potem za vsako točko $a \in A$ velja neenakost $|g(a) - h(a)| < \delta$. Denimo, da je minimum funkcije $g$ na množici $A$ dosežen v točki $a_1$, minimum funkcije $h$ pa v točki $a_2$. Naredimo naslednje ocene:
+\begin{align*}
+m(g) - m(h) &\geq g(a_1) - h(a_1) > -\delta,\\
+m(g) - m(h) &\leq g(a_2) - h(a_2) < \delta.
+\end{align*}
+Od tod sklepamo, da je $|m(g) - m(h)| < \delta$. Torej lahko za iskano število $\delta$ izberemo $\varepsilon$.
 
-Denimo, da je infimum $F(x_0)$ dosežen pri $a_0$, torej je $F(x_0) = f(a_0) + D_{a_0}(x_0) - 1$, infimum $F(x)$ pa pri $a_1$, torej je $F(x) = f(a_1) + D_{a_1}(x) - 1$. Naredimo naslednje ocene:
-\begin{equation*}
-\begin{split}
-F(x) & = F(x) - F(x_0) + F(x_0) \\
-& = \inf \left \{ f(a) + D_a(x) - 1; a \in A \right \} - F(x_0) + F(x_0) \\
-& \leq (f(a_0) + D_{a_0}(x) - 1) -  (f(a_0) + D_{a_0}(x_0) - 1) + F(x_0) \\
-& = (D_{a_0}(x) -  D_{a_0}(x_0)) + F(x_0) \\
-& \leq \varepsilon + F(x_0), \\
-& \implies F(x_0) - F(x) \geq -\varepsilon.
-\end{split}
-\end{equation*}
+Opazimo, da je funkcija  $F|_{A^c} = m \circ \hat{g}$ kompozitum dveh zveznih funkcij in kot taka tudi sama zvezna.
 
-Podobno ocenimo:
-\begin{equation*}
-\begin{split}
-F(x_0) & = F(x_0) - F(x) + F(x)\\
-& =\inf \left \{ f(a) + D_a(x_o) - 1; a \in A \right \} - F(x) + F(x)\\
-& \leq (f(a_1) + D_{a_1}(x_0) - 1) -  (f(a_1) + D_{a_1}(x) - 1) + F(x)\\
-& = (D_{a_1}(x_0) -  D_{a_1}(x)) + F(x) \\
-& \leq \varepsilon + F(x), \\
-& \implies F(x_0) - F(x) \leq \varepsilon.
-\end{split}
-\end{equation*}
-Iz zgornjih ocen ugotovimo, da je $|F(x_0) - F(x)| \leq \varepsilon$, kar zagotavlja zveznost funkcije $F$ na $A^c$.
-
-Da bi preverili zveznost $F$ tudi na množici $A$, izberemo $x_0 \in A$ in $\varepsilon > 0$. Ker je funkcija $f$ zvezna na $A$, obstaja tak $\delta > 0$, da je $|f(x_0) - f(x)| < \varepsilon$ za vsak $x \in A$, za katerega velja $d(x_0, x) < \delta$. Zaradi lažjega ocenjevanja naredimo naslednje premisleke. Ker je funkcija $f$ definirana na kompaktni množici, obstaja realno število $M$, da je $f(a) \leq M$ za vsak $a \in A$. Določimo tak $\mu >0$, pri katerem je funkcija $D_a(x) \geq M + 1$ za vse $a \in A \setminus B(x_0, \delta)$ in vse $x \in B(x_0, \mu)$. Naj bo $a \in B(x_0, \delta)^c$, potem je
+Da bi preverili zveznost $F$ v točkah množice $A$, izberemo $x_0 \in A$ in $\varepsilon > 0$. Ker je funkcija $f$ zvezna, obstaja tako število $\delta > 0$, da je $|f(x_0) - f(x)| < \varepsilon$ za vsak $x \in A$, za katerega velja $d(x_0, x) < \delta$. Zaradi lažjega ocenjevanja naredimo naslednje premisleke. Ker je funkcija $f$ definirana na kompaktni množici, obstaja pozitivno realno število $M$, da je $f(a) \leq M$ za vsak $a \in A$. Določimo tak $\mu >0$, pri katerem velja: $D_a(x) := \frac{d(x, a)}{d(x, A)} > M + 1$ za vse $a \in A \setminus B(x_0, \delta)$ in vse $x \in B(x_0, \mu)\setminus A$. Naj bo $a \in B(x_0, \delta)^c$. Potem je
 $D_a(x)|_{B(x_0, \mu)}= \frac{d(x, a)}{d(x, A)} \geq \frac{\delta - \mu}{\mu}$. Torej moramo določiti $\mu > 0$, da bo veljala neenačba $\frac{\delta - \mu}{\mu} > M + 1$. Izračunamo $\mu <\frac{\delta}{M + 2}$.
 %########################     Skica dokaza zvezne razširitve     ####################
 \begin{figure}[h!]
@@ -816,11 +739,12 @@ $D_a(x)|_{B(x_0, \mu)}= \frac{d(x, a)}{d(x, A)} \geq \frac{\delta - \mu}{\mu}$. 
 	\caption{Pri dokazovanju zveznosti funkcije $F$ v točki $x_0$ želimo poiskati tako pozitivno realno število $\mu$, da se vrednosti funkcije $F$ za vsako točko $x \in B(x_0, \mu)$ od vrednosti funkcije $F(x_0)$ razlikujejo največ za vnaprej predpisani $\varepsilon$.}\label{fig:zveznarazsiritev}
 \end{figure}
 %#######################################################################
-Sedaj imamo dve možnosti. Če je $x \in A \cap B(x_0, \mu)$, potem je $|f(x_0) - f(x)| < \varepsilon$. Če pa je $x \in A^c \cap B(x_0, \mu)$, vemo, da obstajata točki $b \in \partial A$, za katero je $d(x, b) = d(x, A)$, in $c \in A $ z lastnostjo $F(x) = f(c) + D_c(x) -1$. Iz izbire števila $\mu$ je jasno, da ležita točki $b, c \in B(x_0, \delta)$ (slika~\ref{fig:zveznarazsiritev}). Lahko naredimo naslednji oceni. Najprej upoštevamo definicijo funkcije $F$ in izbrano točko $b$:
+Sedaj imamo dve možnosti. Če je $x \in A \cap B(x_0, \mu)$, potem je 
+$|F(x_0) - F(x)|=|f(x_0) - f(x)| < \varepsilon$. Če pa je $x \in A^c \cap B(x_0, \mu)$, vemo, da obstajata točki $b \in \partial A$, za katero je $d(x, b) = d(x, A)$, in $c \in A $ z lastnostjo $F(x) = f(c) + D_c(x) -1$. Iz izbire števila $\mu$ je jasno, da ležita točki $b, c \in B(x_0, \delta)$ (slika~\ref{fig:zveznarazsiritev}). Lahko naredimo naslednji oceni. Najprej upoštevamo definicijo funkcije $F$ in izbrano točko $b$:
 \begin{equation*}
-F(x) = \inf_{a \in A} \{ f(a) + D_a(x) - 1\} \leq f(b) \leq f(x_0) +\varepsilon = F(x_0) +\varepsilon,
+F(x) = \inf_{a \in A} \{ f(a) + D_a(x) - 1\} \leq f(b) \leq f(x_0) +\varepsilon = F(x_0) +\varepsilon.
 \end{equation*}
-pri drugi oceni pa si pomagamo s točko $c$:
+Pri drugi oceni si pomagamo s točko $c$:
 \begin{equation*}
 F(x) = f(c) + D_c(x) -1 \geq f(c) \geq f(x_0) - \varepsilon =  F(x_0) -\varepsilon.
 \end{equation*}
@@ -830,28 +754,21 @@ Ugotovimo, da je $| F(x_0) - F(x) | \leq \varepsilon$, kar zaključi dokaz.
 Lemo~\ref{lem:razsiritev} enostavno posplošimo tudi na preslikave, ki slikajo v večrazsežni evklidski prostor.
 
 \begin{posledica}
-Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : A \to \R^n$} zvezna preslikava. Potem obstaja zvezna preslikava $F : \R^n \to \R^n$, da je za vsak $x \in A$, $F(x) = f(x)$.
+Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : A \to \R^n$} zvezna preslikava. Potem obstaja taka zvezna preslikava $F : \R^n \to \R^n$, da je za vsak $x \in A$, $F(x) = f(x)$.
 \end{posledica}
 
 \begin{dokaz}
 Vemo, da zvezna preslikava $f : A \to \R^n$ določa komponentne funkcije $f_1(x), f_2(x), \dots , f_n(x)$. Vse komponentne funkcije $f_i : A \to \R$ zadoščajo pogojem leme~\ref{lem:razsiritev}, zato jih lahko razširimo do funkcij $F_i : \R^n \to \R$. Če definiramo preslikavo $F : \R^n \to \R^n$ s predpisom $F(x) = (F_1(x), F_2(x), \dots , F_n(x))$, dobimo zvezno razširitev preslikave $f$.
 \end{dokaz}
-Sedaj znamo razširiti zvezno preslikavo iz kompaktne množice na cel prostor $\R^n$. Včasih pa si poleg spremembe definicijskega območja želimo imeti nekaj vpliva tudi na zalogo vrednosti preslikave. Želeli bi si, da se zaloga vrednosti pri razširitvi čim manj spremeni. Naivno bi lahko želeli, da ta ostane celo enaka, a to ni vedno mogoče, kar pokaže primer~\ref{protiprimer}.
+Sedaj znamo razširiti zvezno preslikavo iz kompaktne množice na cel prostor $\R^n$. Včasih si poleg spremembe definicijskega območja želimo imeti nekaj vpliva tudi na zalogo vrednosti preslikave. Želeli bi si, da se zaloga vrednosti pri razširitvi čim manj spremeni. Naivno bi lahko želeli, da ta ostane celo enaka, a to ni vedno mogoče, kar pokaže primer~\ref{protiprimer}.
 
 \begin{primer}\label{protiprimer}
-Poglejmo si identično preslikavo $f : \partial \I^n \to \I^n \setminus \{ \0 \}$. Po izreku \ref{izr:PM} ne obstaja zvezna razširitev $F : \I^n \to \I^n \setminus \{ \0 \}$, saj mora obstajati $x \in \I^n$, da je $F(x) = \0$. 
+Poglejmo si identično preslikavo $f : \partial \I^n \to \I^n \setminus \{ \0 \}$. Po izreku \ref{izr:PM} za vsako zvezno razširitev $F : \I^n \to \R^n$ preslikave $f$ obstaja taka točka $c \in \I^n$, da zanjo velja $F(c) = 0$.
 \end{primer}
 
-V posebnih primerih obstaja taka razširitev preslikave, ki se izogne določeni točki. Brez izgube splošnosti bomo pokazali, da obstajajo pogoji, ki nam zagotavljajo zvezno razširitev preslikave, ki nobenega elementa definicijskega območja ne slika v $\0$. 
-Preden navedemo pogoje, pa si poglejmo pomembno lastnost preslikav, ki je ključna pri dokazu.
+V posebnih primerih želimo tako razširitev preslikave, ki se izogne določeni točki.
 
-\begin{trditev}[\protect{\cite{zvjeenakzv}}]\label{trd:zvjeenakzv}
-Zvezna funkcija, definirana na kompaktni množici, je enakomerno zvezna.
-\end{trditev}
-\begin{dokaz}
-Predpostavimo, da je $K \in \R^n$ kompaktna množica in $f : K \to \R^n$ zvezna preslikava. Pokazati želimo, da za vsako še tako majhno število $\varepsilon > 0$ obstaja tako realno število $\delta > 0$, da za vsaki točki $x, y \in K$, za kateri je $d(x, y) < \delta$, velja $d(f(x), f(y)) < \varepsilon$. Ker je $f$ zvezna funkcija za vsako točko $z \in K$ obstaja tako pozitivno realno število $\delta_z$, da je $f(B(z, \delta_z)) \subset B(f(z), \frac{\varepsilon}{4})$. Družina množic $\pU = \left \{ B(z, \delta_z); z \in K \right \}$ tvori odprto pokritje prostora $K$. Zaradi kompaktnosti $K$ lahko izberemo končno poddružino $\pA =  \left \{ (B(x_1, \delta_{x_1}), \dots, B(x_n, \delta_{x_n}) \right \}$, ki je še vedno pokritje množice $K$. Definiramo število $\delta = \min_i \delta_{x_i}$. Za poljubni števili $x, y \in K$, ki sta med seboj oddaljeni manj kot $\delta$, imamo dve možnosti. Če obstaja taka krogla $B(x_i, \delta)$, da je $x, y \in B(x_i, \delta)$, potem sta $f(x), f(y) \in B(f(x_i), \frac{\varepsilon}{4})$ in je $d(f(x), f(y)) < \frac{\varepsilon}{2}$. V nasprotnem primeru obstajata krogli  $B(x_i, \delta)$ in $B(x_j, \delta)$ z nepraznim presekom, za kateri velja $x \in B(x_i, \delta)$ in $y \in B(x_j, \delta)$. V tem primeru je $f(x) \in B(f(x_i), \frac{\varepsilon}{4})$ in $f(y) \in B(f(x_j), \frac{\varepsilon}{4})$, kjer je $B(f(x_i), \frac{\varepsilon}{4}) \cap B(f(x_j), \frac{\varepsilon}{4}) \neq \emptyset$. Zato zagotovo velja $d(f(x), f(y)) < \varepsilon$, torej je funkcija res enakomerno zvezna.
-\end{dokaz}
-Poglejmo sedaj, kakšne pogoje potrebujemo, da lahko funkcijo razširimo tako, da se izognemo ničli.
+Poglejmo sedaj, pri katerih pogojih je to mogoče s približno razširitvijo.
 %Mi pa si bomo v nadaljevanju želeli poiskati ravno take funkcije, ki jih lahko razširimo tako, da je pri tem izognemo ničli. 
 %\begin{definicija}
 %Družini $\mathcal{A}$ podmnožic množice $X$, za katero velja $\bigcup_{A \in \mathcal{A}} = X$ pravimo \emph{pokritje množice} $X$. Če družina $\mathcal{A}$ vsebuje zgolj odprte množice, jo imenujemo \emph{odprto pokritje množice} $X$.
@@ -865,25 +782,27 @@ Poglejmo sedaj, kakšne pogoje potrebujemo, da lahko funkcijo razširimo tako, d
 %Dokazovali bomo s protislovjem. Predpostavimo, da Lebesgueovo število ne obstaja. Potem lahko za vsako naravno število $n \in \N$, izberemo $x_n \in X$, da krogla $B(x_n, \frac{1}{n})$ ne leži v nobeni množci $U \in \pU$ tako oprto pokritje $\pU$ množice $X$, da za vsak $\delta >0$  obstaja $x$, da nobena množica $U \in \pU$ ne vsebuje krogle $B(x, \delta)$. Torej za vsak $n \in \N$ lahko izberemo $x_n \in X$, da noben $U \in \pU$ ne vsebuje krogle $B(xn, \frac{1}{n})$. Ker je $X$ kompakten obstaja konvergentno podzaporedje $x_{n_k}$, ki konvergira k $y \in X$.
 %\end{dokaz}
 
-
-
-\begin{lema}[razširitev, ki se izogne ničli \protect{\cite[str.\ 133, Proof of Lemma]{Kulpa}}]\label{lem:razsiritev-nic}
-Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : X \to \R^n \setminus \left \{ \0 \right \}$}. Potem za vsak $\varepsilon > 0$ in za vsako kompaktno množico s prazno notranjostjo $Y \subset \R^n$ obstaja zvezna preslikava $F : X \cup Y \to \R^n \setminus \{ \0 \}$, da velja: $\| F(x)-f(x) \| < \varepsilon$  za vsak $x \in X$
+\begin{lema}[približna razširitev, ki se izogne ničli \protect{\cite[str.\ 133, Proof of Lemma]{Kulpa}}]\label{lem:razsiritev-nic}
+Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : X \to \R^n \setminus \left \{ \0 \right \}$}. Naj ima $Y \in \R^n$ prazno notranjost. Tedaj za vsako število $\varepsilon > 0$ obstaja taka zvezna preslikava $F : X \cup Y \to \R^n \setminus \{0\}$, da zanjo velja $\| F(x) - f(x) \| < \varepsilon$ za vsak $x \in X$.
 \end{lema}
 
 \begin{dokaz}
-Izberimo realno število $\varepsilon > 0$. Naj bosta $X$ in $Y$ taki množici kot v lemi \ref{lem:razsiritev-nic}. Ker je množica $X \cup Y \subset R^n$ omejena, obstaja realno število $a > 0$, da je unija množic $X \cup Y$ vsebovana v kocki $\I^n = \left [ -a, a \right ]^n$. Po lemi \ref{lem:razsiritev} lahko vsako zvezno preslikavo $f : X \to \R^n \setminus \{ \0 \}$ razširimo do zvezne preslikave $g : \I^n \to \R^n$. Izberemo tako realno število $\delta \in (0, \frac{\varepsilon}{2})$, da je $f(X) \cap B( \0, 2\delta) = \emptyset$. Ker je funkcija $g$ zvezna in definirana na kompaktni množici $\I^n$, je po trditvi~\ref{trd:zvjeenakzv} enakomerno zvezna. Zato obstaja realno število $\mu$, da za vsako množico $A$, katere diameter $\diam(A)$ je manjši od $\mu$, velja $\diam(g(A)) < \frac{\delta}{2}$. Naj bo $k \in \N$ dovolj veliko naravno število, da za vsak simpleks $S$ iz $k$-te mrežne delitve $\pT_k = M_k^n$ kocke $\I^n$ velja $\diam(S) < \mu$. Če označimo množico oglišč v delitvi $\pT_k$ z $V$, nam preslikava $g|_V : V \to \R^n$ enolično določa zvezno preslikavo $h : \I^n \to \R^n$, ki vsako točko $x \in S = \left < z_0, z_1, \dots, z_n \right > \in \pT_k$ z baricentričnimi koordinatami $x = (t_0, t_1, \dots, t_n)_b$ slika v 
+Izberimo realno število $\varepsilon > 0$. Ker je množica $X \cup Y \subset R^n$ omejena, obstaja realno število $a > 0$, da je unija množic $X \cup Y$ vsebovana v kocki $\I^n = \left [ -a, a \right ]^n$. Po lemi \ref{lem:razsiritev} lahko preslikavo $f : X \to \R^n \setminus \{ \0 \}$ razširimo do zvezne preslikave $g : \I^n \to \R^n$. Izberemo tako realno število $\delta \in (0, \frac{\varepsilon}{2})$, da je $f(X) \cap B( \0, 2\delta) = \emptyset$. Ker je funkcija $g$ zvezna in definirana na kompaktni množici $\I^n$, je po trditvi~\ref{trd:zvjeenakzv} enakomerno zvezna. Zato obstaja tako realno število $\mu$, da za vsako množico $A$, katere diameter $\diam(A)$ je manjši od $\mu$, velja $\diam(g(A)) < \frac{\delta}{2}$. Naj bo $k \in \N$ dovolj veliko naravno število, da za vsak simpleks $S$ iz $k$-te mrežne delitve $\pT_k = M_k^n$ kocke $\I^n$ velja $\diam(S) < \mu$. Če označimo množico oglišč v delitvi $\pT_k$ z $V$, preslikava $g|_V : V \to \R^n$ enolično določa zvezno preslikavo $h : \I^n \to \R^n$, ki vsako točko $x \in S = \left < z_0, z_1, \dots, z_n \right > \in \pT_k$ z baricentričnimi koordinatami $x = (t_0, t_1, \dots, t_n)_b$ slika v 
 $$h(x) = \sum_{i=0}^n t_i g(z_i).$$
-Zaradi izbire triangulacije $\pT_k$ je za vsak simpleks $S = \langle  z_1, z_2, \dots, z_n \rangle \in \pT_k$ diameter $\diam(S)$ manjši od $\mu$, torej zaradi enakomerne zveznosti funkcije $g$ velja $\diam (g(S)) < \frac{\delta}{2}$. Torej obstaja krogla $B$ s premerom $\delta$, ki vsebuje množico $g(S)$. Funkcijo $h$ smo konstruirali tako, da je množica $h(S)$ konveksna ogrinjača točk $g(z_0), g(z_1), \dots, g(z_n)$. Ker je krogla $B$ konveksna množica, ki vsebuje točke $g(z_0), g(z_1), \dots, g(z_n)$, vsebuje tudi njihovo konveksno ogrinjačo $h(S)$. Sklep sledi iz dejstva, da je konveksna ogrinjača danih točk najmanjša konveksna množica, ki vsebuje dane točke. Iz tega ugotovimo, da je $\| g(x) - h(x) \| < \delta$ za vsak $x \in \I^n$. Ker je funkcija $g$ razširitev funkcije $f$, sklepamo, da velja $\| f(x) - h(x) \| < \delta$ za vsak $x \in X$.
+Vzemimo neki simpleks $S \left < z_0, \dots, z_n \right > \in \pT_k$. Zaradi izbire triangulacije $\pT_k$ je diameter $\diam(S)$ manjši od $\mu$, torej zaradi enakomerne zveznosti funkcije $g$ velja $\diam (g(S)) < \frac{\delta}{2}$. Torej obstaja krogla $B$ s premerom $\delta$, ki vsebuje množico $g(S)$. Funkcijo $h$ smo konstruirali tako, da je množica $h(S)$ konveksna ogrinjača točk $g(z_0), g(z_1), \dots, g(z_n)$. Ker je krogla $B$ konveksna množica, ki vsebuje točke $g(z_0), g(z_1), \dots, g(z_n)$, vsebuje tudi njihovo konveksno ogrinjačo $h(S)$. Sklep sledi iz dejstva, da je konveksna ogrinjača danih točk najmanjša konveksna množica, ki vsebuje dane točke. Iz tega ugotovimo, da je $\| g(x) - h(x) \| < \delta$ za vsak $x \in \I^n$. Ker je funkcija $g$ razširitev funkcije $f$, sklepamo, da velja $\| f(x) - h(x) \| < \delta$ za vsak $x \in X$.
 
-Sedaj opazujmo množico točk $\left \{ g(z_0), g(z_1), \dots, g(z_n) \right \}$. Če je to afino odvisna množica, potem je množica $h(S)$ določena z $n$ med seboj odvisnimi vektorji, torej leži v nekem $(n-1)$-dimenzionalnem podprostoru prostora $\R^n$ in ima kot taka prazno notranjost. Če pa je množica afino neodvisna, je množica $S \cap Y$ kompaktna množica s prazno notranjostjo, saj je presek množice $Y$, ki je kompaktna s prazno notranjostjo, in množice $S$, ki je kompaktna. Zaradi zveznosti funkcije $h$ je tudi $h(S \cap Y)$ kompaktna množica s prazno notranjostjo. Res, zvezne funkcije ohranjajo kompaktnost. Denimo, da je notranjost množice $h(S \cap Y)$ neprazna. Potem obstaja neka odprta množica $V \subset \R^n$, ki je cela vsebovana v $h(S \cap Y)$. Ker je funkcija $h$ zvezna, je njena inverzna preslikava $h^{-1}$ odprta, zato je tudi množica $h^{-1}(V)$ odprta v prostoru $\R^n$. To pa ni mogoče, saj je množica $h^{-1}(V)$ vsebovana v množici $S \cap Y$, ki ima prazno notranjost, zato ima tudi množica $h^{-1}(V)$ prazno notranjost. Iz teh razmislekov ugotovimo, da je množica $h(Y) = \bigcup\limits_{S \in \pT_k} h(S \cap Y)$ kompaktna množica s prazno notranjostjo, saj jo dobimo s končno unijo kompaktnih množic s prazno notranjostjo. Ker je $f(X) \cap B(\0, 2 \delta) = \emptyset$ in ker je $\| f(x) - h(x) \| < \delta$ za vsak $x \in X$, je $h(X) \cap B(\0, \delta) = \emptyset$. Jasno je, da lahko izberemo točko $d \in B(\0, \delta) \setminus h(X \cup Y)$.
+Sedaj opazujmo množico točk $\left \{ g(z_0), g(z_1), \dots, g(z_n) \right \} = g(V \cap S)$, kjer je množica $V$ množica oglišč triangulacije $\pT_k$. Če je to afino odvisna množica, potem je množica $h(S)$ določena z $n$ med seboj odvisnimi vektorji, torej leži v nekem $(n-1)$-dimenzionalnem podprostoru prostora $\R^n$ in ima kot taka prazno notranjost. 
 
-Definiramo preslikavo $F : X \cup Y \to \R^n$ s predpisom $F(x)  = h(x) - d$. Opazimo, da je $\| F(x) - f(x) \| \leq \| h(x) - f(x) \| + \| d \| < 2\delta < \varepsilon$ za vsak $x \in X$. Velja tudi $F(z) \neq \0$ za vsak $z \in X \cup Y$, saj bi enakost $F(z) = \0$ implicirala enakost $h(z) = d$, kar pa nasprotuje predpostavki, da je $d \notin h(X \cup Y)$. Preslikava $F$ je res iskana razširitev.
+Množica $S \cap Y$ je kompaktna množica s prazno notranjostjo, saj je presek množice $Y$, ki je kompaktna množica s prazno notranjostjo, in množice $S$, ki je kompaktna. Zaradi zveznosti funkcije $h$ je tudi $h(S \cap Y)$ kompaktna množica. Prepričajmo se, da je notranjost množice $h(S \cap Y)$ prazna. Če je množica $g(V \cap S)$ afino neodvisna, je preslikava $h|S : S \to \aff(g(V \cap S))$, kjer je množica 
+$$\aff(S) := \left\{ \sum_{i=1}^k \alpha_i x_i ; k>0, x_i \in S, \alpha_i \in \R, \sum_{i=1}^k \alpha_i= 1 \right\},$$
+afini homeomorfizem. Od tu sledi, da ima $h(S \cap Y)$ prazno notranjost v $h(S)$ in tako tudi v $\R^n$. Iz teh razmislekov ugotovimo, da je množica $h(Y) = \bigcup\limits_{S \in \pT_k} h(S \cap Y)$ kompaktna množica s prazno notranjostjo, saj jo dobimo s končno unijo kompaktnih množic s prazno notranjostjo. Ker je $f(X) \cap B(\0, 2 \delta) = \emptyset$ in ker je $\| f(x) - h(x) \| < \delta$ za vsak $x \in X$, je $h(X) \cap B(\0, \delta) = \emptyset$. Jasno je, da lahko izberemo točko $d \in B(\0, \delta) \setminus h(X \cup Y)$.
+
+Definiramo preslikavo $F : X \cup Y \to \R^n$ s predpisom $F(x)  = h(x) - d$. Opazimo, da je $\| F(x) - f(x) \| \leq \| h(x) - f(x) \| + \| d \| < 2\delta < \varepsilon$ za vsak $x \in X$. Velja tudi $F(z) \neq \0$ za vsak $z \in X \cup Y$, saj bi enakost $F(z) = \0$ implicirala enakost $h(z) = d$, kar pa nasprotuje predpostavki, da $d$ ne pripada množici $h(X \cup Y)$. Preslikava $F$ je res iskana približna razširitev.
 \end{dokaz}
 
 %####################     5. POGLAVJE: IZREK O INVARIANCI ODPRTIH MNOŽIC     ####################
 \section{Izrek o invarianci odprtih množic}\label{raz:ioiom}
-V prejšnjih poglavjih smo si pripravili vse potrebno za dokaz izreka o invarianci odprtih množic, zato se bomo brez ovinkarjenja lotili dokaza. Nato bomo dokazali še posledico izreka o invarianci odprtih množic, ki jo imenujemo izrek o invarianci dimenzij. Pri tem bomo sledili viru~\cite{Kulpa}.
+V prejšnjih poglavjih smo si pripravili vse potrebno za dokaz izreka o invarianci odprtih množic, zato se bomo brez ovinkarjenja lotili dokaza. Nato bomo dokazali še posledico izreka o invarianci odprtih množic, ki jo imenujemo izrek o invarianci dimenzije. Pri tem bomo sledili viru~\cite{Kulpa}.
 %
 \begin{izrek}[Izrek o invarianci odprtih množic]\label{izr:main-theorem}
 Naj bo $U \subset \R^n$ odprta podmnožica evklidskega prostora $\R^n$ in naj bo $h : U \rightarrow \R^n$ zvezna injektivna preslikava.
@@ -891,7 +810,8 @@ Potem je tudi slika $h(U)$ odprta množica v $\R^n$.
 \end{izrek}
 %
 \begin{dokaz}
-Naj bodo izpolnjene predpostavke izreka. Obravnavamo množico U, ki je odprta podmnožica v $\R^n$, in zvezno injektivno preslikavo $h : U \rightarrow \R^n$. Izrek bo dokazan, če pokažemo, da je za vsak element $u$ iz množice $U$ točka $h(u)$ notranja točka za množico $h(U)$. Ker je $\R^n$ homogen prostor, take pa so tudi vse njegove odprte podmnožice, lahko predpostavimo, da je $u = \0$ in pokažemo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tu naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo f zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Predpostavimo torej, da je $b \in \partial (\I^n)$. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ housdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to \R^n$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta > 0$, za katerega je $h^{-1}(B(b, 2 \delta)) \subset \Int(\I^n)$. Ker je $b \in \partial h(\I^n)$, je lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
+Naj bodo izpolnjene predpostavke izreka. Obravnavamo množico U, ki je odprta podmnožica v $\R^n$, in zvezno injektivno preslikavo $h : U \rightarrow \R^n$. Izrek bo dokazan, če pokažemo, da je za vsak element $u$ iz množice $U$ točka $h(u)$ notranja točka za množico $h(U)$. Brez izgube splošnosti lahko predpostavimo, da je $u=0$. V nasprotnem primeru izvedemo translacijo množice $U$ tako, da premaknemo točko $u$ v točko $0$.
+Prepričati se želimo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tu naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo f zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ Hausdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to h\left(\I^n  \right)$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta$, za katero je $h^{-1}(B(b, 2 \delta)) \subset \Int(\I^n)$. Predpostavimo, da je $b \in \partial h\left(\I^n\right)$. Tedaj lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
 
 % ###############        Slika dokaza izreka o invarianci odprtih množic      ############
 \begin{figure}[h!]
@@ -907,20 +827,20 @@ Označimo $X := h(\I^n) \setminus B(c, \delta)$ in $Y := \partial B(c, \delta)$.
 	x &, x \in X. \\
 \end{array} 
 \right. \]
-S pomočjo leme~\ref{lem:razsiritev-nic} lahko preslikavo $h^{-1}|_X : X \to \R^n \setminus \{ \0 \}$ razširimo do zvezne preslikave $g : X \cup Y \to \R^n \setminus \{ \0 \}$, za katero za vsak $x \in X$ velja $\| g(x) - h^{-1}(x) \| < a$.
+S pomočjo leme~\ref{lem:razsiritev-nic} lahko preslikavo $h^{-1}|_X : X \to \R^n \setminus \{ \0 \}$ približno razširimo do zvezne preslikave $g : X \cup Y \to \R^n \setminus \{ \0 \}$, za katero za vsak $x \in X$ velja $\| g(x) - h^{-1}(x) \| < a$.
 Sedaj lahko definiramo preslikavo $f = (f_1, f_2, \dots, f_n) : \I^n \to \R^n \setminus \{ \0 \}$ kot kompozitum $f := g \circ l \circ h$. Ker ta funkcija slika iz $\I^n$ in ne zavzame ničle, je za protislovje dovolj, če se prepričamo, da funkcija ustreza pogojem izreka~\ref{izr:PM}. Vzemimo $t \in \I_i^-$. Velja $l(h(t)) = h(t)$, saj je $h(t) \in X$. Za normo vektorja $f(t) - t$ lahko naredimo naslednje ocene:
 $$\| f(t) - t \| = \| g(l(h(t))) - h^{-1}(h(t)) \| = \| g(h(t) - h^{-1}(h(t)) \| < a.$$ 
 Ker je $t_i = - a$, je $| f_i (t) - t_i | = | f_i (t) - ( - a) | \leq | f (t) - t | < a$, je $f_i(t) < 0$. Podobno lahko tudi v primeru, ko je $t_i \in \I_i^+$, sklepamo, da je $f_i(t) > 0$. Ugotovili smo, da je  $f_i(\I_i^-) < 0$ in $f_i(\I_i^+) > 0$, zato bi po predpostavkah izreka~\ref{izr:PM} moral obstajati $x \in \I^n$, ki se s $f$ slika v $0$. To je protislovje, saj je $f$ preslikava, ki slika v prostor $\R^n \setminus \{ \0 \}$, torej je $b \in \Int (h(\I^n)$ in je $h(U)$ odprta podmnožica v $\R^n$.
 \end{dokaz}
-S pomočjo izreka~\ref{izr:main-theorem} lahko enostavno izpolnimo obljubo iz uvoda in dokažemo izrek o invarianci dimenzij, ki razreši vsaj nekatere nejasnosti, ki se nanašajo na pojem dimenzije.
+S pomočjo izreka~\ref{izr:main-theorem} lahko enostavno izpolnimo obljubo iz uvoda in dokažemo izrek o invarianci dimenzije, ki razreši vsaj nekatere nejasnosti, ki se nanašajo na pojem dimenzije.
 \begin{posledica}[Izrek o invarianci dimenzije]\label{izr:dim_izr}
 Naj bosta $m$ in $n$ naravni števili. evklidska prostora $\R^m$ in $\R^n$ sta homeomorfna, če in samo če je $m = n$.
 \end{posledica}
 
 \begin{dokaz}
-Denimo, da sta za neki dve naravni števili $m$ in $n$ evklidska prostora $\R^m$ in $\R^n$ homeomorfna. Torej obstaja zvezna bijektivna preslikava $f : \R^n \to \R^m$ z zveznim inverzom $f^{-1} : \R^m \to \R^n$. Dokazovali bomo s protislovjem. Predpostavimo, da je $m \neq n$. Brez izgube splošnosti lahko predpostavimo, da je $m < n$. Označimo z $i$ vložitev, torej preslikavo iz prostora $\R^m$ v $\R^n$, ki je definirana s predpisom $i(x_1, \dots, x_m) = (x_1, \dots, x_m, 0, \dots, 0) \in \R^n$. Tedaj je preslikava $h : \R^n \to \R^n$ definirana kot kompozitum $h := i \circ f$ zvezna injektivna preslikava, zato je po izreku~\ref{izr:main-theorem} odprta. Toda slika prostora $\R^n$, ki je odprta podmnožica same sebe, s funkcijo $h$ je množica 
+Denimo, da sta za neki dve naravni števili $m$ in $n$ evklidska prostora $\R^m$ in $\R^n$ homeomorfna. Torej obstaja zvezna bijektivna preslikava $f : \R^n \to \R^m$ z zveznim inverzom $f^{-1} : \R^m \to \R^n$. Dokazovali bomo s protislovjem. Predpostavimo, da je $m \neq n$. Brez izgube splošnosti lahko predpostavimo, da je $m < n$. Označimo z $i$ vložitev, torej preslikavo iz prostora $\R^m$ v $\R^n$, ki je definirana s predpisom $i(x_1, \dots, x_m) = (x_1, \dots, x_m, 0, \dots, 0) \in \R^n$. Tedaj je preslikava $h : \R^n \to \R^n$, definirana kot kompozitum $h := i \circ f$, zvezna injektivna preslikava, zato je po izreku~\ref{izr:main-theorem} odprta. Toda slika prostora $\R^n$, ki je odprta podmnožica same sebe, s funkcijo $h$ je množica 
 $$\left \{ (x_1, x_2, \dots, x_m, 0, \dots, 0) \in \R^n ; \text{ kjer so } x_i \in \R \text{ za vsak } i \in \{1, \dots, m \}  \right \},$$
- ki pa je zaprta podmnožica prostora $\R^n$. Torej mora biti res $m = n$.
+ ki pa ni odprta podmnožica prostora $\R^n$. Torej mora biti res $m = n$.
 \end{dokaz}
 \section*{Slovar strokovnih izrazov}
 
