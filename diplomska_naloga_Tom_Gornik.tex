@@ -694,7 +694,7 @@ Funkcija $f$ je zvezna na $(-2, 0) \cup (0, 2)$, ne moremo pa je zvezno razširi
 
 Izkaže se, da je za obstoj razširitve zvezne funkcije $f : A \subset \R^n  \to \R$ dovolj, če je množica $A$ kompaktna. Preden dokažemo to trditev, si poglejmo pomembno lastnost zveznih funkcij, ki je ključna pri dokazu.
 
-\begin{trditev}[\protect{\cite{zvjeenakzv}}]\label{trd:zvjeenakzv}
+\begin{trditev}\label{trd:zvjeenakzv}
 Zvezna funkcija, definirana na kompaktnem metričnem prostoru, je enakomerno zvezna.
 \end{trditev}
 \begin{dokaz}
@@ -810,8 +810,10 @@ Potem je tudi slika $h(U)$ odprta množica v $\R^n$.
 \end{izrek}
 %
 \begin{dokaz}
-Naj bodo izpolnjene predpostavke izreka. Obravnavamo množico U, ki je odprta podmnožica v $\R^n$, in zvezno injektivno preslikavo $h : U \rightarrow \R^n$. Izrek bo dokazan, če pokažemo, da je za vsak element $u$ iz množice $U$ točka $h(u)$ notranja točka za množico $h(U)$. Brez izgube splošnosti lahko predpostavimo, da je $u=0$. V nasprotnem primeru izvedemo translacijo množice $U$ tako, da premaknemo točko $u$ v točko $0$.
-Prepričati se želimo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tu naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo f zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ Hausdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to h\left(\I^n  \right)$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta$, za katero je $h^{-1}(B(b, 2 \delta)) \subset \Int(\I^n)$. Predpostavimo, da je $b \in \partial h\left(\I^n\right)$. Tedaj lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
+Naj bodo izpolnjene predpostavke izreka. Obravnavamo množico U, ki je odprta podmnožica v $\R^n$, in zvezno injektivno preslikavo $h : U \rightarrow \R^n$. Izrek bo dokazan, če pokažemo, da je za vsak element $u$ iz množice $U$ točka $h(u)$ notranja točka za množico $h(U)$. Brez izgube splošnosti lahko predpostavimo, da je $u=0$. V nasprotnem primeru si pomagamo s translacijo $\tau$, ki premakne točko $u$ v točko $0$. % in pokažemo, da je slika množice $\tau(U)$ s funkcijo $h \circ \tau^{-1}$ odprta, kar pomeni, da je odprta tudi množica $h(U)$. 
+Prepričati se želimo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tu naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo f zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ Hausdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to h\left(\I^n  \right)$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta$, da je praslika krogle $B(b, 2 \delta)$
+%kot kroglo mislimo delta okolico točke b v množici h(U)
+, ki leži v množici $h(U)$, vsebovana v notranjosti kocke $I^n$. Velja torej $h^{-1}(B(b, 2 \delta)) \subset \Int(\I^n)$. Predpostavimo, da je $b \in \partial h\left(\I^n\right)$. Tedaj lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
 
 % ###############        Slika dokaza izreka o invarianci odprtih množic      ############
 \begin{figure}[h!]
