@@ -4,6 +4,18 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{import}
+\graphicspath{ {./slike/} }
+
+\usepackage{pgf,tikz,pgfplots}
+\usetikzlibrary{arrows}
+\usepackage{lmodern}                            % to get rid of font warnings
+\renewcommand\textbullet{\ensuremath{\bullet}}  % to get rid of font warnings
+
 \usetheme{Warsaw} % izbira nastavitev oblike in barv strani
 \beamertemplatenavigationsymbolsempty
 %definicije izrekov----------
@@ -11,7 +23,7 @@
 \newtheorem{df}{Definicija}
 %Information to be included in the title page:
 \title{Izrek o invarianci odprtih množic}
-\author[Tom Gornik]{Avtor: Tom Gornik\\ \footnotesize Mentor: izred. prof. dr. Jaka Smrekar}
+\author[Tom Gornik]{Avtor: Tom Gornik\\ \footnotesize Mentor: izr. prof. dr. Jaka Smrekar}
 \institute{Fakulteta za matematiko in fiziko}
 \date{\today}
 
@@ -50,11 +62,22 @@ Tukaj pa je dokaz, ki bi ga lahko preskočili \ldots.
 \end{frame}
 
 \begin{frame}
-
-\frametitle{tretja}
+\frametitle{Izrek o invarianci odprtih množic}
 \framesubtitle{Podnaslov}
-% Vsebina prosojnice 1
+% Vsebina prosojnice 3
+\begin{figure}[h!]
+	\centering
+	\includegraphics[scale=0.7]{glavna_slika.pdf}%
+	\caption{Skica dokaza izreka.}
+\end{figure}
+\end{frame}
 
+\begin{frame}
+\frametitle{Izrek o invarianci odprtih množic}
+\begin{block}{Izrek o invarianco odprtih množic}
+Naj bo $U \subset \R^n$ odprta podmnožica evklidskega prostora $\R^n$ in naj bo $h : U \rightarrow \R^n$ zvezna injektivna preslikava.
+Potem je tudi slika $h(U)$ odprta množica v $\R^n$.
+\end{block}
 \end{frame}
 
 

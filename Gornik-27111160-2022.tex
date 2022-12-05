@@ -14,14 +14,14 @@
 % navedite ime mentorja s polnim nazivom: doc.~dr.~Ime Priimek,
 % izr.~prof.~dr.~Ime Priimek, prof.~dr.~Ime Priimek
 % uporabite le tisti ukaz/ukaze, ki je/so za vas ustrezni
-\mentor{ izred.~prof.~dr.~Jaka Smrekar}
+\mentor{ izr.~prof.~dr.~Jaka Smrekar}
 % \mentorica{}
 % \somentor{}
 % \somentorica{}
 % \mentorja{}{}
 % \mentorici{}{}
 
-\letnica{2020} % leto diplome
+\letnica{2022} % leto diplome
 
 %  V povzetku na kratko opišite vsebinske rezultate dela. Sem ne sodi razlaga organizacije dela --
 %  v katerem poglavju/razdelku je kaj, pač pa le opis vsebine.
@@ -137,9 +137,9 @@ Ker je množica vektorjev $\vec{x}_1 - \vec{x}_0, \vec{x}_2 - \vec{x}_0, \dots ,
 
 S pomočjo točk v prostoru lahko definiramo različne množice. Želeli si bomo take množice, ki imajo naslednjo lastnost.
 \begin{definicija}
-Množica $K \in \R^n$ je \emph{konveksna}, če je za vsaki dve točki $x, y \in K$ tudi daljica določena z $x$ in $y$: 
+Množica $K \subset \R^n$ je \emph{konveksna}, če je za vsaki dve točki $x, y \in K$ tudi daljica določena z $x$ in $y$: 
 $\left \{ \lambda \vec{x} + (1 - \lambda) \vec{y}; \lambda \in  [0, 1] \right \}$ 
-vsa vsebovana v $K$. Primer in protiprimer konveksne množice si lahko pogledamo na sliki~\ref{fig:konveksnost}.
+vsa vsebovana v $K$. Primer konveksne množice in primer množice, ki ni konveksna, si lahko pogledamo na sliki~\ref{fig:konveksnost}.
 % ####################   Primer in protiprimer konveksne množice    ####################
 \begin{figure}[h]  
 \centering 
@@ -186,13 +186,13 @@ Jasno je, da je množica $A$ vsebovana v konveksni ogrinjači množice $A$. Prep
 
 Iskanje konveksne množice kot preseka vseh konveksnih množic je zamudno. Prav tako je težko preveriti, ali je neka točka vsebovana v konveksni ogrinjači množice $A$. Spodnja trditev nam eksplicitno pove, katere točke so vsebovane v konveksni ogrinjači množice točk $A = \{x_0, x_1, \dots, x_n\}$.
 \begin{trditev}[\protect{\cite{convexhull}}]
-Za točke $x_0, x_1, \dots, x_n$ v prostoru $\R^n$ je konveksna ogrinjača $\conv(\{x_0, x_1, \dots, x_n\})$ enaka množici:
+Konveksna ogrinjača točk $\{x_0, x_1, \dots, x_n\}$ je enaka množici:
 $$C =\left \{ \sum\limits_{i=0}^n \lambda_i x_i; \text{ kjer so } \lambda_i \geq 0 \text{ za vsak } i \in \{0, 1, \dots, n \} \text{ in } \sum\limits_{i=0}^n \lambda_i = 1  \right \}.$$
 \end{trditev}
 Trditev nam pove, da lahko krajevni vektor točke $x \in A = \conv (\{x_0, \dots, x_n\})$ izrazimo kot vsoto $\vec{x} = \sum\limits_{i=0}^n \lambda_i \vec{x}_i$, ki zadošča pogoju $\sum\limits_{i=0}^n \lambda_i = 1$, kjer so vsi koeficienti $\lambda_i$ nenegativna realna števila. Vsoto, ki zadošča zahtevanim pogojem, imenujemo \emph{konveksna kombinacija} točk $x_0, x_1, \dots , x_n$. 
 
 \begin{dokaz}
-Najprej se bomo prepričali, da vsaka konveksna množica, ki vsebuje množico $A$, vsebuje vsako konveksno kombinacijo točk iz množice $A$. To bomo dokazali s pomočjo popolne indukcije na število točk, ki nastopajo v konveksni kombinaciji. Če v konveksni kombinaciji nastopata zgolj dve točki, lastnost sledi iz definicije konveksne množice. Denimo, da vsaka konveksna množica, ki vsebuje množico $A$ vsebuje konveksno kombinacijo $m$-tih točk iz množice $A$. Zapišimo poljubno konveksno kombinacijo $m+1$ točk iz $A$ in se prepričajmo, da je vsebovana v vsaki konveksni množici, ki vsebuje $A$. Zapišimo:
+Najprej se bomo prepričali, da vsaka konveksna množica, ki vsebuje množico $A$, vsebuje vsako konveksno kombinacijo točk iz množice $A$. To bomo dokazali s pomočjo popolne indukcije na število točk, ki nastopajo v konveksni kombinaciji. Če v konveksni kombinaciji nastopata zgolj dve točki, lastnost sledi iz definicije konveksne množice. Denimo, da vsaka konveksna množica, ki vsebuje množico $A$ vsebuje konveksno kombinacijo $m$ točk iz množice $A$. Zapišimo poljubno konveksno kombinacijo $\sum\limits_{i=0}^{m+1} \lambda_i x_i$ $m+1$ točk iz $A$ in se prepričajmo, da je vsebovana v vsaki konveksni množici, ki vsebuje $A$. V primeru, ko je $\lambda_0 = \lambda_1 = \cdots = \lambda_m = 0$, je konveksna kombinacija enaka točki $x_{m+1}$, ki leži v množici $A$. V ostalih primerih zapišemo:
 
 $$\sum\limits_{i=0}^{m+1} \lambda_i x_i =(\lambda_0 + \cdots + \lambda_m) \sum\limits_{i=0}^m \frac{\lambda_i}{\lambda_0 + \cdots + \lambda_m } x_i + \lambda_{m+1} x_{m+1}.$$
 
@@ -202,7 +202,7 @@ Sedaj lahko sklepamo, da je množica $C$ vsebovana v preseku vseh konveksnih mno
 
 Simpleks definiramo kot poseben primer konveksne ogrinjače.
 \begin{definicija}[\protect{\cite{convexhull}}]
-Naj bo $V = \{x_0, x_1, \dots , x_n \} \subset \R^n$ afino neodvisna množica točk v evklidskem prostoru $\R^n$. Konveksni ogrinjači $S$ točk $x_0, x_1, \dots , x_n$ iz množice $V$ pravimo \emph{$n$-dimenzionalni simpleks} ali \emph{$n$-simpleks}. Točke $x_i$ imenujemo \emph{oglišča} simpleksa $S$. Ko želimo poudariti, katera oglišča določajo simpleks, lahko zapišemo tudi $S = \left < x_0, \dots, x_n \right >$. Za vsako neprazno podmnožico $U = \{ y_0, y_1, \dots, y_r \} \subset V$ lahko definiramo simpleks $L = \langle y_0, y_1, \dots, y_r \rangle$, ki ga imenujemo \emph{lice simpleksa} $S$. Če je lice $L$ $(n-1)$-simpleks, ga imenujemo \emph{glavno lice} simpleksa $S$. Unijo vseh glavnih lic simpleksa $S$ imenujemo \emph{rob} simpleksa $S$. Množico točk simpleksa $S$, ki ne ležijo na robu simpleksa, imenujemo \emph{notranjost} simpleksa $S$.
+Naj bo $V = \{x_0, x_1, \dots , x_n \}$ afino neodvisna množica točk v evklidskem prostoru. Konveksni ogrinjači $S$ točk $x_0, x_1, \dots , x_n$ iz množice $V$ pravimo \emph{$n$-dimenzionalni simpleks} ali \emph{$n$-simpleks}. Točke $x_i$ imenujemo \emph{oglišča} simpleksa $S$. Ko želimo poudariti, katera oglišča določajo simpleks, lahko zapišemo tudi $S = \left < x_0, \dots, x_n \right >$. Za vsako neprazno podmnožico $U = \{ y_0, y_1, \dots, y_r \} \subset V$ lahko definiramo simpleks $L = \langle y_0, y_1, \dots, y_r \rangle$, ki ga imenujemo \emph{lice simpleksa} $S$. Če je lice $L$ $(n-1)$-simpleks, ga imenujemo \emph{glavno lice} simpleksa $S$. Unijo vseh glavnih lic simpleksa $S$ imenujemo \emph{rob} simpleksa $S$. Množico točk simpleksa $S$, ki ne ležijo na robu simpleksa, imenujemo \emph{notranjost} simpleksa $S$.
 \end{definicija}
 
 Krajevni vektor vsake točke $x \in S = \left < x_0, \dots, x_n \right >$ lahko izrazimo s pomočjo oglišč kot vsoto:
@@ -245,7 +245,7 @@ in iz dejstva, da je koeficient $\alpha_i$ enak koeficientu $\beta_i$ za vsak $i
 
 Pri dokazovanju različnih rezultatov s pomočjo simpleksov si večkrat pomagamo z delitvijo simpleksa na manjše simplekse. Da imamo čim več nadzora pri dokazovanju, si pomagamo s pojmom simplicialnega kompleksa.
 \begin{definicija}%\label% ##########  simplicialni kompleks  #################
-Množica simpleksov $\pK$ v evklidskem prostoru $R^n$ je \emph{simplicialni kompleks}, če zadošča naslednjima pogojema:
+Množica simpleksov $\pK$ v evklidskem prostoru je \emph{simplicialni kompleks}, če zadošča naslednjima pogojema:
 \begin{enumerate}\label{simpl-kompleks}
 \item Vsako lice $L$ vsakega simpleksa $S \in \pK$ je tudi vsebovano v $\pK$.\label{simpl-kompleks1}
 \item Neprazen presek dveh simpleksov iz $\pK$ je lice obeh simpleksov.\label{simpl-kompleks2}
@@ -264,7 +264,7 @@ Simplicialni kompleks $\pT$ je \emph{triangulacija} simpleksa $S$, če je $|\pT|
 	\begin{subfigure}[b]{0.4\linewidth} 
 	\centering
 		\import{slike/}{triang.tex}%
-		\caption{Delitev je triangulacia.} \label{fig:triang}
+		\caption{Delitev je triangulacija.} \label{fig:triang}
 	\end{subfigure}
 	\hspace{1cm}
 % ####################   Primer delitve, ki ni triangulacija    ####################
@@ -283,7 +283,7 @@ Največjo razdaljo med dvema točkama simpleksa $S$ imenujemo \emph{diameter} si
 $$\diam(S) = \max \{ \dist(x, y); x, y \in S\}.$$
 \end{definicija}
 
-Simpleks $S$ je kompaktna množica. Zvezna funkcija definirana na kompaktni mnižici zavzame maksimum, zato je diameter simpleksa $S$ dobro definiran.
+Simpleks $S$ je kompaktna množica. Zvezna funkcija definirana na kompaktni množici zavzame maksimum, zato je diameter simpleksa $S$ dobro definiran.
 Sedaj, ko imamo mero za velikost simpleksa, si poglejmo, kako lahko celoten prostor $\R^n$ razdelimo na enako velike simplekse. Izberimo naravno število $k$ in pozitivno realno število $a$. Definiramo bazo $\pB$ prostora $\R^n$ z baznimi vektorji $\vec{e}_i := (0, \dots, 0, \frac{a}{k}, 0, \dots, 0)$, pri katerih je edina neničelna koordinata na $i$-tem mestu enaka $\frac{a}{k}$. Definiramo množico $Z_k := \left\{ j \cdot \frac{a}{k}; j \in \Z \right\}$ in označimo z $Z_k^n$ kartezični produkt $n$ kopij množice $Z_k$. Naj bo $P(n)$ množica permutacij množice $\{1, \dots, n \}$.
 Množica, ki vsebuje vse simplekse $S = \langle z_0, z_1, \dots, z_n \rangle$, ki zadoščajo pogojema:
 \begin{itemize}
@@ -296,9 +296,9 @@ z_1 = z_0 + \vec{e}_{\pi(1)}, z_2 = z_1 + \vec{e}_{\pi(2)}, \dots, z_n = z_{n-1}
 razdeli prostor $\R^n$ na $n$-dimenzionalne simplekse.
 %se imenuje \emph{$k$-ta mrežna delitev} prostora $\R^n$. 
 Če množici dodamo še vsa lica simpleksov iz te množice, dobimo $k$-to mrežno delitev prostora $\R^n$, ki jo označimo z $M_{\frac{a}{k}}^n$.
-Prepričajmo se, da množica $M_{\frac{a}{k}}^n$ zadošča pogojema definicije \ref{simpl-kompleks}. Hitro vidimo, da izpolnjuje pogoj \eqref{simpl-kompleks1}. Preveriti moramo še, da je neprazen presek dveh simpleksov iz $M_{\frac{a}{k}}^n$ lice obeh simpleksov. Ker je vsak simpleks iz $M_{\frac{a}{k}}^n$ lice nekega $n$-simpleksa iz $M_{\frac{a}{k}}^n$, je dovolj, če pokažemo, da je neprazen presek dveh $n$-simpleksov iz množice $M_{\frac{a}{k}}^n$ lice obeh simpleksov. Vsak $n$-simpleks $S = \langle z_0, \dots, z_n \rangle \in  M_{\frac{a}{k}}^n$ je natančno določen s točko $z_0 = (z_{0,1}, z_{0, 2}, \dots, z_{0,n})$ in permutacijo $\pi \in P(n)$. Če poznamo ta dva podatka, lahko $n$-simpleks $S$ zapišemo tudi kot množico vseh točk $t=(t_1, \dots, t_n) \in R^n$, ki zadoščajo pogojem:
+Prepričajmo se, da množica $M_{\frac{a}{k}}^n$ zadošča pogojema definicije \ref{simpl-kompleks}. Hitro vidimo, da izpolnjuje pogoj \eqref{simpl-kompleks1}. Preveriti moramo še, da je neprazen presek dveh simpleksov iz $M_{\frac{a}{k}}^n$ lice obeh simpleksov. Ker je vsak simpleks iz $M_{\frac{a}{k}}^n$ lice nekega $n$-simpleksa iz $M_{\frac{a}{k}}^n$, je dovolj, če pokažemo, da je neprazen presek dveh $n$-simpleksov iz množice $M_{\frac{a}{k}}^n$ lice obeh simpleksov. Vsak $n$-simpleks $S = \langle z_0, \dots, z_n \rangle \in  M_{\frac{a}{k}}^n$ je natančno določen s točko $z_0 = (z_{0,1}, z_{0, 2}, \dots, z_{0,n})$ in permutacijo $\pi \in P(n)$. Če poznamo ta dva podatka, lahko $n$-simpleks $S$ zapišemo tudi kot množico vseh točk $t=(t_1, \dots, t_n)$, ki zadoščajo pogojem:
 $$\frac{a}{k} \geq t_{\pi(1)} - z_{0, \pi(1)}  \geq t_{\pi(2)} - z_{0, \pi(2)} \geq \cdots \geq t_{\pi(n)} - z_{0, \pi(n)} \geq 0.$$
-Izberimo poljubni naravni števili $i, j < 0$. Brez izgube splošnosti lahko predpostavimo, da je $\pi(i) < \pi(j)$. Oglišča simpleksa so dobljena tako, da vedno povečamo eno koordinato, zato imajo $\pi(i)$-to koordinato večjo ali enako od $\pi(j)$-te koordinate. Ker simpleks dobimo kot afino kombinacijo oglišč, imajo tudi vse točke simpleksa $\pi(i)$-to koordinato večjo ali enako od $\pi(j)$-te koordinate.
+Izberimo poljubni naravni števili $i$ in $j$. Brez izgube splošnosti lahko predpostavimo, da je $\pi(i) < \pi(j)$. Oglišča simpleksa so dobljena tako, da vedno povečamo eno koordinato, zato imajo $\pi(i)$-to koordinato večjo ali enako od $\pi(j)$-te koordinate. Ker simpleks dobimo kot afino kombinacijo oglišč, imajo tudi vse točke simpleksa $\pi(i)$-to koordinato večjo ali enako od $\pi(j)$-te koordinate.
 Za vsak par naravnih števil $1 \leq i, j \leq n$ lahko iz zgornjih pogojev razberemo neenakost $t_i - z_{0, i}  \geq t_j - z_{0, j}$ ali $t_i - z_{0, i}  \leq t_j - z_{0, j}$, ki nam pove, v katerem polprostoru, omejenem s hiperravnino $t_i - z_{0, i} = t_j - z_{0, j}$, leži $n$-simpleks $S$.
 Lica $n$-simpleksa $S$ dobimo tako, da nekaj neenačajev spremenimo v enačaj. Naj bo $S \in M_{\frac{a}{k}}^n$ $n$-simpleks, ki zadošča pogojem
 \begin{equation}\label{eq:pogojiS}
@@ -310,7 +310,7 @@ in naj bo $R \in M_{\frac{a}{k}}^n$ $n$-simpleks, ki zadošča pogojem
 \end{equation}
 %Če za vsako naravno število $l \leq n$ velja enakost $z_{0, \pi(l)} = w_{0, \rho(l)}$, je presek simpleksov $S$ in $R$ neprazen. Iz pogojev \eqref{eq:pogojiS} in \eqref{eq:pogojiR} lahko za vsak par naravnih števil $1 \leq i, j \leq n$ ugovovimo, v katerem polprostoru omejenem s hiperravnino $t_i - z_{0, i} = t_j - z_{0, j}$ ležita simpleksa $S$ in $R$. Kadar ležita v istem polprostoru, tudi presek leži v tem podprostoru. Če pa ležita v različnih polprostorih, leži presek $S \cap R$ na hiperravnini $t_i - z_{0, i} = t_j - z_{0, j}$, zato moramo pri pogojih \eqref{eq:pogojiS} in \eqref{eq:pogojiR} ustrezno neenakost spremeniti v enakost. Ko postopek naredimo za vsak par naravnih števil $1 \leq i, j \leq n$, dobimo presek simpleksov $S$ in $R$ kot lice obeh simpleksov.
 
-Če točki $z_0$ in $w_0$ ležita na istem simpleksu in $M_{\frac{a}{k}}^n$, za vsako naravno število $l \leq n$ velja neenakost $|z_{0, \pi(l)} - w_{0, \rho(l)}| \leq \frac{a}{k}$. Tedaj lahko pogoje, katerim zadoščajo točke preseka $S \cap R = L$, zapišemo na naslednji način. Naj bo $E \subset \{1, 2, \dots, n \}$ množica tistih naravnih števil $e$, za katera je $z_{0,e} = w_{0, e}$. Za vsako naravno število $l \in \{1, 2, \dots, n \} \setminus E$ pri pogojih \eqref{eq:pogojiS} in \eqref{eq:pogojiR} spremenimo neenačbo $1 \geq t_l - \min(z_{0, l}, w_{0, l})$ v enačbo $1 = t_l - \min(z_l, w_l)$ in neenačbo $t_l - \max \{z_l, w_l \} \geq 0$ v enačbo $t_l - \max \{z_l, w_l \} = 0$. 
+Če točki $z_0$ in $w_0$ ležita na istem simpleksu iz $M_{\frac{a}{k}}^n$, za vsako naravno število $l \leq n$ velja neenakost $|z_{0, \pi(l)} - w_{0, \rho(l)}| \leq \frac{a}{k}$. Tedaj lahko pogoje, katerim zadoščajo točke preseka $S \cap R = L$, zapišemo na naslednji način. Naj bo $E \subset \{1, 2, \dots, n \}$ množica tistih naravnih števil $e$, za katera je $z_{0,e} = w_{0, e}$. Za vsako naravno število $l \in \{1, 2, \dots, n \} \setminus E$ pri pogojih \eqref{eq:pogojiS} in \eqref{eq:pogojiR} spremenimo neenačbo $\frac{a}{k} \geq t_l - \min(z_{0, l}, w_{0, l})$ v enačbo $\frac{a}{k} = t_l - \min(z_l, w_l)$ in neenačbo $t_l - \max \{z_l, w_l \} \geq 0$ v enačbo $t_l - \max \{z_l, w_l \} = 0$. 
 Iz pogojev \eqref{eq:pogojiS} in \eqref{eq:pogojiR} lahko za vsak par naravnih števil $i, j \in E$ ugotovimo, v katerem polprostoru, omejenem s hiperravnino $t_i - z_{0, i} = t_j - z_{0, j}$ ležita $n$-simpleksa $S$ in $R$. Kadar ležita v istem polprostoru, tudi presek $L$ leži v tem podprostoru, zato presek $L$ zadošča isti neenakosti. Če pa $n$-simpleksa $S$ in $R$ ležita v različnih polprostorih, leži presek $L$ na hiperravnini $t_i - z_{0, i} = t_j - z_{0, j}$, zato moramo pri pogojih \eqref{eq:pogojiS} in \eqref{eq:pogojiR} ustrezno neenakost spremeniti v enakost. Ugotovimo, da presek $L$ ustreza enakim pogojem kot simpleksa $S$ in $R$, le da smo nekaj neenačajev spremenili v enačaje, zato je presek $L$ lice simpleksov $S$ in $R$.
 %Iz pogojev \eqref{eq:pogojiS} in \eqref{eq:pogojiR} lahko za vsak par naravnih števil $1 \leq i, j \leq n$ razberemo katerim neenakostim zadoščata koordinati $x_i$ in $x_j$. Če velja 
 %v katerem polprostoru omejenem s hiperravnino $t_i - z_{0, i} = t_j - z_{0, j}$ ležita simpleksa $S$ in $R$. Kadar ležita v istem polprostoru, tudi presek leži v tem podprostoru. Če pa ležita v različnih polprostorih, leži presek $S \cap R$ na hiperravnini $t_i - z_{0, i} = t_j - z_{0, j}$, zato moramo pri pogojih \eqref{eq:pogojiS} in \eqref{eq:pogojiR} ustrezno neenakost spremeniti v enakost. Ko postopek naredimo za vsak par naravnih števil $1 \leq i, j \leq n$, dobimo presek simpleksov $S$ in $R$ kot lice obeh simpleksov.
@@ -347,31 +347,32 @@ Prepričajmo se, da je definicija $i$-tega soseda dobra.
 Pokazati moramo, da je simpleks $S[i]$ vsebovan v $k$-ti mrežni delitvi prostora $\R^n$ za vsak $i = 0, \dots, n$. Hitro lahko vidimo, da so za vsako število $i = 0, \dots, n$ oglišča simpleksa $S[i]$ vsebovana v množici $Z_k^n$. Poiščimo permutacijo, s pomočjo katere lahko oglišča simpleksa $S[i]$ zapišemo kot v enačbi \eqref{eq:orientiran-simpleks}. 
 Definirajmo permutacijo $\tau(i) \in P(n)$:
 \begin{enumerate}
-\item Če je $0 < i < n$, je permutacija $\tau$ transpozicija, ki med seboj zamenja $i$-ti in $(i+1)$-i element, ostale pa pusti pri miru.
+\item Če je $0 < i < n$, je permutacija $\tau$ transpozicija, ki med seboj zamenja $i$-ti in $(i+1)$ element, ostale pa pusti pri miru.
 \item Če je $i = 0$, je permutacija $\tau$ cikel, ki vse elemente premakne za eno mesto nazaj, prvi element pa postavi na konec.
 \item Če je $i = 0$, je permutacija $\tau$ cikel, ki vse elemente premakne za eno mesto naprej, zadnji element pa postavi na začetek.
 \end{enumerate}
 Iskana permutacija je potem $\rho = \pi \circ \tau$.
 Prepričajmo se, da je $S[i]$ edina izbira za ustreznega soseda. Brez izgube splošnosti lahko predpostavimo, da je $z_0 = 0$. Opazimo, da enačba \eqref{eq:orientiran-simpleks} za simpleks $S \in M_{\frac{a}{k}}^n$ podaja končno zaporedje točk z začetnim členom $(0, \dots, 0)$ in končnim členom $(\frac{a}{k}, \dots, \frac{a}{k})$. Vsak naslednji člen dobimo iz predhodnega tako, da eno koordinato povečamo za $1$. V našem primeru to pomeni, da eno koordinato spremenimo iz $0$ v $\frac{a}{k}$. Katero koordinato spremenimo, določa predpis \eqref{eq:orientiran-simpleks}. To zaporedje je urejeno, saj se koordinate povečujejo, člena pa sta lahko sosednja, kadar se razlikujeta v eni sami koordinati. Če odstranimo začetno točko tega zaporedja, dobimo zaporedje z $n-1$ členi. Dopolnimo ga lahko samo na dva načina. Člen, ki smo ga odvzeli, lahko dodamo na začetek ali pa dodamo člen na konec zaporedja tako, da zadnjemu členu povečamo koordinato, ki se v krajšem zaporedju nikoli ne spremeni. V prvem primeru zaporedje ustreza simpleksu $S$, v drugem pa simpleksu $S[0]$. Člena ne moremo vriniti v sredino krajšega zaporedja, saj se potem sosednji členi ne bi razlikovali v natanko eni koordinati. 
 Podobno lahko postopamo v primeru, ko odvzamemo zadnji element zaporedja. Recimo, da smo odvzeli $i$-ti člen zaporedja. Potem se $(i-1)$-i člen in $(i+1)$-i člen razlikujeta v dveh koordinatah. Označimo ti dve koordinati s $p$ in $r$. Da dopolnimo zaporedje, moramo dodati en člen na $i$-to mesto. To lahko storimo tako, da dodamo člen, ki se v vseh koordinatah ujema z $(i+1)$-im členom, le na $p$-ti ali na $r$-ti koordinati se ujema z  $(i-1)$-im členom. V enem primeru dobimo zaporedje, s katerim smo začeli, v drugem pa zaporedje, ki ustreza simpleksu $S[i]$.
-Torej je $S[i]$ res edini sosed simpleksa $S$, ki ustreza lastnosti:
-$$S \cap S[i] = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle.$$
-
+Simpleks $S[i]$ ustreza lastnosti:
+$$S \cap S[i] = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle$$
+in je edini simpleks s to lastnostjo.
 \end{dokaz}
+
 %pot $P$ po točkah $z_0, z_1, \dots, z_n$. S potjo $P$ mislimo na točke $z_0, z_1, \dots, z_n$ in na $1$-dimenzionalna lica simpleksa $S$, ki jih povezujejo. Vsako $1$-dimenzionalno lice iz poti bomo imenovali korak. Koraki so narejeni v smeri vektorjev $\vec{e}_i$ za $i = 1, \dots, n$. Če pogledamo pot samo na licu $L = \langle z_0, \dots, z_{i-1}, z_{i+1}, \dots, z_n \rangle$ imamo dve možnosti.Pot na licu $L$ je lahko za en korak krajša od poti $P$. V tem primeru lahko pot s korakom podaljšamo na začetku ali na koncu. V enem primeru dobimo simpleks $S$, v drugem pa soseda $S[i]$. To dokaže trditev v primeru, ko je $i \in \{0, n\}$. Druga možnost je, da je pot na licu za dva koraka krajša od poti $P$. V Tem primeru imamo dve povezani poti. Povežemo ju lahko na istem mestu, kjer ju poveže pot $P$. V nasprotnem primeru dobimo cikel sestavljen iz baznih vektorjev, kar pa ni mogoče. Torej lahko pot povežemo na dva načina, saj imamo dva različno usmerjena koraka, ki ju lahko uporabimo v dveh različnih vrstnih redih. V enem primeru dobimo simpleks $S$, v drugem pa njegovega soseda $S[i]$. Torej je sosed res enolično določen.
-S pomočjo delitve prostora $R^n$ lahko definiramo triangulacijo simpleksov. Definiramo $k$-to mrežno triangulacijo simpleksa $S = \langle x_0, x_1, \dots, x_n \rangle \in M^n_{\frac{a}{1}}$ kot simplicialni kompleks, ki vsebuje vse simplekse iz mrežne delitve $M^n_{\frac{a}{k}}$ prostora $\R^n$, ki so vsebovani v simpleksu $S$.
+S pomočjo delitve prostora lahko definiramo triangulacijo simpleksov. Definiramo $k$-to mrežno triangulacijo simpleksa $S = \langle x_0, x_1, \dots, x_n \rangle \in M^n_{\frac{a}{1}}$ kot simplicialni kompleks, ki vsebuje vse simplekse iz mrežne delitve $M^n_{\frac{a}{k}}$ prostora $\R^n$, ki so vsebovani v simpleksu $S$.
 Naj bo $R = \langle y_0, y_1, \dots, y_n \rangle$ poljuben $n$-simpleks v prostoru $\R^n$. Definirajmo homeomorfizem $h : S \to R$ s predpisom
 $$h \left( \sum_{i=0}^n t_i x_i \right) = \sum_{i=0}^n t_i y_i,$$
 kjer za vsak $i=0, 1, \dots, n$ realna števila $t_i$ zadoščajo pogojem $t_i \geq 0$ in $\sum_{i=0}^n t_i = 1$.
 S preslikavo $h$ prenesemo triangulacijo simpleksa $S$ na simpleks $R$. Taki triangulaciji rečemo \emph{$k$-ta mrežna delitev} simpleksa $R$. Za oznako $k$-te mrežne delitve $n$-simpleksa bomo uporabljali kar $M_k^n$, saj število $a$ na to delitev nima vpliva. 
 
-Radi bi videli, da se s povečevanjem števila $k$ simpleksi v $k$-ti mrežni zmanjšujejo.
+Radi bi videli, da se s povečevanjem števila $k$ simpleksi v $k$-ti mrežni delitvi zmanjšujejo.
 Pokažimo, da je diameter simpleksa $S = \langle v_0, v_1, \dots v_n \rangle$ enak dolžini najdaljše stranice. Izračunamo razdaljo med točkama $x, y \in S$:
 $$\dist(x, y) = \| \vec{x} - \vec{y} \|.$$
 Krajevni vektor točke $y$ lahko zapišemo s pomočjo oglišč simpleksa:
-$$\| \vec{x} - \sum_{i=0}^n t_i \vec{v}_i \|,$$
+$$\left\| \vec{x} - \sum_{i=0}^n t_i \vec{v}_i \right\|,$$
 kar lahko preoblikujemo in ocenimo:
-$$\| \sum_{i=0}^n t_i (\vec{x} - \vec{v}_i)\| \leq \sum_{i=0}^n t_i \| (\vec{x} - \vec{v}_i) \| \leq \sum_{i=0}^n t_i \max_{j=0, \dots, n}(\| (\vec{x} - \vec{v}_j) \|) = \max_{j=0, \dots, n}(\| (\vec{x} - \vec{v}_j) \|).$$
+$$\left \| \sum_{i=0}^n t_i (\vec{x} - \vec{v}_i)\right \| \leq \sum_{i=0}^n t_i \| (\vec{x} - \vec{v}_i) \| \leq \sum_{i=0}^n t_i \max_{j=0, \dots, n}(\| (\vec{x} - \vec{v}_j) \|) = \max_{j=0, \dots, n}(\| (\vec{x} - \vec{v}_j) \|).$$
 Ugotovili smo, da je razdalja največja, ko je $y$ oglišče simpleksa $S$. Zaradi simetričnosti razdalje mora biti za maksimizacijo razdalje tudi $x$ oglišče simpleksa.
 Ker so dolžine stranic simpleksa $R$ iz $k$-te mrežne delitve simpleksa $S$ za faktor $k$ manjše od stranic simpleksa $S$, velja $\diam(R) = \frac{1}{k} \cdot \diam(S)$.
 
@@ -392,19 +393,19 @@ Pravimo, da je barvanje triangulacije $\pT$ $n$-simpleksa $S$ \emph{Spernerjevo}
 %########################################################
 Za $n$-simpleks, ki ima oglišča pobarvana z vsemi barvami iz množice $\{ 0, 1, \dots, n \}$, pravimo, da je \emph{popolno pobarvan}. Naslednji izrek izpostavi zanimivo lastnost takega barvanja.
 \begin{lema}[Spernerjeva lema~\protect{\cite[str.\ 10, izrek 4]{Ahlbach}}]\label{izr:sperner}
-Vsaka mrežna delitev $n$-simpleksa s Spernerjevim barvanjem vsebuje liho število popolno pobarvanih $n$-simpleksov.
+Vsaka triangulacija $n$-simpleksa s Spernerjevim barvanjem vsebuje liho število popolno pobarvanih $n$-simpleksov.
 \end{lema}
 \begin{proof}
-Naj bo $S$ $n$-simpleks in naj bo $M_k^n$ $k$-ta mrežna delitev. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ simpleksa $S$.
+Lemo bomo dokazali za mrežne delitve. Naj bo $S$ $n$-simpleks in naj bo $M_k^n$ $k$-ta mrežna delitev. Lemo bomo dokazovali z indukcijo na dimenzijo $n$ simpleksa $S$.
 
 Baza indukcije ($n = 0$):
 V tem primeru lema očitno drži, saj je $0$-simpleks točka. Pri Spernerjevem barvanju točke imamo samo eno možnost in tako dobimo en popolno pobarvan $0$-simpleks.
 
 Indukcijska predpostavka ($n - 1$):
-Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki mrežni delitvi $(n - 1)$-simpleksa s Spernerjevim barvanjem najdemo liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
+Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki mrežni delitvi $(n - 1)$-simpleksa s Spernerjevim barvanjem obstaja liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
-Poskusimo dokazati pravilnost izjave tudi v dimenziji $n$. Izberimo $k$-to mrežno delitev $M_k^n$ $n$-simpleksa $S$. Naj bodo oglišča delitve $M_k^n$ pobarvana s Spernerjevim barvanjem. Po indukcijski predpostavki vemo, da je število $r$ popolno pobarvanih $(n-1)$-simpleksov na robu simpleksa $S$ liho. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $M_k^n$ s $p$. Pokazali bomo, da velja $p \equiv r \pmod 2$.
+Poskusimo dokazati pravilnost izjave tudi v dimenziji $n$. Izberimo $k$-to mrežno delitev $M_k^n$ $n$-simpleksa $S$. Naj bodo oglišča delitve $M_k^n$ pobarvana s Spernerjevim barvanjem. Samo eno glavno lice simpleksa $S$ je popolno pobarvan $(n-1)$-simpleks. Po indukcijski predpostavki vemo, da je število $r$ popolno pobarvanih $(n-1)$-simpleksov na tem licu liho. Na drugih glavnih licih simpleksa $S$ pa ni popolno pobarvanih $(n-1)$-simpleksov, saj na teh ogliščih ne nastopajo barve, ki bi omogočale popolno pobarvan $(n-1)$-simpleks. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $M_k^n$ s $p$. Pokazali bomo, da velja $p \equiv r \pmod 2$.
 Definirajmo funkcijo $\alpha$, ki za vsak $n$-simpleks pove, koliko popolno pobarvanih $(n-1)$ simpleksov vsebuje. Vsak popolno pobarvan $n$-simpleks iz triangulacije $M_k^n$ simpleksa $S$ vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana $(n-1)$-simpleksa. Ostali $n$-simpleksi ne vsebujejo nobenega popolno pobarvanega $(n - 1)$-simpleksa. Iz zgornjega lahko sklepamo, da je 
 $$p \equiv 
 \sum\limits_{\substack{
@@ -434,7 +435,7 @@ Naj  bo $\I$ interval v $\R^n$. Potem je \emph{$n$-dimenzionalna kocka} oziroma 
 \end{definicija}
 Tako kot simpleksi so tudi kocke omejene z lici.
 \begin{definicija}
-Kocka $C = [-a, a]^n$ je omejena z \emph{lici}. Za vsako naravno število $i < n$ definiramo nasprotni $i$-lici kot množici
+Kocka $C = [-a, a]^n$ je omejena z \emph{lici}. Za vsako naravno število $i \leq n$ definiramo nasprotni $i$-lici kot množici
 $C_i^- = \{x \in C | x_i = -a \}$ in  $C_i^+ = \{x \in C | x_i = a\}$, kjer je $x_i$ $i$-ta koordinata točke $x$. Rob  kocke je unija vseh lic.
 \end{definicija}
 Lastnosti, ki smo jih obravnavali pri simpleksih, bomo posplošili na kocke. Nekatere lastnosti izgledajo skoraj enako za simplekse in za kocke, vendar videli bomo, da moramo biti pri posploševanju previdni, saj lahko pride do sprememb ravno tam, kjer jih ne pričakujemo.
@@ -445,13 +446,13 @@ Za poljubno pozitivno realno število $a$ in naravni števili $n$ in $k$ naj bo 
 
 Tako kot pri simpleksih lahko tudi pri kockah barvamo oglišča triangulacije.
 \begin{definicija}
-Naj bo podana $n$-kocka $C \in \R^n$ s triangulacijo $\pT$. Označimo množico vseh oglišč triangulacije $\pT$ z $V$. \emph{Barvanje triangulacije} $\pT$ je preslikava $b : V \to \left \{0, 1, \dots, n \right \}$.
+Naj bo podana $n$-kocka $C \subset \R^n$ s triangulacijo $\pT$. Označimo množico vseh oglišč triangulacije $\pT$ z $V$. \emph{Barvanje triangulacije} $\pT$ je preslikava $b : V \to \left \{0, 1, \dots, n \right \}$.
 \end{definicija}
 V naslednjem poglavju bomo spoznali Poincar\'e-Mirandov izrek in definirali barvanje kocke, ki nam pomaga pri njegovem dokazu.
 %
 %####################     3. POGLAVJE: POINCARÉ-MIRANDOV IZREK     ####################
 \section{Poincar\'e-Mirandov izrek}\label{raz:PM}
-Sedaj se bomo posvetili ničlam preslikav, tj. takim točkam, ki jih neka preslikava $f : \I^n \to \R^n$ slika v nič. Iskali bomo torej odgovor na vprašanje: Kakšni pogoji nam zagotavljajo obstoj take točke $c$, za katero je $f(c) = (0, 0, \dots, 0)$? Zaradi krajšega zapisa bomo točko $(0, 0, \cdots, 0) \in \R^n$, ko ne bo dvomov o dimenziji, označevali z oznako $\0$. V primeru funkcije $f : \I \to \R$ odgovor na vprašanje ponudi Bolzanov izrek o srednji vrednosti.
+Sedaj se bomo posvetili ničlam preslikav, tj. takim točkam, ki jih neka preslikava $f : \I^n \to \R^n$ slika v nič. Iskali bomo torej odgovor na vprašanje: Kakšni pogoji zagotavljajo obstoj take točke $c$, za katero je $f(c) = (0, 0, \dots, 0)$? Zaradi krajšega zapisa bomo točko $(0, 0, \cdots, 0) \in \R^n$, ko ne bo dvomov o dimenziji, označevali z oznako $\0$. V primeru funkcije $f : \I \to \R$ odgovor na vprašanje ponudi Bolzanov izrek o srednji vrednosti.
 \begin{izrek}[Bolzanov izrek o srednji vrednosti]\label{izr:bolzano}
 Izberimo poljubno pozitivno realno število $a$ in definirajmo interval $\I := [-a, a]$. Za zvezno funkcijo $f : \I \to \R$, za katero velja $f(-a) \leq 0 \leq f(a)$, obstaja točka $c \in [-a, a]$, da je $f(c) = 0$.
 \end{izrek}
@@ -463,7 +464,7 @@ Intuitivno izrek pove, da ne moremo povezati točke s spodnje polravnine s točk
 \begin{figure}[h!]
 	\centering
 	\import{slike/}{bolzano.tex}
-	\caption{Slika prikazuje dogajanje, ki ga opisuje izrek~\ref{izr:bolzano}}\label{fig:bolzano}
+	\caption{Slika prikazuje dogajanje, ki ga opisuje izrek~\ref{izr:bolzano}}.\label{fig:bolzano}
 \end{figure}
 %############################################################
 Zgornji rezultat bi si želeli posplošiti na večje dimenzije. Večdimenzionalna posplošitev funkcije je preslikava, intervala pa $n$-kocka. Ostane le še vprašanje, kako bi posplošili pogoje, da bi imela preslikava podobno lastnost kot zgoraj. Razmislimo, kako bi posplošili izrek na zvezno preslikavo $f : \I^n \to \R^n$. Najprej lahko preslikavo zapišemo s pomočjo komponentnih funkcij $f = (f_1, f_2, \dots, f_n)$. Da lažje ugotovimo, kakšne pogoje bi izbrali, najprej obravnavamo preprost primer. Kakšne pogoje bi postavili, če bi bila vsaka komponenta $f_i$ odvisna samo od ene koordinate točke $x$, npr.\ $x_i$? Potem lahko vsako komponento $f_i$ zapišemo kot $f_i(x_1, x_2, \dots, x_n) = g_i(x_i)$, kjer so $g_i$ funkcije iz intervala $\I$ v prostor $\R$. V tem primeru za vsako funkcijo $g_i$ uporabimo enake zahteve kot v izreku \ref{izr:bolzano}, kar za funkcije $f_i$ porodi naslednji pogoj: 
@@ -499,7 +500,7 @@ Naj bo $f = (f_1, f_2, \dots, f_n) : \I^n  \to \R^n$ taka zvezna preslikava iz k
 \end{figure}
 %##########################################################
 \begin{dokaz}
-Za vsako število $i \in \{ 1, \dots, n\}$ definiramo množici $H_i^- := f_i^{-1} (-\infty, 0]$ in $H_i^+ := f_i^{-1} [0, -\infty)$. Najprej bomo pokazali, da je za dokaz izreka dovolj, če za vsako naravno število $k \in \N$ poiščemo $n$-simpleks $S_k$ iz $k$-te mrežne delitve kocke $M_k^n$ z lastnostjo 
+Za vsako število $i \in \{ 1, \dots, n\}$ definiramo množici $H_i^- := f_i^{-1} (-\infty, 0]$ in $H_i^+ := f_i^{-1} [0, \infty)$. Najprej bomo pokazali, da je za dokaz izreka dovolj, če za vsako naravno število $k \in \N$ poiščemo $n$-simpleks $S_k$ iz $k$-te mrežne delitve kocke $M_k^n$ z lastnostjo 
 \begin{equation}\label{eq:nonempty}
 S_k \cap H_i^- \neq \emptyset \neq S_k \cap H_i^+, \text{ za vsak } i \in \{ 1, \dots, n \}.
 \end{equation}
@@ -528,7 +529,7 @@ Baza indukcije ($n = 0$):
 Triangulacija $0$-kocke $\I^n$ vsebuje zgolj točko $\0$, ki je z barvanjem $\varphi$ pobarvana z barvo $0$ in tako predstavlja popolno pobarvan simpleks.
 
 Indukcijska predpostavka ($n - 1$):
-Barvanje $\varphi$ pobarva poljubne triangulacije $n$-dimenzionalne kocke. V primeru $(n-1)$-dimenzionalne kocke lahko barvanje $\varphi$ razumemo tako, da poljubno triangulacijo $\pT_k$ kocke $\I^{n-1}$ pobarvamo z barvanjem $\varphi$ tako, da je vsako oglišče $(x_1, x_2, \dots, x_{n-1})\in\I^{n-1}$ enako pobarvano kot oglišče $(x_1, x_2, \dots, x_{n-1}, -a)\in \I^n$. Predpostavimo, da vsaka triangulacija $\pT_k$ kocke $\I^{n-1}$, kjer oglišča pobarvamo s preslikavo $\varphi$, vsebuje liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
+Barvanje $\varphi$ smo definirali za poljubne triangulacije $n$-dimenzionalne kocke. V primeru $(n-1)$-dimenzionalne kocke lahko barvanje $\varphi$ razumemo tako, da poljubno triangulacijo $\pT_k$ kocke $\I^{n-1}$ pobarvamo z barvanjem $\varphi$ tako, da je vsako oglišče $(x_1, x_2, \dots, x_{n-1})\in\I^{n-1}$ enako pobarvano kot oglišče $(x_1, x_2, \dots, x_{n-1}, -a)\in \I^n$. Predpostavimo, da vsaka triangulacija $\pT_k$ kocke $\I^{n-1}$, kjer oglišča pobarvamo s preslikavo $\varphi$, vsebuje liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
 Prepričajmo se, da poljubna triangulacija $\pT_k$ $n$-kocke $\I^n$ vsebuje liho mnogo popolno pobarvanih $n$-simpleksov. Iz definicije barvanja $\varphi$ lahko ugotovimo dve lastnosti. Če oglišče $x$ leži na licu $\I_i^-$, potem je $\varphi(x) < i$, če pa $x$ leži na licu $\I_i^+$, potem je $\varphi(x) \neq i -1$. Iz teh dveh lastnosti sklepamo, da je lice simpleksa, ki leži na robu kocke $\I^n$, lahko popolno pobarvano samo v primeru, ko leži na licu $\I_n^-$. Po indukcijski predpostavki je število $r$ takih lic liho. 
@@ -551,7 +552,7 @@ R\text{ je } n\text{-simpleks}
 Torej velja kongruenca $p \equiv r \pmod 2$, zato je $p$ lih.
 \end{dokaz}
 
-Zgornji dokaz zelo spominja na dokaz Spernerjeve leme, a tu obravnavamo kocke. Dobimo idejo, da bi Spernerjevo lemo posplošili na kocke. Želimo poiskati tako pravilo za barvanje triangulacije kocke, da bo vsaka triangulacija kocke vsebovala vsaj en popolno pobarvan simpleks. Ker si želimo popolno pobarvan simpleks, nam ni potrebno vsakega oglišča kocke pobarvati s svojo barvo, saj je za $n$-kocko dovolj že $n+1$ barv. Podobno kot pri simpleksih bomo rekli, da je $n$-kocka popolno pobarvana, ča na ogliščih nastopajo vse barve iz množice {0, 1, \dots, n}.  Pravilo za Spernerjevo barvanje simpleksa lahko posplošimo na $n$-kocko na naslednji način.
+Zgornji dokaz zelo spominja na dokaz Spernerjeve leme, a tu obravnavamo kocke. Dobimo idejo, da bi Spernerjevo lemo posplošili na kocke. Želimo poiskati tako pravilo za barvanje triangulacije kocke, da bo vsaka triangulacija kocke vsebovala vsaj en popolno pobarvan simpleks. Ker si želimo popolno pobarvan simpleks, nam ni potrebno vsakega oglišča kocke pobarvati s svojo barvo, saj je za $n$-kocko dovolj že $n+1$ barv. Podobno kot pri simpleksih bomo rekli, da je $n$-kocka popolno pobarvana, ča na ogliščih nastopajo vse barve iz množice $\{0, 1, \dots, n\}$.  Pravilo za Spernerjevo barvanje simpleksa lahko posplošimo na $n$-kocko na naslednji način.
 Definirajmo naivno pravilo za barvanje triangulacije $\pT$ kocke $C=\I^n$:
 \begin{enumerate}
 \item Na ogliščih kocke $C$ so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$,
@@ -566,11 +567,11 @@ S primerom na sliki \ref{fig:ni-pop} pokažimo, da barvanje, ki zadošča naivne
 \end{figure}
 %##############################################################################
 Naivno pravilo lahko dopolnimo tako, da bo vsaka triangulacija $n$-simpleksa, pobarvana po tem pravilu, vsebovala popolno pobarvan $n$-simpleks. Če pogledamo dokaz izreka \ref{izr:sperner}, vidimo, da je ključno dejstvo, da je število vseh popolno pobarvanih 
-$(n-1)$-simpleksov na robu liho. Na sliki~\label{fig:ni-pop} pa ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Simpleks $S$ na robu vsebuje $2$ popolno pobarvana $1$-simpleksa. Če naivnemu barvanju dodamo pogoj, ki nam za vsako triangulacijo $n$-kocke zagotavlja liho število popolno pobarvanih $(n-1)$-simpleksov na robu, dobimo Spernerjevo barvanje za kocke.
+$(n-1)$-simpleksov na robu liho. Na sliki~\ref{fig:ni-pop} pa ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Kocka $C$ na robu vsebuje $4$ popolno pobarvane $1$-simpleksa. Če naivnemu barvanju dodamo pogoj, ki za vsako triangulacijo $n$-kocke zagotavlja liho število popolno pobarvanih $(n-1)$-simpleksov na robu, dobimo Spernerjevo barvanje za kocke.
 
 
 \begin{definicija}\label{def:alo}
-Naj bo podana triangulacija $\pT$ $n$-kocke $C$. Z $V$ označimo množico oglišč triangulacije $\pT$. Spernerjevo barvanje triangulacije $\pT$ je tako barvanje, pri katerem so izpolnjeni trije pogoji:
+Naj bo podana triangulacija $\pT$ $n$-kocke $C$. Z $V$ označimo množico oglišč triangulacije $\pT$. \emph{Spernerjevo barvanje} triangulacije $\pT$ je tako barvanje, pri katerem so izpolnjeni trije pogoji:
 \begin{enumerate}
 \item Na ogliščih kocke $C$ so uporabljene vse barve iz množice $\{0, 1, \dots, n \}$, \label{sperner1}
 \item Za vsako (ne nujno glavno) lice $L$ kocke $C$ je vsako oglišče triangulacije $\pT$, ki leži na licu $L$, pobarvano enako, kot eno izmed oglišč lica $L$.\label{sperner2}
@@ -627,7 +628,7 @@ Pokažimo najprej, da je $n$-kocka $\I^n$ pri barvanju z barvanjem $\varphi$ pob
 \begin{figure}[h!]
 	\centering
 	\import{slike/}{poincarejevo_barvanje.tex}
-	\caption{Skrajno levo je ena točka ($0$-kocka), ki je z barvanjem $\varphi$ pobarvana z $0$. Malo bolj proti desni lahko vidimo, kako barvanje $\varphi$ pobarva oglišča $1$-kocke, naslednja je z $\varphi$ pobarvana $2$-kocka, skrajno desno pa je pobarvana $3$-kocka.}\label{fig:PMcolor}
+	\caption{Skrajno levo je ena točka ($0$-kocka), ki je z barvanjem $\varphi$ pobarvana z $0$. Malo bolj proti desni lahko vidimo, kako barvanje $\varphi$ pobarva oglišča $1$-kocke, naslednja je s $\varphi$ pobarvana $2$-kocka, skrajno desno pa je pobarvana $3$-kocka.}\label{fig:PMcolor}
 \end{figure}
 %#########################################################
 Dokazovali bomo z indukcijo na $n$.
@@ -672,7 +673,7 @@ Enostavnost dokaza izreka~\ref{izr:fixedpoint} pokaže, kako močno orodje za do
 
 %####################     4. POGLAVJE: RAZŠIRITEV FUNKCIJE     ####################
 \section{Razširitev funkcije}\label{raz:siritev}
-Včasih se nam zgodi, da je podana funkcija definirana samo na nekem majhnem območju, želeli pa bi si, da bi bila domena funkcije večja. Poglejmo si poljubno množico $A \in \R^n$ in neko funkcijo $f : A \to \R$. Denimo, da je $U$ taka množica, da je $A \subset U$. Funkciji $F : U \to \R$, za katero je $F(x) = f(x)$ za vsak $x \in A$, pravimo \emph{razširitev funkcije} $f$ na množico $U$. Zanimale nas bodo zgolj zvezne funkcije $f$ in zvezne razširitve $F$. Pri tem se ponudi vprašanje, ali lahko vsako zvezno funkcijo razširimo. S primerom pokažemo, da temu ni tako.
+Včasih se nam zgodi, da je podana funkcija definirana samo na nekem majhnem območju, želeli pa bi si, da bi bila domena funkcije večja. Poglejmo si poljubno množico $A \subset \R^n$ in neko funkcijo $f : A \to \R$. Denimo, da je $U$ taka množica, da je $A \subset U$. Funkciji $F : U \to \R$, za katero je $F(x) = f(x)$ za vsak $x \in A$, pravimo \emph{razširitev funkcije} $f$ na množico $U$. Zanimale nas bodo zgolj zvezne funkcije $f$ in zvezne razširitve $F$. Pri tem se ponudi vprašanje, ali lahko vsako zvezno funkcijo razširimo. S primerom pokažemo, da to ne velja.
 
 \begin{primer}
 Funkcijo $f : (-2, 0) \cup (0, 2) \to \R$ definiramo s predpisom
@@ -698,7 +699,7 @@ Izkaže se, da je za obstoj razširitve zvezne funkcije $f : A \subset \R^n  \to
 Zvezna funkcija, definirana na kompaktnem metričnem prostoru, je enakomerno zvezna.
 \end{trditev}
 \begin{dokaz}
-Predpostavimo, da je $K$ kompakten metrični prostor in $f : K \to \R^n$ zvezna preslikava. Pokazati želimo, da za vsako (še tako majhno) število $\varepsilon > 0$ obstaja tako realno število $\delta > 0$, da za vsaki točki $x, y \in K$, za kateri je $d(x, y) < \delta$, velja $d(f(x), f(y)) < \varepsilon$. Ker je $f$ zvezna funkcija, za vsako točko $z \in K$ obstaja tako pozitivno realno število $\delta_z$, da je $f(B(z, \delta_z)) \subset B(f(z), \frac{\varepsilon}{2})$. Družina množic $\pU = \left \{ B(z, \frac{\delta_z}{2}); z \in K \right \}$ tvori odprto pokritje prostora $K$.  Zaradi kompaktnosti $K$ lahko izberemo končno poddružino $\pA =  \left \{ (B(x_1, \frac{\delta_{x_1}}{2}), \dots, B(x_n, \frac{\delta_{x_n}}{2}) \right \}$, ki je še vedno pokritje prostora $K$. Definiramo število $\delta := \min_i \frac{\delta_{x_i}}{2}$. Za poljubni točki $x, y \in K$, ki sta med seboj oddaljeni manj kot $\delta$, obstaja krogla $B(x_i, \frac{\delta_{x_i}}{2})$, ki vsebuje točko $x$. Ocenimo razdaljo med točko $x_i$ in točko $y$:
+Predpostavimo, da je $K$ kompakten metrični prostor in $f : K \to \R^n$ zvezna preslikava. Pokazati želimo, da za vsako (še tako majhno) število $\varepsilon > 0$ obstaja tako realno število $\delta > 0$, da za vsaki točki $x, y \in K$, za kateri je $d(x, y) < \delta$, velja $d(f(x), f(y)) < \varepsilon$. Ker je $f$ zvezna funkcija, za vsako točko $z \in K$ obstaja tako pozitivno realno število $\delta_z$, da je $f(B(z, \delta_z)) \subset B(f(z), \frac{\varepsilon}{2})$. Družina množic $\pU = \left \{ B\left(z, \frac{\delta_z}{2}\right); z \in K \right \}$ tvori odprto pokritje prostora $K$.  Zaradi kompaktnosti $K$ lahko izberemo končno poddružino $\pA =  \left \{ B\left(x_1, \frac{\delta_{x_1}}{2}\right), \dots, B\left(x_n, \frac{\delta_{x_n}}{2}\right) \right \}$, ki je še vedno pokritje prostora $K$. Definiramo število $\delta := \min\limits_{i=1, \dots, n} \frac{\delta_{x_i}}{2}$. Za poljubni točki $x, y \in K$, ki sta med seboj oddaljeni manj kot $\delta$, obstaja krogla $B(x_i, \frac{\delta_{x_i}}{2})$, ki vsebuje točko $x$. Ocenimo razdaljo med točko $x_i$ in točko $y$:
 $$d(x_i, y) \leq d(x_i, x) + d(x, y) < \frac{\delta_{x_i}}{2} +\delta \leq \frac{\delta_{x_i}}{2} + \frac{\delta_{x_i}}{2} = \delta_{x_i}.$$
 Točki $x$ in $y$ ležita v krogli $B(x_i, \delta_{x_i})$. Ker slika te krogle leži znotraj krogle $B(f(x_i), \frac{\varepsilon}{2})$ je razdalja med točkama $f(x)$ in $f(y)$ manjša od $\varepsilon$, torej je funkcija $f$ res enakomerno zvezna.
 \end{dokaz}
@@ -721,7 +722,7 @@ Funkcijo $F|_{A^c}$ bomo zapisali kot kompozitum dveh zveznih funkcij in na ta n
 $$d((x, a), (y, b)) < \delta \Rightarrow d(g(x, a), g(y, b))< \varepsilon.$$
 Ker iz $d(x, y) < \delta$ sledi $d((x, a), (y, a)) < \delta$ za vsak $a$, sledi tudi $d(g_x, g_y) = d(\hat{g}(x), \hat{g}(y)) < \varepsilon.$ 
 
-Prepričajmo se, da je tudi funkcija $m: C(A, \R) \to \R$ s predpisom $m(f) = \min_{a \in A} f(a)$ zvezna. Naj bo $g \in C(A, \R)$ in naj bo $\varepsilon > 0$. Radi bi videli, da obstaja tako pozitivno število $\delta$, da za vse funkcije $h$, za katere je $d(g, h)<\delta$ velja: $|m(g) - m(h)| < \varepsilon$. Če je $d(g, h)<\delta$, potem za vsako točko $a \in A$ velja neenakost $|g(a) - h(a)| < \delta$. Denimo, da je minimum funkcije $g$ na množici $A$ dosežen v točki $a_1$, minimum funkcije $h$ pa v točki $a_2$. Naredimo naslednje ocene:
+Prepričajmo se, da je tudi funkcija $m: C(A, \R) \to \R$ s predpisom $m(f) = \min_{a \in A} f(a)$ zvezna. Naj bo $g \in C(A, \R)$ in naj bo $\varepsilon > 0$. Radi bi videli, da obstaja tako pozitivno število $\delta$, da za vse funkcije $h$, za katere je $d(g, h)<\delta$, velja: $|m(g) - m(h)| < \varepsilon$. Če je $d(g, h)<\delta$, potem za vsako točko $a \in A$ velja neenakost $|g(a) - h(a)| < \delta$. Denimo, da je minimum funkcije $g$ na množici $A$ dosežen v točki $a_1$, minimum funkcije $h$ pa v točki $a_2$. Naredimo naslednje ocene:
 \begin{align*}
 m(g) - m(h) &\geq g(a_1) - h(a_1) > -\delta,\\
 m(g) - m(h) &\leq g(a_2) - h(a_2) < \delta.
@@ -783,7 +784,7 @@ Poglejmo sedaj, pri katerih pogojih je to mogoče s približno razširitvijo.
 %\end{dokaz}
 
 \begin{lema}[približna razširitev, ki se izogne ničli \protect{\cite[str.\ 133, Proof of Lemma]{Kulpa}}]\label{lem:razsiritev-nic}
-Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : X \to \R^n \setminus \left \{ \0 \right \}$}. Naj ima $Y \in \R^n$ prazno notranjost. Tedaj za vsako število $\varepsilon > 0$ obstaja taka zvezna preslikava $F : X \cup Y \to \R^n \setminus \{0\}$, da zanjo velja $\| F(x) - f(x) \| < \varepsilon$ za vsak $x \in X$.
+Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : X \to \R^n \setminus \left \{ \0 \right \}$}. Naj ima kompaktna podmnožica $Y \in \R^n$ prazno notranjost. Tedaj za vsako število $\varepsilon > 0$ obstaja taka zvezna preslikava $F : X \cup Y \to \R^n \setminus \{0\}$, da zanjo velja $\| F(x) - f(x) \| < \varepsilon$ za vsak $x \in X$.
 \end{lema}
 
 \begin{dokaz}
@@ -811,9 +812,7 @@ Potem je tudi slika $h(U)$ odprta množica v $\R^n$.
 %
 \begin{dokaz}
 Naj bodo izpolnjene predpostavke izreka. Obravnavamo množico U, ki je odprta podmnožica v $\R^n$, in zvezno injektivno preslikavo $h : U \rightarrow \R^n$. Izrek bo dokazan, če pokažemo, da je za vsak element $u$ iz množice $U$ točka $h(u)$ notranja točka za množico $h(U)$. Brez izgube splošnosti lahko predpostavimo, da je $u=0$. V nasprotnem primeru si pomagamo s translacijo $\tau$, ki premakne točko $u$ v točko $0$. % in pokažemo, da je slika množice $\tau(U)$ s funkcijo $h \circ \tau^{-1}$ odprta, kar pomeni, da je odprta tudi množica $h(U)$. 
-Prepričati se želimo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tod naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo f zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ Hausdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to h\left(\I^n  \right)$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta$, da je praslika krogle $B(b, 2 \delta)$
-%kot kroglo mislimo delta okolico točke b v množici h(U)
-, ki leži v množici $h(U)$, vsebovana v notranjosti kocke $I^n$. Velja torej $h^{-1}(B(b, 2 \delta)) \subset \Int(\I^n)$. Predpostavimo, da je $b \in \partial h\left(\I^n\right)$. Tedaj lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
+Prepričati se želimo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n = [-a, a] \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tod naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo f zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ Hausdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to h\left(\I^n  \right)$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta$, da je praslika množice $B(b, 2 \delta) \cap h\left(\I^n\right)$ vsebovana v notranjosti kocke $I^n$. Velja torej $h^{-1}(B(b, 2 \delta)\cap h\left(\I^n\right)) \subset \Int(\I^n)$. Predpostavimo, da je $b \in \partial h\left(\I^n\right)$. Tedaj lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
 
 % ###############        Slika dokaza izreka o invarianci odprtih množic      ############
 \begin{figure}[h!]
@@ -836,7 +835,7 @@ Ker je $t_i = - a$, je $| f_i (t) - t_i | = | f_i (t) - ( - a) | \leq | f (t) - 
 \end{dokaz}
 S pomočjo izreka~\ref{izr:main-theorem} lahko enostavno izpolnimo obljubo iz uvoda in dokažemo izrek o invarianci dimenzije, ki razreši vsaj nekatere nejasnosti, ki se nanašajo na pojem dimenzije.
 \begin{posledica}[Izrek o invarianci dimenzije]\label{izr:dim_izr}
-Naj bosta $m$ in $n$ naravni števili. evklidska prostora $\R^m$ in $\R^n$ sta homeomorfna, če in samo če je $m = n$.
+Naj bosta $m$ in $n$ naravni števili. Evklidska prostora $\R^m$ in $\R^n$ sta homeomorfna, če in samo če je $m = n$.
 \end{posledica}
 
 \begin{dokaz}
@@ -848,7 +847,6 @@ $$\left \{ (x_1, x_2, \dots, x_m, 0, \dots, 0) \in \R^n ; \text{ kjer so } x_i \
 \section*{Slovar strokovnih izrazov}
 
 \geslo{continuous}{zvezen}
-\geslo{uniformly continuous}{enakomerno zvezen}
 \geslo{coloring}{barvanje}
 \geslo{convex}{konveksen}
 \geslo{convex hull}{konveksna ogrinjača}
@@ -863,6 +861,7 @@ $$\left \{ (x_1, x_2, \dots, x_m, 0, \dots, 0) \in \R^n ; \text{ kjer so } x_i \
 \geslo{sequence}{zaporedje}
 \geslo{simplex}{simpleks}
 \geslo{triangulation}{triangulacija}
+\geslo{uniformly continuous}{enakomerno zvezen}
 \geslo{vertex}{oglišče}
 
 %\geslo{}{}
