@@ -1,0 +1,54 @@
+% Under Creative Commons Attribution licence 3.0
+% (http://creativecommons.org/licences/by/3.0)
+% Author: Florian Lesaint
+\documentclass[landscape]{standalone}
+\usepackage{tikz}
+%%%<
+\usepackage{verbatim}
+\usepackage{tikz-3dplot}
+\usepackage[active,tightpage]{preview}
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{10pt}%
+%%%>
+\begin{comment}
+:Title: Cuboid in a 2 vanishing points perspective
+:Tags: 3D;Geometry;Mathematics
+:Author: Florian Lesaint
+:Slug: cuboid
+
+This code draws a cuboid using a 2 vanishing points perspective.
+Within the code, parameters can be revised to tune the drawing.
+\end{comment}
+\usetikzlibrary{calc}
+\begin{document}
+\tdplotsetmaincoords{70}{45}
+%\tdplotsetrotatedcoords{40}{20}{0}%
+\begin{tikzpicture}
+		[tdplot_main_coords,
+			cube/.style={very thick,black},
+			grid/.style={very thin,gray},
+			axis/.style={->,blue,thick}]
+
+	%draw a grid in the x-y plane
+
+
+	%draw the axes
+	%\draw[axis] (0,0,0) -- (3,0,0) node[anchor=west]{$x$};
+	%\draw[axis] (0,0,0) -- (0,3,0) node[anchor=west]{$y$};
+	%\draw[axis] (0,0,0) -- (0,0,3) node[anchor=west]{$z$};
+
+	%draw the top and bottom of the cube
+	%\draw[cube] (0,0,0) -- (0,2,0) -- (2,2,0) -- (2,0,0) -- cycle;
+	%\draw[cube] (0,0,2) -- (0,2,2) -- (2,2,2) -- (2,0,2) -- cycle;
+	
+	%draw the edges of the cube
+	%\draw[cube] (0,0,0) -- (0,0,2);
+	%\draw[cube] (0,2,0) -- (0,2,2);
+	%\draw[cube] (2,0,0) -- (2,0,2);
+	\draw[cube] (0,0,0) node[anchor=east]{$(z_{0, 1}, z_{0, 2}, z_{0, 3})$} -- (3,0,0) node[anchor=west]{$(z_{0, 1} + \frac{a}{k}, z_{0, 2}, z_{0, 3})$} -- (3,0,3) node[anchor=east]{$(z_{0, 1} + \frac{a}{k}, z_{0, 2}, z_{0, 3}+ \frac{a}{k})$} -- (3,3,3) node[anchor=west]{$(z_{0, 1}+ \frac{a}{k}, z_{0, 2}+ \frac{a}{k}, z_{0, 3}+ \frac{a}{k})$};
+	\draw[cube] (0,0,0) -- (3,0,3);
+	\draw[dashed] (0,0,0) -- (3,3,3);
+	\draw[cube] (3,0,0) -- (3,3,3);
+	
+\end{tikzpicture}
+\end{document} 

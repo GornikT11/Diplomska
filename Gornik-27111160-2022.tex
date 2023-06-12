@@ -7,7 +7,6 @@
 
 % naslednje ukaze ustrezno napolnite
 \avtor{Tom Gornik}
-
 \naslov{Izrek o invarianci odprtih množic}
 \title{Domain invariance theorem}
 
@@ -26,15 +25,6 @@
 %  V povzetku na kratko opišite vsebinske rezultate dela. Sem ne sodi razlaga organizacije dela --
 %  v katerem poglavju/razdelku je kaj, pač pa le opis vsebine.
 \povzetek{Zveznost in diskretnost sta v mnogih pogledih povsem nasprotujoča si pojma. Kljub temu se izkaže, da lahko s pomočjo kombinatorike na diskretnih množicah dokažemo veliko lastnosti zveznih funkcij. Glavna prednost takega načina dokazovanja je, da si je postopek dokaza (vsaj v primeru, ko dimenzija ni prevelika) lahko predstavljati in celo skicirati. Pozitivne strani se pokažejo predvsem pri dokazovanju izrekov o obstoju posebnih točk, kot sta negibna točka in ničla funkcije. Primer takega izreka je Poincar\'e-Mirandov izrek, ki je v tem delu dokazan s pomočjo kombinatorike na ogliščih triangulacije kocke in Spernerjeve leme. Dokazano je, da Poincar\'e-Mirandov izrek implicira izrek o invarianci odprtih množic. Na koncu je predstavljena enostavna a pomembna posledica izreka o invarianci odprtih množic, ki jo imenujemo izrek o invarianci dimenzije.
-%Izrek o invarianci odprtih množic je pomemben matematičen rezultat, ki je pripomogel k razumevanju pojma dimenzije. 
-
-%Zveznost in diskretnost sta v mnogih pogledih dva povsem nasprotujoča si pojma, a izkaže se, da lahko s pomočjo kombinatorike na diskretnih množicah dokazujemo nekatere lastnosti zveznih funkcij. Predvsem so take množice priročne pri dokazovanju obstoja posebnih točk, kot sta negibna točka in ničla funkcije. Eden takih izrekov je poincare mirandov izrek, ki ga dokažemo s pomočjo kombinatorike na triangulacijah kock in Spernerjeve leme. Z razširitvijo Obstajata dve prednosti takih dokazov, ki ju je vredno izpostaviti. Prva je ta, da si je dogajanje v dokazu dokaj lahko predstavjati in celo skicirati (vsaj v primerih, ko dimenzija ni prevelika). Druga prednost je, da so dokazi vsaj do neke mere konstruktivni, kar pomeni, da lahko ocenimo, kje se nahaja posebna točka funkcije. Predstavili bomo uporabo takega načina dokazovanja. S pomočjo simpleksov lahko trianguliramo poljubno množico in opazujemo vrednosti funkcije na množici oglišč triangulacije. Ko trianguliramo množico z vedno manjšimi simpleksi vrednosti na vogiščih vse bolje opišejo obnašanje funkcije. se v limiti z njo izenačijo.
-
-%V tem delu je dokazan izrek o invarianci odprtih množic in njegova posledica izrek o invarianci dimenzij. Dokaz poveže na videz dva povsem nasprotujoča si pojma, to sta diskretnost in zveznost. Za namene dokaza je S pomočjo diskretne kombinatorike na ogliščih triangulacije dokažemo Spernerjevo lemo, ki je.
-
-%V tem delu je dokažemo izrek o invarianci odprtih množic in njegovo posledico izrek o invarianci dimenzij. 
-
-%V tem delu je s kombinatoriko na triangulacijah simpleksov sokazana spernerjeva lema. a dokažemo PM izrek, ki govori o lastnosti zveznih preslikav. Predstavljeni si so pogoji, ki nam omogočajo, da razširimo funkcijo iz dane domene na večjo množico. Glavni rezultat tega dela pa je izrek o invarianci odprtih množic in njegova posledica izrek o invarianci dimenzij.
 }
 
 %  Prevod slovenskega povzetka v angleščino.
@@ -298,6 +288,13 @@ razdeli prostor $\R^n$ na $n$-dimenzionalne simplekse.
 Če množici dodamo še vsa lica simpleksov iz te množice, dobimo $k$-to mrežno delitev prostora $\R^n$, ki jo označimo z $M_{\frac{a}{k}}^n$.
 Prepričajmo se, da množica $M_{\frac{a}{k}}^n$ zadošča pogojema definicije \ref{simpl-kompleks}. Hitro vidimo, da izpolnjuje pogoj \eqref{simpl-kompleks1}. Preveriti moramo še, da je neprazen presek dveh simpleksov iz $M_{\frac{a}{k}}^n$ lice obeh simpleksov. Ker je vsak simpleks iz $M_{\frac{a}{k}}^n$ lice nekega $n$-simpleksa iz $M_{\frac{a}{k}}^n$, je dovolj, če pokažemo, da je neprazen presek dveh $n$-simpleksov iz množice $M_{\frac{a}{k}}^n$ lice obeh simpleksov. Vsak $n$-simpleks $S = \langle z_0, \dots, z_n \rangle \in  M_{\frac{a}{k}}^n$ je natančno določen s točko $z_0 = (z_{0,1}, z_{0, 2}, \dots, z_{0,n})$ in permutacijo $\pi \in P(n)$. Če poznamo ta dva podatka, lahko $n$-simpleks $S$ zapišemo tudi kot množico vseh točk $t=(t_1, \dots, t_n)$, ki zadoščajo pogojem:
 $$\frac{a}{k} \geq t_{\pi(1)} - z_{0, \pi(1)}  \geq t_{\pi(2)} - z_{0, \pi(2)} \geq \cdots \geq t_{\pi(n)} - z_{0, \pi(n)} \geq 0.$$
+%####################    Slika definicije soseda ####################
+\begin{figure}[h!]    
+	\centering
+		\includegraphics[width=0.8\textwidth]{slike/meje.pdf}
+	\caption{Slika prikazuje primer simpleksa, ki je določen z začetno točko $z_0$ in permutacijo $\pi = (2 3)$.}
+\end{figure}
+%#######################################################
 Izberimo poljubni naravni števili $i$ in $j$. Brez izgube splošnosti lahko predpostavimo, da je $\pi(i) < \pi(j)$. Oglišča simpleksa so dobljena tako, da vedno povečamo eno koordinato, zato imajo $\pi(i)$-to koordinato večjo ali enako od $\pi(j)$-te koordinate. Ker simpleks dobimo kot afino kombinacijo oglišč, imajo tudi vse točke simpleksa $\pi(i)$-to koordinato večjo ali enako od $\pi(j)$-te koordinate.
 Za vsak par naravnih števil $1 \leq i, j \leq n$ lahko iz zgornjih pogojev razberemo neenakost $t_i - z_{0, i}  \geq t_j - z_{0, j}$ ali $t_i - z_{0, i}  \leq t_j - z_{0, j}$, ki nam pove, v katerem polprostoru, omejenem s hiperravnino $t_i - z_{0, i} = t_j - z_{0, j}$, leži $n$-simpleks $S$.
 Lica $n$-simpleksa $S$ dobimo tako, da nekaj neenačajev spremenimo v enačaj. Naj bo $S \in M_{\frac{a}{k}}^n$ $n$-simpleks, ki zadošča pogojem
@@ -405,7 +402,7 @@ Indukcijska predpostavka ($n - 1$):
 Predpostavimo, da lema drži v dimenziji $(n - 1)$. Torej v vsaki mrežni delitvi $(n - 1)$-simpleksa s Spernerjevim barvanjem obstaja liho število $(n - 1)$-simpleksov, ki so popolno pobarvani.
 
 Indukcijski korak ($(n - 1) \Longrightarrow n$):
-Poskusimo dokazati pravilnost izjave tudi v dimenziji $n$. Izberimo $k$-to mrežno delitev $M_k^n$ $n$-simpleksa $S$. Naj bodo oglišča delitve $M_k^n$ pobarvana s Spernerjevim barvanjem. Samo eno glavno lice simpleksa $S$ je popolno pobarvan $(n-1)$-simpleks. Po indukcijski predpostavki vemo, da je število $r$ popolno pobarvanih $(n-1)$-simpleksov na tem licu liho. Na drugih glavnih licih simpleksa $S$ pa ni popolno pobarvanih $(n-1)$-simpleksov, saj na teh ogliščih ne nastopajo barve, ki bi omogočale popolno pobarvan $(n-1)$-simpleks. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $M_k^n$ s $p$. Pokazali bomo, da velja $p \equiv r \pmod 2$.
+Poskusimo dokazati pravilnost izjave tudi v dimenziji $n$. Izberimo $k$-to mrežno delitev $M_k^n$ $n$-simpleksa $S$. Naj bodo oglišča delitve $M_k^n$ pobarvana s Spernerjevim barvanjem. Samo eno glavno lice simpleksa $S$ je popolno pobarvan $(n-1)$-simpleks. Po indukcijski predpostavki vemo, da je število $r$ popolno pobarvanih $(n-1)$-simpleksov na tem licu liho. Na drugih glavnih licih simpleksa $S$ pa ni popolno pobarvanih $(n-1)$-simpleksov, saj na teh licih ne nastopajo barve, ki bi omogočale popolno pobarvan $(n-1)$-simpleks. Označimo število vseh popolno pobarvanih $n$-simpleksov iz $M_k^n$ s $p$. Pokazali bomo, da velja $p \equiv r \pmod 2$.
 Definirajmo funkcijo $\alpha$, ki za vsak $n$-simpleks pove, koliko popolno pobarvanih $(n-1)$ simpleksov vsebuje. Vsak popolno pobarvan $n$-simpleks iz triangulacije $M_k^n$ simpleksa $S$ vsebuje natanko en popolno pobarvan $(n-1)$-simpleks, medtem ko ostali simpleksi lahko vsebujejo dva ali nobenega. Če $n$-simpleks vsebuje oglišča, pobarvana z vsemi barvami $0, \dots, n-1$, kjer se ena barva ponovi dvakrat, tak simpleks vsebuje dva popolno pobarvana $(n-1)$-simpleksa. Ostali $n$-simpleksi ne vsebujejo nobenega popolno pobarvanega $(n - 1)$-simpleksa. Iz zgornjega lahko sklepamo, da je 
 $$p \equiv 
 \sum\limits_{\substack{
@@ -464,7 +461,7 @@ Intuitivno izrek pove, da ne moremo povezati točke s spodnje polravnine s točk
 \begin{figure}[h!]
 	\centering
 	\import{slike/}{bolzano.tex}
-	\caption{Slika prikazuje dogajanje, ki ga opisuje izrek~\ref{izr:bolzano}}.\label{fig:bolzano}
+	\caption{Slika prikazuje dogajanje, ki ga opisuje izrek~\ref{izr:bolzano}.}\label{fig:bolzano}
 \end{figure}
 %############################################################
 Zgornji rezultat bi si želeli posplošiti na večje dimenzije. Večdimenzionalna posplošitev funkcije je preslikava, intervala pa $n$-kocka. Ostane le še vprašanje, kako bi posplošili pogoje, da bi imela preslikava podobno lastnost kot zgoraj. Razmislimo, kako bi posplošili izrek na zvezno preslikavo $f : \I^n \to \R^n$. Najprej lahko preslikavo zapišemo s pomočjo komponentnih funkcij $f = (f_1, f_2, \dots, f_n)$. Da lažje ugotovimo, kakšne pogoje bi izbrali, najprej obravnavamo preprost primer. Kakšne pogoje bi postavili, če bi bila vsaka komponenta $f_i$ odvisna samo od ene koordinate točke $x$, npr.\ $x_i$? Potem lahko vsako komponento $f_i$ zapišemo kot $f_i(x_1, x_2, \dots, x_n) = g_i(x_i)$, kjer so $g_i$ funkcije iz intervala $\I$ v prostor $\R$. V tem primeru za vsako funkcijo $g_i$ uporabimo enake zahteve kot v izreku \ref{izr:bolzano}, kar za funkcije $f_i$ porodi naslednji pogoj: 
@@ -567,7 +564,7 @@ S primerom na sliki \ref{fig:ni-pop} pokažimo, da barvanje, ki zadošča naivne
 \end{figure}
 %##############################################################################
 Naivno pravilo lahko dopolnimo tako, da bo vsaka triangulacija $n$-simpleksa, pobarvana po tem pravilu, vsebovala popolno pobarvan $n$-simpleks. Če pogledamo dokaz izreka \ref{izr:sperner}, vidimo, da je ključno dejstvo, da je število vseh popolno pobarvanih 
-$(n-1)$-simpleksov na robu liho. Na sliki~\ref{fig:ni-pop} pa ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Kocka $C$ na robu vsebuje $4$ popolno pobarvane $1$-simpleksa. Če naivnemu barvanju dodamo pogoj, ki za vsako triangulacijo $n$-kocke zagotavlja liho število popolno pobarvanih $(n-1)$-simpleksov na robu, dobimo Spernerjevo barvanje za kocke.
+$(n-1)$-simpleksov na robu liho. Na sliki~\ref{fig:ni-pop} pa ni tako. Popolno pobarvani $1$-simpleksi so tisti, ki so pobarvani z modro in rdečo. Kocka $C$ na robu vsebuje $4$ popolno pobarvane $1$-simplekse. Če naivnemu barvanju dodamo pogoj, ki za vsako triangulacijo $n$-kocke zagotavlja liho število popolno pobarvanih $(n-1)$-simpleksov na robu, dobimo Spernerjevo barvanje za kocke.
 
 
 \begin{definicija}\label{def:alo}
@@ -718,9 +715,11 @@ Razširitveno funkcijo \mbox{$F : \R^n \to \R$} lahko definiramo s predpisom \pr
 \end{array} 
 \right. \]
 Iz predpisa funkcije je jasno, da za vsak $x \in A$ velja $F(x) = f(x)$. Dokazati moramo le še, da je funkcija $F$ res zvezna na $\R^n$.
-Funkcijo $F|_{A^c}$ bomo zapisali kot kompozitum dveh zveznih funkcij in na ta način dokazali njeno zveznost. Obstaja tako pozitivno realno število $r>0$, da je zaprta krogla okrog $x_0$ s polmerom $r$ vsebovana v $A^c$, torej $\overline{B}(x_0, r) \subset A^c$. Funkcija $g: A^c \times A \to \R$, definirana s predpisom $g(x, a) = f(a) + \frac{d(x, a)}{d(x, A)}$, je zvezna. Trdimo, da je tudi funkcija $\hat{g} : A^c \to C(A, \R)$ s predpisom $\hat{g}(x) = g_x$ zvezna, kjer prostor $C(A, \R)$ opremimo z metriko enakomerne konvergence. Izberimo poljubno majhno pozitivno realno število $\varepsilon \in (0, 1)$. Ker je funkcija $g$ enakomerno zvezna na množici $\overline{B}(x_0, r) \times A$, obstaja tako število $\delta >0$, da za vsak par točk $(x, a), (y, b) \in \overline{B}(x_0, r) \times A$ velja implikacija:
+Funkcijo $F|_{A^c}$ bomo zapisali kot kompozitum dveh zveznih funkcij in na ta način dokazali njeno zveznost. Naj točka $x_0$ leži v množici $A^c$. Ker je $A^c$ odprta, obstaja tako pozitivno realno število $r>0$, da je zaprta krogla okrog $x_0$ s polmerom $r$ vsebovana v $A^c$, torej $\overline{B}(x_0, r) \subset A^c$. Funkcija $g: A^c \times A \to \R$, definirana s predpisom $g(x, a) = f(a) + \frac{d(x, a)}{d(x, A)}$, je zvezna. Res, saj je definirana kot kompozitum zveznih neničelnih funkcij. Trdimo, da je tudi funkcija $\hat{g} : A^c \to C(A, \R)$ s predpisom $\hat{g}(x) = g_x$ zvezna, kjer prostor $C(A, \R)$ opremimo z metriko enakomerne konvergence. Izberimo poljubno majhno pozitivno realno število $\varepsilon \in (0, 1)$. Ker je funkcija $g$ enakomerno zvezna na množici $\overline{B}(x_0, r) \times A$, obstaja tako število $\delta >0$, da za vsak par točk $(x, a), (y, b) \in \overline{B}(x_0, r) \times A$ velja implikacija:
 $$d((x, a), (y, b)) < \delta \Rightarrow d(g(x, a), g(y, b))< \varepsilon.$$
-Ker iz $d(x, y) < \delta$ sledi $d((x, a), (y, a)) < \delta$ za vsak $a$, sledi tudi $d(g_x, g_y) = d(\hat{g}(x), \hat{g}(y)) < \varepsilon.$ 
+Ker iz $d(x, y) < \delta$ sledi 
+$d((x, a), (y, a)) < \delta$ za vsak $a$, sledi tudi 
+$$d(g_x, g_y) = \sup_{a \in A}d(g(x,a), g(y, a)) < \varepsilon.$$
 
 Prepričajmo se, da je tudi funkcija $m: C(A, \R) \to \R$ s predpisom $m(f) = \min_{a \in A} f(a)$ zvezna. Naj bo $g \in C(A, \R)$ in naj bo $\varepsilon > 0$. Radi bi videli, da obstaja tako pozitivno število $\delta$, da za vse funkcije $h$, za katere je $d(g, h)<\delta$, velja: $|m(g) - m(h)| < \varepsilon$. Če je $d(g, h)<\delta$, potem za vsako točko $a \in A$ velja neenakost $|g(a) - h(a)| < \delta$. Denimo, da je minimum funkcije $g$ na množici $A$ dosežen v točki $a_1$, minimum funkcije $h$ pa v točki $a_2$. Naredimo naslednje ocene:
 \begin{align*}
@@ -755,11 +754,11 @@ Ugotovimo, da je $| F(x_0) - F(x) | \leq \varepsilon$, kar zaključi dokaz.
 Lemo~\ref{lem:razsiritev} enostavno posplošimo tudi na preslikave, ki slikajo v večrazsežni evklidski prostor.
 
 \begin{posledica}
-Naj bo $A$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : A \to \R^n$} zvezna preslikava. Potem obstaja taka zvezna preslikava $F : \R^n \to \R^n$, da je za vsak $x \in A$, $F(x) = f(x)$.
+Naj bo $A$ zaprta podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : A \to \R^n$} zvezna preslikava. Potem obstaja taka zvezna preslikava $F : \R^n \to \R^n$, da je za vsak $x \in A$, $F(x) = f(x)$.
 \end{posledica}
 
 \begin{dokaz}
-Vemo, da zvezna preslikava $f : A \to \R^n$ določa komponentne funkcije $f_1(x), f_2(x), \dots , f_n(x)$. Vse komponentne funkcije $f_i : A \to \R$ zadoščajo pogojem leme~\ref{lem:razsiritev}, zato jih lahko razširimo do funkcij $F_i : \R^n \to \R$. Če definiramo preslikavo $F : \R^n \to \R^n$ s predpisom $F(x) = (F_1(x), F_2(x), \dots , F_n(x))$, dobimo zvezno razširitev preslikave $f$.
+Dokaz bomo dokazali samo za kompaktne množice $A$. Vemo, da zvezna preslikava $f : A \to \R^n$ določa komponentne funkcije $f_1(x), f_2(x), \dots , f_n(x)$. Vse komponentne funkcije $f_i : A \to \R$ zadoščajo pogojem leme~\ref{lem:razsiritev}, zato jih lahko razširimo do funkcij $F_i : \R^n \to \R$. Če definiramo preslikavo $F : \R^n \to \R^n$ s predpisom $F(x) = (F_1(x), F_2(x), \dots , F_n(x))$, dobimo zvezno razširitev preslikave $f$.
 \end{dokaz}
 Sedaj znamo razširiti zvezno preslikavo iz kompaktne množice na cel prostor $\R^n$. Včasih si poleg spremembe definicijskega območja želimo imeti nekaj vpliva tudi na zalogo vrednosti preslikave. Želeli bi si, da se zaloga vrednosti pri razširitvi čim manj spremeni. Naivno bi lahko želeli, da ta ostane celo enaka, a to ni vedno mogoče, kar pokaže primer~\ref{protiprimer}.
 
@@ -784,7 +783,7 @@ Poglejmo sedaj, pri katerih pogojih je to mogoče s približno razširitvijo.
 %\end{dokaz}
 
 \begin{lema}[približna razširitev, ki se izogne ničli \protect{\cite[str.\ 133, Proof of Lemma]{Kulpa}}]\label{lem:razsiritev-nic}
-Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : X \to \R^n \setminus \left \{ \0 \right \}$}. Naj ima kompaktna podmnožica $Y \in \R^n$ prazno notranjost. Tedaj za vsako število $\varepsilon > 0$ obstaja taka zvezna preslikava $F : X \cup Y \to \R^n \setminus \{0\}$, da zanjo velja $\| F(x) - f(x) \| < \varepsilon$ za vsak $x \in X$.
+Naj bo $X$ kompaktna podmnožica evklidskega prostora $\R^n$ in naj bo \mbox{$f : X \to \R^n \setminus \left \{ \0 \right \}$}. Naj ima kompaktna podmnožica $Y$ prazno notranjost. Tedaj za vsako število $\varepsilon > 0$ obstaja taka zvezna preslikava $F : X \cup Y \to \R^n \setminus \{0\}$, da zanjo velja $\| F(x) - f(x) \| < \varepsilon$ za vsak $x \in X$.
 \end{lema}
 
 \begin{dokaz}
@@ -812,7 +811,7 @@ Potem je tudi slika $h(U)$ odprta množica v $\R^n$.
 %
 \begin{dokaz}
 Naj bodo izpolnjene predpostavke izreka. Obravnavamo množico U, ki je odprta podmnožica v $\R^n$, in zvezno injektivno preslikavo $h : U \rightarrow \R^n$. Izrek bo dokazan, če pokažemo, da je za vsak element $u$ iz množice $U$ točka $h(u)$ notranja točka za množico $h(U)$. Brez izgube splošnosti lahko predpostavimo, da je $u=0$. V nasprotnem primeru si pomagamo s translacijo $\tau$, ki premakne točko $u$ v točko $0$. % in pokažemo, da je slika množice $\tau(U)$ s funkcijo $h \circ \tau^{-1}$ odprta, kar pomeni, da je odprta tudi množica $h(U)$. 
-Prepričati se želimo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n = [-a, a] \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tod naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo f zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ Hausdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to h\left(\I^n  \right)$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta$, da je praslika množice $B(b, 2 \delta) \cap h\left(\I^n\right)$ vsebovana v notranjosti kocke $I^n$. Velja torej $h^{-1}(B(b, 2 \delta)\cap h\left(\I^n\right)) \subset \Int(\I^n)$. Predpostavimo, da je $b \in \partial h\left(\I^n\right)$. Tedaj lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
+Prepričati se želimo, da je $h(\0)$ notranja točka za $h(U)$. Izberimo tako pozitivno realno število $a > 0$, za katero je $\I^n = [-a, a] \subset U$. Za dokaz izreka je dovolj pokazati vsebovanost $b := h(\0) \in \Int(h(\I^n))$. Od tod naprej bomo dokazovali s protislovjem. Privzeli bomo, da je $b \in \partial h(\I^n)$, in konstruirali funkcijo $f : \I^n \to \R^n \setminus \{ \0 \}$, tako da bo $f$ zadoščala pogojem izreka~\ref{izr:PM}. To pa bo protislovje, saj mora taka funkcija po izreku~\ref{izr:PM} vsaj eno točko slikati v $0$. Na poti do protislovja si bomo seveda pomagali tudi z lemami, ki smo jih spoznali in dokazali v prejšnjih poglavjih. Ker je $\I^n$ kompaktna podmnožica $\R^n$ in je $\R^n$ Hausdorffov prostor, je funkcija $h|_{\I^n} : \I^n \to h\left(\I^n  \right)$ homeomorfizem. Zato obstaja tako pozitivno realno število $\delta$, da je praslika množice $B(b, 2 \delta) \cap h\left(\I^n\right)$ vsebovana v notranjosti kocke $I^n$. Velja torej $h^{-1}(B(b, 2 \delta)\cap h\left(\I^n\right)) \subset \Int(\I^n)$. Predpostavimo, da je $b \in \partial h\left(\I^n\right)$. Tedaj lahko poiščemo točko $c \in B(b, \delta) \setminus h(I^n)$. Enostavno se je prepričati, da je $b \in B(c, \delta)$ in $h^{-1} (B(c, \delta)) \subset \Int (\I^n)$.
 
 % ###############        Slika dokaza izreka o invarianci odprtih množic      ############
 \begin{figure}[h!]
@@ -870,8 +869,59 @@ $$\left \{ (x_1, x_2, \dots, x_m, 0, \dots, 0) \in \R^n ; \text{ kjer so } x_i \
 \phantomsection                            % da prav delujejo hiperlinki
 %\addcontentsline{toc}{section}{\bibname}   % dodajmo v kazalo
 \bibliographystyle{fmf-sl}                 % uporabljen stil je v datoteki fmf-sl.bst, na voljo tudi angleška verzija
-\bibliography{\literatura}        
+%\bibliography{\literatura}        
+\begin{thebibliography}{99}
 
+%########
+\bibitem{Ahlbach}
+C.~T.~Ahlbach, \emph{A discrete approach to the Poincar\'e-Miranda theorem}, magistrsko delo, Department of mathematics, Harvey Mudd College, 2013.
+%###########
+
+%##########
+\bibitem{Engelking1989}
+R.~Engelking, \emph{General topology}, Sigma series in pure mathematics  \textbf{6}, Heldermann Verlag, Berlin, 1989.
+%##########
+
+%########
+\bibitem{Gouvea2011}
+F.~Q.~Gouv{\^{e}}a, \emph{Was Cantor surprised?}, Amer. Math. Monthly \textbf{118} (2011) strani 198--209;
+dostopno tudi na
+\url{www.maa.org/sites/default/files/pdf/pubs/AMM-March11_Cantor.pdf}.
+%########
+
+%########
+\bibitem{Kulpa}
+W.~Kulpa, \emph{Poincar\'e and domain invariance theorem}, Acta univ. Carolin. Math. phys. \textbf{39} (1998) strani 127--136.
+%########
+
+%########
+\bibitem{4dim}
+H.~P.~Manning, \emph{Geometry of four dimensions}, Macmillan, New York, 1914; dostopno tudi na
+\url{https://archive.org/details/geometryoffourdi033495mbp/page/n7/mode/2up}.
+%###########
+
+%########
+\bibitem{Schaefer2014}
+U.~Sch\"{a}fer, \emph{From Sperner's lemma to differential equations in Banach spaces : An introduction to fixed point theorems and their applications}, Karlsruher Institut für Technologie, Karlsruhe, 2014; dostopno tudi na
+\url{https://d-nb.info/106449790X/34}.
+%###########
+
+%########
+\bibitem{convexhull}
+\emph{Convex hull}, v: Wikipedia, The Free Encyclopedia, [ogled 22.\ 4.\ 2020], dostopno na \url{https://en.wikipedia.org/wiki/Convex_hull}.
+%########
+
+%########
+\bibitem{Peano}
+\emph{Peano curve}, v: Wikipedia, The Free Encyclopedia, [ogled 22.\ 4.\ 2020], dostopno na \url{https://en.wikipedia.org/wiki/Peano_curve}.
+%########
+
+%########
+\bibitem{simplex}
+\emph{Simplex}, v: Wikipedia, The Free Encyclopedia, [ogled 22.\ 4.\ 2020], dostopno na \url{https://en.wikipedia.org/wiki/Simplex}.
+%########
+
+\end{thebibliography}
 
 \end{document}
 
